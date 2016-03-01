@@ -2,5 +2,8 @@ language: ruby
 rvm:
   - 2.2.2
 
+before_script:
+  - psql -c "CREATE USER skateparks WITH PASSWORD 'skateparks';" -U postgres
+
 notifications:
   email: false
