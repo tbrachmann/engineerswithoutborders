@@ -2,7 +2,7 @@ development:
   adapter: postgresql
   pool: 5
   # these are our new parameters
-  encoding: UTF-8
+  encoding: SQL-ASCII
   database: eng_development
   host: localhost
   username: sfewb
@@ -11,7 +11,7 @@ development:
 test: &test
   # this will not work 
   adapter: postgresql
-  encoding: unicode
+  encoding: SQL-ASCII
   database: eng_test
   pool: 5
   username: sfewb
@@ -20,7 +20,7 @@ test: &test
 production:
   # this will not work 
   adapter: postgresql
-  encoding: unicode
+  encoding: SQL-ASCII
   database: eng_production
   pool: 5
   username: sfewb
