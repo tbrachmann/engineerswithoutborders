@@ -12,7 +12,7 @@ test: &test
   # this will not work 
   adapter: postgresql
   encoding: SQL-ASCII
-  database: eng_test
+  database: eng_development
   pool: 5
   username: sfewb
   password: cs169
