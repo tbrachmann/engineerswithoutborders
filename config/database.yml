@@ -8,7 +8,7 @@ development:
   username: sfewb
   password: cs169
 
-test:
+test: &test
   # this will not work 
   adapter: postgresql
   encoding: unicode
@@ -117,3 +117,6 @@ production:
 #   database: engineerswithoutborders_production
 #   # username: engineerswithoutborders
 #   # password: <%= ENV['ENGINEERSWITHOUTBORDERS_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *test
