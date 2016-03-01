@@ -8,11 +8,11 @@ development:
   username: sfewb
   password: cs169
 
-test: &test
+test:
   # this will not work 
   adapter: postgresql
   encoding: SQL-ASCII
-  database: eng_development
+  database: eng_test
   pool: 5
   username: sfewb
   password: cs169
