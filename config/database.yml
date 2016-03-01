@@ -14,8 +14,8 @@ test: &test
   encoding: unicode
   database: eng_test
   pool: 5
-  username: my_application
-  password:
+  username: sfewb
+  password: cs169
 
 production:
   # this will not work 
@@ -23,8 +23,8 @@ production:
   encoding: unicode
   database: eng_production
   pool: 5
-  username: my_application
-  password:
+  username: sfewb
+  password: cs169
   
   
 
