@@ -8,7 +8,7 @@ development:
   username: sfewb
   password: cs169
 
-test:
+test: &test
   # this will not work 
   adapter: postgresql
   encoding: SQL-ASCII

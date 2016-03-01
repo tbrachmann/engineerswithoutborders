@@ -3,7 +3,7 @@ rvm:
   - 2.2.2
 
 before_script:
-  - psql -c "CREATE USER sfewb WITH PASSWORD 'qwertyuiop';" -U postgres
+  - psql -c "CREATE USER sfewb WITH PASSWORD 'cs169';" -U postgres
 
 notifications:
   email: false
