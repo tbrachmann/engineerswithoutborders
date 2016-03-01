@@ -9,7 +9,7 @@ development:
   password: cs169
 
 test:
-  # this won't work 
+  # this will not work 
   adapter: postgresql
   encoding: unicode
   database: eng_test
@@ -18,7 +18,7 @@ test:
   password:
 
 production:
-  # this won't work 
+  # this will not work 
   adapter: postgresql
   encoding: unicode
   database: eng_production
