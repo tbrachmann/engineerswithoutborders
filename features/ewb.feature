@@ -40,4 +40,3 @@ Scenario: Filling out the Volunteer Form by joining project team
   And I select "Travel" with "Yes"
   And I select "Current Events" with "Yes"
   And I check the following events: Fundraising, Graphic Design
-  
