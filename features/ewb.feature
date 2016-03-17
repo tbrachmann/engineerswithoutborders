@@ -5,7 +5,7 @@ Feature: Signing up as a volunteer
 Background: I am on the EWB home page
 
 Scenario: Filling out the Volunteer Form by subscribing
-  # enter step(s) to check the 'PG' and 'R' checkboxes
+
   Given I am on the Volunteer page
   When I fill in "First Name" with "Daniel"
   And I fill in "Last Name" with "Anderson"
