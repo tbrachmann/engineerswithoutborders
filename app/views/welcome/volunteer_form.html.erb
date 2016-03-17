@@ -1,9 +1,9 @@
 <h1>Volunteer Form: Engineers Without Boarders</h1>
 
 <form action="volunteer/" method="POST">
-    First Name: <input type="text" name="first_name">
+    First Name: <input type="text" name="First Name">
     <br/>
-    Last Name: <input type="text" name="last_name">
+    Last Name: <input type="text" name="Last Name">
     <br/>
     Phone Number: <input type="text" name="Phone">
     <br/>
@@ -11,5 +11,8 @@
     <br/>
     City: <input type="text" name="City">
     <br/>
+    <%= f.check_box( :type, {}, "yes", "no") %>
+    <br/>
     <input type="submit">
+    
 </form>
