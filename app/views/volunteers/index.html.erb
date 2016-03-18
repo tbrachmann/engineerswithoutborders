@@ -12,9 +12,10 @@
   <tbody>
     <% @volunteers.each do |volunteer| %>
       <tr>
-        <td><%= link_to 'Show', volunteer %></td>
+        <td><%= volunteer.first_name %> <%= volunteer.last_name %>:</td>
+        <td><%= link_to 'More Info', volunteer %></td>
         <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
-        <td><%= link_to 'Destroy', volunteer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Remove', volunteer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
