@@ -25,6 +25,7 @@ class VolunteersController < ApplicationController
   # POST /volunteers
   # POST /volunteers.json
   def create
+    print "hello world"
     @volunteer = Volunteer.new(volunteer_params)
 
     respond_to do |format|
