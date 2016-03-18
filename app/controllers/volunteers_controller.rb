@@ -14,7 +14,6 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/new
   def new
-    print "hello world"
     @volunteer = Volunteer.new
   end
 
@@ -25,7 +24,8 @@ class VolunteersController < ApplicationController
   # POST /volunteers
   # POST /volunteers.json
   def create
-    print "hello world"
+    # print "ANTHONY"
+    # print params[:id]
     @volunteer = Volunteer.new(volunteer_params)
 
     respond_to do |format|
@@ -71,6 +71,6 @@ class VolunteersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def volunteer_params
-      params.fetch(:volunteer, {})
+      params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city)
     end
 end

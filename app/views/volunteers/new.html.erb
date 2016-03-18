@@ -1,17 +1,13 @@
 <h1>New Volunteer</h1>
 
-    First Name: <input type="text" name="first_name">
-    <br/>
-    Last Name: <input type="text" name="last_name">
-    <br/>
-    Phone Number: <input type="text" name="Phone">
-    <br/>
-    Email: <input type="text" name="Email">
-    <br/>
-    City: <input type="text" name="City">
-    <br/>
-
-<%= render 'form' %>
+<%= form_for @volunteer do |v| %>
+  First Name: <%= v.text_field :first_name %>
+  Last Name: <%= v.text_field :last_name %>
+  Phone: <%= v.text_field :phone %>
+  Email: <%= v.text_field :email %>
+  City: <%= v.text_field :city %>
+  <%= v.submit %>
+<% end %>
 
     
 <%= link_to 'Back', volunteers_path %>
