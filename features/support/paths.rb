@@ -17,8 +17,10 @@ module NavigationHelpers
        '/'
     
     when /^the Volunteer page$/
-       '/volunteer/'
+       '/volunteers/new'
 
+    when /^the Successfully Created page$/
+      'volunteers/' + Volunteer.id
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
