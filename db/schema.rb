@@ -17,11 +17,13 @@ ActiveRecord::Schema.define(version: 20160318044527) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "name"
-    t.string   "first_name"
+    t.text     "first_name"
     t.text     "last_name"
     t.text     "phone"
     t.text     "email"
     t.text     "city"
+    t.text     "state"
+    t.text     "subscribe"
   end
 
 end

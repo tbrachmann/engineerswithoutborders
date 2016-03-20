@@ -2,8 +2,10 @@
 
 <div><span class="show">Name: <%= @volunteer.first_name %> <%= @volunteer.last_name %></span></div>
 <div><span class="show">Phone: <%= @volunteer.phone %></span></div>
-<div><span class="show">Emai: <%= @volunteer.email %></span></div>
+<div><span class="show">Email: <%= @volunteer.email %></span></div>
 <div><span class="show">City: <%= @volunteer.city %></span></div>
+<div><span class="show">State: <%= @volunteer.state %></span></div>
+<div><span class="show">Subscribe: <%= @volunteer.subscribe %></span></div>
 
 <%= link_to 'Edit', edit_volunteer_path(@volunteer) %> |
 <%= link_to 'Back', volunteers_path %>

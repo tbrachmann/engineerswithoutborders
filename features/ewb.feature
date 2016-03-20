@@ -6,15 +6,15 @@ Background: I am on the EWB home page
 
 Scenario: Filling out the Volunteer Form by subscribing
   Given I am on the Volunteer page
-  When I fill in "First Name" with "Daniel"
-  And I fill in "Last Name" with "Anderson"
+  When I fill in "First name" with "Mark"
+  And I fill in "Last name" with "Emiliano"
   And I fill in "Phone" with "650-999-0111"
   And I fill in "Email" with "helloworld@berkeley.edu"
   And I fill in "City" with "Berkeley"
   And I fill in "State" with "California"
-  And I check "Subscribe to Newsletter"
-  And I press "Submit"
-  Then I should see "Thank you, you have been subscribed to our newsletter."
+  And I check "Subscribe"
+  And I press "Create Volunteer"
+  Then I should see "Volunteer was successfully created."
   
 Scenario: Filling out the Volunteer Form by joining project team
   Given I am on the Volunteer page
