@@ -18,8 +18,8 @@ Scenario: Filling out the Volunteer Form by subscribing
   
 Scenario: Filling out the Volunteer Form by joining project team
   Given I am on the Volunteer page
-  When I fill in "First Name" with "Daniel"
-  And I fill in "Last Name" with "Anderson"
+  When I fill in "First name" with "Daniel"
+  And I fill in "Last name" with "Anderson"
   And I fill in "Phone" with "650-999-0111"
   And I fill in "Email" with "helloworld@berkeley.edu"
   And I fill in "City" with "Berkeley"
