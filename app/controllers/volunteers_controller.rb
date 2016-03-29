@@ -24,15 +24,34 @@ class VolunteersController < ApplicationController
   # POST /volunteers
   # POST /volunteers.json
   def create
+    # if @volunteer..nil? || @movie.director.empty?
+    #   flash[:notice] = "'#{@movie.title}' has no director info"
+    #   redirect_to movies_path
+    # else
+    #   @movies = Movie.search_director(params[:id])
+    # end
     @volunteer = Volunteer.new(volunteer_params)
-
-    respond_to do |format|
-      if @volunteer.save
-        format.html { redirect_to @volunteer, notice: 'Volunteer was successfully created.' }
-        format.json { render :show, status: :created, location: @volunteer }
-      else
-        format.html { render :new }
-        format.json { render json: @volunteer.errors, status: :unprocessable_entity }
+    if @volunteer.first_name.empty?
+      flash[:notice] = "Error: Invalid first name."
+      redirect_to new_volunteer_path
+    elsif @volunteer.last_name.empty?
+      flash[:notice] = "Error: Invalid last name."
+      redirect_to new_volunteer_path
+    elsif @volunteer.phone.empty? or ((@volunteer.phone =~ /^([0-9]{3}(\s|\-)?){2}[0-9]{4}$/) != 0)
+      flash[:notice] = "Error: Invalid phone number."
+      redirect_to new_volunteer_path
+    elsif @volunteer.email.empty? or ((@volunteer.email.upcase =~ /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/) != 0)
+      flash[:notice] = "Error: Invalid email address."
+      redirect_to new_volunteer_path
+    else
+      respond_to do |format|
+        if @volunteer.save
+          format.html { redirect_to @volunteer, notice: 'Volunteer was successfully created.' }
+          format.json { render :show, status: :created, location: @volunteer }
+        else
+          format.html { render :new }
+          format.json { render json: @volunteer.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -69,6 +88,6 @@ class VolunteersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def volunteer_params
-      params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe)
+      params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe, :join_team)
     end
 end
