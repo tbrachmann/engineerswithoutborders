@@ -24,15 +24,25 @@ class VolunteersController < ApplicationController
   # POST /volunteers
   # POST /volunteers.json
   def create
+    # if @volunteer..nil? || @movie.director.empty?
+    #   flash[:notice] = "'#{@movie.title}' has no director info"
+    #   redirect_to movies_path
+    # else
+    #   @movies = Movie.search_director(params[:id])
+    # end
     @volunteer = Volunteer.new(volunteer_params)
-
-    respond_to do |format|
-      if @volunteer.save
-        format.html { redirect_to @volunteer, notice: 'Volunteer was successfully created.' }
-        format.json { render :show, status: :created, location: @volunteer }
-      else
-        format.html { render :new }
-        format.json { render json: @volunteer.errors, status: :unprocessable_entity }
+    if @volunteer.first_name.empty?
+      flash[:notice] = "this should run"
+      redirect_to new_volunteer_path
+    else
+      respond_to do |format|
+        if @volunteer.save
+          format.html { redirect_to @volunteer, notice: 'Volunteer was successfully created.' }
+          format.json { render :show, status: :created, location: @volunteer }
+        else
+          format.html { render :new }
+          format.json { render json: @volunteer.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
