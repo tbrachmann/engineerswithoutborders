@@ -8,8 +8,29 @@
   <%= v.label :city %>: <%= v.text_field :city %><br>
   <%= v.label :state %>: <%= v.text_field :state %><br>
   <%= v.label :subscribe %>: <%= v.check_box :subscribe %><br>
-  <%= v.submit %>
+  
+    <label for="team_checkbox"> Do you want to join a project team?
+    </label><input type="checkbox" id="team_checkbox" value="if_join_team"> 
+
+  
+  <div id='join_team_details' style="display:none;">
+    <h1> join team details</h1>
+  </div><br>
+
+  <%= v.submit %><br>
 <% end %>
+
+<script>
+  var joinTeamCheckbox = document.getElementById("team_checkbox");
+  var joinTeamDetails = document.getElementById("join_team_details");
+  joinTeamCheckbox.onchange = function() {
+    if (this.checked) {
+      joinTeamDetails.style['display'] = 'block';
+    } else {
+      joinTeamDetails.style['display'] = 'none';
+    }
+  }
+</script>
 
     
 <%= link_to 'Back', volunteers_path %>
