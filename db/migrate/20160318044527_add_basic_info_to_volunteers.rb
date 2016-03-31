@@ -7,5 +7,8 @@ class AddBasicInfoToVolunteers < ActiveRecord::Migration
     add_column :volunteers, :city, :text
     add_column :volunteers, :state, :text
     add_column :volunteers, :subscribe, :text
+    add_column :volunteers, :status, :text
+    add_column :volunteers, :major, :text
+    add_column :volunteers, :languages, :text
   end
 end

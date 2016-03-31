@@ -15,7 +15,8 @@
         <td><%= volunteer.first_name %> <%= volunteer.last_name %>:</td>
         <td><%= link_to 'More Info', volunteer %></td>
         <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
-        <td><%= link_to 'Remove', volunteer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!--<td><%= link_to 'Delete', volunteer_path(volunteer), :method => :delete, :confirm => 'Are you sure?' %></td>-->
+        <td><%= button_to 'Delete', volunteer_path(volunteer), :method => :delete, :confirm => 'Are you sure?' %></td>
       </tr>
     <% end %>
   </tbody>

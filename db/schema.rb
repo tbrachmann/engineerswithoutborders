@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 20160318044527) do
     t.text     "city"
     t.text     "state"
     t.text     "subscribe"
+    t.text     "status"
+    t.text     "major"
+    t.text     "languages"
   end
 
 end

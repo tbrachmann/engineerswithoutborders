@@ -8,8 +8,13 @@
   <%= v.label :city %>: <%= v.text_field :city %><br>
   <%= v.label :state %>: <%= v.text_field :state %><br>
   <%= v.label :subscribe %>: <%= v.check_box :subscribe %><br>
+  <%= v.label :status %>: <%= select_tag :status, options_for_select(Volunteer.status_volunteer) %><br>
+  <%= v.label :major %>: <%= v.text_field :major %><br>
+  <%= v.label :languages %>: <%= v.text_field :languages %><br>
+  
   <%= v.submit %>
 <% end %>
 
 <%= link_to 'Show', @volunteer %> |
 <%= link_to 'Back', volunteers_path %>
+
