@@ -35,7 +35,7 @@ Scenario: Filling out the Volunteer Form by joining project team
   And I fill in "Previous International Experience" with "Studied abroad"
   And I fill in "Previous Work Experience" with "Software Engineer with IBM"
   And I check the following teams: Executive, Fiji
-  And I fill in "Reason" with "I love volunteering!"
+  And I fill in "Reason" with "I love volunteering so much!"
   And I select "Time Investment" with "> 3 hours a week"
   And I select "Travel" with "Yes"
   And I select "Current Events" with "Yes"
