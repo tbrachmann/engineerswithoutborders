@@ -14,8 +14,8 @@
 ActiveRecord::Schema.define(version: 20160318044527) do
 
   create_table "volunteers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "name"
     t.text     "first_name"
     t.text     "last_name"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160318044527) do
     t.text     "city"
     t.text     "state"
     t.text     "subscribe"
+    t.text     "join_project_team"
     t.text     "status"
     t.text     "major"
     t.text     "languages"
