@@ -37,5 +37,5 @@ Scenario: Filling out the Volunteer Form by joining project team
   And I fill in "Reason" with "I love volunteering!"
   And I select "Time Investment" with "> 3 hours a week"
   And I select "Travel" with "Yes"
-  And I select "Current Events" with "Yes"
+  And I select "Current Events" with "Yess"
   And I check the following events: Fundraising, Graphic Design
