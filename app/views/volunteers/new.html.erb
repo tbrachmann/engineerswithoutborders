@@ -10,13 +10,13 @@
   <%= v.label :phone %>: <%= v.text_field :phone %><br>
   <%= v.label :email %>: <%= v.text_field :email %><br>
   <%= v.label :city %>: <%= v.text_field :city %><br>
-  <%= v.label :state %>: <%= v.text_field :state %><br>
+  State: <%= v.select :state, @states %><br>
   <%= v.label :subscribe %>: <%= v.check_box :subscribe %><br>
   <%= v.label :join_project_team %>: 
   <input type="checkbox" id="join_project_team" value="if_join_team"> 
   <div id='join_team_details' style="display:none;">
     <h1>Join Project Team</h1>
-    <%= v.label :status %>: <%= select_tag :status, options_for_select(Volunteer.status_volunteer) %><br>
+    Status: <%= v.select :status, @statuses %><br>
     <%= v.label :major %>: <%= v.text_field :major %><br>
     <%= v.label :languages %>: <%= v.text_field :languages %><br>
   </div><br>

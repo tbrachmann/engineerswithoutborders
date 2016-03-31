@@ -16,10 +16,14 @@ class VolunteersController < ApplicationController
   # GET /volunteers/new
   def new
     @volunteer = Volunteer.new
+    @states = Volunteer.all_states
+    @statuses = Volunteer.status_volunteer
   end
 
   # GET /volunteers/1/edit
   def edit
+    @states = Volunteer.all_states
+    @statuses = Volunteer.status_volunteer
   end
 
   # POST /volunteers
