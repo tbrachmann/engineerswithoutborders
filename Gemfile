@@ -39,6 +39,7 @@ group :development, :test do
   gem 'byebug'
  
   gem 'selenium-webdriver' 
+  
   # If you plan to use JavaScript/CoffeeScript
   # gem 'jasmine-rails'
 end
@@ -75,3 +76,5 @@ group :production do
 end
 
 gem "haml"
+
+
