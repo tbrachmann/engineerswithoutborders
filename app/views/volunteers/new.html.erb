@@ -12,8 +12,8 @@
   <%= v.label :city %>: <%= v.text_field :city %><br>
   <%= v.label :state %>: <%= v.select :state, @states %><br>
   <%= v.label :subscribe %>: <%= v.check_box :subscribe %><br>
-  
   <%= v.label :join_project_team %>: <%= v.check_box :join_project_team %><br>
+  
   <div id='join_team_details' style="display:none;">
     <h1>Join Project Team</h1>
     <%= v.label :status %>: <%= v.select :status, @statuses %><br>
