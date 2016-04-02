@@ -236,11 +236,13 @@ Then /^show me the page$/ do
 end
 
 
+
 Then /^the "([^"]*)" checkbox should be checked$/ do |id|
   find(id).should be_checked
 end
 
-
 Then /the detailed project information should be revealed/ do
-    page.find("#join_team_details")[:style] == 'display:block;'
+    # page.find("#join_team_details", :visible => false)[:style].should eq('display:block;')
+    # expect(page).to have_selector('#join_team_details',  :visible => true)
+    find(:css, "#join_team_details").should be_visible
 end
