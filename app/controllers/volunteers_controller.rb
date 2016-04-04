@@ -48,6 +48,9 @@ class VolunteersController < ApplicationController
     elsif @volunteer.email.empty? or ((@volunteer.email.upcase =~ /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/) != 0)
       flash[:notice] = "Error: Invalid email address."
       redirect_to new_volunteer_path
+    elsif @volunteer.city.empty? 
+      flash[:notice] = "Error: Invalid City."
+      redirect_to new_volunteer_path
     else
       respond_to do |format|
         if @volunteer.save

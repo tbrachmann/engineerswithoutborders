@@ -37,7 +37,9 @@ group :development, :test do
   
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  
+ 
+  gem 'selenium-webdriver' 
+
   # If you plan to use JavaScript/CoffeeScript
   # gem 'jasmine-rails'
 end
@@ -74,3 +76,5 @@ group :production do
 end
 
 gem "haml"
+
+
