@@ -10,22 +10,23 @@
   <%= v.label :phone %>: <%= v.text_field :phone %><br>
   <%= v.label :email %>: <%= v.text_field :email %><br>
   <%= v.label :city %>: <%= v.text_field :city %><br>
-  <%= v.label :state %>: <%= v.text_field :state %><br>
+  <%= v.label :state %>: <%= v.select :state, @states %><br>
   <%= v.label :subscribe %>: <%= v.check_box :subscribe %><br>
-  
-    <label for="team_checkbox"> Do you want to join a project team?
-    </label><input type="checkbox" id="team_checkbox" value="if_join_team"> 
-
+  <%= v.label :join_project_team %>: <%= v.check_box :join_project_team %><br>
   
   <div id='join_team_details' style="display:none;">
-    <h1> join team details</h1>
+    <h1>Join Project Team</h1>
+    <%= v.label :status %>: <%= v.select :status, @statuses %><br>
+    <%= v.label :major %>: <%= v.text_field :major %><br>
+    <%= v.label :languages %>: <%= v.text_field :languages %><br>
   </div><br>
 
   <%= v.submit %><br>
 <% end %>
 
+
 <script>
-  var joinTeamCheckbox = document.getElementById("team_checkbox");
+  var joinTeamCheckbox = document.getElementById("volunteer_join_project_team");
   var joinTeamDetails = document.getElementById("join_team_details");
   joinTeamCheckbox.onchange = function() {
     if (this.checked) {

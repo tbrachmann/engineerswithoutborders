@@ -206,28 +206,9 @@ Then /^the "([^"]*)" field should have no error$/ do |field|
   end
 end
 
-Then /^the "([^"]*)" checkbox(?: within (.*))? should be checked$/ do |label, parent|
-  with_scope(parent) do
-    field_checked = find_field(label)['checked']
-    if field_checked.respond_to? :should
-      field_checked.should be_true
-    else
-      assert field_checked
-    end
-  end
-end
 
-Then /^the "([^"]*)" checkbox(?: within (.*))? should not be checked$/ do |label, parent|
-  with_scope(parent) do
-    field_checked = find_field(label)['checked']
-    if field_checked.respond_to? :should
-      field_checked.should be_false
-    else
-      assert !field_checked
-    end
-  end
-end
- 
+
+
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
@@ -252,4 +233,16 @@ end
 
 Then /^show me the page$/ do
   save_and_open_page
+end
+
+
+
+Then /^the "([^"]*)" checkbox should be checked$/ do |id|
+  find(id).should be_checked
+end
+
+Then /the detailed project information should be revealed/ do
+    # page.find("#join_team_details", :visible => false)[:style].should eq('display:block;')
+    # expect(page).to have_selector('#join_team_details',  :visible => true)
+    find(:css, "#join_team_details").should be_visible
 end

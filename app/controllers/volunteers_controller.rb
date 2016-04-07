@@ -1,4 +1,5 @@
 class VolunteersController < ApplicationController
+  helper :all
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
 
   # GET /volunteers
@@ -15,10 +16,14 @@ class VolunteersController < ApplicationController
   # GET /volunteers/new
   def new
     @volunteer = Volunteer.new
+    @states = Volunteer.all_states
+    @statuses = Volunteer.status_volunteer
   end
 
   # GET /volunteers/1/edit
   def edit
+    @states = Volunteer.all_states
+    @statuses = Volunteer.status_volunteer
   end
 
   # POST /volunteers
@@ -42,6 +47,9 @@ class VolunteersController < ApplicationController
       redirect_to new_volunteer_path
     elsif @volunteer.email.empty? or ((@volunteer.email.upcase =~ /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/) != 0)
       flash[:notice] = "Error: Invalid email address."
+      redirect_to new_volunteer_path
+    elsif @volunteer.city.empty? 
+      flash[:notice] = "Error: Invalid City."
       redirect_to new_volunteer_path
     else
       respond_to do |format|
@@ -79,7 +87,11 @@ class VolunteersController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
 
+  
+  
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_volunteer
@@ -88,6 +100,6 @@ class VolunteersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def volunteer_params
-      params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe, :join_team)
+      params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe, :join_team, :status, :major, :languages)
     end
 end
