@@ -1,4 +1,6 @@
-Feature: Make sure that filtering works in the database
+Feature: As a team leader from EngineerWithouBoarder San Francisco,
+I want to navigate through potential volunteers who have signed up with their detailed information,
+so that I can optimize my volunteer search to find the best fit volunteer
 Background: volunteers added to the database
   Given the following volunteers exist:
   | first_name | last_name | phone      | email               | city         | state | status  | major            | languages        |
@@ -26,3 +28,14 @@ Scenario: Check that filtering works
   And I should not see "lawrence vo"
   And I should not see "kevin chen"
   And I should not see "anthony tran"
+
+Scenario: Check that multiple filterting works
+  When I fill in "City" with "Berkeley"
+  And I fill in "major" with "computer science"
+  And I press "Filter Volunteers"
+  Then I should see "daniel anderson"
+  And I should not see "lawrence vo"
+  And I should not see "kevin chen"
+  And I should not see "anthony tran"
+  And I should not see "jio calderon"
+  And I should not see "tagalog"
