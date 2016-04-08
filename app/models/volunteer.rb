@@ -1,5 +1,7 @@
 class Volunteer < ActiveRecord::Base
     #validates :first_name, carmen => true
+    
+    
     def self.all_states
         %w(CA AK AL AZ AR CO CT DE FL GA HI ID IL IN IA KS KY
         LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK
