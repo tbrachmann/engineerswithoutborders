@@ -12,4 +12,14 @@ class Volunteer < ActiveRecord::Base
         %w(Student Working Unemployed Retired)
     end
     
+    def self.education_volunteer
+        %w(Bachelors Masters PhD)
+    end
+    
+    def self.time_invest_volunteer
+        %w(Once Twice Thrice)
+    end
+    
+        
+    
 end

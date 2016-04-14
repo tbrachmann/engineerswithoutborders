@@ -33,8 +33,17 @@ ActiveRecord::Schema.define(version: 20160405035116) do
     t.text     "subscribe"
     t.text     "join_project_team"
     t.text     "status"
+    t.text     "education"
     t.text     "major"
+    t.text     "certification"
     t.text     "languages"
+    t.text     "fluency"
+    t.text     "ewb_exp"
+    t.text     "intl_exp"
+    t.text     "work_exp"
+    t.text     "reason"
+    t.text     "time_invest"
+    t.text     "travel"
   end
 
 end

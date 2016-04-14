@@ -9,7 +9,18 @@ class AddBasicInfoToVolunteers < ActiveRecord::Migration
     add_column :volunteers, :subscribe, :text
     add_column :volunteers, :join_project_team, :text
     add_column :volunteers, :status, :text
+    add_column :volunteers, :education, :text
     add_column :volunteers, :major, :text
+    add_column :volunteers, :certification, :text
     add_column :volunteers, :languages, :text
+    add_column :volunteers, :fluency, :text
+    add_column :volunteers, :ewb_exp, :text
+    add_column :volunteers, :intl_exp, :text
+    add_column :volunteers, :work_exp, :text
+    add_column :volunteers, :reason, :text
+    add_column :volunteers, :time_invest, :text
+    add_column :volunteers, :travel, :text
   end
+  
+  
 end

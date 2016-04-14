@@ -18,12 +18,16 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.new
     @states = Volunteer.all_states
     @statuses = Volunteer.status_volunteer
+    @education = Volunteer.education_volunteer
+    @time_invest = Volunteer.time_invest_volunteer
   end
 
   # GET /volunteers/1/edit
   def edit
     @states = Volunteer.all_states
     @statuses = Volunteer.status_volunteer
+    @education = Volunteer.education_volunteer
+    @time_invest = Volunteer.time_invest_volunteer
   end
 
   # POST /volunteers
@@ -100,6 +104,11 @@ class VolunteersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def volunteer_params
-      params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe, :join_team, :status, :major, :languages)
+      params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe, 
+      :join_team, :status, :education, :major, :certification, :languages, :fluency, :ewb_exp, :intl_exp, :work_exp, :reason, :time_invest,
+      :travel)
     end
 end
+
+
+    

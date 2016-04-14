@@ -17,8 +17,19 @@
   <div id='join_team_details' style="display:none;">
     <h1>Join Project Team</h1>
     <%= v.label :status %>: <%= v.select :status, @statuses %><br>
+    <%= v.label :education %>: <%= v.select :education, @education %><br>
     <%= v.label :major %>: <%= v.text_field :major %><br>
+    <%= v.label :certification %>: <%= v.text_field :certification %><br>
     <%= v.label :languages %>: <%= v.text_field :languages %><br>
+    <%= v.label :fluency %>: <%= v.text_field :fluency %><br>
+    <%= v.label :ewb_exp %>: <%= v.text_field :ewb_exp %><br>
+    <%= v.label :intl_exp %>: <%= v.text_field :intl_exp %><br>
+    <%= v.label :work_exp %>: <%= v.text_field :work_exp %><br>
+    <%= v.label :reason %>: <%= v.text_field :reason %><br>
+    <%= v.label :time_invest %>: <%= v.select :time_invest, @time_invest %><br>
+    <%= v.label :travel %>: <%= v.check_box :travel %><br>
+
+    
   </div><br>
 
   <%= v.submit %><br>
