@@ -37,7 +37,7 @@ Scenario: Filling out the Volunteer Form by joining project team
   And I fill in "Previous EWB Experience" with "Volunteered at Haiti"
   And I fill in "Previous International Experience" with "Studied abroad"
   And I fill in "Previous Work Experience" with "Software Engineer with IBM"
-  # And I check the following teams: Executive, Fiji
+  # And I check the following teams: Executive, Fiji, Ireland
   And I fill in "Reason" with "I love volunteering!"
   And I select "Time Investment" with "> 3 hours a week"
   And I check "Travel" with "Yes"
