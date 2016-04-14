@@ -5,8 +5,22 @@ class VolunteersController < ApplicationController
   # GET /volunteers
   # GET /volunteers.json
   def index
-    @volunteers = Volunteer.all
+    @all_status = Volunteer.all_status
+    @all_ratings = Volunteer.all_ratings
+    @status = params[:status]
+    @student = "Student"
+    if !@status.nil?
+      @volunteers = Volunteer.where(status: @student)
+    else
+      @volunteers = Volunteer.all
+    end
+    if @rateBy.nil?
+      @rateBy=@all_ratings
+    else
+      @rateBy=params[:ratings].keys
+    end
   end
+
 
   # GET /volunteers/1
   # GET /volunteers/1.json

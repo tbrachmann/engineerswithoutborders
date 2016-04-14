@@ -12,4 +12,15 @@ class Volunteer < ActiveRecord::Base
         %w(Student Working Unemployed Retired)
     end
     
+    def self.all_status
+        @status_checked=[]
+        @all_status = ["Student", "Working", "Unemployed", "Retired"]
+    end
+    
+    def self.all_ratings
+        @all_ratings = ['G','PG','PG-13','R', 'NC-17']
+        # @ratings_checked = params[:ratings_checked]
+        @checked=@all_ratings
+    end
+    
 end
