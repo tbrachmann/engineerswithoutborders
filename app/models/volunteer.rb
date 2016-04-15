@@ -23,11 +23,14 @@ class Volunteer < ActiveRecord::Base
         @status_checked=[]
         @all_status = ["Student", "Working", "Unemployed", "Retired"]
     end
-    
-    def self.all_ratings
-        @all_ratings = ['G','PG','PG-13','R', 'NC-17']
-        # @ratings_checked = params[:ratings_checked]
-        @checked=@all_ratings
-    end
 
+    def self.all_places
+        @all_places = ["Bay Area", "South America", "Europe"]
+        # @places_checked = params[:places_checked]
+    end
+    
+    def self.involvement
+        @all_involvement = ["Fundraising", "Graphic Design"]
+    end
+    
 end

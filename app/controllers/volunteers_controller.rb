@@ -6,19 +6,27 @@ class VolunteersController < ApplicationController
   # GET /volunteers.json
   def index
     @all_status = Volunteer.all_status
-    @all_ratings = Volunteer.all_ratings
-    @status = params[:status]
-    @student = "Student"
-    if !@status.nil?
-      @volunteers = Volunteer.where(status: @student)
-    else
+    @selected_status = params[:status] || session[:status] || {}
+    if @selected_status == {}
       @volunteers = Volunteer.all
-    end
-    if @rateBy.nil?
-      @rateBy=@all_ratings
+      # @selected_status = Hash[@all_status.map {|rating| [rating, rating]}]
     else
-      @rateBy=params[:ratings].keys
+      @volunteers = Volunteer.where(status: @selected_status.keys)
     end
+    # @volunteers = Volunteer.all
+    
+    # @status = params[:status]
+    # @student = "Student"
+    # if !@status.nil?
+    #   @volunteers = Volunteer.where(status: @student)
+    # else
+    #   @volunteers = Volunteer.all
+    # end
+    # if @rateBy.nil?
+    #   @rateBy=@all_ratings
+    # else
+    #   @rateBy=params[:ratings].keys
+    # end
   end
 
 
@@ -34,6 +42,8 @@ class VolunteersController < ApplicationController
     @statuses = Volunteer.status_volunteer
     @education = Volunteer.education_volunteer
     @time_invest = Volunteer.time_invest_volunteer
+    @places = Volunteer.all_places
+    @involvement = Volunteer.involvement
   end
 
   # GET /volunteers/1/edit
@@ -42,6 +52,8 @@ class VolunteersController < ApplicationController
     @statuses = Volunteer.status_volunteer
     @education = Volunteer.education_volunteer
     @time_invest = Volunteer.time_invest_volunteer
+    @places = Volunteer.all_places
+    @involvement = Volunteer.involvement
   end
 
   # POST /volunteers
@@ -119,8 +131,8 @@ class VolunteersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def volunteer_params
       params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe, 
-      :join_team, :status, :education, :major, :certification, :languages, :fluency, :ewb_exp, :intl_exp, :work_exp, :reason, :time_invest,
-      :travel)
+      :join_team, :status, :education, :major, :certification, :languages, :fluency, :ewb_experience, :international_experience, :work_experience, :reason, :time_investment,
+      :travel, :places, :current_events, :involvement)
     end
 end
 
