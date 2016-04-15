@@ -35,7 +35,7 @@ Scenario: Filling out the Volunteer Form by joining project team
   
   And I fill in "Fluency" with "Proficient"
   And I fill in "Ewb experience" with "Volunteered at Haiti"
-  And I fill in "International experience" with "Studied abroad"
+  And I fill in "International experience" with "Studied abroad in Ireland"
   And I fill in "Work experience" with "Software Engineer with IBM"
   And I select "Europe" from "Places"
   And I fill in "Reason" with "I love volunteering!"
