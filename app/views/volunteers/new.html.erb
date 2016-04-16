@@ -14,7 +14,7 @@
   <%= v.label :subscribe %>: <%= v.check_box :subscribe %><br>
   <%= v.label :join_project_team %>: <%= v.check_box :join_project_team %><br>
   
-  <div id='join_team_details' style="display:none;">
+  <div id='join_team_details' class="hidden">
     <h1>Join Project Team</h1>
     <%= v.label :status %>: <%= v.select :status, @statuses %><br>
     <%= v.label :education %>: <%= v.select :education, @education %><br>
@@ -42,19 +42,5 @@
   
   
 <% end %>
-
-
-<script>
-  var joinTeamCheckbox = document.getElementById("volunteer_join_project_team");
-  var joinTeamDetails = document.getElementById("join_team_details");
-  joinTeamCheckbox.onchange = function() {
-    if (this.checked) {
-      joinTeamDetails.style['display'] = 'block';
-    } else {
-      joinTeamDetails.style['display'] = 'none';
-    }
-  }
-</script>
-
     
 <%= link_to 'Back', volunteers_path %>
