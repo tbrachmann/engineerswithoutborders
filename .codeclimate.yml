@@ -24,4 +24,4 @@ exclude_paths:
 - public/**/*
 - tests/**/*
 - spec/**/*
-
+- features/step_definitions/web_steps.rb
