@@ -1,11 +1,11 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Volunteer Portal", '#', id: "logo" %>
+    <%= link_to "Volunteer Portal", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "View All Volunteer",   '#' %></li>
-        <li><%= link_to "Create New Volunteer",   '#' %></li>
-        <li><%= link_to "Log in", '#' %></li>
+        <li><%= link_to "Create New Volunteer",   new_volunteer_path %></li>
+        <li><%= link_to "Log in", login_path %></li>
       </ul>
     </nav>
   </div>
