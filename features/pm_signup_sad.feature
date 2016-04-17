@@ -31,4 +31,4 @@ Scenario: Logging in with wrong password
   And I fill in "Email" with "lawrencetvo@berkeley.edu"
   And I fill in "Password" with ""
   And I press "Log in"
-  Then I should see "Invalid Password."
+  Then I should see "Invalid email/password combination"
