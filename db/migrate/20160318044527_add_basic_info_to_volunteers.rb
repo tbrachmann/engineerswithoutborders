@@ -14,12 +14,15 @@ class AddBasicInfoToVolunteers < ActiveRecord::Migration
     add_column :volunteers, :certification, :text
     add_column :volunteers, :languages, :text
     add_column :volunteers, :fluency, :text
-    add_column :volunteers, :ewb_exp, :text
-    add_column :volunteers, :intl_exp, :text
-    add_column :volunteers, :work_exp, :text
+    add_column :volunteers, :ewb_experience, :text
+    add_column :volunteers, :international_experience, :text
+    add_column :volunteers, :work_experience, :text
     add_column :volunteers, :reason, :text
-    add_column :volunteers, :time_invest, :text
+    add_column :volunteers, :time_investment, :text
     add_column :volunteers, :travel, :text
+    add_column :volunteers, :places, :text
+    add_column :volunteers, :current_events, :text
+    add_column :volunteers, :involvement, :text
   end
   
   

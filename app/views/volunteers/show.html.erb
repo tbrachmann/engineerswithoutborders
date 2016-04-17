@@ -12,13 +12,15 @@
 <div><span class="show">Certification: <%= @volunteer.certification %></span></div>
 <div><span class="show">Languages: <%= @volunteer.languages %></span></div>
 <div><span class="show">Fluency: <%= @volunteer.fluency %></span></div>
-<div><span class="show">EWB Experience: <%= @volunteer.ewb_exp %></span></div>
-<div><span class="show">International Experience: <%= @volunteer.intl_exp %></span></div>
-<div><span class="show">Work Experience: <%= @volunteer.work_exp %></span></div>
+<div><span class="show">EWB Experience: <%= @volunteer.ewb_experience %></span></div>
+<div><span class="show">International Experience: <%= @volunteer.international_experience %></span></div>
+<div><span class="show">Work Experience: <%= @volunteer.work_experience %></span></div>
 <div><span class="show">Reason: <%= @volunteer.reason %></span></div>
-<div><span class="show">Time Investment: <%= @volunteer.time_invest %></span></div>
+<div><span class="show">Time Investment: <%= @volunteer.time_investment %></span></div>
 <div><span class="show">Travel: <%= @volunteer.travel %></span></div>
-
+<div><span class="show">Places: <%= @volunteer.places %></span></div>
+<div><span class="show">Current Events: <%= @volunteer.current_events %></span></div>
+<div><span class="show">Involvement: <%= @volunteer.involvement %></span></div>
 
 <%= link_to 'Edit', edit_volunteer_path(@volunteer) %> |
 <%= link_to 'Back', volunteers_path %>

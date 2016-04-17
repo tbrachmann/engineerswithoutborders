@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20160405035116) do
   end
 
   create_table "volunteers", force: :cascade do |t|
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.text     "first_name"
     t.text     "last_name"
     t.text     "phone"
@@ -38,12 +38,15 @@ ActiveRecord::Schema.define(version: 20160405035116) do
     t.text     "certification"
     t.text     "languages"
     t.text     "fluency"
-    t.text     "ewb_exp"
-    t.text     "intl_exp"
-    t.text     "work_exp"
+    t.text     "ewb_experience"
+    t.text     "international_experience"
+    t.text     "work_experience"
     t.text     "reason"
-    t.text     "time_invest"
+    t.text     "time_investment"
     t.text     "travel"
+    t.text     "places"
+    t.text     "current_events"
+    t.text     "involvement"
   end
 
 end
