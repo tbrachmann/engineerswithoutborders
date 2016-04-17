@@ -12,30 +12,29 @@ Background: volunteers added to the database
   | anthony    | tran      | 5523423422 | anthony@tran.com    | las vegas    | ca    | retired | potato farming   | english, spanish |
   And I am on the list volunteers page
   
-Scenario: Check that filtering works
-  When I fill in "City" with "Berkeley"
-  And I press "Filter Volunteers"
-  Then I should see "daniel anderson"
-  And I should see "lawrence vo"
-  And I should not see "jio calderon"
-  And I should not see "tagalog"
+# Scenario: Check that state filtering works
+#   When I select "CA" from "state"
+#   And I press "Refresh"
+#   Then I should see "daniel anderson"
+#   And I should see "carmen tang"
   
-  When I fill in "major" with "computer science"
-  And I press "Filter Volunteers"
-  Then I should see "jio calderon"
-  And I should see "daniel anderson"
-  And I should see "carmen tang"
-  And I should not see "lawrence vo"
-  And I should not see "kevin chen"
-  And I should not see "anthony tran"
+# Scenario: Check filtering for status
+#   When I select "student" from "status"
+#   And I press "Refresh"
+#   Then I should see "jio calderon"
+#   And I should see "lawrence vo"
+#   And I should see "carmen tang"
+#   And I should not see "kevin chen"
+#   And I should not see "anthony tran"
 
-Scenario: Check that multiple filterting works
-  When I fill in "City" with "Berkeley"
-  And I fill in "major" with "computer science"
-  And I press "Filter Volunteers"
-  Then I should see "daniel anderson"
-  And I should not see "lawrence vo"
-  And I should not see "kevin chen"
-  And I should not see "anthony tran"
-  And I should not see "jio calderon"
-  And I should not see "tagalog"
+# Scenario: Check that multiple filtering works
+#   When I select "CA" from "state"
+#   And I select "student" from "status"
+#   And I press "Refresh"
+#   Then I should see "jio calderon"
+#   Then I should not see "anthony tran"
+#   Then I should not see "potato farming"
+
+Scenario:
+  When I select "CA" from "state"
+  Then I should not see "daniel"
