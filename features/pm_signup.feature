@@ -17,7 +17,15 @@ Scenario: Signing up
 
 Scenario: Logging in
   Given I am on the login page
+  And I follow "Sign up now!"
+  And I fill in "Name" with "Lawrence Vo"
   And I fill in "Email" with "lawrencetvo@berkeley.edu"
-  And I fill in "Password" with "iloveweb"
+  And I fill in "Password" with "iloveewb"
+  And I fill in "Confirmation" with "iloveewb"
+  And I press "Create my account"
+  And I follow "Log in"
+  And I fill in "Email" with "lawrencetvo@berkeley.edu"
+  And I fill in "Password" with "iloveewb"
   And I press "Log in"
-  Then I should see "Login successful!"
+  Then I should be on the list volunteers page
+  And I should see "Login successful!"
