@@ -6,7 +6,6 @@ class VolunteersController < ApplicationController
   # GET /volunteers.json
   def index
     
-    
     @all_status = Volunteer.all_status
     @selected_status = params[:status] || session[:status] || {}
     
