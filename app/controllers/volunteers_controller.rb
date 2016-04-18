@@ -2,6 +2,7 @@ class VolunteersController < ApplicationController
   helper :all
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
 
+
   # GET /volunteers
   # GET /volunteers.json
   def index
