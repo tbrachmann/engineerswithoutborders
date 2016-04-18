@@ -12,7 +12,7 @@ Scenario: Signing up without an Email
   And I fill in "Password" with "iloveewb"
   And I fill in "Confirmation" with "iloveewb"
   And I press "Create my account"
-  Then I should see "Invalid Email Address."
+  Then I should see "Invalid email address."
   
   
 Scenario: Signing up without an Name
@@ -28,7 +28,14 @@ Scenario: Signing up without an Name
 
 Scenario: Logging in with wrong password
   Given I am on the login page
+  And I follow "Sign up now!"
+  And I fill in "Name" with "Lawrence Vo"
+  And I fill in "Email" with "lawrencetvo@berkeley.edu"
+  And I fill in "Password" with "iloveewb"
+  And I fill in "Confirmation" with "iloveewb"
+  And I press "Create my account"
+  And I follow "Log in"
   And I fill in "Email" with "lawrencetvo@berkeley.edu"
   And I fill in "Password" with ""
   And I press "Log in"
-  Then I should see "Invalid Password."
+  Then I should see "Invalid email/password combination"
