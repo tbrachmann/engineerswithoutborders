@@ -4,6 +4,7 @@ Given /the following volunteers exist/ do |volunteers_table|
   end
 end
 
+# :nocov:
 Given /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
     all_ratings = Volunteer.all_ratings
     ratings = rating_list.split(", ")
@@ -16,4 +17,4 @@ Given /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
       end
     end
   end
-  
+# :nocov:
