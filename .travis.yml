@@ -8,9 +8,3 @@ before_script:
 notifications:
   email: false
 
-env:
-  - CODECLIMATE_REPO_TOKEN=3802f7576ec8597e4939a090894198d0ec9ef60ade8558a81393d20c3f9fa586
-
-addons:
-  code_climate:
-    repo_token: 3802f7576ec8597e4939a090894198d0ec9ef60ade8558a81393d20c3f9fa586
