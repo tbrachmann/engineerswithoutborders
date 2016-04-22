@@ -4,18 +4,7 @@ Given /the following volunteers exist/ do |volunteers_table|
   end
 end
 
-# Add a declarative step here for populating the DB with movies.
-Given /the following movies exist/ do |movies_table|
-  movies_table.hashes.each do |movie|
-    # each returned element will be a hash whose key is the table header.
-    # you should arrange to add that movie to the database here.
-    Movie.create(movie)
-    #is it ok to use movie.create here? will it parse movie correctly?
-    #do i need to save
-  end
-  # fail "Unimplemented"
-end
-
+# :nocov:
 Given /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
     all_ratings = Volunteer.all_ratings
     ratings = rating_list.split(", ")
@@ -28,4 +17,4 @@ Given /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
       end
     end
   end
-  
+# :nocov:
