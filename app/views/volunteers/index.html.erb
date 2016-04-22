@@ -39,7 +39,6 @@
         <td><%= volunteer.city %>, <%= volunteer.state %></td>
         <td><%= volunteer.status %></td>
         <td><%= volunteer.major %></td>
-        
         <td><%= link_to 'More Info', volunteer %></td>
         <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
         <td><%= button_to 'Delete', volunteer_path(volunteer), :method => :delete, :confirm => 'Are you sure?' %></td>

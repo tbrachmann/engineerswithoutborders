@@ -1,14 +1,14 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/environment.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/application.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/application.rb": [
         1,
         null,
         1,
@@ -45,12 +45,12 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/boot.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/boot.rb": [
         1,
         null,
         1
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/environments/test.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/environments/test.rb": [
         1,
         null,
         null,
@@ -95,7 +95,7 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/initializers/assets.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/initializers/assets.rb": [
         null,
         null,
         null,
@@ -108,7 +108,7 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/initializers/backtrace_silencers.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -117,18 +117,18 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/initializers/cookies_serializer.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/initializers/cookies_serializer.rb": [
         null,
         null,
         1
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/initializers/filter_parameter_logging.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/initializers/filter_parameter_logging.rb": [
         null,
         null,
         null,
         1
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/initializers/inflections.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/initializers/inflections.rb": [
         null,
         null,
         null,
@@ -146,18 +146,18 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/initializers/mime_types.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/initializers/mime_types.rb": [
         null,
         null,
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/initializers/session_store.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/initializers/session_store.rb": [
         null,
         null,
         1
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/initializers/wrap_parameters.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -173,7 +173,7 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/config/routes.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/config/routes.rb": [
         1,
         1,
         null,
@@ -244,7 +244,7 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/features/support/paths.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/features/support/paths.rb": [
         null,
         null,
         null,
@@ -260,7 +260,7 @@
         null,
         null,
         1,
-        13,
+        12,
         null,
         null,
         0,
@@ -269,86 +269,86 @@
         3,
         null,
         null,
-        5,
-        null,
-        null,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        5,
-        5,
-        5,
-        5,
-        0,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        null
-      ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/features/support/selectors.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        0,
-        null,
-        null,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        0,
-        null,
-        null,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null
-      ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/features/step_definitions/ewb_steps.rb": [
-        1,
         4,
-        24,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        5,
+        5,
+        5,
+        5,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/engineerswithoutborders/features/support/selectors.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        0,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/engineerswithoutborders/features/step_definitions/ewb_steps.rb": [
+        1,
+        6,
+        21,
         null,
         null,
         null,
@@ -367,7 +367,7 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/features/step_definitions/web_steps.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/features/step_definitions/web_steps.rb": [
         null,
         null,
         null,
@@ -413,7 +413,7 @@
         null,
         null,
         1,
-        12,
+        11,
         null,
         null,
         1,
@@ -619,22 +619,18 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/app/models/volunteer.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/app/models/volunteer.rb": [
         1,
         null,
         null,
         1,
-        18,
+        17,
         null,
         null,
         null,
         null,
         1,
-        18,
-        null,
-        null,
-        1,
-        10,
+        17,
         null,
         null,
         1,
@@ -642,7 +638,11 @@
         null,
         null,
         1,
-        8,
+        10,
+        null,
+        null,
+        1,
+        7,
         null,
         null,
         1,
@@ -656,7 +656,7 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/app/controllers/volunteers_controller.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/app/controllers/volunteers_controller.rb": [
         1,
         1,
         1,
@@ -666,13 +666,11 @@
         null,
         1,
         null,
-        8,
-        8,
+        7,
+        7,
         null,
-        8,
-        8,
-        null,
-        null,
+        7,
+        7,
         null,
         null,
         null,
@@ -683,14 +681,16 @@
         null,
         null,
         null,
-        8,
+        null,
+        null,
+        7,
         0,
-        8,
-        1,
         7,
         1,
-        null,
         6,
+        1,
+        null,
+        5,
         null,
         null,
         null,
@@ -818,7 +818,7 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/app/controllers/application_controller.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -826,7 +826,7 @@
         1,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/app/helpers/application_helper.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/app/helpers/application_helper.rb": [
         1,
         null,
         1,
@@ -840,21 +840,21 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/app/helpers/sessions_helper.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/app/helpers/sessions_helper.rb": [
         1,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/app/helpers/users_helper.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/app/helpers/volunteers_helper.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/app/helpers/volunteers_helper.rb": [
         1,
         null,
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/app/controllers/sessions_controller.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/app/controllers/sessions_controller.rb": [
         1,
         null,
         1,
@@ -877,7 +877,7 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/app/controllers/users_controller.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/app/controllers/users_controller.rb": [
         1,
         1,
         null,
@@ -962,7 +962,7 @@
         null,
         null
       ],
-      "/Users/kevin/Documents/Berkeley/2016 Spring/CS 169/Repo/engineerswithoutborders/app/models/user.rb": [
+      "/home/ubuntu/workspace/engineerswithoutborders/app/models/user.rb": [
         1,
         null,
         4,
@@ -976,6 +976,6 @@
         null
       ]
     },
-    "timestamp": 1460962475
+    "timestamp": 1461359832
   }
 }

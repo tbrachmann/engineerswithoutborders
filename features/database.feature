@@ -34,6 +34,3 @@ Scenario: Check that multiple filtering works
   Then I should see "jio calderon"
   Then I should not see "anthony tran"
 
-Scenario:
-#   When I select "CA" from "state"
-#   Then I should not see "daniel"
