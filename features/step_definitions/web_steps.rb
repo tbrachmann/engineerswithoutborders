@@ -18,7 +18,7 @@
 # * http://elabs.se/blog/15-you-re-cuking-it-wrong
 #
 
-
+# :nocov:
 require 'uri'
 require 'cgi'
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
@@ -246,3 +246,5 @@ Then /the detailed project information should be revealed/ do
     # expect(page).to have_selector('#join_team_details',  :visible => true)
     find(:css, "#join_team_details").should be_visible
 end
+# :nocov:
+

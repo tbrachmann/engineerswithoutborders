@@ -13,3 +13,6 @@
 /tmp
 .ruby-version
 
+db/development.sqlite3
+db/test.sqlite3
+coverage

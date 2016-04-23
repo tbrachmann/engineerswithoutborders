@@ -7,3 +7,4 @@ before_script:
 
 notifications:
   email: false
+

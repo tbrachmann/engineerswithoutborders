@@ -2,16 +2,36 @@ class VolunteersController < ApplicationController
   helper :all
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
 
+
   # GET /volunteers
   # GET /volunteers.json
   def index
+    
     @all_status = Volunteer.all_status
     @selected_status = params[:status] || session[:status] || {}
-    if @selected_status == {}
+    
+    @all_states = Volunteer.all_states
+    @selected_states = params[:state] || session[:state] || {}
+    
+    # if @selected_status == "Select One"
+    #   @volunteers = Volunteer.all
+    #   # @selected_status = Hash[@all_status.map {|rating| [rating, rating]}]
+    # else
+    #   @volunteers = Volunteer.where(status: @selected_status)
+    # end
+    
+    # if @selected_states == "Select One"
+    # if @selected_status == "Select One" || @selected_states == "Select One"
+    #   @volunteers = Volunteer.all
+    # else
+    if @selected_status == "Select_One" && @selected_states == "Select_One"
       @volunteers = Volunteer.all
-      # @selected_status = Hash[@all_status.map {|rating| [rating, rating]}]
+    elsif @selected_states == "Select_One"
+      @volunteers = Volunteer.where(status: @selected_status)
+    elsif @selected_status == "Select_One"
+      @volunteers = Volunteer.where(state: @selected_states)
     else
-      @volunteers = Volunteer.where(status: @selected_status.keys)
+      @volunteers = Volunteer.where(status: @selected_status, state: @selected_states)
     end
     # @volunteers = Volunteer.all
     

@@ -28,11 +28,22 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    # if @user.name.empty?
+    #   flash[:notice]
     @user = User.new(user_params)
-    if @user.save
-      redirect_to @user
-    else
+    if @user.email.empty? or ((@user.email.upcase =~ /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/) != 0)
+      flash[:notice] = "Invalid email address."
       render 'new'
+    elsif @user.password.length < 4
+      flash[:notice] = "Your password must at least be 4 letters."
+      render 'new'
+    else
+      if @user.save
+        flash[:notice] = "Success!"
+        redirect_to @user
+      else
+        render 'new'
+      end
     end
   end
   

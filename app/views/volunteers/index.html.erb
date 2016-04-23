@@ -4,18 +4,14 @@
 
 <%= form_tag volunteers_path, :id => 'status_form', :method => :get do %>
   Status:
-  <% @all_status.each do |status| %>
-    <%= status %>
-    <%= check_box_tag "status[#{status}]", :id => "status_#{status}" %>
-  <% end %>
-  <%= submit_tag 'Refresh', :id =>"ratings_submit" %>
+  <%= select_tag "status", options_for_select(@all_status, @all_status[0]), :id => "status_id" %>
+  States:
+  <%= select_tag "state", options_for_select(@all_states,  @all_states[0]), :id => "states_id" %>
+  <%= submit_tag 'Refresh', :id =>"status_submit" %>
 <% end %>
 
-<%= form_tag volunteers_path, :id => 'priority_form', :method => :get do %>
-  Priority Only:
-  <%= check_box_tag "priority",value="0",checked=false, :id => "priority_id" %>
-  <%= submit_tag 'Refresh', :id =>"priority_submit" %>
-<% end %>
+
+
 
 
 <table>
@@ -43,7 +39,6 @@
         <td><%= volunteer.city %>, <%= volunteer.state %></td>
         <td><%= volunteer.status %></td>
         <td><%= volunteer.major %></td>
-        
         <td><%= link_to 'More Info', volunteer %></td>
         <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
         <td><%= button_to 'Delete', volunteer_path(volunteer), :method => :delete, :confirm => 'Are you sure?' %></td>
