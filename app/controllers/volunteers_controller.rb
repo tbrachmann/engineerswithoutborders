@@ -32,15 +32,21 @@ class VolunteersController < ApplicationController
     #   @volunteers = Volunteer.where(status: @selected_status, state: @selected_state)
     # end
     
-    @volunteers = Volunteer.all
-    if (@selected_status != "Select One")
-      @volunteers = @volunteers.where(status: @selected_status)
-    end
-    if (@selected_states != "Select One")
-      @volunteers = @volunteers.where(state: @selected_state)
-    end
-    if (@selected_education != "Select One")
-      @volunteers = @volunteers.where(education: @selected_education)
+
+    # if @selected_states == "Select One"
+    # if @selected_status == "Select One" || @selected_states == "Select One"
+    #   @volunteers = Volunteer.all
+    # else
+    ungrouped = Volunteer.where(group: nil)
+    @grouped = Volunteer.where.not(group: nil)
+    if @selected_status == "Select_One" && @selected_states == "Select_One"
+      @volunteers = ungrouped
+    elsif @selected_states == "Select_One"
+      @volunteers = ungrouped.where(status: @selected_status)
+    elsif @selected_status == "Select_One"
+      @volunteers = ungrouped.where(state: @selected_states)
+    else
+      @volunteers = ungrouped.where(status: @selected_status, state: @selected_states)
     end
   end
 
@@ -147,7 +153,7 @@ class VolunteersController < ApplicationController
     def volunteer_params
       params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe, 
       :join_team, :status, :education, :major, :certification, :languages, :fluency, :ewb_experience, :international_experience, :work_experience, :reason, :time_investment,
-      :travel, :places, :current_events, :involvement)
+      :travel, :places, :current_events, :involvement, :group)
     end
 end
 
