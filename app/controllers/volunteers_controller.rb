@@ -24,14 +24,16 @@ class VolunteersController < ApplicationController
     # if @selected_status == "Select One" || @selected_states == "Select One"
     #   @volunteers = Volunteer.all
     # else
+    ungrouped = Volunteer.where(group: nil)
+    @grouped = Volunteer.where.not(group: nil)
     if @selected_status == "Select_One" && @selected_states == "Select_One"
-      @volunteers = Volunteer.all
+      @volunteers = ungrouped
     elsif @selected_states == "Select_One"
-      @volunteers = Volunteer.where(status: @selected_status)
+      @volunteers = ungrouped.where(status: @selected_status)
     elsif @selected_status == "Select_One"
-      @volunteers = Volunteer.where(state: @selected_states)
+      @volunteers = ungrouped.where(state: @selected_states)
     else
-      @volunteers = Volunteer.where(status: @selected_status, state: @selected_states)
+      @volunteers = ungrouped.where(status: @selected_status, state: @selected_states)
     end
     # @volunteers = Volunteer.all
     
@@ -152,7 +154,7 @@ class VolunteersController < ApplicationController
     def volunteer_params
       params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe, 
       :join_team, :status, :education, :major, :certification, :languages, :fluency, :ewb_experience, :international_experience, :work_experience, :reason, :time_investment,
-      :travel, :places, :current_events, :involvement)
+      :travel, :places, :current_events, :involvement, :group)
     end
 end
 
