@@ -1,13 +1,13 @@
 class VolunteersController < ApplicationController
   helper :all
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
+  before_action :find_groups, only: [:index]
 
 
   # GET /volunteers
   # GET /volunteers.json
   def index
     if logged_in?
-    
       @all_status = Volunteer.all_status
       @selected_status = params[:status] || session[:status] || {}
       
@@ -25,32 +25,20 @@ class VolunteersController < ApplicationController
       # if @selected_status == "Select One" || @selected_states == "Select One"
       #   @volunteers = Volunteer.all
       # else
+      ungrouped = Volunteer.where(group: nil)
+      @grouped = Volunteer.where.not(group: nil)
       if @selected_status == "Select_One" && @selected_states == "Select_One"
-        @volunteers = Volunteer.all
+        @volunteers = ungrouped
       elsif @selected_states == "Select_One"
-        @volunteers = Volunteer.where(status: @selected_status)
+        @volunteers = ungrouped.where(status: @selected_status)
       elsif @selected_status == "Select_One"
-        @volunteers = Volunteer.where(state: @selected_states)
+        @volunteers = ungrouped.where(state: @selected_states)
       else
-        @volunteers = Volunteer.where(status: @selected_status, state: @selected_states)
+        @volunteers = ungrouped.where(status: @selected_status, state: @selected_states)
       end
     else
       redirect_to login_path
     end
-    # @volunteers = Volunteer.all
-    
-    # @status = params[:status]
-    # @student = "Student"
-    # if !@status.nil?
-    #   @volunteers = Volunteer.where(status: @student)
-    # else
-    #   @volunteers = Volunteer.all
-    # end
-    # if @rateBy.nil?
-    #   @rateBy=@all_ratings
-    # else
-    #   @rateBy=params[:ratings].keys
-    # end
   end
 
 
@@ -156,7 +144,15 @@ class VolunteersController < ApplicationController
     def volunteer_params
       params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe, 
       :join_team, :status, :education, :major, :certification, :languages, :fluency, :ewb_experience, :international_experience, :work_experience, :reason, :time_investment,
-      :travel, :places, :current_events, :involvement)
+      :travel, :places, :current_events, :involvement, :group)
+    end
+    
+    def find_groups
+      @grouped = Hash.new()
+      Volunteer.groups.each do |group|
+        @grouped[group] = Volunteer.where(group: group)
+      end
+      @grouped
     end
 end
 

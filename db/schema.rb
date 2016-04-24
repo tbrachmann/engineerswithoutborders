@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160426041810) do
     t.text     "places"
     t.text     "current_events"
     t.text     "involvement"
+    t.string   "group"
   end
 
 end

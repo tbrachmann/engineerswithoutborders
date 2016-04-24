@@ -10,11 +10,9 @@
   <%= submit_tag 'Refresh', :id =>"status_submit" %>
 <% end %>
 
+<br>
 
-
-
-
-<table>
+<table width="800" height="100">
   <thead>
     <tr>
       <th>Name</th>
@@ -26,7 +24,6 @@
       <th>More Info</th>
       <th>Edit</th>
       <th>Delete</th>
-        
     </tr>
   </thead>
 
@@ -42,6 +39,42 @@
         <td><%= link_to 'More Info', volunteer %></td>
         <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
         <td><%= button_to 'Delete', volunteer_path(volunteer), :method => :delete, :confirm => 'Are you sure?' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1>Project Teams</h1>
+
+<table width="800" height="100">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Area</th>
+      <th>Status</th>
+      <th>Major</th>
+      <th>More Info</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @grouped.each do |groupee| %>
+      <tr>
+        <td><%= groupee.first_name %> <%= groupee.last_name %>:</td>
+        <td><%= groupee.email %> </td>
+        <td><%= groupee.phone %></td>
+        <td><%= groupee.city %>, <%= groupee.state %></td>
+        <td><%= groupee.status %></td>
+        <td><%= groupee.major %></td>
+        <td><%= link_to 'More Info', groupee %></td>
+        <td><%= link_to 'Edit', edit_volunteer_path(groupee) %></td>
+        <td><%= button_to 'Delete', volunteer_path(groupee), :method => :delete, :confirm => 'Are you sure?' %></td>
       </tr>
     <% end %>
   </tbody>
