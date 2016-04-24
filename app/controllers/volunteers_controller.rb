@@ -11,42 +11,37 @@ class VolunteersController < ApplicationController
     @selected_status = params[:status] || session[:status] || {}
     
     @all_states = Volunteer.all_states
-    @selected_states = params[:state] || session[:state] || {}
+    @selected_state = params[:state] || session[:state] || {}
     
-    # if @selected_status == "Select One"
+    @all_education = Volunteer.all_education
+    @selected_education = params[:education] || session[:education] || {}
+    
+
+    # if @selected_status == "Select One" && @selected_state == "Select One" && @selected_education == "Select One"
     #   @volunteers = Volunteer.all
-    #   # @selected_status = Hash[@all_status.map {|rating| [rating, rating]}]
+    # elsif @selected_status == "Select One" && @selected_state == "Select One"
+    #   @volunteers = Volunteer.where()
+      
+      
+      
+    # elsif @selected_state == "Select One"
+    #   @volunteers = Volunteer.where(status: @selected_status, education:@selected_education)
+    # elsif @selected_status == "Select One"
+    #   @volunteers = Volunteer.where(state: @selected_state)
     # else
-    #   @volunteers = Volunteer.where(status: @selected_status)
+    #   @volunteers = Volunteer.where(status: @selected_status, state: @selected_state)
     # end
     
-    # if @selected_states == "Select One"
-    # if @selected_status == "Select One" || @selected_states == "Select One"
-    #   @volunteers = Volunteer.all
-    # else
-    if @selected_status == "Select_One" && @selected_states == "Select_One"
-      @volunteers = Volunteer.all
-    elsif @selected_states == "Select_One"
-      @volunteers = Volunteer.where(status: @selected_status)
-    elsif @selected_status == "Select_One"
-      @volunteers = Volunteer.where(state: @selected_states)
-    else
-      @volunteers = Volunteer.where(status: @selected_status, state: @selected_states)
+    @volunteers = Volunteer.all
+    if (@selected_status != "Select One")
+      @volunteers = @volunteers.where(status: @selected_status)
     end
-    # @volunteers = Volunteer.all
-    
-    # @status = params[:status]
-    # @student = "Student"
-    # if !@status.nil?
-    #   @volunteers = Volunteer.where(status: @student)
-    # else
-    #   @volunteers = Volunteer.all
-    # end
-    # if @rateBy.nil?
-    #   @rateBy=@all_ratings
-    # else
-    #   @rateBy=params[:ratings].keys
-    # end
+    if (@selected_states != "Select One")
+      @volunteers = @volunteers.where(state: @selected_state)
+    end
+    if (@selected_education != "Select One")
+      @volunteers = @volunteers.where(education: @selected_education)
+    end
   end
 
 
