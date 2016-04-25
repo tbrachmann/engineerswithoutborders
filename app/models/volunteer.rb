@@ -28,6 +28,7 @@ class Volunteer < ActiveRecord::Base
     def self.all_status
         @all_status = self.status_volunteer
     end
+    
 
     def self.all_places
         @all_places = ["Bay Area", "South America", "Europe"]
@@ -37,5 +38,10 @@ class Volunteer < ActiveRecord::Base
     def self.involvement
         @all_involvement = ["Fundraising", "Graphic Design"]
     end
+    
+    def self.all_groups
+        @all_groups = ["Select One"] + %w(1 2 3 4 5 6)
+    end
+    
     
 end
