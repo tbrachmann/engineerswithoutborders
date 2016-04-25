@@ -60,6 +60,7 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/1/edit
   def edit
+    @groups = Volunteer.groups
     @states = Volunteer.all_states
     @statuses = Volunteer.status_volunteer
     @education = Volunteer.education_volunteer
