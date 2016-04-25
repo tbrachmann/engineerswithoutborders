@@ -1,22 +1,16 @@
 Rails.application.routes.draw do
   get 'sessions/new'
-
   get 'sessions/new'
-
   get 'session/new'
-
   root 'volunteers#start'
   
   resources :volunteers
   resources :users
 
-  # Example of regular route:
-  # get '/volunteer/' => 'welcome#volunteer_form'
   
   get 'signup' => 'users#new'
-
   get 'show' => 'volunteers#show'
-  
+  get 'volunteers' => 'volunteers'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
