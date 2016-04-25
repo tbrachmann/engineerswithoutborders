@@ -11,29 +11,35 @@ class VolunteersController < ApplicationController
     @selected_status = params[:status] || session[:status] || {}
     
     @all_states = Volunteer.all_states
-    @selected_states = params[:state] || session[:state] || {}
+    @selected_state = params[:state] || session[:state] || {}
     
-    # if @selected_status == "Select One"
-    #   @volunteers = Volunteer.all
-    #   # @selected_status = Hash[@all_status.map {|rating| [rating, rating]}]
-    # else
-    #   @volunteers = Volunteer.where(status: @selected_status)
-    # end
+    @all_education = Volunteer.all_education
+    @selected_education = params[:education] || session[:education] || {}
     
-    # if @selected_states == "Select One"
-    # if @selected_status == "Select One" || @selected_states == "Select One"
-    #   @volunteers = Volunteer.all
-    # else
-    ungrouped = Volunteer.where(group: nil)
-    if @selected_status == "Select_One" && @selected_states == "Select_One"
-      @volunteers = ungrouped
-    elsif @selected_states == "Select_One"
-      @volunteers = ungrouped.where(status: @selected_status)
-    elsif @selected_status == "Select_One"
-      @volunteers = ungrouped.where(state: @selected_states)
-    else
-      @volunteers = ungrouped.where(status: @selected_status, state: @selected_states)
+    @selected_major = params[:major] || session[:major] || {}
+
+    
+    ungrouped = Volunteer.where(group: "Unassigned")
+    
+    @volunteers = ungrouped
+    if @selected_status != "Select"
+      @volunteers = @volunteers.where(status: @selected_status)
     end
+    
+    if @selected_state != "Select"
+      @volunteers = @volunteers.where(state: @selected_state)
+    end
+    
+    if @selected_education != "Select"
+      @volunteers = @volunteers.where(education: @selected_education)
+    end
+    if @selected_major != nil
+      @volunteers = @volunteers.where("major like ?", @selected_major)
+      
+    end
+    
+      
+
   end
 
 
@@ -44,6 +50,7 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/new
   def new
+    @groups = Volunteer.groups
     @volunteer = Volunteer.new
     @states = Volunteer.all_states
     @statuses = Volunteer.status_volunteer
@@ -55,6 +62,7 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/1/edit
   def edit
+
     @groups = Volunteer.groups
     @states = Volunteer.all_states
     @statuses = Volunteer.status_volunteer

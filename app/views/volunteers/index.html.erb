@@ -2,12 +2,23 @@
 
 <h1>Listing Volunteers</h1>
 
-<%= form_tag volunteers_path, :id => 'status_form', :method => :get do %>
+<%= form_tag volunteers_path, :id => 'filter_form', :method => :get do %>
   Status:
   <%= select_tag "status", options_for_select(@all_status, @all_status[0]), :id => "status_id" %>
   States:
   <%= select_tag "state", options_for_select(@all_states,  @all_states[0]), :id => "states_id" %>
-  <%= submit_tag 'Refresh', :id =>"status_submit" %>
+  Education:
+  <%= select_tag "education", options_for_select(@all_education,  @all_education[0]), :id => "education_id" %>
+  Major:
+  <%= search_field_tag "major", nil, :id => "major_id" %>
+  Language:
+  <%= select_tag "language", options_for_select(@all_states,  @all_states[0]), :id => "language_id" %>
+  <!--Time available:-->
+  <!--<%= select_tag "time_available", options_for_select(@all_states,  @all_states[0]), :id => "time_id" %>-->
+  <!--Involvement:-->
+  <!--<%= select_tag "involvement", options_for_select(@all_states,  @all_states[0]), :id => "involvement_id" %>-->
+  
+  <%= submit_tag 'Refresh', :id =>"filter_submit" %>
 <% end %>
 
 <br>
@@ -30,7 +41,7 @@
   <tbody>
     <% @volunteers.each do |volunteer| %>
       <tr>
-        <td><%= volunteer.first_name %> <%= volunteer.last_name %>:</td>
+        <td><%= volunteer.first_name %> <%= volunteer.last_name %></td>
         <td><%= volunteer.email %> </td>
         <td><%= volunteer.phone %></td>
         <td><%= volunteer.city %>, <%= volunteer.state %></td>
