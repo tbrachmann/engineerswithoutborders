@@ -10,11 +10,9 @@
   <%= submit_tag 'Refresh', :id =>"status_submit" %>
 <% end %>
 
+<br>
 
-
-
-
-<table>
+<table width="800" height="100">
   <thead>
     <tr>
       <th>Name</th>
@@ -26,7 +24,6 @@
       <th>More Info</th>
       <th>Edit</th>
       <th>Delete</th>
-        
     </tr>
   </thead>
 
@@ -46,6 +43,14 @@
     <% end %>
   </tbody>
 </table>
+
+<br>
+
+<h1>Project Teams</h1>
+
+<% @grouped.each do |group, volunteers| %>
+  <%= render 'groups', :locals => {:group => group, :volunteers => volunteers} %>
+<% end %>
 
 <br>
 
