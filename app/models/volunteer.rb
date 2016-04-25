@@ -7,6 +7,16 @@ class Volunteer < ActiveRecord::Base
         OR PA RI SC SD TN TX UT VT VA WA WV WI WY)
     end
     
+    def self.groups
+        ["Appropriate Technology Design Team",
+         "San Juan de Dios, El Salvador",
+         "Vanua Levu Island, Fiji",
+         "Bayonnais, Haiti",
+         "Nuevo San Juan, El Caracol, and Nuevo Higureito, Honduras",
+         "Arombe, Kenya",
+         "El Limon, Nicaragua", "Ngelenge, Tanzania"]
+    end
+    
     def self.status_volunteer
         return ["Select One"] + %w(Student Working Unemployed Retired)
     end

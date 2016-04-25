@@ -1,12 +1,12 @@
 class VolunteersController < ApplicationController
   helper :all
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
+  before_action :find_groups, only: [:index]
 
 
   # GET /volunteers
   # GET /volunteers.json
   def index
-    
     @all_status = Volunteer.all_status
     @selected_status = params[:status] || session[:status] || {}
     
@@ -16,6 +16,7 @@ class VolunteersController < ApplicationController
     @all_education = Volunteer.all_education
     @selected_education = params[:education] || session[:education] || {}
     
+<<<<<<< HEAD
 
 
     
@@ -36,6 +37,7 @@ class VolunteersController < ApplicationController
     end
     
       
+
   end
 
 
@@ -58,7 +60,11 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/1/edit
   def edit
+<<<<<<< HEAD
     @groups = Volunteer.all_groups
+=======
+    @groups = Volunteer.groups
+>>>>>>> 498a0e779abbefb064e52f9fb3a840005c3878eb
     @states = Volunteer.all_states
     @statuses = Volunteer.status_volunteer
     @education = Volunteer.education_volunteer
@@ -144,6 +150,14 @@ class VolunteersController < ApplicationController
       params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe, 
       :join_team, :status, :education, :major, :certification, :languages, :fluency, :ewb_experience, :international_experience, :work_experience, :reason, :time_investment,
       :travel, :places, :current_events, :involvement, :group)
+    end
+    
+    def find_groups
+      @grouped = Hash.new()
+      Volunteer.groups.each do |group|
+        @grouped[group] = Volunteer.where(group: group)
+      end
+      @grouped
     end
 end
 
