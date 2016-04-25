@@ -1,12 +1,12 @@
 class VolunteersController < ApplicationController
   helper :all
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
+  before_action :find_groups, only: [:index]
 
 
   # GET /volunteers
   # GET /volunteers.json
   def index
-    
     @all_status = Volunteer.all_status
     @selected_status = params[:status] || session[:status] || {}
     
@@ -25,7 +25,6 @@ class VolunteersController < ApplicationController
     #   @volunteers = Volunteer.all
     # else
     ungrouped = Volunteer.where(group: nil)
-    @grouped = Volunteer.where.not(group: nil)
     if @selected_status == "Select_One" && @selected_states == "Select_One"
       @volunteers = ungrouped
     elsif @selected_states == "Select_One"
@@ -35,20 +34,6 @@ class VolunteersController < ApplicationController
     else
       @volunteers = ungrouped.where(status: @selected_status, state: @selected_states)
     end
-    # @volunteers = Volunteer.all
-    
-    # @status = params[:status]
-    # @student = "Student"
-    # if !@status.nil?
-    #   @volunteers = Volunteer.where(status: @student)
-    # else
-    #   @volunteers = Volunteer.all
-    # end
-    # if @rateBy.nil?
-    #   @rateBy=@all_ratings
-    # else
-    #   @rateBy=params[:ratings].keys
-    # end
   end
 
 
@@ -70,6 +55,7 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/1/edit
   def edit
+    @groups = Volunteer.groups
     @states = Volunteer.all_states
     @statuses = Volunteer.status_volunteer
     @education = Volunteer.education_volunteer
@@ -155,6 +141,14 @@ class VolunteersController < ApplicationController
       params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe, 
       :join_team, :status, :education, :major, :certification, :languages, :fluency, :ewb_experience, :international_experience, :work_experience, :reason, :time_investment,
       :travel, :places, :current_events, :involvement, :group)
+    end
+    
+    def find_groups
+      @grouped = Hash.new()
+      Volunteer.groups.each do |group|
+        @grouped[group] = Volunteer.where(group: group)
+      end
+      @grouped
     end
 end
 
