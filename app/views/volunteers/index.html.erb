@@ -10,7 +10,7 @@
   Education:
   <%= select_tag "education", options_for_select(@all_education,  @all_education[0]), :id => "education_id" %>
   Major:
-  <%= select_tag "major", options_for_select(@all_states,  @all_states[0]), :id => "major_id" %>
+  <%= search_field_tag "major", nil, :id => "major_id" %>
   Language:
   <%= select_tag "language", options_for_select(@all_states,  @all_states[0]), :id => "language_id" %>
   <!--Time available:-->

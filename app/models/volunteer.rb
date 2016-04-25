@@ -2,28 +2,22 @@ class Volunteer < ActiveRecord::Base
     #validates :first_name, carmen => true
     
     def self.all_states
-        return ["Select One"] + %w(AK AL AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY
+        return ["Select"] + %w(AK AL AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY
         LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK
         OR PA RI SC SD TN TX UT VT VA WA WV WI WY)
     end
     
     def self.groups
-        ["Appropriate Technology Design Team",
-         "San Juan de Dios, El Salvador",
-         "Vanua Levu Island, Fiji",
-         "Bayonnais, Haiti",
-         "Nuevo San Juan, El Caracol, and Nuevo Higureito, Honduras",
-         "Arombe, Kenya",
-         "El Limon, Nicaragua", "Ngelenge, Tanzania"]
+        @groups = %w(Unassigned Fiji Haiti Honduras Nicaragua Kenya Tanzania)
     end
     
     def self.status_volunteer
-        return ["Select One"] + %w(Student Working Unemployed Retired)
+        return ["Select"] + %w(Student Working Unemployed Retired)
     end
     
     def self.education_volunteer
         # %w(Primary education Bachelors Masters PhD)
-        return ["Select One", "Primary education", "Secondary education", "Bachelors", "Masters" ,"Doctoral"]
+        return ["Select", "Primary education", "Secondary education", "Bachelors", "Masters" ,"Doctoral"]
     end
     
     
@@ -49,9 +43,6 @@ class Volunteer < ActiveRecord::Base
         @all_involvement = ["Fundraising", "Graphic Design"]
     end
     
-    def self.all_groups
-        @all_groups = ["Select One"] + %w(1 2 3 4 5 6)
-    end
-    
+
     
 end

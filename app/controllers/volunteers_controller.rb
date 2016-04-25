@@ -16,24 +16,26 @@ class VolunteersController < ApplicationController
     @all_education = Volunteer.all_education
     @selected_education = params[:education] || session[:education] || {}
     
-<<<<<<< HEAD
-
+    @selected_major = params[:major] || session[:major] || {}
 
     
-
-    ungrouped = Volunteer.where(group: "Select One")
-    @grouped = Volunteer.where.not(group: "Select One")
+    ungrouped = Volunteer.where(group: "Unassigned")
+    
     @volunteers = ungrouped
-    if @selected_status != "Select One"
+    if @selected_status != "Select"
       @volunteers = @volunteers.where(status: @selected_status)
     end
     
-    if @selected_state != "Select One"
+    if @selected_state != "Select"
       @volunteers = @volunteers.where(state: @selected_state)
     end
     
-    if @selected_education != "Select One"
+    if @selected_education != "Select"
       @volunteers = @volunteers.where(education: @selected_education)
+    end
+    if @selected_major != nil
+      @volunteers = @volunteers.where("major like ?", @selected_major)
+      
     end
     
       
@@ -48,7 +50,7 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/new
   def new
-    @groups = Volunteer.all_groups
+    @groups = Volunteer.groups
     @volunteer = Volunteer.new
     @states = Volunteer.all_states
     @statuses = Volunteer.status_volunteer
@@ -60,11 +62,8 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/1/edit
   def edit
-<<<<<<< HEAD
-    @groups = Volunteer.all_groups
-=======
+
     @groups = Volunteer.groups
->>>>>>> 498a0e779abbefb064e52f9fb3a840005c3878eb
     @states = Volunteer.all_states
     @statuses = Volunteer.status_volunteer
     @education = Volunteer.education_volunteer
