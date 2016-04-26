@@ -15,9 +15,6 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    if params[:password]
-      print(params[:password]
-    end
     @user = User.new
   end
 
