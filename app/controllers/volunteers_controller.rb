@@ -7,6 +7,7 @@ class VolunteersController < ApplicationController
   # GET /volunteers
   # GET /volunteers.json
   def index
+<<<<<<< HEAD
     @all_status = Volunteer.all_status
     @selected_status = params[:status] || session[:status] || {}
     
@@ -24,6 +25,38 @@ class VolunteersController < ApplicationController
     @volunteers = ungrouped
     if @selected_status != "Select"
       @volunteers = @volunteers.where(status: @selected_status)
+=======
+    if logged_in?
+    
+      @all_status = Volunteer.all_status
+      @selected_status = params[:status] || session[:status] || {}
+      
+      @all_states = Volunteer.all_states
+      @selected_states = params[:state] || session[:state] || {}
+      
+      # if @selected_status == "Select One"
+      #   @volunteers = Volunteer.all
+      #   # @selected_status = Hash[@all_status.map {|rating| [rating, rating]}]
+      # else
+      #   @volunteers = Volunteer.where(status: @selected_status)
+      # end
+      
+      # if @selected_states == "Select One"
+      # if @selected_status == "Select One" || @selected_states == "Select One"
+      #   @volunteers = Volunteer.all
+      # else
+      if @selected_status == "Select_One" && @selected_states == "Select_One"
+        @volunteers = Volunteer.all
+      elsif @selected_states == "Select_One"
+        @volunteers = Volunteer.where(status: @selected_status)
+      elsif @selected_status == "Select_One"
+        @volunteers = Volunteer.where(state: @selected_states)
+      else
+        @volunteers = Volunteer.where(status: @selected_status, state: @selected_states)
+      end
+    else
+      redirect_to login_path
+>>>>>>> e154c7554f795ea33f3a5de6fe7dfe4fec04fb72
     end
     
     if @selected_state != "Select"

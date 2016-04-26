@@ -15,3 +15,13 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on('page:change', function() {
+  	$('#navbar-ewb-backbtn').click(function() {
+  		var confirmed = window.confirm('Are you sure you want to go back to Engineers Without Border, SF Chapter?');
+  		if (confirmed) {
+    		window.location.href = "http://ewb-sfp.org/";
+  		}
+  });
+});
+
