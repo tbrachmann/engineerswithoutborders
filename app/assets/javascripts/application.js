@@ -15,3 +15,13 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on('page:load', function() {
+  	$('#navbar-ewb-backbtn').click(function() {
+  		var confirmed = window.confirm('Are you sure?');
+  		if (confirmed) {
+    		window.location.href = "http://ewb-sfp.org/";
+  		}
+  });
+});
+
