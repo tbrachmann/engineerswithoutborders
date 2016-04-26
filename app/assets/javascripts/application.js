@@ -16,7 +16,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(document).on('page:load', function() {
+$(document).on('page:change', function() {
   	$('#navbar-ewb-backbtn').click(function() {
   		var confirmed = window.confirm('Are you sure?');
   		if (confirmed) {
