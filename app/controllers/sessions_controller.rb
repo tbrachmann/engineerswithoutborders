@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
   
   def new
+    if logged_in?
+      redirect_to current_user
+    else
+      render 'new'
+    end
   end
   
   def create
@@ -9,7 +14,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Login successful!"
       # Log the user in and redirect to the user's show page.
       log_in user
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       remember user
       redirect_to user
     else
