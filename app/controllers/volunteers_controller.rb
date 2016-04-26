@@ -49,13 +49,17 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/1/edit
   def edit
-    @groups = Volunteer.groups
-    @states = Volunteer.all_states
-    @statuses = Volunteer.status_volunteer
-    @education = Volunteer.education_volunteer
-    @time_invest = Volunteer.time_invest_volunteer
-    @places = Volunteer.all_places
-    @involvement = Volunteer.involvement
+    if logged_in?
+      @groups = Volunteer.groups
+      @states = Volunteer.all_states
+      @statuses = Volunteer.status_volunteer
+      @education = Volunteer.education_volunteer
+      @time_invest = Volunteer.time_invest_volunteer
+      @places = Volunteer.all_places
+      @involvement = Volunteer.involvement
+    else
+      redirect_to login_path
+    end
   end
 
   # POST /volunteers
@@ -95,24 +99,32 @@ volunteer..nil? || @movie.director.empty?
   # PATCH/PUT /volunteers/1
   # PATCH/PUT /volunteers/1.json
   def update
-    respond_to do |format|
-      if @volunteer.update(volunteer_params)
-        format.html { redirect_to @volunteer, notice: 'Volunteer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @volunteer }
-      else
-        format.html { render :edit }
-        format.json { render json: @volunteer.errors, status: :unprocessable_entity }
+    if logged_in?
+      respond_to do |format|
+        if @volunteer.update(volunteer_params)
+          format.html { redirect_to @volunteer, notice: 'Volunteer was successfully updated.' }
+          format.json { render :show, status: :ok, location: @volunteer }
+        else
+          format.html { render :edit }
+          format.json { render json: @volunteer.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to login_path
     end
   end
 
   # DELETE /volunteers/1
   # DELETE /volunteers/1.json
   def destroy
-    @volunteer.destroy
-    respond_to do |format|
-      format.html { redirect_to volunteers_url, notice: 'Volunteer was successfully destroyed.' }
-      format.json { head :no_content }
+    if logged_in?
+      @volunteer.destroy
+      respond_to do |format|
+        format.html { redirect_to volunteers_url, notice: 'Volunteer was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to login_path
     end
   end  
   
