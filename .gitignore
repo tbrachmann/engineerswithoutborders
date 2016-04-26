@@ -13,7 +13,7 @@
 /tmp
 .ruby-version
 
-db/development.sqlite3
-db/test.sqlite3
-/coverage
-/spring-1000
+/db/development.sqlite3
+/db/test.sqlite3
+/coverage/
+/spring-1000/
