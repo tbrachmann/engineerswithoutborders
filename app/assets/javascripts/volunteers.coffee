@@ -1,4 +1,4 @@
-$(document).on 'page:load', ->
+$(document).on 'page:change', ->
   $('#volunteer_join_project_team').change ->
     if @checked
       $('#join_team_details').removeClass 'hidden'
