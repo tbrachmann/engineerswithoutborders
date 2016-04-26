@@ -14,17 +14,6 @@ class VolunteersController < ApplicationController
       @all_states = Volunteer.all_states
       @selected_states = params[:state] || session[:state] || {}
       
-      # if @selected_status == "Select One"
-      #   @volunteers = Volunteer.all
-      #   # @selected_status = Hash[@all_status.map {|rating| [rating, rating]}]
-      # else
-      #   @volunteers = Volunteer.where(status: @selected_status)
-      # end
-      
-      # if @selected_states == "Select One"
-      # if @selected_status == "Select One" || @selected_states == "Select One"
-      #   @volunteers = Volunteer.all
-      # else
       ungrouped = Volunteer.where(group: nil)
       @grouped = Volunteer.where.not(group: nil)
       if @selected_status == "Select_One" && @selected_states == "Select_One"
@@ -72,12 +61,8 @@ class VolunteersController < ApplicationController
   # POST /volunteers
   # POST /volunteers.json
   def create
-    # if @volunteer..nil? || @movie.director.empty?
-    #   flash[:notice] = "'#{@movie.title}' has no director info"
-    #   redirect_to movies_path
-    # else
-    #   @movies = Movie.search_director(params[:id])
-    # end
+
+volunteer..nil? || @movie.director.empty?
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.first_name.empty?
       flash[:notice] = "Error: Invalid first name."
@@ -129,11 +114,7 @@ class VolunteersController < ApplicationController
       format.html { redirect_to volunteers_url, notice: 'Volunteer was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-  
-
-  
-  
+  end  
   
   private
     # Use callbacks to share common setup or constraints between actions.
