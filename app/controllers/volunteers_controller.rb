@@ -25,8 +25,9 @@ class VolunteersController < ApplicationController
       # if @selected_status == "Select One" || @selected_states == "Select One"
       #   @volunteers = Volunteer.all
       # else
+      # @groups = Volunteer.groups
       ungrouped = Volunteer.where(group: nil)
-      @grouped = Volunteer.where.not(group: nil)
+      # @grouped = Volunteer.where.not(group: nil)
       if @selected_status == "Select_One" && @selected_states == "Select_One"
         @volunteers = ungrouped
       elsif @selected_states == "Select_One"
