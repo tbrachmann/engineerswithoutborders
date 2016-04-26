@@ -3,7 +3,6 @@ class VolunteersController < ApplicationController
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
   before_action :find_groups, only: [:index]
 
-
   # GET /volunteers
   # GET /volunteers.json
   def index
@@ -15,7 +14,7 @@ class VolunteersController < ApplicationController
       @selected_states = params[:state] || session[:state] || {}
       
       ungrouped = Volunteer.where(group: nil)
-      @grouped = Volunteer.where.not(group: nil)
+      # @grouped = Volunteer.where.not(group: nil)
       if @selected_status == "Select_One" && @selected_states == "Select_One"
         @volunteers = ungrouped
       elsif @selected_states == "Select_One"
@@ -29,7 +28,6 @@ class VolunteersController < ApplicationController
       redirect_to login_path
     end
   end
-
 
   # GET /volunteers/1
   # GET /volunteers/1.json
