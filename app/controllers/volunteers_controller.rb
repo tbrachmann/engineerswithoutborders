@@ -14,7 +14,6 @@ class VolunteersController < ApplicationController
       @selected_states = params[:state] || session[:state] || {}
       
       ungrouped = Volunteer.where(group: nil)
-      # @grouped = Volunteer.where.not(group: nil)
       if @selected_status == "Select_One" && @selected_states == "Select_One"
         @volunteers = ungrouped
       elsif @selected_states == "Select_One"
@@ -63,8 +62,6 @@ class VolunteersController < ApplicationController
   # POST /volunteers
   # POST /volunteers.json
   def create
-
-volunteer..nil? || @movie.director.empty?
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.first_name.empty?
       flash[:notice] = "Error: Invalid first name."
