@@ -1,13 +1,10 @@
 language: ruby
 rvm:
   - 2.2.2
-scripts:
-  - bundle exec rake db:migrate RAILS_ENV=test
-  - bundle exec rake
 
 before_script:
   - psql -c "CREATE USER sfewb WITH PASSWORD 'cs169';" -U postgres
-
+  - rake db:migrate RAILS_ENV=test
 notifications:
   email: false
 
