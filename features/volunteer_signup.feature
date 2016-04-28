@@ -32,15 +32,13 @@ Scenario: Filling out the Volunteer Form by joining project team
   And I fill in "Major" with "Computer Science"
   And I fill in "Certification" with "PE"
   And I fill in "Languages" with "Spanish"
-  And I fill in "Fluency" with "Proficient"
-  And I fill in "Ewb experience" with "Volunteered at Haiti"
-  And I fill in "International experience" with "Studied abroad in Ireland"
-  And I fill in "Work experience" with "Software Engineer with IBM"
-  And I fill in "Reason" with "I love volunteering!"
-  And I select "Thrice" from "Time investment"
-  And I check "Travel"
-  And I select "Europe" from "Places"
-  And I check "Current events"
-  And I select "Fundraising" from "Involvement"
-    
-  
+  And I select "Level of Fluency" with "Proficient"
+  And I fill in "Previous EWB Experience" with "Volunteered at Haiti"
+  And I fill in "Previous International Experience" with "Studied abroad"
+  And I fill in "Previous Work Experience" with "Software Engineer with IBM"
+  And I check the following teams: Executive, Fiji
+  And I fill in "Reason" with "I love volunteering so much and I want to help!"
+  And I select "Time Investment" with "> 3 hours a week"
+  And I select "Travel" with "Yes"
+  And I select "Current Events" with "Yes"
+  And I check the following events: Fundraising, Graphic Design

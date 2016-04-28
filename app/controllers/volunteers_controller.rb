@@ -7,21 +7,27 @@ class VolunteersController < ApplicationController
   # GET /volunteers.json
   def index
     if logged_in?
+      
       @all_status = Volunteer.all_status
-      @selected_status = params[:status] || session[:status] || {}
+      @selected_status = params[:status] 
       
       @all_states = Volunteer.all_states
-      @selected_states = params[:state] || session[:state] || {}
+      @selected_states = params[:state]
       
-      ungrouped = Volunteer.where(group: nil)
-      if @selected_status == "Select_One" && @selected_states == "Select_One"
-        @volunteers = ungrouped
-      elsif @selected_states == "Select_One"
-        @volunteers = ungrouped.where(status: @selected_status)
-      elsif @selected_status == "Select_One"
-        @volunteers = ungrouped.where(state: @selected_states)
+      @all_education = Volunteer.all_education
+      @selected_education = params[:education]
+            
+      @selected_major = params[:major]        
+      if @selected_status != "Select"
+        @volunteers = Volunteer.where(status: @selected_status)
+      elsif @selected_states == "Select"
+        @volunteers = Volunteer.where(state: @selected_states)
+      elsif @selected_education == "Select"
+        @volunteers = Volunteer.where(education: @selected_education)
+      elsif @selected_major != nil
+        @volunteers = @volunteers.where(major: @selected_major)
       else
-        @volunteers = ungrouped.where(status: @selected_status, state: @selected_states)
+      @volunteers = Volunteer.where(status: @selected_status, state: @selected_states, education: @selected_education, major: @selected_major)
       end
     else
       redirect_to login_path
@@ -35,6 +41,7 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/new
   def new
+    @groups = Volunteer.groups
     @volunteer = Volunteer.new
     @states = Volunteer.all_states
     @statuses = Volunteer.status_volunteer
