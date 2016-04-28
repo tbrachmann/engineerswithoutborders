@@ -22,18 +22,19 @@ class VolunteersController < ApplicationController
       @selected_major = params[:major]
       
       # if @selected_status == nil && @selected_states == nil && @selected_education == nil
-        # @volunteers = Volunteer.all
-      # if @selected_status != "Select"
-      #   @volunteers = Volunteer.where(status: @selected_status)
-      # elsif @selected_states == "Select"
-      #   @volunteers = Volunteer.where(state: @selected_states)
-      # elsif @selected_education == "Select"
-      #   @volunteers = Volunteer.where(education: @selected_education)
-      # elsif @selected_major != nil
-      #   @volunteers = @volunteers.where(major: @selected_major)
-      # else
+      #   @volunteers = Volunteer.all
+        
+      if @selected_status != "Select"
+        @volunteers = Volunteer.where(status: @selected_status)
+      elsif @selected_states == "Select"
+        @volunteers = Volunteer.where(state: @selected_states)
+      elsif @selected_education == "Select"
+        @volunteers = Volunteer.where(education: @selected_education)
+      elsif @selected_major != nil
+        @volunteers = @volunteers.where(major: @selected_major)
+      else
       @volunteers = Volunteer.where(status: @selected_status, state: @selected_states, education: @selected_education, major: @selected_major)
-      # end
+      end
     else
       redirect_to login_path
     end
