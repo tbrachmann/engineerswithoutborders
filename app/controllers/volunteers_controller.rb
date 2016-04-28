@@ -7,38 +7,36 @@ class VolunteersController < ApplicationController
   # GET /volunteers
   # GET /volunteers.json
   def index
-    @all_status = Volunteer.all_status
-    @selected_status = params[:status] || session[:status] || {}
-    
-    @all_states = Volunteer.all_states
-    @selected_state = params[:state] || session[:state] || {}
-    
-    @all_education = Volunteer.all_education
-    @selected_education = params[:education] || session[:education] || {}
-    
-    @selected_major = params[:major] || session[:major] || {}
-
-    
-    ungrouped = Volunteer.where(group: "Unassigned")
-    
-    @volunteers = ungrouped
-    if @selected_status != "Select"
-      @volunteers = @volunteers.where(status: @selected_status)
-    end
-    
-    if @selected_state != "Select"
-      @volunteers = @volunteers.where(state: @selected_state)
-    end
-    
-    if @selected_education != "Select"
-      @volunteers = @volunteers.where(education: @selected_education)
-    end
-    if @selected_major != nil
-      @volunteers = @volunteers.where("major like ?", @selected_major)
-    end
-    @volunteers = Volunteer.all
+    if logged_in?
+      @volunteers = Volunteer.all
       
-
+      @all_status = Volunteer.all_status
+      @selected_status = params[:status] 
+      
+      @all_states = Volunteer.all_states
+      @selected_states = params[:state]
+      
+      @all_education = Volunteer.all_education
+      @selected_education = params[:education]
+            
+      @selected_major = params[:major]
+      
+      # if @selected_status == nil && @selected_states == nil && @selected_education == nil
+        # @volunteers = Volunteer.all
+      # if @selected_status != "Select"
+      #   @volunteers = Volunteer.where(status: @selected_status)
+      # elsif @selected_states == "Select"
+      #   @volunteers = Volunteer.where(state: @selected_states)
+      # elsif @selected_education == "Select"
+      #   @volunteers = Volunteer.where(education: @selected_education)
+      # elsif @selected_major != nil
+      #   @volunteers = @volunteers.where(major: @selected_major)
+      # else
+      @volunteers = Volunteer.where(status: @selected_status, state: @selected_states, education: @selected_education, major: @selected_major)
+      # end
+    else
+      redirect_to login_path
+    end
   end
 
 
