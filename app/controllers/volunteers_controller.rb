@@ -3,12 +3,10 @@ class VolunteersController < ApplicationController
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
   before_action :find_groups, only: [:index]
 
-
   # GET /volunteers
   # GET /volunteers.json
   def index
     if logged_in?
-      @volunteers = Volunteer.all
       
       @all_status = Volunteer.all_status
       @selected_status = params[:status] 
@@ -19,11 +17,7 @@ class VolunteersController < ApplicationController
       @all_education = Volunteer.all_education
       @selected_education = params[:education]
             
-      @selected_major = params[:major]
-      
-      # if @selected_status == nil && @selected_states == nil && @selected_education == nil
-      #   @volunteers = Volunteer.all
-        
+      @selected_major = params[:major]        
       if @selected_status != "Select"
         @volunteers = Volunteer.where(status: @selected_status)
       elsif @selected_states == "Select"
@@ -39,7 +33,6 @@ class VolunteersController < ApplicationController
       redirect_to login_path
     end
   end
-
 
   # GET /volunteers/1
   # GET /volunteers/1.json
@@ -60,40 +53,37 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/1/edit
   def edit
-
-    @groups = Volunteer.groups
-    @states = Volunteer.all_states
-    @statuses = Volunteer.status_volunteer
-    @education = Volunteer.education_volunteer
-    @time_invest = Volunteer.time_invest_volunteer
-    @places = Volunteer.all_places
-    @involvement = Volunteer.involvement
+    if logged_in?
+      @groups = Volunteer.groups
+      @states = Volunteer.all_states
+      @statuses = Volunteer.status_volunteer
+      @education = Volunteer.education_volunteer
+      @time_invest = Volunteer.time_invest_volunteer
+      @places = Volunteer.all_places
+      @involvement = Volunteer.involvement
+    else
+      redirect_to login_path
+    end
   end
 
   # POST /volunteers
   # POST /volunteers.json
   def create
-    # if @volunteer..nil? || @movie.director.empty?
-    #   flash[:notice] = "'#{@movie.title}' has no director info"
-    #   redirect_to movies_path
-    # else
-    #   @movies = Movie.search_director(params[:id])
-    # end
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.first_name.empty?
-      flash[:notice] = "Error: Invalid first name."
+      flash[:error] = "Error: Invalid first name."
       redirect_to new_volunteer_path
     elsif @volunteer.last_name.empty?
-      flash[:notice] = "Error: Invalid last name."
+      flash[:error] = "Error: Invalid last name."
       redirect_to new_volunteer_path
     elsif @volunteer.phone.empty? or ((@volunteer.phone =~ /^([0-9]{3}(\s|\-)?){2}[0-9]{4}$/) != 0)
-      flash[:notice] = "Error: Invalid phone number."
+      flash[:error] = "Error: Invalid phone number."
       redirect_to new_volunteer_path
     elsif @volunteer.email.empty? or ((@volunteer.email.upcase =~ /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/) != 0)
-      flash[:notice] = "Error: Invalid email address."
+      flash[:error] = "Error: Invalid email address."
       redirect_to new_volunteer_path
     elsif @volunteer.city.empty? 
-      flash[:notice] = "Error: Invalid City."
+      flash[:error] = "Error: Invalid City."
       redirect_to new_volunteer_path
     else
       respond_to do |format|
@@ -111,30 +101,34 @@ class VolunteersController < ApplicationController
   # PATCH/PUT /volunteers/1
   # PATCH/PUT /volunteers/1.json
   def update
-    respond_to do |format|
-      if @volunteer.update(volunteer_params)
-        format.html { redirect_to @volunteer, notice: 'Volunteer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @volunteer }
-      else
-        format.html { render :edit }
-        format.json { render json: @volunteer.errors, status: :unprocessable_entity }
+    if logged_in?
+      respond_to do |format|
+        if @volunteer.update(volunteer_params)
+          format.html { redirect_to @volunteer, notice: 'Volunteer was successfully updated.' }
+          format.json { render :show, status: :ok, location: @volunteer }
+        else
+          format.html { render :edit }
+          format.json { render json: @volunteer.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      redirect_to login_path
     end
   end
 
   # DELETE /volunteers/1
   # DELETE /volunteers/1.json
   def destroy
-    @volunteer.destroy
-    respond_to do |format|
-      format.html { redirect_to volunteers_url, notice: 'Volunteer was successfully destroyed.' }
-      format.json { head :no_content }
+    if logged_in?
+      @volunteer.destroy
+      respond_to do |format|
+        format.html { redirect_to volunteers_url, notice: 'Volunteer was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to login_path
     end
-  end
-  
-
-  
-  
+  end  
   
   private
     # Use callbacks to share common setup or constraints between actions.

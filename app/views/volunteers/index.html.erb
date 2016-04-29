@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Volunteers</h1>
+<h1 >Listing Volunteers</h1>
 
 <%= form_tag volunteers_path, :id => 'filter_form', :method => :get do %>
   Status:
@@ -23,7 +23,7 @@
 
 <br>
 
-<table width="800" height="100">
+<table class="table-hover">
   <thead>
     <tr>
       <th>Name</th>
@@ -54,15 +54,17 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
 
+<%= link_to 'New Volunteer', new_volunteer_path %>
+<br>
+
+<div id="project-details">
 <h1>Project Teams</h1>
 
 <% @grouped.each do |group, volunteers| %>
   <%= render 'groups', :locals => {:group => group, :volunteers => volunteers} %>
+  <br> 
 <% end %>
+</div>
 
-<br>
-
-<%= link_to 'New Volunteer', new_volunteer_path %>
