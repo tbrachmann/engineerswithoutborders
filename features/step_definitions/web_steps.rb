@@ -242,8 +242,6 @@ Then /^the "([^"]*)" checkbox should be checked$/ do |id|
 end
 
 Then /the detailed project information should be revealed/ do
-    # page.find("#join_team_details", :visible => false)[:style].should eq('display:block;')
-    # expect(page).to have_selector('#join_team_details',  :visible => true)
     find(:css, "#join_team_details").should be_visible
 end
 # :nocov:

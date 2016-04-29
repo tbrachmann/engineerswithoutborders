@@ -18,3 +18,17 @@ Given /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
     end
   end
 # :nocov:
+
+And /^I am log in as an admin$/ do
+
+    @user = User.new(name: 'admin',
+                     email: 'test@test.com',
+                     password: 'password!',
+                     password_confirmation: 'password!')
+    @user.save
+
+    step 'I follow "Admin Login"'
+    step 'I fill in "Email" with "test@test.com"'
+    step 'I fill in "Password" with "password!"'
+    step 'I press "Log in"'
+end
