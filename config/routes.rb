@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :volunteers
   resources :users
   
+  get 'teams' => 'volunteers#teams'
   get 'signup' => 'users#new'
   get 'show' => 'volunteers#show'
   get 'volunteers' => 'volunteers'

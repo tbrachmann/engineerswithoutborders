@@ -1,7 +1,7 @@
 class VolunteersController < ApplicationController
   helper :all
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
-  before_action :find_groups, only: [:index]
+  before_action :find_groups, only: [:teams]
 
   # GET /volunteers
   # GET /volunteers.json
@@ -38,6 +38,14 @@ class VolunteersController < ApplicationController
     end
   end
 
+  def teams
+    if logged_in?
+      @groups
+    else
+      redirect_to login_path
+    end
+  end
+
   # GET /volunteers/1
   # GET /volunteers/1.json
   def show
@@ -54,6 +62,7 @@ class VolunteersController < ApplicationController
     @places = Volunteer.all_places
     @involvement = Volunteer.involvement
   end
+
 
   # GET /volunteers/1/edit
   def edit
