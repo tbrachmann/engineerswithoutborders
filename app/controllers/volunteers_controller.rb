@@ -19,7 +19,7 @@ class VolunteersController < ApplicationController
             
       @selected_major = params[:major]    
       
-      if @selected_status != "Select"
+      if @selected_status != "Select" 
         @volunteers = Volunteer.where(status: @selected_status)
       elsif @selected_states != "Select"
         @volunteers = Volunteer.where(state: @selected_states)
@@ -28,7 +28,10 @@ class VolunteersController < ApplicationController
       elsif @selected_major != nil
         @volunteers = Volunteer.where("major LIKE (?)", "%#{@selected_major}%")
       else
-        @volunteers = Volunteer.where(status: @selected_status, state: @selected_states, education: @selected_education, major: @selected_major)
+        if @selected_major != nil
+          @wildcard_major = Volunteer.where("major LIKE (?)", "%#{@selected_major}%")
+        end
+        @volunteers = Volunteer.where(status: @selected_status, state: @selected_states, education: @selected_education, major: @wildcard_major)
       end
     else
       redirect_to login_path
