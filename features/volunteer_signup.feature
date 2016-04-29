@@ -42,4 +42,3 @@ Scenario: Filling out the Volunteer Form by joining project team
   And I select "Europe" from "Places"
   And I check "Current events"
   And I select "Fundraising" from "Involvement"
-    

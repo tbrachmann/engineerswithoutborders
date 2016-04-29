@@ -10,12 +10,17 @@ Background: volunteers added to the database
   | lawrence   | vo        | 2223334432 | lawrence@vo.com     | berkeley     | CA    | Student | potato farming   | english, french  |
   | kevin      | chen      | 1234562342 | kevin@chen.com      | new york     | NY    | Retired | potato farming   | english, french  |
   | anthony    | tran      | 5523423422 | anthony@tran.com    | las vegas    | CA    | Retired | potato farming   | english, spanish |
-  And I am on the list volunteers page
+  And I am on the login page
+  And I am log in as an admin
+  And I should see "Login successful!"
+  And I should see "View All Volunteers"
+  And I follow "View All Volunteers"
+  And I should see "Listing Volunteers"
   
 Scenario: Check that state filtering works
   When I select "CA" from "state"
   And I press "Refresh"
-  Then I should see "daniel anderson"
+  Then I should see "jio calderon"
   And I should not see "carmen tang"
   
 Scenario: Check filtering for status

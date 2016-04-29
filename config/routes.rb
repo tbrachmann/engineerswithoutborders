@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   
   resources :volunteers
   resources :users
-
   
   get 'signup' => 'users#new'
   get 'show' => 'volunteers#show'

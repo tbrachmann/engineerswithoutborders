@@ -8,35 +8,35 @@ Background: I am on the EWB home page
 
 Scenario: Filling out the Volunteer Form by subscribing
   Given I am on the Volunteer page
-  When I press "Create Volunteer"
+  When I press "Sign Up!"
   Then I should see "Error: Invalid first name."
   
   When I fill in "First name" with "Mark"
-  And I press "Create Volunteer"
+  And I press "Sign Up!"
   Then I should see "Error: Invalid last name."
   
   When I fill in "First name" with "Mark"
   And I fill in "Last name" with "Luigi"
-  And I press "Create Volunteer"
+  And I press "Sign Up!"
   Then I should see "Error: Invalid phone number."
   
   When I fill in "First name" with "Mark"
   And I fill in "Last name" with "Luigi"
   And I fill in "Phone" with "apple"
-  And I press "Create Volunteer"
+  And I press "Sign Up!"
   Then I should see "Error: Invalid phone number"
   
   When I fill in "First name" with "Mark"
   And I fill in "Last name" with "Luigi"
   And I fill in "Phone" with "510 510 5555"
-  And I press "Create Volunteer"
+  And I press "Sign Up!"
   Then I should see "Error: Invalid email address"
   
   When I fill in "First name" with "Mark"
   And I fill in "Last name" with "Luigi"
   And I fill in "Phone" with "510 510 5555"
   And I fill in "Email" with "helloworldatberkeley.edu"
-  And I press "Create Volunteer"
+  And I press "Sign Up!"
   Then I should see "Error: Invalid email address"
   
   
@@ -46,7 +46,7 @@ Scenario: Filling out the Volunteer Form by subscribing
   And I fill in "Phone" with "510 510 5555"
   And I fill in "Email" with "helloworld@berkeley.edu"
   And I select "CA" from "State"
-  And I press "Create Volunteer"
+  And I press "Sign Up!"
   Then I should see "Error: Invalid City"
   
   When I fill in "First name" with "Mark"
@@ -57,6 +57,6 @@ Scenario: Filling out the Volunteer Form by subscribing
   And I select "CA" from "State"
   And I fill in "City" with "Berkeley"
   And I check "Subscribe"
-  And I press "Create Volunteer"
+  And I press "Sign Up!"
   Then I should see "Volunteer was successfully created."
   
