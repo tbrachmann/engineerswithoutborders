@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1 >Listing Volunteers</h1>
 
 <%= form_tag volunteers_path, :id => 'filter_form', :method => :get do %>
@@ -9,6 +7,8 @@
   <%= select_tag "state", options_for_select(@all_states,  @all_states[0]), :id => "states_id" %>
   Education:
   <%= select_tag "education", options_for_select(@all_education,  @all_education[0]), :id => "education_id" %>
+  Team:
+  <%= select_tag "team", options_for_select(@all_teams,  @all_teams[0]), :id => "team_id" %>
   Major:
   <%= search_field_tag "major", nil, :id => "major_id" %>
   <!--Language:-->
@@ -32,6 +32,7 @@
       <th>Area</th>
       <th>Status</th>
       <th>Major</th>
+      <th>Team</th>
       <th>More Info</th>
       <th>Edit</th>
       <th>Delete</th>
@@ -47,6 +48,7 @@
         <td><%= volunteer.city %>, <%= volunteer.state %></td>
         <td><%= volunteer.status %></td>
         <td><%= volunteer.major %></td>
+        <td><%= volunteer.team %></td>
         <td><%= link_to 'More Info', volunteer %></td>
         <td><%= link_to 'Edit', edit_volunteer_path(volunteer) %></td>
         <td><%= button_to 'Delete', volunteer_path(volunteer), :method => :delete, :confirm => 'Are you sure?' %></td>

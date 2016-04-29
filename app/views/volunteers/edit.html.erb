@@ -1,7 +1,7 @@
 <h1>Edit Page</h1>
 
 <%= form_for @volunteer do |v| %>
-  <%= v.label :group %> <%= v.select :group, @groups %><br>
+  <%= v.label :team %> <%= v.select :team, @teams %><br>
   <%= v.label :first_name %>: <%= v.text_field :first_name %><br>
   <%= v.label :last_name %>: <%= v.text_field :last_name %><br>
   <%= v.label :phone %>: <%= v.text_field :phone %><br>

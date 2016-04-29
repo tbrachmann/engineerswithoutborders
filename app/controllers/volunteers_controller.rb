@@ -1,13 +1,12 @@
 class VolunteersController < ApplicationController
   helper :all
   before_action :set_volunteer, only: [:show, :edit, :update, :destroy]
-  before_action :find_groups, only: [:teams]
+  before_action :find_teams, only: [:teams, :index]
 
   # GET /volunteers
   # GET /volunteers.json
   def index
     if logged_in?
-      
       @all_status = Volunteer.all_status
       @selected_status = params[:status] 
       
@@ -16,6 +15,9 @@ class VolunteersController < ApplicationController
       
       @all_education = Volunteer.all_education
       @selected_education = params[:education]
+
+      @all_teams = Volunteer.teams
+      @selected_team = params[:team]
             
       @selected_major = params[:major]    
       
@@ -25,6 +27,8 @@ class VolunteersController < ApplicationController
         @volunteers = Volunteer.where(state: @selected_states)
       elsif @selected_education != "Select"
         @volunteers = Volunteer.where(education: @selected_education)
+      elsif @selected_team != "Any"
+        @volunteers = Volunteer.where(team: @selected_team)
       elsif @selected_major != nil
         @volunteers = Volunteer.where("major LIKE (?)", "%#{@selected_major}%")
       else
@@ -40,7 +44,7 @@ class VolunteersController < ApplicationController
 
   def teams
     if logged_in?
-      @groups
+      @teams
     else
       redirect_to login_path
     end
@@ -53,7 +57,7 @@ class VolunteersController < ApplicationController
 
   # GET /volunteers/new
   def new
-    @groups = Volunteer.groups
+    @teams = Volunteer.teams
     @volunteer = Volunteer.new
     @states = Volunteer.all_states
     @statuses = Volunteer.status_volunteer
@@ -67,7 +71,7 @@ class VolunteersController < ApplicationController
   # GET /volunteers/1/edit
   def edit
     if logged_in?
-      @groups = Volunteer.groups
+      @teams = Volunteer.teams
       @states = Volunteer.all_states
       @statuses = Volunteer.status_volunteer
       @education = Volunteer.education_volunteer
@@ -83,6 +87,7 @@ class VolunteersController < ApplicationController
   # POST /volunteers.json
   def create
     @volunteer = Volunteer.new(volunteer_params)
+    @volunteer.team = "Unassigned"
     if @volunteer.first_name.empty?
       flash[:error] = "Error: Invalid first name."
       redirect_to new_volunteer_path
@@ -153,15 +158,15 @@ class VolunteersController < ApplicationController
     def volunteer_params
       params.require(:volunteer).permit(:first_name, :last_name, :phone, :email, :city, :state, :subscribe, 
       :join_team, :status, :education, :major, :certification, :languages, :fluency, :ewb_experience, :international_experience, :work_experience, :reason, :time_investment,
-      :travel, :places, :current_events, :involvement, :group)
+      :travel, :places, :current_events, :involvement, :team)
     end
     
-    def find_groups
-      @grouped = Hash.new()
-      Volunteer.groups.each do |group|
-        @grouped[group] = Volunteer.where(group: group)
+    def find_teams
+      @teamed = Hash.new()
+      Volunteer.teams.each do |team|
+        @teamed[team] = Volunteer.where(team: team)
       end
-      @grouped
+      @teamed
     end
 end
 

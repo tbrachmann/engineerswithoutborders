@@ -2,8 +2,8 @@
 	<h1>Project Teams</h1>
 	<h5> Here you can see which volunteers each group has.</h5>
 	<br>
-	<% @grouped.each do |group, volunteers| %>
-  	<%= render 'groups', :locals => {:group => group, :volunteers => volunteers} %>
+	<% @teamed.each do |team, volunteers| %>
+  	<%= render 'team', :locals => {:team => team, :volunteers => volunteers} %>
   <br> 
 	<% end %>
 </div>
