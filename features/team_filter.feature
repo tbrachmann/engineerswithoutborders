@@ -21,25 +21,39 @@ Scenario: the team field is invisible to volunteers
   Given I am on the Volunteer page
   Then I should not see "team"
 
-# Scenario: people are assigned to groups by the admin
-#   Given I am on the list volunteers page
-#   And I press "edit" #maybe learn to make this edit pressed for a specific person.
-#   And I select "Haiti" from "A"
-#   And I press "edit volunteer"
-#   Then I should see "volunteer successfully edited"
-#   Then I am on the list volunteers page
-#   And I should see "A"
+# Scenario: no need to press refresh sees all volunteers
+#   Given I am on list volunteers page
+#   Then I should not see "team"
   
 Scenario: filtering based on the groups works properly.
   Given I am on the list volunteers page
   And I select "Haiti" from "team"
+  And I press "Refresh"
   Then I should not see "daniel"
   And I should not see "lawrence"
   And I should not see "kevin"
   And I should see "jio calderon"
   And I should see "carmen"
 
-  
+Scenario: admin can change the team of an volunteer
+  Given I am on the list volunteers page
+  And I select "Haiti" from "team"
+  And I press "Refresh"
+  Then I should see "jio"
+  And I should see "carmen"
+  And I click first edit  
+  Then I should see "Edit Page"
+  And I select "Kenya" from "Team"
+  And I press "Update Volunteer"
+  Then I should see "Volunteer was successfully updated."
+  And I follow "View All Volunteers"
+  And I select "Haiti" from "team"
+  And I press "Refresh"
+  And I should not see "jio calderon"
+  And I should see "carmen"
+  And I select "Kenya" from "team"
+  And I press "Refresh"
+  And I should see "jio calderon"
 
 
   

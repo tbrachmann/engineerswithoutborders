@@ -17,7 +17,6 @@ Given /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
       end
     end
   end
-# :nocov:
 
 And /^I am log in as an admin$/ do
 
@@ -32,3 +31,9 @@ And /^I am log in as an admin$/ do
     step 'I fill in "Password" with "password!"'
     step 'I press "Log in"'
 end
+
+
+And /^I click first edit$/ do
+  click_link('Edit', match: :first)
+end
+# :nocov:
