@@ -23,9 +23,9 @@ Scenario: Logging in
   And I fill in "Password" with "iloveewb"
   And I fill in "Confirmation" with "iloveewb"
   And I press "Create my account"
-  And I follow "Log in"
+  And I follow "Admin Login"
   And I fill in "Email" with "lawrencetvo@berkeley.edu"
   And I fill in "Password" with "iloveewb"
   And I press "Log in"
-  Then I should be on the list volunteers page
-  And I should see "Login successful!"
+  Then I should see "Login successful!"
+  And I should see "View All Volunteers"

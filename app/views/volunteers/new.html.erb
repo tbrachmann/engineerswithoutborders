@@ -81,7 +81,7 @@
                 <%= v.label :languages %> <%= v.text_field :languages, class: "new-volunteer-form-textfield" %>
             </div>
             <div class="col-md-6">
-                <%= v.label :fluency %> <%= v.text_field :fluency, class: "new-volunteer-form-textfield" %>
+                <%= v.label :fluency, "Level of Fluency" %> <%= v.text_field :fluency, class: "new-volunteer-form-textfield" %>
             </div>  
           </div>
         </div>
@@ -89,10 +89,10 @@
         <div class="row new-volunteer-form-row">
           <div>
             <div class="col-md-6">
-              <%= v.label :ewb_experience %> <%= v.text_field :ewb_experience, class: "new-volunteer-form-textfield" %>
+              <%= v.label :ewb_experience, "Previous EWB Experience" %> <%= v.text_field :ewb_experience, class: "new-volunteer-form-textfield" %>
             </div>
             <div class="col-md-6">
-              <%= v.label :international_experience %> <%= v.text_field :international_experience, class: "new-volunteer-form-textfield" %>
+              <%= v.label :international_experience, "Previous International Experience" %> <%= v.text_field :international_experience, class: "new-volunteer-form-textfield" %>
             </div>  
           </div>
         </div>
@@ -100,7 +100,7 @@
         <div class="row new-volunteer-form-row">
           <div>
             <div class="col-md-6">
-              <%= v.label :work_experience %> <%= v.text_field :work_experience, class: "new-volunteer-form-textfield" %>
+              <%= v.label :work_experience, "Previous Work Experience" %> <%= v.text_field :work_experience, class: "new-volunteer-form-textfield" %>
             </div>
             <div class="col-md-6">
               <%= v.label :reason %> <%= v.text_field :reason, class: "new-volunteer-form-textfield" %>
@@ -111,7 +111,7 @@
         <div class="row new-volunteer-form-row">
           <div>
             <div class="col-md-6">
-              <%= v.label :time_investment %> <%= v.select :time_investment, @time_invest %>
+              <%= v.label :time_investment, "Time Investment" %> <%= v.select :time_investment, @time_invest %>
             </div>
             <div class="col-md-6">
               <%= v.label :travel %> <%= v.check_box :travel, class: "new-volunteer-form-textfield" %>

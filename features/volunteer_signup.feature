@@ -13,7 +13,7 @@ Scenario: Filling out the Volunteer Form by subscribing
   And I fill in "City" with "Berkeley"
   And I select "CA" from "State"
   And I check "Subscribe"
-  And I press "Create Volunteer"
+  And I press "Sign Up!"
   Then I should see "Volunteer was successfully created."
   
 @javascript
@@ -24,9 +24,9 @@ Scenario: Filling out the Volunteer Form by joining project team
   And I fill in "Phone" with "650-999-0111"
   And I fill in "Email" with "helloworld@berkeley.edu"
   And I fill in "City" with "Berkeley"
-  And I check "Join project team"
+  And I check "Join a Project Team (See more options)"
   Then the detailed project information should be revealed
-  And I should see "Join project team"
+  And I should see "Please fill out all detail information you can!"
   And I select "Student" from "Status"
   And I select "Bachelors" from "Education"
   And I fill in "Major" with "Computer Science"
