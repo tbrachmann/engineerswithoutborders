@@ -17,17 +17,18 @@ class VolunteersController < ApplicationController
       @all_education = Volunteer.all_education
       @selected_education = params[:education]
             
-      @selected_major = params[:major]        
+      @selected_major = params[:major]    
+      
       if @selected_status != "Select"
         @volunteers = Volunteer.where(status: @selected_status)
-      elsif @selected_states == "Select"
+      elsif @selected_states != "Select"
         @volunteers = Volunteer.where(state: @selected_states)
-      elsif @selected_education == "Select"
+      elsif @selected_education != "Select"
         @volunteers = Volunteer.where(education: @selected_education)
       elsif @selected_major != nil
-        @volunteers = @volunteers.where(major: @selected_major)
+        @volunteers = Volunteer.where("major LIKE (?)", "%#{@selected_major}%")
       else
-      @volunteers = Volunteer.where(status: @selected_status, state: @selected_states, education: @selected_education, major: @selected_major)
+        @volunteers = Volunteer.where(status: @selected_status, state: @selected_states, education: @selected_education, major: @selected_major)
       end
     else
       redirect_to login_path
