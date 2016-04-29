@@ -71,19 +71,19 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.first_name.empty?
-      flash[:notice] = "Error: Invalid first name."
+      flash[:error] = "Error: Invalid first name."
       redirect_to new_volunteer_path
     elsif @volunteer.last_name.empty?
-      flash[:notice] = "Error: Invalid last name."
+      flash[:error] = "Error: Invalid last name."
       redirect_to new_volunteer_path
     elsif @volunteer.phone.empty? or ((@volunteer.phone =~ /^([0-9]{3}(\s|\-)?){2}[0-9]{4}$/) != 0)
-      flash[:notice] = "Error: Invalid phone number."
+      flash[:error] = "Error: Invalid phone number."
       redirect_to new_volunteer_path
     elsif @volunteer.email.empty? or ((@volunteer.email.upcase =~ /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/) != 0)
-      flash[:notice] = "Error: Invalid email address."
+      flash[:error] = "Error: Invalid email address."
       redirect_to new_volunteer_path
     elsif @volunteer.city.empty? 
-      flash[:notice] = "Error: Invalid City."
+      flash[:error] = "Error: Invalid City."
       redirect_to new_volunteer_path
     else
       respond_to do |format|
