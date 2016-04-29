@@ -29,10 +29,10 @@ class UsersController < ApplicationController
     #   flash[:notice]
     @user = User.new(user_params)
     if @user.email.empty? or ((@user.email.upcase =~ /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/) != 0)
-      flash[:notice] = "Invalid email address."
+      flash[:error] = "Invalid email address."
       render 'new'
     elsif @user.password.length < 4
-      flash[:notice] = "Your password must at least be 4 letters."
+      flash[:error] = "Your password must at least be 4 letters."
       render 'new'
     else
       if @user.save

@@ -7,7 +7,7 @@ Background: I am on the EWB home page
 
 Scenario: Signing up
   Given I am on the login page
-  And I follow "Sign up now!"
+  And I follow "sign up here!"
   And I fill in "Name" with "Lawrence Vo"
   And I fill in "Email" with "lawrencetvo@berkeley.edu"
   And I fill in "Password" with "iloveewb"
