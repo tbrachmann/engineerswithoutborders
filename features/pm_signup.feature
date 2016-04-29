@@ -17,7 +17,7 @@ Scenario: Signing up
 
 Scenario: Logging in
   Given I am on the login page
-  And I follow "Sign up now!"
+  And I follow "sign up here!"
   And I fill in "Name" with "Lawrence Vo"
   And I fill in "Email" with "lawrencetvo@berkeley.edu"
   And I fill in "Password" with "iloveewb"
