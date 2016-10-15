@@ -5,7 +5,7 @@ Feature: Registering Project Manager
 
 
 Scenario: Inviting Project Managers by email
-  Given I am logged into the admin panel
+  Given I am logged in as an admin
   When I follow "Add Project Managers"
   Then I should be on the create project manager page
   And I fill in "First Name" with "Cowardly"
