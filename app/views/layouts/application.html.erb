@@ -18,12 +18,21 @@
         <li class="nav-item active">
           <%= link_to("Home", root_path, class:"nav-link") %></a>
         </li>
-        <li class="nav-item">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to("Profile", user_path(current_user), class:"nav-link") %></a>
+          </li>
+          <li class="nav-item" style="float: right;">
+            <%= link_to("Logout", destroy_user_session_path, method: :delete, class:"nav-link") %></a>
+          </li>
+          <li class="nav-item" style="float: right;">
+            <div class="nav-link">Signed in as <strong><%= current_user.email %></strong></div>
+          </li>
+        <% else %>
+        <li class="nav-item" style="float: right;">
           <%= link_to("Login", user_session_path, class:"nav-link") %></a>
         </li>
-        <li class="nav-item">
-          <%= link_to("Profile", user_registration_path, class:"nav-link") %></a>
-        </li>
+        <% end %> 
       </ul>
     </nav>
 
@@ -31,8 +40,15 @@
       <%= yield %>
     </div>
     
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <div class="row">
+        <% if notice %>
+        <p class="alert alert-info"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+        <p class="alert alert-warning"><%= alert %></p>
+        <% end %>
+      </div>
+    </div>
   </body>
 </html>

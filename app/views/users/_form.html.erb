@@ -1,25 +1,32 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= simple_form_for @user do |f| %>
+  <fieldset>
+  <legend>Background Information</legend>
+  <div class="row">
+    <div class="col-md-5">
+    <%= f.input :first_name %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <div class="col-md-5">
+    <%= f.input :last_name %>
+    </div>
+    <div class="col-md-2">
+    <%= f.input :age, collection: 18..100 %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.input :education, collection: ["High School", "College", "Bachelors's Degree", "Master's Degree", "Doctorate Degree"] %>
+    </div>
+    <div class="col-md-6">
+      <%= f.input :expertise, label:"Field of study or expertise" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.button :submit, "Update Background", class: "btn btn-md btn-success"%>
+  </fieldset>
+  <p></p>
+  <fieldset>
+  <legend>Account Information</legend>
+  <%= f.input :email, disabled: true %>
+  <%= link_to "Change Email or Password", edit_user_registration_path, class: "btn btn-md btn-warning" %>
+  </fieldset>
 <% end %>
+<p></p>

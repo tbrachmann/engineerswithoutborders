@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
+  
   devise_for :users
-  get 'welcome/index' => 'welcome#index'
+  # suggested from http://stackoverflow.com/questions/10900664/rails-devise-how-can-i-edit-user-information
+  resources :users, only: [:show, :edit, :update]
 
-  root 'welcome#index'
-  
-  resources :users
-  
-  get 'signup' => 'users#new'
-  get 'show' => 'users#show'
-  get 'users' => 'users'
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
+
+  get 'welcome/index' => 'welcome#index'
+  root to: 'welcome#index'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

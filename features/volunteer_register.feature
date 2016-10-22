@@ -1,4 +1,4 @@
-Feature: Registering Volunteer
+Feature: User Registration
   As a person interested in joining Engineers Without Borders
   I should be able to register as a volunteer
   So that I can be added to projects
