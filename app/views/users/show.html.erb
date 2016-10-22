@@ -1,10 +1,31 @@
 <h2>Profile Information</h2>
-<p>
-  <strong>Name:</strong>
-  <%= @user.first_name %>
-  <%= @user.last_name %>
-</p>
-
+<div class="row">
+	<div class="col-md-12">
+	  <strong>Name:</strong>
+	  <%= @user.first_name %>
+	  <%= @user.last_name %>
+	</div>
+	<div class="col-md-12">
+	  <strong>Age:</strong>
+	  <%= @user.age %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		 <strong>Education:</strong>
+		<%= @user.education %>
+	</div>
+	<div class="col-md-12">
+		<strong>Expertise:</strong>
+		<%= @user.expertise %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<strong>About:</strong>
+		<%= @user.description %>
+	</div>
+</div>
 <p>
   <strong>Email:</strong>
   <%= @user.email %>

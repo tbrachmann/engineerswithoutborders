@@ -20,6 +20,11 @@
       <%= f.input :expertise, label:"Field of study or expertise" %>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.input :description, label: "About:", as: :text, hint: "Tell us briefly about yourself and why you want to volunteer for Engineers without Borders. Please also describe your general availability for events and projects.", autofocus: true, :input_html => {:style => 'width: 100%', :rows => 5, class: 'response-project'} %>
+    </div>
+  </div>
   <%= f.button :submit, "Update Background", class: "btn btn-md btn-success"%>
   </fieldset>
   <p></p>

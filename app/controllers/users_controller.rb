@@ -17,8 +17,12 @@ class UsersController < ApplicationController
     # Basic Information
     user.first_name = user_params[:first_name]
     user.last_name = user_params[:last_name]
+    user.age = user_params[:age]
+    user.education = user_params[:education]
+    user.expertise = user_params[:expertise]
     user.save
-    redirect_to root_path
+    flash[:notice] = "Profile was successfully updated."
+    redirect_to user_path(params[:id])
   end
 
   private
