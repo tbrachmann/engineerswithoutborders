@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # WELCOME ROUTES
   get 'welcome/index' => 'welcome#index'
   root to: 'welcome#index'
+  
+  get  'projects' => 'projects#projects'
 
 
 
