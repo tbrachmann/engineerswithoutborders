@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
   
+
+
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  # USER ROUTES
   devise_for :users
   # suggested from http://stackoverflow.com/questions/10900664/rails-devise-how-can-i-edit-user-information
   resources :users, only: [:show, :edit, :update]
 
-
+  # WELCOME ROUTES
   get 'welcome/index' => 'welcome#index'
   root to: 'welcome#index'
+
+
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
