@@ -11,11 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025002826) do
+ActiveRecord::Schema.define(version: 20161025164422) do
 
   create_table "projects", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "name"
+    t.string   "description"
+    t.integer  "volunteer_capacity"
+    t.integer  "volunteers"
+    t.string   "location"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,14 +45,10 @@ ActiveRecord::Schema.define(version: 20161025002826) do
     t.string   "school"
     t.string   "availability"
     t.boolean  "complete",               default: false
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "users_projects", id: false, force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "project_id"
-  end
 
 end

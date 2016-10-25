@@ -1,0 +1,22 @@
+<h2>Project Information</h2>
+<div class="row">
+	<div class="col-lg-12">
+		<h4><%= @project.name %></h4>
+	</div>
+	<div class="col-lg-12">
+		<p><%= @project.description %></p>
+	</div>
+	<div class="col-md-6">
+		<strong>Location: </strong>
+		<%= @project.location %>
+	</div>
+	<div class="col-md-6">
+		<p> Has <strong><%= @project.volunteers %></strong> volunteers, needs
+		<strong><%= @project.volunteer_capacity - @project.volunteers %></strong>
+		more!</p>
+	</div>
+</div>
+
+
+
+<%= link_to 'Home', root_path %>

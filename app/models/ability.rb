@@ -35,5 +35,8 @@ class Ability
       else
         can :read, :all
       end
+      if user.role? :manager
+        can :manage, Project
+    end
   end
 end
