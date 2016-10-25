@@ -1,5 +1,3 @@
 class Project < ActiveRecord::Base
-    def create
-        
-    end
+    has_and_belongs_to_many :users
 end

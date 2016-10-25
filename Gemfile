@@ -24,7 +24,6 @@ gem 'simple_form'
 gem 'devise'
 gem 'rails-assets-tether', '>= 1.1.0'
 gem 'kaminari'
-gem 'rails_admin'
 
 group :development, :test do
   gem 'sqlite3'

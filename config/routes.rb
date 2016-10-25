@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
   
-
-
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # USER ROUTES
   devise_for :users
   # suggested from http://stackoverflow.com/questions/10900664/rails-devise-how-can-i-edit-user-information
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update]
 
   # WELCOME ROUTES
   get 'welcome/index' => 'welcome#index'
