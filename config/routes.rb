@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   # suggested from http://stackoverflow.com/questions/10900664/rails-devise-how-can-i-edit-user-information
   resources :users, only: [:index, :show, :edit, :update]
-  resources :projects, only: [:index, :show, :new, :create]
+  resources :projects, only: [:index, :show, :new, :create, :edit, :update]
   # WELCOME ROUTES
   get 'welcome/index' => 'welcome#index'
   root to: 'welcome#index'
