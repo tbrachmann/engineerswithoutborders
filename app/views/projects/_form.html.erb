@@ -1,0 +1,8 @@
+<%= simple_form_for(Project.new) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :volunteer_capacity %>
+    <%= f.input :volunteers %>
+    <%= f.input :location %>
+    <%= f.button :submit %>
+<% end %>
