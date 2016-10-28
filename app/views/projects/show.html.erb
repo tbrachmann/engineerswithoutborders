@@ -15,7 +15,8 @@
 	</div>
 </div>
 
+<% if can? :manage, @project %>
+	<%= link_to 'Edit', edit_project_path(@project) %> 
+<% end %>
 
-
-<%= link_to 'Edit', edit_project_path(@project) %> 
 <!--<%= link_to 'Home', root_path %>-->

@@ -1,5 +1,9 @@
 <h1>Listing Projects</h1>
-<p><%= link_to "New Project", new_project_path %></p>
+
+<% if can? :manage, @project %>
+  <p><%= link_to "New Project", new_project_path %></p>
+<% end %>
+
 <hr>
 <ul>
 <% @projects.each do |project| %>

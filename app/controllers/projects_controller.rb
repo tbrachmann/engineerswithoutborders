@@ -3,8 +3,10 @@ class ProjectsController < ApplicationController
 		@projects = Project.page(params[:page]).per(3)
 	end
 	
+
 	def show
-		@project = Project.find(params[:id])
+		@project = Project.find(params[:id]) 
+
 	end
 	
 	def edit
@@ -35,7 +37,7 @@ class ProjectsController < ApplicationController
 	end
 	
 	def new 
-		@project = Project.new
+		@project = Project.new(project_params)
 	end
 	
 	def destroy

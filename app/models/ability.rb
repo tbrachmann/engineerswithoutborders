@@ -8,7 +8,7 @@ class Ability
     #   if user.admin?
     #     can :manage, :all
     #   else
-    #     can :read, :all
+    #     cnan :read, :all
     #   end
     #
     # The first argument to `can` is the action you are giving the user
@@ -30,13 +30,21 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
      user ||= User.new # guest user (not logged in)
-      if user.admin? #user admin?
-        can :manage, :all
+      # if user.has_role?(:admin) #user admin?
+      #   can :manage, :all
+      # else
+      #   can :read, :all
+      # end
+      # if user.has_role?(:manager)
+      #   can :manage, Project
+      # end
+      can :manage, :all if user.role == 'admin'
+      if user.role == 'manager'
+        can :manage, Project
       else
         can :read, :all
       end
-      if user.role? :manager
-        can :manage, Project
-    end
   end
 end
+
+
