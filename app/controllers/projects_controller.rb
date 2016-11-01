@@ -8,6 +8,13 @@ class ProjectsController < ApplicationController
 		@project = Project.find(params[:id]) 
 
 	end
+
+	def new
+		@project = Project.new
+		if not can? :manage, @project
+			redirect_to :back	
+		end
+	end
 	
 	def edit
 		@project = Project.find(params[:id])
@@ -36,17 +43,13 @@ class ProjectsController < ApplicationController
 	end			
 	
 	private
+	
+
 	def project_params
 		params.require(:project).permit(:name, :description, :volunteer_capacity, :volunteers, :location)
 	end
 	
-	def new 
-		@project = Project.new(project_params)
-		
-		if not can? :manage, @project
-			redirect_to :back	
-		end
-	end
+
 	
 	def destroy
 		@project = Project.find(params[:id])
