@@ -30,11 +30,6 @@ group :development, :test do
   gem 'sqlite3'
   
   gem 'byebug'
-
-  # If you plan to use JavaScript/CoffeeScript
-  gem 'selenium-webdriver' 
-  
-  gem 'headless'
 end
 
 group :development do
