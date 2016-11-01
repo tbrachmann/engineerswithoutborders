@@ -11,6 +11,10 @@ class ProjectsController < ApplicationController
 	
 	def edit
 		@project = Project.find(params[:id])
+		
+		if not can? :manage, @project
+			redirect_to :back	
+		end
 	end
 	
 	def create
@@ -38,6 +42,10 @@ class ProjectsController < ApplicationController
 	
 	def new 
 		@project = Project.new(project_params)
+		
+		if not can? :manage, @project
+			redirect_to :back	
+		end
 	end
 	
 	def destroy
