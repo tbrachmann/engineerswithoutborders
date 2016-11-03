@@ -2,7 +2,6 @@ class ProjectsController < ApplicationController
 	def index
 		@projects = Project.page(params[:page]).per(3)
 	end
-	
 
 	def show
 		@project = Project.find(params[:id]) 
@@ -44,12 +43,9 @@ class ProjectsController < ApplicationController
 	
 	private
 	
-
 	def project_params
 		params.require(:project).permit(:name, :description, :volunteer_capacity, :volunteers, :location)
 	end
-	
-
 	
 	def destroy
 		@project = Project.find(params[:id])
