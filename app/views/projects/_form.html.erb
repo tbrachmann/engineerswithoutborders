@@ -1,6 +1,8 @@
 <%= simple_form_for(@project) do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
+    <%= f.label :Start_Date %>:
+    <%= f.datetime_select :start_date, { :include_blank => false } %>
     <%= f.input :volunteer_capacity %>
     <%= f.input :volunteers %>
     <%= f.input :location %>
