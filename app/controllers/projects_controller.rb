@@ -1,8 +1,9 @@
 class ProjectsController < ApplicationController
-	before_filter :authenticate_user!, except: [ :index, :show, :destory, :update, :create ]
+	before_filter :authenticate_user!, except: [ :index, :show]
 	
 	def index
-		@projects = Project.page(params[:page]).per(3)
+		@all_projects = Project.all
+		@projects = @all_projects.page(params[:page]).per(3)
 	end
 
 	def show

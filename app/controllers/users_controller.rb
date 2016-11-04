@@ -5,19 +5,21 @@ class UsersController < ApplicationController
     redirect_to main_app.root_url, :alert => exception.message
   end
 
-  load_and_authorize_resource
-  
   def index
-    @users = User.page(params[:page]).per(3) 
+    @users = User.all
+    authorize! :read, @users
+    @users = @users.page(params[:page]).per(3)
   end
 
   def show
     @user = User.find(params[:id])
+    authorize! :read, @user
   end
   
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    authorize! :manage, @user
   end
 
   # PATCH/PUT /users/1

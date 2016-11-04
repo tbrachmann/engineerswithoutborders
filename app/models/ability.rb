@@ -30,17 +30,13 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
      user ||= User.new # guest user (not logged in)
-      # if user.has_role?(:admin) #user admin?
-      #   can :manage, :all
-      # else
-      #   can :read, :all
-      # end
-      # if user.has_role?(:manager)
-      #   can :manage, Project
-      # end
       can :manage, :all if user.role == "admin"
+      # manager abilities
       can :manage, Project if user.role == "manager"
-      can :read, User if user.role == "manager"  
+      can :read, User if user.role == "manager"
+      # volunteer abilities
+      can :read, User, :id => user.id  
+      can :manage, User, :id => user.id
   end
 end
 
