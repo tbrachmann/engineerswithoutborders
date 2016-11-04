@@ -38,15 +38,9 @@ class Ability
       # if user.has_role?(:manager)
       #   can :manage, Project
       # end
-      if user.role? :admin
-        can :manage, :all
-      end 
-      
-      if user.role? :manager
-        can :manage, Project
-      else
-        can :read, :all
-      end
+      can :manage, :all if user.role == "admin"
+      can :manage, Project if user.role == "manager"
+      can :read, User if user.role == "manager"  
   end
 end
 

@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   before_action only: [:show, :edit, :update]
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to main_app.root_url, :alert => exception.message
+  end
 
+  load_and_authorize_resource
+  
   def index
     @users = User.page(params[:page]).per(3) 
   end
