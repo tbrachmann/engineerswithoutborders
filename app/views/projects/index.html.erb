@@ -15,5 +15,20 @@
  </li>
 <% end %>
 <ul>
+<div id="projects">
+  <h2 id="month"><%= @date.strftime("%B %Y") %></h2>
+  <%= calendar @date do |date| %>
+	  <%= date.day %>
+	  <% if @projects_by_date[date] %>
+	    <ul>
+	        <% @projects_by_date[date].each do |project| %>
+	        <li><%= link_to project.name, project %></li>
+	        <% end %>
+	    </ul>
+    <% end %>  
+  <% end %>
+</div>
+
+  
 
 <%= paginate @projects %>
