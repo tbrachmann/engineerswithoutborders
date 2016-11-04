@@ -4,6 +4,8 @@ class ProjectsController < ApplicationController
 	def index
 		@all_projects = Project.all
 		@projects = @all_projects.page(params[:page]).per(3)
+		@projects_by_date = @projects.group_by(&:start_date)
+		@date = Date.today
 	end
 
 	def show
@@ -46,7 +48,7 @@ class ProjectsController < ApplicationController
 	private
 	
 	def project_params
-		params.require(:project).permit(:name, :description, :start_date, :volunteer_capacity, :volunteers, :location)
+		params.require(:project).permit(:name, :description, :start_date, :volunteer_capacity, :volunteers, :location, :image)
 	end
 	
 
