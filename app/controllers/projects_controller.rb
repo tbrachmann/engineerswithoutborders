@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+	before_filter :authenticate_user!, except: [ :index, :show, :destory, :update, :create ]
+	
 	def index
 		@projects = Project.page(params[:page]).per(3)
 	end
@@ -6,15 +8,14 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id]) 
-
 	end
 	
 	def edit
 		@project = Project.find(params[:id])
 		
-		if not can? :manage, @project
-			redirect_to :back	
-		end
+		#if not can? :manage, @project
+		#	redirect_to :back	
+		#end
 	end
 	
 	def create
@@ -40,12 +41,12 @@ class ProjectsController < ApplicationController
 		params.require(:project).permit(:name, :description, :volunteer_capacity, :volunteers, :location)
 	end
 	
-	def new 
-		@project = Project.new(project_params)
+	def new
+		#if current_user.admin?
+		#	redirect_to root_path
+		#end
 		
-		if not can? :manage, @project
-			redirect_to :back	
-		end
+		@project = Project.new(project_params)
 	end
 	
 	def destroy
