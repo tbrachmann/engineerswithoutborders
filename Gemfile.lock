@@ -67,8 +67,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    childprocess (0.5.9)
-      ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
     churn (0.0.35)
       chronic (>= 0.2.3)
@@ -129,7 +127,6 @@ GEM
     erubis (2.7.0)
     execjs (2.6.0)
     fattr (2.2.2)
-    ffi (1.9.10)
     flay (2.7.0)
       erubis (~> 2.7.0)
       ruby_parser (~> 3.0)
@@ -144,7 +141,6 @@ GEM
       activesupport (>= 4.1.0)
     haml (4.0.7)
       tilt
-    headless (2.2.3)
     hirb (0.7.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -302,7 +298,6 @@ GEM
     ruby-progressbar (1.7.5)
     ruby_parser (3.8.1)
       sexp_processor (~> 4.1)
-    rubyzip (1.2.0)
     sass (3.4.21)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -313,10 +308,6 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    selenium-webdriver (2.53.0)
-      childprocess (~> 0.5)
-      rubyzip (~> 1.0)
-      websocket (~> 1.0)
     sexp_processor (4.7.0)
     simple_form (3.3.1)
       actionpack (> 4, < 5.1)
@@ -363,7 +354,6 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
-    websocket (1.2.2)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -382,7 +372,6 @@ DEPENDENCIES
   database_cleaner
   devise
   haml
-  headless
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
@@ -396,7 +385,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  selenium-webdriver
   simple_form
   simplecov
   spring

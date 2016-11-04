@@ -4,10 +4,16 @@ class ProjectsController < ApplicationController
 	def index
 		@projects = Project.page(params[:page]).per(3)
 	end
-	
 
 	def show
 		@project = Project.find(params[:id]) 
+	end
+
+	def new
+		@project = Project.new
+		if not can? :manage, @project
+			redirect_to :back	
+		end
 	end
 	
 	def edit
@@ -37,18 +43,12 @@ class ProjectsController < ApplicationController
 	end			
 	
 	private
+	
 	def project_params
 		params.require(:project).permit(:name, :description, :volunteer_capacity, :volunteers, :location)
 	end
 	
-	def new
-		#if current_user.admin?
-		#	redirect_to root_path
-		#end
-		
-		@project = Project.new(project_params)
-	end
-	
+
 	def destroy
 		@project = Project.find(params[:id])
 		@project.destroy
