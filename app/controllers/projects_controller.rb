@@ -14,9 +14,7 @@ class ProjectsController < ApplicationController
 
 	def new
 		@project = Project.new
-		if not can? :manage, @project
-			redirect_to :back	
-		end
+		@events = @project.events.find_all
 	end
 	
 	def edit
@@ -48,7 +46,7 @@ class ProjectsController < ApplicationController
 	private
 	
 	def project_params
-		params.require(:project).permit(:name, :description, :start_date, :volunteer_capacity, :volunteers, :location, :image)
+		params.require(:project).permit(:name, :description, :start_date, :volunteer_capacity, :volunteers, :location, :image, :hours_per_week)
 	end
 	
 
