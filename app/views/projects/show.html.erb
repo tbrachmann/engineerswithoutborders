@@ -1,5 +1,5 @@
 <h2>Project Information</h2>
-<p><%= link_to "Create New Event", new_event_path %></p>
+<p><%= link_to "Create New Event", new_event_path, class: "btn btn-md btn-success" %></p>
 <div class="row">
 	<%= image_tag @project.image.url(:medium) %>
 	
@@ -33,16 +33,11 @@
 	</div>
 </div>
 
-
-
-
-
-
-
-
 <% if can? :manage, @project %>
-	<%= link_to 'Edit', edit_project_path(@project) %> 
+	  <%= link_to 'Edit Project', edit_project_path(@project), class: "btn btn-md btn-primary" %> |
+    <%= link_to 'Home', root_path, class: "btn btn-md btn-primary" %>
+<% else %>
+    <%= link_to 'Home', root_path, class: "btn btn-md btn-primary" %>
 <% end %>
 <br>
 <br>
-<%= link_to 'Home', root_path %>
