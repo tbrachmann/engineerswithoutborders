@@ -9,21 +9,19 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-		@project = Project.find(params[:id]) 
-		@all_events = @project.events.find_all
+		@project = Project.find(params[:id])
+		@all_events = Event.all
+
+		session[:current_project_id] = @project.id
 	end
 
 	def new
 		@project = Project.new
-		@all_events = @project.events.find_all
+		@all_events = Event.all
 	end
 	
 	def edit
 		@project = Project.find(params[:id])
-		
-		#if not can? :manage, @project
-		#	redirect_to :back	
-		#end
 	end
 	
 	def create
@@ -45,11 +43,10 @@ class ProjectsController < ApplicationController
 	end			
 	
 	private
-	
+
 	def project_params
 		params.require(:project).permit(:name, :description, :start_date, :volunteer_capacity, :volunteers, :location, :image, :hours_per_week)
 	end
-	
 
 	def destroy
 		@project = Project.find(params[:id])

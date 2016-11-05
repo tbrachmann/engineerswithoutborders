@@ -14,40 +14,33 @@ class EventsController < ApplicationController
     	
     def edit
     	@event = Event.find(params[:id])
-    		#if not can? :manage, @project
-    		#	redirect_to :back	
-    		#end
     end
     	
     def create
-		@event = Event.new(event_params)
-		@project = current_user
-		if @project
-		    @event.project_id = @project.id
-		end
-		if @event.save
-			redirect_to @event, notice: "Successfully created event."
-		else
-			render :new
-		end
- 	end
-    	
+			@event = Event.new(event_params)
+			@event.project_id = session[:current_project_id]
+			if @event.save
+				redirect_to @event, notice: "Successfully created event."
+			else
+				render :new
+			end
+ 		end
+
     def update
 	    @event = Event.find(params[:id])
-		if @event.update(event_params)
-			redirect_to @event, notice: "Successfully updated event."
-		else
-			render :edit
+			if @event.update(event_params)
+				redirect_to @event, notice: "Successfully updated event."
+			else
+				render :edit
+			end
 		end
-	end			
     	
     private
-    	
+
     def event_params
     	params.require(:event).permit(:name, :description, :start_time, :end_time, :location, :repeats, :days, :project_id)
     end
-    	
-    
+
     def destroy
     	@event = Event.find(params[:id])
     	@event.destroy

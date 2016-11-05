@@ -25,7 +25,7 @@
 	<div class="col-lg-12">
 	    <ul>
 	        <% @all_events.each do |event| %>
-	        	<% if event.project_id == @project_id %>
+	        	<% if event.project_id == @project.id %>
 	        		<li><%= link_to event.name, event %></li>
 	        	<% end %>
 	        <% end %>	
