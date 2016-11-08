@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
     def index
     	@all_events = Event.all
-    	@events = @all_events.page(params[:page]).per(3)
+    	@events = @all_events.page(params[:page]).per(7)
     end
     
     def show
