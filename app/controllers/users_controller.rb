@@ -19,6 +19,10 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @education_choices = ["GED", "College Student", "Bachelor's Degree", "Master's Degree", "Doctorate Degree"]
+    @proficiency_choices = ["1 - Elementary Proficiency, 2 - Limited Working Proficiency, 3 - Minimum Professional Proficiency, 4 - Full Professional Proficiency, 5 - Native or Bilingual Proficiency"]
+    @availability_choices = ["Not Available", "Morning", "Afternoon", "Evening", "Any Time"]
+    @time_commitment_choices = ["1-3 hours every month", "1-3 hours every week", "More than 3 hours per week"]
     authorize! :manage, @user
   end
 
