@@ -19,3 +19,6 @@
 //= require bootstrap
 //= require_tree .
 
+$( function() {
+$( "#project_start_date" ).datepicker();
+} );

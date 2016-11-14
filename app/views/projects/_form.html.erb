@@ -2,7 +2,7 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.label :Start_Date %>:
-    <%= f.datetime_select :start_date, { :include_blank => false } %>
+    <%= f.text_field :start_date %>
     <%= f.input :volunteer_capacity %>
     <%= f.input :volunteers %>
     <%= f.input :location %>
@@ -13,3 +13,9 @@
     <%= f.file_field :image %><br><br>
     <%= f.button :submit, class: "btn btn-md btn-success" %><br><br>
 <% end %>
+
+<script>
+  $( function() {
+    $( "#project_start_date" ).datepicker();
+  } );
+  </script>
