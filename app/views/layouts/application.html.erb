@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html>
+  <style>
+    .wrapper {
+    width: 1325px;
+}
+  </style>
   <head>
     <script async defer type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <title><%= full_title(yield(:title)) %></title>
@@ -13,6 +18,7 @@
     <![endif]-->
   </head>
   <body>
+    <div class="wrapper">
     <nav class="navbar navbar-fixed-top" style="background-color: #ededed">
       <a class="navbar-brand" href="#"><%= image_tag("ewb-sfp-logo.png", height:"32") %></a>
       <ul class="nav navbar-nav">
@@ -59,6 +65,7 @@
         <p class="alert alert-danger"><%= flash[:warning] %></p>
         <% end %>
       </div>
+    </div>
     </div>
   </body>
 </html>
