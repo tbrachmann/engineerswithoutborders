@@ -1,5 +1,5 @@
 <h2>Project Information</h2>
-<p><%= link_to "Create New Event", new_event_path, class: "btn btn-md btn-success" %></p>
+<p><%= link_to "Create Another Event", new_event_path, class: "btn btn-md btn-success" %></p>
 <div class="row">
 
   <% if @project.image_file_name != nil %>
@@ -7,14 +7,16 @@
   <% end %>
 
 	<div class="col-lg-12">
-		<h4><%= @project.name %></h4>
+		<h4>Project Name: <%= @project.name %></h4>
 	</div>
 	<div class="col-lg-12">
-		<p><%= @project.description %></p>
+		<p>Project Description:<%= @project.description %></p>
 	</div>
-	<div class="col-lg-12">
-		<p>This project will start on <%= @project.start_date.to_date %>.</p>
-	</div>
+	<% if @project.start_date.to_date > DateTime.now %>
+		<div class="col-lg-12"><p>Starting on: <%= @project.start_date.to_date %>.</p></div>
+	<% else %>
+		<div class="col-lg-12"><p>Started on: <%= @project.start_date.to_date %>.</p></div>
+	<% end %>
 	
 	<div class="col-md-6">
 		<strong>Location: </strong>
