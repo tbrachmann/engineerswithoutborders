@@ -2,7 +2,10 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.label :Start_Date %>:
-    <%= f.text_field :start_date %>
+    <%= f.text_field :start_date, 'data-behaviour' => 'datepicker' %>
+    <script type="text/javascript">
+      $('[data-behaviour~=datepicker]').datepicker();
+    </script>
     <%= f.input :volunteer_capacity %>
     <%= f.input :volunteers %>
     <%= f.input :location %>
@@ -14,8 +17,3 @@
     <%= f.button :submit, class: "btn btn-md btn-success" %><br><br>
 <% end %>
 
-<script>
-  $( function() {
-    $( "#project_start_date" ).datepicker();
-  } );
-  </script>

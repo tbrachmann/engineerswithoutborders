@@ -16,11 +16,13 @@
 //= require jquery_ujs
 //= require jquery-ui
 
+
 //= require turbolinks
 //= require tether
 //= require bootstrap
+//= require bootstrap-datepicker
 //= require_tree .
 
-$( function() {
-$( "#project_start_date" ).datepicker();
-} );
+// $( function() {
+// $( "#project_start_date" ).datepicker();
+// } );
