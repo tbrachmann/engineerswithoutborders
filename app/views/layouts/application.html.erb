@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html>
+  <style>
+    .wrapper {
+    width: 1325px;
+}
+  </style>
   <head>
     <title><%= full_title(yield(:title)) %></title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all',
                                               'data-turbolinks-track': 'reload' %>
@@ -12,6 +21,7 @@
     <![endif]-->
   </head>
   <body>
+    <div class="wrapper">
     <nav class="navbar navbar-fixed-top" style="background-color: #ededed">
       <a class="navbar-brand" href="#"><%= image_tag("ewb-sfp-logo.png", height:"32") %></a>
       <ul class="nav navbar-nav">
@@ -58,6 +68,7 @@
         <p class="alert alert-danger"><%= flash[:warning] %></p>
         <% end %>
       </div>
+    </div>
     </div>
   </body>
 </html>

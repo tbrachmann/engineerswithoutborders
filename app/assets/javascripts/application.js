@@ -14,8 +14,13 @@
 //= require jquery-ui
 //= require autocomplete-rails
 //= require jquery_ujs
+//= require jquery-ui
+
 //= require turbolinks
 //= require tether
 //= require bootstrap
 //= require_tree .
 
+$( function() {
+$( "#project_start_date" ).datepicker();
+} );
