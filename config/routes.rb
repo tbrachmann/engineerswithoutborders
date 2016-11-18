@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
   resources :projects, only: [:index, :show, :new, :create, :edit, :update]
   resources :events, only: [:index, :show, :new, :create, :edit, :update]
-  
+  resources :users do
+    get :autocomplete_user_school, :on => :collection
+end
   # WELCOME ROUTES
   get 'welcome/index' => 'welcome#index'
   root to: 'welcome#index'
