@@ -8,13 +8,14 @@ class UsersController < ApplicationController
   end
 
   def index
-    if params[:direction] != nil
-      @users = User.order(params[:sort] + " " + params[:direction])
-    else
-      @users = User.order(params[:id])
-    end
-    authorize! :read, @users
-    @users = @users.page(params[:page]).per(10)
+    # if params[:direction] != nil
+    #   @users = User.order(params[:sort] + " " + params[:direction])
+    # else
+    #   @users = User.order(params[:id])
+    # end
+    @search = User.search(params[:q])
+    @users = @search.result.page(params[:page]).per(10)
+    @search.build_condition
   end
   
   def age_sorting

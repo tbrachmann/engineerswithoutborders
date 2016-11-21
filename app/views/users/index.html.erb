@@ -1,8 +1,16 @@
 <h1>Listing Users</h1>
 
-<%= sortable 'age', 'Filter Age'%>
-<%= sortable 'first_name', 'Filter First Name'%>
-
+<div class="row">
+<div class="col-md-12">
+<%= search_form_for @search, url: search_users_path, method: :post do |f| %>
+    <%= f.condition_fields do |c| %>
+        <%= render "condition_fields", f: c %>
+    <% end %>
+    <p><%= link_to_add_fields "Add Conditions", f, :condition %></p>
+    <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+</div>
+</div>
 
 <hr>
 <% @users.each do |user| %>
