@@ -27,6 +27,10 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @education_choices = ["GED", "College Student", "Bachelor's Degree", "Master's Degree", "Doctorate Degree"]
+    @proficiency_choices = ["1 - Elementary Proficiency, 2 - Limited Working Proficiency, 3 - Minimum Professional Proficiency, 4 - Full Professional Proficiency, 5 - Native or Bilingual Proficiency"]
+    @availability_choices = ["Not Available", "Morning", "Afternoon", "Evening", "Any Time"]
+    @time_commitment_choices = ["1-3 hours every month", "1-3 hours every week", "More than 3 hours per week"]
     authorize! :manage, @user
   end
 
@@ -45,7 +49,30 @@ class UsersController < ApplicationController
     user.school = user_params[:school]
     user.expertise = user_params[:expertise]
     user.description = user_params[:description]
-    user.availability = user_params[:availability]
+    user.certifications = user_params[:certifications]
+    user.phone = user_params[:phone]
+    user.zip = user_params[:zip]
+    # languages
+    user.lang1 = user_params[:lang1]
+    user.lang1_fluency = user_params[:lang1_fluency]
+    user.lang2 = user_params[:lang2]
+    user.lang2_fluency = user_params[:lang2_fluency]
+    # availability
+    user.time_commitment = user_params[:time_commitment]
+    user.sunday_availability = user_params[:sunday_availability]
+    user.monday_availability = user_params[:monday_availability]
+    user.tuesday_availability = user_params[:tuesday_availability]
+    user.wednesday_availability = user_params[:wednesday_availability]
+    user.thursday_availability = user_params[:thursday_availability]
+    user.friday_availability = user_params[:friday_availability]
+    user.saturday_availability = user_params[:saturday_availability]
+    user.availability_comments = user_params[:availability_comments]
+
+
+
+
+
+
     user.save
     
     # update complete flag
