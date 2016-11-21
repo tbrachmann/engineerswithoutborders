@@ -55,6 +55,8 @@ GEM
     bootstrap (4.0.0.alpha4)
       autoprefixer-rails (>= 6.0.3)
       sass (>= 3.4.19)
+    bootstrap-datepicker-rails (1.6.4.1)
+      railties (>= 3.0)
     builder (3.2.2)
     byebug (8.2.2)
     cancancan (1.15.0)
@@ -244,6 +246,8 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails4-autocomplete (1.1.1)
+      rails (>= 3.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -375,6 +379,7 @@ DEPENDENCIES
   autotest-rails
   bcrypt (~> 3.1.7)
   bootstrap (~> 4.0.0.alpha4)
+  bootstrap-datepicker-rails
   byebug
   cancancan (~> 1.10)
   coffee-rails (~> 4.1.0)
@@ -393,6 +398,7 @@ DEPENDENCIES
   pg
   rails (= 4.2.5)
   rails-assets-tether (>= 1.1.0)
+  rails4-autocomplete
   rails_12factor
   rails_admin (~> 1.0)
   rspec-rails
@@ -408,4 +414,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.13.5
+   1.13.6
