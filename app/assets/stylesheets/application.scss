@@ -11,9 +11,11 @@ body { padding-top: 70px; }
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require jquery.ui.datepicker
+ *= require jquery-ui
  *= require_self
  *= require_tree .
  *= require jquery-ui
+ *= require bootstrap-datepicker
  */
  
  
