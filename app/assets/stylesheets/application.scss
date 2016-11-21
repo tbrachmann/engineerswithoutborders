@@ -1,5 +1,7 @@
 @import "bootstrap";
-body { padding-top: 70px; }
+
+body { 
+  padding-top: 70px; }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -25,6 +27,9 @@ p, div {
     font-family: 'Nobile', Helvetica, Arial, sans-serif;
 }
 
+body {
+  background: url("asanoha-400px.png") repeat 0 0;
+}
  #projects .calendar {
   border-collapse: collapse;
   width: 100%;
@@ -37,7 +42,7 @@ p, div {
   }
 
   th {
-    background: #DDD;
+  
     color: #666;
     text-align: center;
     width: 14.2857142857143%;
@@ -70,4 +75,11 @@ p, div {
 #projects ul {
   font-size: 11px;
   padding-left: 20px;
+}
+
+h1 { 
+    text-shadow: 1px 1px 1px #ccc;
+}
+h2 { 
+    box-shadow: 0 0 3px 1px  #ccc;
 }
