@@ -18,7 +18,13 @@ body { padding-top: 70px; }
  *= require bootstrap-datepicker
  */
  
- 
+ h1, h2, h3, h4, h5, h6 {
+    font-family: 'Corben', Georgia, Times, serif;
+}
+p, div {
+    font-family: 'Nobile', Helvetica, Arial, sans-serif;
+}
+
  #projects .calendar {
   border-collapse: collapse;
   width: 100%;
