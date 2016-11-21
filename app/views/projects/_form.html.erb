@@ -2,10 +2,8 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.label :Start_Date %>:
-    <%= f.text_field :start_date, 'data-behaviour' => 'datepicker' %>
-    <script type="text/javascript">
-      $('[data-behaviour~=datepicker]').datepicker();
-    </script>
+    <%= f.label :Start_Date %>:
+    <%= f.datetime_select :start_date, { :include_blank => false } %>
     <%= f.input :volunteer_capacity %>
     <%= f.input :volunteers %>
     <%= f.input :location %>
@@ -16,4 +14,3 @@
     <%= f.file_field :image %><br><br>
     <%= f.button :submit, class: "btn btn-md btn-success" %><br><br>
 <% end %>
-
