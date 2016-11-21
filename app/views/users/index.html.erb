@@ -1,13 +1,14 @@
 <h1>Listing Users</h1>
 
+<%= sortable 'age', 'Filter Age'%>
 
 <hr>
 <% @users.each do |user| %>
   <div class="row">
     <div class="col-md-7">
     <a href=<%= user_path(user) %>><strong><%= user.first_name %> <%= user.last_name %></strong></a> <br>
-    <strong>Age:</strong> <%= user.age %> 
-    <strong>Education:</strong> <%= user.education %> from <%= user.school %>
+    <strong>Age: </strong> <%= user.age %>
+    <strong>Education: </strong> <%= user.education %> from <%= user.school %>
     <strong> Field: </strong> <%= user.expertise %><br>
     <strong>Availability: </strong><%= user.availability %> <br>
     </div>
