@@ -20,9 +20,21 @@ class UsersController < ApplicationController
   def age_sorting
     @users = User.all
     @users = @users.order(age: :desc)
-
     render :users => 'index'
   end
+  
+  def first_name_sorting
+    @users = User.all
+    @users = @users.order(first_name :desc)
+    render :users => 'index'
+  end
+  
+  def last_name_sorting
+    @users = User.all
+    @users = @users.order(last_name :desc)
+    render :users => 'index'
+  end
+  
   
   def show
     @user = User.find(params[:id])
