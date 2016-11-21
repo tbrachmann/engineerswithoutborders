@@ -8,21 +8,34 @@ class UsersController < ApplicationController
   end
 
   def index
-    if params[:direction] != nil
-      @users = User.order(params[:sort] + " " + params[:direction])
-    else
-      @users = User.order(params[:id])
-    end
-    authorize! :read, @users
-    @users = @users.page(params[:page]).per(10)
+    # if params[:direction] != nil
+    #   @users = User.order(params[:sort] + " " + params[:direction])
+    # else
+    #   @users = User.order(params[:id])
+    # end
+    @search = User.search(params[:q])
+    @users = @search.result.page(params[:page]).per(10)
+    @search.build_condition
   end
   
   def age_sorting
     @users = User.all
     @users = @users.order(age: :desc)
-
     render :users => 'index'
   end
+  
+  def first_name_sorting
+    @users = User.all
+    @users = @users.order(first_name :desc)
+    render :users => 'index'
+  end
+  
+  def last_name_sorting
+    @users = User.all
+    @users = @users.order(last_name :desc)
+    render :users => 'index'
+  end
+  
   
   def show
     @user = User.find(params[:id])
