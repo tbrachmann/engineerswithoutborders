@@ -4,7 +4,7 @@
 <ul>
 <% @events.each do |event| %>
 <li>
-  <h4><a href="<%= event_path(event.id) %>" ><%= event.name %></a></h4>
+  <h4><a href="<%= event_path(event.id) %>" ><%= event.name %></a></h4> <b><%= event.project.name %></b>
   <p><%= event.description %><p>
   </p>
   </p>
