@@ -1,5 +1,7 @@
 @import "bootstrap";
-body { padding-top: 70px; }
+
+body { 
+  padding-top: 70px; }
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -18,7 +20,16 @@ body { padding-top: 70px; }
  *= require bootstrap-datepicker
  */
  
- 
+ h1, h2, h3, h4, h5, h6 {
+    font-family: 'Corben', Georgia, Times, serif;
+}
+p, div {
+    font-family: 'Nobile', Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: url("asanoha-400px.png") repeat 0 0;
+}
  #projects .calendar {
   border-collapse: collapse;
   width: 100%;
@@ -31,7 +42,7 @@ body { padding-top: 70px; }
   }
 
   th {
-    background: #DDD;
+  
     color: #666;
     text-align: center;
     width: 14.2857142857143%;
@@ -64,4 +75,11 @@ body { padding-top: 70px; }
 #projects ul {
   font-size: 11px;
   padding-left: 20px;
+}
+
+h1 { 
+    text-shadow: 1px 1px 1px #ccc;
+}
+h2 { 
+    box-shadow: 0 0 3px 1px  #ccc;
 }

@@ -10,6 +10,14 @@
 	However, before we can effectively match you to projects, we need to know a little more information about you. Please take a couple minutes to complete your newly created profile with some background information.
 	<p>
 	<%= link_to "Update Your Profile", edit_user_path(current_user), class: "btn btn-md btn-danger" %>
+	<h2>Other things you can do! </h2></br>
+    <h4>Check out current events that are happening! </h4>
+    <div><%= link_to("Event Listings", events_path, class:"btn btn-md btn-primary") %></a>	</div></br>
+    <h4> Check out current projects we are working on and see how you can help! </h4>	
+    <div>
+    	<%= link_to("Projects Listings", projects_path, class:"btn btn-md btn-primary") %></a>	
+    </div>
+
 <% else %>
 	<h3>You're all set!</h3>
 	<p>
@@ -17,5 +25,17 @@
 	</p>
 	<p>
 	In the meantime, if you want to make changes to your profile you can update it at any time.
+	<%= link_to "Update Your Profile", edit_user_path(current_user), class: "btn btn-md btn-danger" %>
+
 	</p>
+	
+	<h2>Other things you can do! </h2></br>
+    <h4>Check out current events that are happening! </h4>
+    <div><%= link_to("Event Listings", events_path, class:"btn btn-md btn-primary") %></a>	</div></br>
+    <h4> Check out current projects we are working on and see how you can help! </h4>	
+    <div>
+    	<%= link_to("Projects Listings", projects_path, class:"btn btn-md btn-primary") %></a>	
+    </div>
+	
+	
 <% end %>
