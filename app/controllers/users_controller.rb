@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action only: [:show, :edit, :update]
+  before_action only: [:show, :edit, :update, :age_sorting]
   
   autocomplete :user, :school
   
@@ -11,8 +11,14 @@ class UsersController < ApplicationController
     @users = User.all
     authorize! :read, @users
     @users = @users.page(params[:page]).per(3)
+    @users = @users.order(age: :desc)
+    
   end
-
+  
+  def age_sorting
+    @users = @users.order(age: :desc)
+  end
+  
   def show
     @user = User.find(params[:id])
     authorize! :read, @user
