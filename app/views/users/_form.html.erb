@@ -40,13 +40,13 @@
         <p>If you have proficiency in other languages than English, please indicate below:</p>
       </div>
       <div class="col-md-4">
-        <%= f.input :lang1, label:"Second Language:" %>
+        <%= f.input :lang1, label:"First Language:", collection: LanguageList::COMMON_LANGUAGES %>
       </div>
       <div class="col-md-8">
         <%= f.input :lang1_fluency, collection: @levels_of_proficiency, label:"Fluency:" %>
       </div>
       <div class="col-md-4">
-        <%= f.input :lang2, label:"Third Language:" %>
+        <%= f.input :lang2, label:"Second Language:", collection: LanguageList::COMMON_LANGUAGES  %>
       </div>
       <div class="col-md-8">
         <%= f.input :lang2_fluency, collection: @levels_of_proficiency, label:"Fluency:" %>

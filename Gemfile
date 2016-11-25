@@ -18,6 +18,7 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-datepicker-rails'
 gem "paperclip", "~>4.2"
 gem 'rails4-autocomplete'
+gem 'language_list', '~> 1.1'
 gem 'turbolinks'
 gem 'ransack'
 gem 'jbuilder', '~> 2.0'
