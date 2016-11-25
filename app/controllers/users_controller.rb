@@ -7,6 +7,16 @@ class UsersController < ApplicationController
     redirect_to main_app.root_url, :alert => exception.message
   end
 
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      UserMailer.signup_confirmation(@user).deliver
+      redirect_to @user, notice: "Signed up successfully"
+    else
+      render :new
+    end
+  end
+
   def index
     # if params[:direction] != nil
     #   @users = User.order(params[:sort] + " " + params[:direction])
@@ -49,6 +59,7 @@ class UsersController < ApplicationController
     @proficiency_choices = ["1 - Elementary Proficiency, 2 - Limited Working Proficiency, 3 - Minimum Professional Proficiency, 4 - Full Professional Proficiency, 5 - Native or Bilingual Proficiency"]
     @availability_choices = ["Not Available", "Morning", "Afternoon", "Evening", "Any Time"]
     @time_commitment_choices = ["1-3 hours every month", "1-3 hours every week", "More than 3 hours per week"]
+    @travel_availability = ["Yes", "No"]
     authorize! :manage, @user
   end
 
@@ -76,6 +87,7 @@ class UsersController < ApplicationController
     user.lang2 = user_params[:lang2]
     user.lang2_fluency = user_params[:lang2_fluency]
     # availability
+    user.travel = user_params[:travel]
     user.time_commitment = user_params[:time_commitment]
     user.sunday_availability = user_params[:sunday_availability]
     user.monday_availability = user_params[:monday_availability]
@@ -85,6 +97,7 @@ class UsersController < ApplicationController
     user.friday_availability = user_params[:friday_availability]
     user.saturday_availability = user_params[:saturday_availability]
     user.availability_comments = user_params[:availability_comments]
+    
 
 
 

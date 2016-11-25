@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109002236) do
+ActiveRecord::Schema.define(version: 20161125182841) do
 
   create_table "events", force: :cascade do |t|
     t.datetime "created_at",                        null: false
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20161109002236) do
     t.string   "saturday_availability"
     t.string   "availability_comments"
     t.string   "certifications"
+    t.string   "travel"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
