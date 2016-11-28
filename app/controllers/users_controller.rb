@@ -60,6 +60,7 @@ class UsersController < ApplicationController
     @availability_choices = ["Not Available", "Morning", "Afternoon", "Evening", "Any Time"]
     @time_commitment_choices = ["1-3 hours every month", "1-3 hours every week", "More than 3 hours per week"]
     @travel_availability = ["Yes", "No"]
+    @field_choices = ["Civil Engineering","Environmental Engineering","Mechanical Engineering","Electrical Engineering","Materials Science","Chemical Engineering","Hydraulics / Hydrology","Computer Science","Education","International Development"]
     authorize! :manage, @user
   end
 

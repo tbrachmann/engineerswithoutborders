@@ -22,7 +22,7 @@
       <%= f.input :school, label:"Name of University/College" %>
     </div>
     <div class="col-md-3">
-      <%= f.input :expertise, label:"Field of study or expertise" %>
+      <%= f.input :expertise, label:"Field of study or expertise", collection: @field_choices %>
     </div>
     <div class="col-md-3">
       <%= f.input :certifications, label:"Certifications related to field" %>
