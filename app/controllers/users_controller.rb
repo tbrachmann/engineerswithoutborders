@@ -18,14 +18,11 @@ class UsersController < ApplicationController
   end
 
   def index
-    # if params[:direction] != nil
-    #   @users = User.order(params[:sort] + " " + params[:direction])
-    # else
-    #   @users = User.order(params[:id])
-    # end
+    @user = User.all
     @search = User.search(params[:q])
     @users = @search.result.page(params[:page]).per(10)
     @search.build_condition
+    authorize! :read, @user
   end
   
   def age_sorting
@@ -101,12 +98,6 @@ class UsersController < ApplicationController
     user.saturday_availability = user_params[:saturday_availability]
     user.availability_comments = user_params[:availability_comments]
     
-
-
-
-
-
-
     user.save
     
     # update complete flag
