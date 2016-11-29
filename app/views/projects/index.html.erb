@@ -1,6 +1,6 @@
 <h1>Listing Projects</h1>
 
-<% if can? :manage, @project %>
+<% if can? :read, :all %>
   <p><%= link_to "Create New Project", new_project_path, class: "btn btn-md btn-success" %></p>
 <% end %>
 
