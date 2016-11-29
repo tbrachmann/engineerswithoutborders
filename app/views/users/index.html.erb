@@ -23,12 +23,31 @@
     <strong>Availability: </strong><%= user.availability %> <br>
     </div>
     <div class="col-md-2">
-    <button type="button" class="btn btn-primary btn-sm btn-block">Contact</button>
-    <button type="button" class="btn btn-info btn-sm btn-block">Add to Shortlist</button>
-    <button type="button" class="btn btn-success btn-sm btn-block">Invite to Project</button>
+    <button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal">Contact <%= user.first_name %></button>
     </div>
   </div>
   <hr>
 <% end %>
+<!-- Modal -->
 
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" contenteditable="true">Engineers Without Borders Project Invitation</h4>
+      </div>
+      <div class="modal-body" >
+        <p class="form-control" contenteditable="true">After looking over your qualifications, I think that you would be a great fit for my project! Please accept my invitation to join.</p>
+      </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 <%= paginate @users %>
