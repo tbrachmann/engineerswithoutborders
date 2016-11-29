@@ -38,9 +38,11 @@
           <li class="nav-item">
             <%= link_to("Event Listings", events_path, class:"nav-link") %></a>
           </li>
+          <% if can? :read, :all %>
           <li class="nav-item">
-            <%= link_to("User Listings", users_path, class:"nav-link") %></a>
+            <%= link_to("Find Volunteers", users_path, class:"nav-link") %></a>
           </li>
+          <% end %>
           <li class="nav-item" style="float: right;">
             <%= link_to("Logout", destroy_user_session_path, method: :delete, class:"nav-link") %></a>
           </li>

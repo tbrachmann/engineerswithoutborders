@@ -5,18 +5,18 @@
 	<p>
 	<%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-md btn-primary" %>
 <% elsif not current_user.complete %>
-	<h3>Your account has been created!</h3>
+	<h2>Your account has been created...<font color = "red"> but we need some more information!</font></h2>
 	<p>
-	However, before we can effectively match you to projects, we need to know a little more information about you. Please take a couple minutes to complete your newly created profile with some background information.
+	Before we can effectively match you to projects, we need to know a little more about you. Please take a couple minutes to complete your newly created profile with some background information.
 	<p>
 	<%= link_to "Update Your Profile", edit_user_path(current_user), class: "btn btn-md btn-danger" %>
-	<h2>Other things you can do! </h2></br>
-    <h4>Check out current events that are happening! </h4>
-    <div><%= link_to("Event Listings", events_path, class:"btn btn-md btn-primary") %></a>	</div></br>
-    <h4> Check out current projects we are working on and see how you can help! </h4>	
-    <div>
-    	<%= link_to("Projects Listings", projects_path, class:"btn btn-md btn-primary") %></a>	
-    </div>
+	<br></br>
+	<h4>Other things you can do! </h4>
+	<%= link_to("Event Listings", events_path, class:"btn btn-sm btn-primary") %>
+    <p>Check out current events that are happening!  </p>
+       <%= link_to("Projects Listings", projects_path, class:"btn btn-sm btn-primary") %>
+    <p> Check out current projects we are working on and see how you can help!</p>  	
+</p>	
 
 <% else %>
 	<h3>You're all set!</h3>
@@ -26,16 +26,11 @@
 	<p>
 	In the meantime, if you want to make changes to your profile you can update it at any time.
 	<%= link_to "Update Your Profile", edit_user_path(current_user), class: "btn btn-md btn-danger" %>
+	<br></br>
+	<h4>Other things you can do! </h4>
+	<%= link_to("Event Listings", events_path, class:"btn btn-sm btn-primary") %>
+    <p>Check out current events that are happening!  </p>
+       <%= link_to("Projects Listings", projects_path, class:"btn btn-sm btn-primary") %>
+    <p> Check out current projects we are working on and see how you can help!</p>  	
 
-	</p>
-	
-	<h2>Other things you can do! </h2></br>
-    <h4>Check out current events that are happening! </h4>
-    <div><%= link_to("Event Listings", events_path, class:"btn btn-md btn-primary") %></a>	</div></br>
-    <h4> Check out current projects we are working on and see how you can help! </h4>	
-    <div>
-    	<%= link_to("Projects Listings", projects_path, class:"btn btn-md btn-primary") %></a>	
-    </div>
-	
-	
 <% end %>
