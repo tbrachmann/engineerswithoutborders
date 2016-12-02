@@ -8,31 +8,8 @@
     <%= f.datetime_select :end_time, { :include_blank => false } %>
     <br>
     <%= f.input :location %>
-    <%= f.input :repeats, label: 'Repeats?',  as: :radio_buttons %>
+    <%= f.input :repeats, label: "Repeats:", collection: ["Yes", "No"] %>
 
-    <div>
-      <%= f.label :daysRepeated, label: 'Days Repeated: ' %>
-      <%= f.label 'Monday: ' %>
-      <%= check_box_tag 'event[daysRepeated][]', 'Monday', @event.daysRepeated.include?('Monday') %>
-
-      <%= f.label 'Tuesday: ' %>
-      <%= check_box_tag 'event[daysRepeated][]', 'Tuesday', @event.daysRepeated.include?('Tuesday') %>
-
-      <%= f.label 'Wednesday: ' %>
-      <%= check_box_tag 'event[daysRepeated][]', 'Wednesday', @event.daysRepeated.include?('Wednesday') %>
-
-      <%= f.label 'Thursday: ' %>
-      <%= check_box_tag 'event[daysRepeated][]', 'Thursday', @event.daysRepeated.include?('Thursday') %>
-
-      <%= f.label 'Friday: ' %>
-      <%= check_box_tag 'event[daysRepeated][]', 'Friday', @event.daysRepeated.include?('Friday') %>
-
-      <%= f.label 'Saturday: ' %>
-      <%= check_box_tag 'event[daysRepeated][]', 'Saturday', @event.daysRepeated.include?('Saturday') %>
-
-      <%= f.label 'Sunday: ' %>
-      <%= check_box_tag 'event[daysRepeated][]', 'Sunday', @event.daysRepeated.include?('Sunday') %>
-    </div>
 
     <%= f.button :submit, class: "btn btn-md btn-success" %><br><br>
 <% end %>
