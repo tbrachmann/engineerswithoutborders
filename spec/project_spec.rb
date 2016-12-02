@@ -49,3 +49,13 @@ RSpec.describe Project, "#location" do
     end
   end
 end
+
+RSpec.describe Project, "#hours_per_week" do
+  context "when a project manager enters the time commitment for a project" do
+    it "saves the value into the hours_per_week field" do
+      project = Project.new
+      project.hours_per_week = 5
+      expect(project.hours_per_week).to eq 5
+    end
+  end
+end
