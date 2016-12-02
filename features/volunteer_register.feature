@@ -14,3 +14,5 @@ Scenario: Filling out the Volunteer Form by subscribing
   Then I should see "Update Your Profile"
   Then I should see "Event Listings"
   Then I should see "Project Listings"
+
+Scenario:

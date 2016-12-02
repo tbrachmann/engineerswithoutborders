@@ -4,10 +4,10 @@
   <div class="row">
     <!--Basic Info-->
     <div class="col-md-5">
-    <%= f.input :first_name %>
+    <%= f.input :first_name, label: "First Name:" %>
     </div>
     <div class="col-md-5">
-    <%= f.input :last_name %>
+    <%= f.input :last_name, label: "Last Name:" %>
     </div>
     <div class="col-md-2">
     <%= f.input :age, collection:  15 .. 100 %>
@@ -16,22 +16,22 @@
   <div class="row">
   <!--Education and background-->
     <div class="col-md-3">
-      <%= f.input :education, collection: @education_choices %>
+      <%= f.input :education, label: "Education:", collection: @education_choices %>
     </div>
     <div class="col-md-3">
-      <%= f.input :school, label:"Name of University/College" %>
+      <%= f.input :school, label:"Name of University/College:" %>
     </div>
     <div class="col-md-3">
-      <%= f.input :expertise, label:"Field of study or expertise", collection: @field_choices %>
+      <%= f.input :expertise, label:"Field of Study or Expertise:", collection: @field_choices %>
     </div>
     <div class="col-md-3">
-      <%= f.input :certifications, label:"Certifications related to field", collection: @certificate_choices %>
+      <%= f.input :certifications, label:"Certifications Related to Field:", collection: @certificate_choices %>
     </div>
   </div>
   <div class="row">
     <!--Outreach Information-->
     <div class="col-md-6">
-      <%= f.input :phone, label: "Phone Number" %>
+      <%= f.input :phone, label: "Phone Number:" %>
     </div>
   </div>
   <div class="row">
@@ -42,14 +42,14 @@
       <div class="col-md-4">
         <%= f.input :lang1, label:"First Language:", collection: LanguageList::COMMON_LANGUAGES %>
       </div>
-      <div class="col-md-8">
-        <%= f.input :lang1_fluency, collection: @levels_of_proficiency, label:"Fluency:" %>
+      <div class="col-md-6">
+        <%= f.input :lang1_fluency, label:"First Language Fluency:", collection: @proficiency_choices %>
       </div>
       <div class="col-md-4">
         <%= f.input :lang2, label:"Second Language:", collection: LanguageList::COMMON_LANGUAGES  %>
       </div>
-      <div class="col-md-8">
-        <%= f.input :lang2_fluency, collection: @levels_of_proficiency, label:"Fluency:" %>
+      <div class="col-md-6">
+        <%= f.input :lang2_fluency, label:"Second Language Fluency:", collection: @proficiency_choices %>
       </div>
   </div>
   <div class="row">
@@ -57,7 +57,7 @@
       <%= f.input :time_commitment, label: "Please indicate how much time you are interested in volunteering:", collection: @time_commitment_choices %>
     </div>
     <div class="col-md-12">
-      <%= f.input :travel, label: "Please indicate whether or not you can travel.", collection: @travel_availability %>
+      <%= f.input :travel, label: "Please indicate whether or not you can travel:", collection: @travel_availability %>
     </div>
 
     <!--availability-->
