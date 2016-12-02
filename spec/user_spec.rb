@@ -30,16 +30,6 @@ RSpec.describe User, "#age" do
     end
 end
 
-RSpec.describe User, "#last_name" do 
-    context "when the user first enters in their last name" do 
-        it "will save the age into the age field" do
-            user = User.new
-            user.last_name = "Smith"
-            expect(user.last_name).to eq "Smith"
-        end
-    end
-end
-
 RSpec.describe User, "#education" do 
     context "when the user first enters in their education status" do 
         it "will save the education status into the education field" do
