@@ -1,4 +1,3 @@
-require 'user'
 require 'spec_helper'
 
 RSpec.describe User, "#first_name" do 
