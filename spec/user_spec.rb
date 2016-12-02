@@ -1,4 +1,4 @@
-require 'user'
+require 'spec_helper'
 
 RSpec.describe User, "#first_name" do 
     context "when the user first enters in their first name" do 

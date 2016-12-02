@@ -35,6 +35,8 @@ gem 'rails_admin', '~> 1.0'
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'test-unit'
 end
 
 group :development do
@@ -47,7 +49,6 @@ end
 
 # Setup Cucumber, RSpec, autotest support
 group :test do
-  gem 'rspec-rails'
   gem 'simplecov', :require => false
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
