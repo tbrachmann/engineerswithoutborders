@@ -9,7 +9,7 @@ Scenario: Updating Profile Information
   When I follow "Profile"
   And I follow "Edit Profile"
   And I select "Bachelor's Degree" from "Education"
-  And I fill in "Field of study or expertise" with "Computer Science"
+  And I select "Computer Science" from "Field of study or expertise"
   #And I fill in "Certification" with "PE"
   #And I fill in "Languages" with "Spanish"
   #And I fill in "Level of Fluency" with "Proficient"
