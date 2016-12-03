@@ -20,7 +20,6 @@ RSpec.describe Event, "#description" do
     end
 end
 
-
 RSpec.describe Event, "#location" do 
     context "when the user enters in a location for a new event" do 
         it "will save the location into the field" do
