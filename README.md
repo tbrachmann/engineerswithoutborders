@@ -5,7 +5,7 @@
 
 CS 169 Fall 2016.
 This project is based on the work of the previous group from Spring 2016.
-https://ancient-river-67510.herokuapp.com/
+https://protected-escarpment-64354.herokuapp.com
 
 [Pivotal Tracker](https://www.pivotaltracker.com/projects/1887169/memberships?page=1)
 
