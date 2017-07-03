@@ -1,5 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/mark-craig/engineerswithoutborders/badges/gpa.svg)](https://codeclimate.com/github/mark-craig/engineerswithoutborders)
-[![Code Climate](https://codeclimate.com/github/mark-craig/engineerswithoutborders/badges/coverage.svg)](https://codeclimate.com/github/mark-craig/engineerswithoutborders)
+[![Code Climate](https://codeclimate.com/github/mark-craig/engineerswithoutborders/badges/cove.svg)](https://codeclimate.com/github/mark-craig/engineerswithoutborders)
 [![Build Status](https://travis-ci.org/mark-craig/engineerswithoutborders.svg?branch=master)](https://travis-ci.org/mark-craig/engineerswithoutborders)
 
 # Engineer Without Borders' Volunteer System
