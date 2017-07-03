@@ -1,17 +1,17 @@
 [![Code Climate](https://codeclimate.com/github/mark-craig/engineerswithoutborders/badges/gpa.svg)](https://codeclimate.com/github/mark-craig/engineerswithoutborders)
+[![Code Climate](https://codeclimate.com/github/mark-craig/engineerswithoutborders/badges/coverage.svg)](https://codeclimate.com/github/mark-craig/engineerswithoutborders)
 [![Build Status](https://travis-ci.org/mark-craig/engineerswithoutborders.svg?branch=master)](https://travis-ci.org/mark-craig/engineerswithoutborders)
 
 # Engineer Without Borders' Volunteer System
 
-CS 169 Fall 2016.
-This project is based on the work of the previous group from Spring 2016.
-https://protected-escarpment-64354.herokuapp.com
+CS 169 Summer 2017.
+This project is based on the work of the previous groups from Spring 2016 and Fall 2016.
 
-[Pivotal Tracker](https://www.pivotaltracker.com/projects/1887169/memberships?page=1)
+[Heroku App](https://morning-earth-50247.herokuapp.com/)
 
-[Client Intro](https://youtu.be/FlaDXKL6-yk)
+[Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2071107)
 
-[ScreenCast](https://youtu.be/71nNvWm0Itk)
+[Client Intro](https://www.youtube.com/watch?v=vTYoWUjP5xo&feature=youtu.be)
 
 Project Summary:
 
