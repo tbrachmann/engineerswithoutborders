@@ -5,11 +5,11 @@
 
 CS 169 Fall 2016.
 This project is based on the work of the previous group from Spring 2016.
-https://protected-escarpment-64354.herokuapp.com
+https://morning-earth-50247.herokuapp.com/
 
-[Pivotal Tracker](https://www.pivotaltracker.com/projects/1887169/memberships?page=1)
+[Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2071107)
 
-[Client Intro](https://youtu.be/FlaDXKL6-yk)
+[Client Intro](https://www.youtube.com/watch?v=vTYoWUjP5xo&feature=youtu.be)
 
 [ScreenCast](https://youtu.be/71nNvWm0Itk)
 
