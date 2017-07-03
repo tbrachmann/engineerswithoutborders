@@ -32,7 +32,7 @@ gem 'rails-assets-tether'
 gem 'kaminari'
 gem 'rails_admin'
 gem 'json'
-gem 'rake'
+gem 'rake', '10.4.2'
 
 group :development, :test do
   gem 'sqlite3'
