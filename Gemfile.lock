@@ -435,6 +435,7 @@ DEPENDENCIES
   rails4-autocomplete
   rails_12factor
   rails_admin
+  rake
   ransack
   rspec-rails
   sass-rails

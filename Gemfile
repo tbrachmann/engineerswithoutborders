@@ -32,6 +32,7 @@ gem 'rails-assets-tether'
 gem 'kaminari'
 gem 'rails_admin'
 gem 'json'
+gem 'rake'
 
 group :development, :test do
   gem 'sqlite3'
