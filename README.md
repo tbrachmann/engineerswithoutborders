@@ -3,15 +3,15 @@
 
 # Engineer Without Borders' Volunteer System
 
-CS 169 Fall 2016.
-This project is based on the work of the previous group from Spring 2016.
+CS 169 Summer 2017.
+This project is based on the work of the previous groups from Spring 2016 and Fall 2016.
+
 https://morning-earth-50247.herokuapp.com/
 
 [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2071107)
 
 [Client Intro](https://www.youtube.com/watch?v=vTYoWUjP5xo&feature=youtu.be)
 
-[ScreenCast](https://youtu.be/71nNvWm0Itk)
 
 Project Summary:
 
