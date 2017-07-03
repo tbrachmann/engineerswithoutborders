@@ -1,36 +1,36 @@
 source 'https://rubygems.org'
 
-#ruby '2.2.2'
+ruby '2.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Boostrap for styling
-gem 'bootstrap', '~> 4.0.0.alpha4'
+gem 'bootstrap'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap-datepicker-rails'
-gem "paperclip", "~>4.2"
+gem "paperclip"
 gem 'rails4-autocomplete'
-gem 'language_list', '~> 1.1'
+gem 'language_list'
 gem 'turbolinks'
 gem 'ransack'
-gem 'jbuilder', '~> 2.0'
+gem 'jbuilder'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'jquery-turbolinks'
-gem 'bcrypt', '~> 3.1.7'
-gem 'cancancan', '~> 1.10'
+gem 'bcrypt'
+gem 'cancancan'
 gem 'simple_form'
 gem 'devise'
-gem 'rails-assets-tether', '>= 1.1.0'
+gem 'rails-assets-tether'
 gem 'kaminari'
-gem 'rails_admin', '~> 1.0'
+gem 'rails_admin'
 gem 'json'
 
 group :development, :test do
@@ -42,7 +42,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
