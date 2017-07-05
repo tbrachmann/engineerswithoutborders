@@ -1,5 +1,5 @@
-[![Code Climate](https://codeclimate.com/github/codeclimate/codeclimate/badges/gpa.svg)](https://codeclimate.com/github/tbrachmann/engineerswithoutborders)
-[![Test Coverage](https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg)](https://codeclimate.com/github/tbrachmann/engineerswithoutborders/coverage)
+[![Code Climate](https://codeclimate.com/github/tbrachmann/engineerswithoutborders/badges/gpa.svg)](https://codeclimate.com/github/tbrachmann/engineerswithoutborders)
+[![Test Coverage](https://codeclimate.com/github/tbrachmann/engineerswithoutborders/badges/coverage.svg)](https://codeclimate.com/github/tbrachmann/engineerswithoutborders/coverage)
 [![Build Status](https://travis-ci.org/tbrachmann/engineerswithoutborders.svg?branch=master)](https://travis-ci.org/tbrachmann/engineerswithoutborders)
 
 # Engineer Without Borders' Volunteer System
