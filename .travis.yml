@@ -1,10 +1,20 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=7aa7f481fab6b43c98fd0c009f4bea7803b8578b528751ee4aa7d6db69ba5799
+    - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
 language: ruby
 rvm:
-  - 2.2.2 # may need to update this
-
+  - 2.2.2
 before_script:
-  - psql -c "CREATE USER sfewb WITH PASSWORD 'cs169';" -U postgres
-  - bundle exec rake db:migrate RAILS_ENV=test
-notifications:
-  email: false
-
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+script:
+  - rake db:migrate
+  - bundle exec rspec
+# Preferably you will run test-reporter on branch update events. But
+# if you setup travis to build PR updates only, you don't need to run
+# the line below
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+# In the case where travis is setup to build PR updates only,
+# uncomment the line below
+# - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
