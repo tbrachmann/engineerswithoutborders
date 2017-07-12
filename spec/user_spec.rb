@@ -90,3 +90,57 @@ RSpec.describe User, "#travel" do
     end
 end
 
+# Association tests added by TRB
+
+RSpec.describe User, :type => :model do
+    describe "Regular user" do
+        before(:each) do 
+            @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
+            @example_project = FactoryGirl.create(:project)
+        end
+        it "Has a valid factory" do
+            expect(@example_user).to be_valid
+            expect(@example_project).to be_valid
+        end
+        context "When a new user is created" do
+            # I'm confused. Sometimes these return nil, sometimes they return a 
+            # CollectionProxy
+            it "will not be linked to any projects" do
+                expect(@example_user.projects.count).to eq 0
+            end
+            it "will not manage any projects" do
+                expect(@example_project.manager).to be_nil
+            end
+        end
+        context "When a user is added to a project" do
+            it "will be linked to a project" do
+            end
+            it "user will be in the list of project's volunteers" do
+            end
+        end
+        context "When a user is a part of multiple projects" do
+            it "will have multiple projects" do
+            end
+            it "projects will have multiple users" do
+            end
+        end
+    end
+    describe "Manager" do
+        context "When a new manager is created" do
+            context "Manager has one project" do
+                it "will automatically be linked to a project" do
+                end
+                it "will not be linked to any other projects" do
+                end
+                it "project will be linked to its manager" do
+                end
+            end
+            context "Manager has multiple projects" do
+                it "will have multiple projects" do
+                end
+                it "both projects will point to their manager" do
+                end
+            end
+        end
+    end
+end
