@@ -41,6 +41,7 @@ group :development, :test do
   gem 'test-unit'
   gem 'factory_girl_rails'
   gem 'faker'
+  gem 'guard-rspec'
 end
 
 group :development do

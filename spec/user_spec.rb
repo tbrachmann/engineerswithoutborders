@@ -93,54 +93,80 @@ end
 # Association tests added by TRB
 
 RSpec.describe User, :type => :model do
-    describe "Regular user" do
-        before(:each) do 
-            @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
-            @example_project = FactoryGirl.create(:project)
-        end
-        it "Has a valid factory" do
-            expect(@example_user).to be_valid
-            expect(@example_project).to be_valid
-        end
-        context "When a new user is created" do
-            # I'm confused. Sometimes these return nil, sometimes they return a 
-            # CollectionProxy
-            it "will not be linked to any projects" do
-                expect(@example_user.projects.count).to eq 0
-            end
-            it "will not manage any projects" do
-                expect(@example_project.manager).to be_nil
-            end
-        end
-        context "When a user is added to a project" do
-            it "will be linked to a project" do
-            end
-            it "user will be in the list of project's volunteers" do
-            end
-        end
-        context "When a user is a part of multiple projects" do
-            it "will have multiple projects" do
-            end
-            it "projects will have multiple users" do
-            end
-        end
+  describe "Regular user" do
+    before(:each) do
+      #Need to manually specify the password here, otherwise it won't work,
+      #because of "Strong Params"
+      @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
+      @example_project = FactoryGirl.create(:project)
     end
-    describe "Manager" do
-        context "When a new manager is created" do
-            context "Manager has one project" do
-                it "will automatically be linked to a project" do
-                end
-                it "will not be linked to any other projects" do
-                end
-                it "project will be linked to its manager" do
-                end
-            end
-            context "Manager has multiple projects" do
-                it "will have multiple projects" do
-                end
-                it "both projects will point to their manager" do
-                end
-            end
-        end
+    it "Has a valid factory" do
+      expect(@example_user).to be_valid
+      expect(@example_project).to be_valid
     end
+    context "When a new user is created" do
+      # I'm confused. Sometimes these return nil, sometimes they return a 
+      # CollectionProxy
+      # Nil if its a singular relation and CollectionProxy otherwise?
+      it "will not be linked to any projects" do
+        expect(@example_user.projects.count).to eq 0
+      end
+      it "will not manage any projects" do
+        expect(@example_project.manager).to be_nil
+      end
+      it "will not be a part of any projects" do
+        expect(@example_project.users.count).to eq 0
+      end
+    end
+    context "When a user is added to a project" do
+      before(:each) do
+        #Try this method of adding objects to a has_many relation
+        @example_user.projects << @example_project
+      end
+      it "will be linked to a project" do
+        expect(@example_user.projects.count).to eq 1
+        expect(@example_user.projects.first.name).to match @example_project.name
+      end
+      it "user will be in the list of project's volunteers" do
+        expect(@example_project.users.count).to eq 1
+        expect(@example_project.users.first.first_name).to match @example_user.first_name
+      end
+    end
+    context "When a user is a part of multiple projects" do
+      before(:each) do
+        @example_user2 = FactoryGirl.create(:user, password: "adfghjkl")
+        @example_project2 = FactoryGirl.create(:project)
+        @example_user.projects << @example_project
+        @example_user.projects << @example_project2
+        @example_user2.projects << @example_project
+        @example_user2.projects << @example_project2
+      end
+      it "will have multiple projects" do
+        expect(@example_user.projects.count).to eq 2
+      end
+      it "projects will have multiple users" do
+        expect(@example_project.users.count).to eq 2
+      end
+    end
+  end
+  describe "Manager" do
+    context "When a new manager is created" do
+      context "Manager has one project" do
+        it "will automatically be linked to a project" do
+        end
+        it "will not be linked to any other projects" do
+        end
+        it "project will be linked to its manager" do
+        end
+        it "project will not have more than one manager" do
+        end
+      end
+      context "Manager has multiple projects" do
+        it "will have multiple projects" do
+        end
+        it "both projects will point to their manager" do
+        end
+      end
+    end
+  end
 end
