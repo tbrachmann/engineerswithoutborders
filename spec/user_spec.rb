@@ -91,6 +91,7 @@ RSpec.describe User, "#travel" do
 end
 
 # Association tests added by TRB
+# TODO: test destroying as well
 
 RSpec.describe User, :type => :model do
   describe "Regular user" do
@@ -98,6 +99,8 @@ RSpec.describe User, :type => :model do
       #Need to manually specify the password here, otherwise it won't work,
       #because of "Strong Params"
       @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
+      #operating under the assumption that a project can be created without
+      #a manager.
       @example_project = FactoryGirl.create(:project)
     end
     it "Has a valid factory" do
@@ -150,22 +153,37 @@ RSpec.describe User, :type => :model do
     end
   end
   describe "Manager" do
-    context "When a new manager is created" do
-      context "Manager has one project" do
-        it "will automatically be linked to a project" do
-        end
-        it "will not be linked to any other projects" do
-        end
-        it "project will be linked to its manager" do
-        end
-        it "project will not have more than one manager" do
-        end
+    before(:each) do
+      @example_manager = FactoryGirl.create(:manager, password: "asdfghjkl")
+      @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
+      #operating under the assumption that a project can be created without
+      #a manager.
+      @example_project = FactoryGirl.create(:project)
+    end
+    it "has a valid factory" do
+      expect(@example_manager).to be_valid
+      expect(@example_project).to be_valid
+    end
+    context "Manager has one project" do
+      before(:each) do
+        @example_user.manages << @example_project
+#        @example_project.managers << @example_manager
       end
-      context "Manager has multiple projects" do
-        it "will have multiple projects" do
-        end
-        it "both projects will point to their manager" do
-        end
+      it "will be linked to its project" do
+        expect(@example_user.manages.first.name).to match @example_project.name
+        #expect(@example_manager.project.name).to match @example_project.name
+      end
+      it "will not be linked to any other projects" do
+        
+      end
+      it "project will be linked to its manager" do
+        expect(@example_project.managers.first.first_name).to match @example_manager.first_name
+      end
+    end
+    context "Manager has multiple projects" do
+      it "will have multiple projects" do
+      end
+      it "both projects will point to their manager" do
       end
     end
   end

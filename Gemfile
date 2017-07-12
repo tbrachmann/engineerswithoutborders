@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.4.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.9'
 gem 'sprockets-rails', :require => 'sprockets/railtie'
 # Boostrap for styling
 gem 'bootstrap'
@@ -22,7 +22,7 @@ gem 'language_list'
 gem 'turbolinks'
 gem 'ransack'
 gem 'jbuilder'
-gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sdoc' # , '~> 0.4.0', group: :doc
 gem 'jquery-turbolinks'
 gem 'bcrypt'
 gem 'cancancan'
@@ -32,7 +32,7 @@ gem 'rails-assets-tether'
 gem 'kaminari'
 gem 'rails_admin'
 gem 'json'
-gem 'rake', '10.4.2'
+gem 'rake' # , '10.4.2'
 
 group :development, :test do
   gem 'sqlite3'
