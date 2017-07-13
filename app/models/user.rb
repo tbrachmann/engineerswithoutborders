@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   ROLES = %w[admin manager volunteer].freeze
   
+  
 end

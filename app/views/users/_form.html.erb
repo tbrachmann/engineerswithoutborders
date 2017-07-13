@@ -90,6 +90,14 @@
   </div>
   <!-- other details -->
   <div class="row">
+    <div class="col-xl-12">
+      <%= simple_form_for @user do |f| %>
+        <%= f.association :skills %>
+      <% end %>
+    </div>
+  </div>
+  
+  <div class="row">
     <div class="col-md-12">
     <%= f.input :description, label: "About:", as: :text, hint: "Please tell us very briefly a little about yourself and why you want to volunteer for Engineers without Borders.", :input_html => {:style => 'width: 100%', :rows => 4, class: 'response-project'} %>
     </div>
