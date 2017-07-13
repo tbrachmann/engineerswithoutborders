@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170708020714) do
+ActiveRecord::Schema.define(version: 20170712234535) do
 
   create_table "events", force: :cascade do |t|
     t.datetime "created_at",  null: false
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20170708020714) do
     t.string   "days"
     t.integer  "project_id"
   end
+
+  create_table "manager_relationships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+  end
+
+  add_index "manager_relationships", ["project_id"], name: "index_manager_relationships_on_project_id"
+  add_index "manager_relationships", ["user_id"], name: "index_manager_relationships_on_user_id"
 
   create_table "projects", force: :cascade do |t|
     t.datetime "created_at",         null: false
@@ -42,11 +50,6 @@ ActiveRecord::Schema.define(version: 20170708020714) do
     t.datetime "image_updated_at"
     t.integer  "hours_per_week"
     t.integer  "manager_id"
-  end
-
-  create_table "projects_users", id: false, force: :cascade do |t|
-    t.integer "user_id",    null: false
-    t.integer "project_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -94,5 +97,14 @@ ActiveRecord::Schema.define(version: 20170708020714) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "volunteer_relationships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+    t.string  "role"
+  end
+
+  add_index "volunteer_relationships", ["project_id"], name: "index_volunteer_relationships_on_project_id"
+  add_index "volunteer_relationships", ["user_id"], name: "index_volunteer_relationships_on_user_id"
 
 end
