@@ -67,4 +67,10 @@ guard :rspec, cmd: "bundle exec rspec" do
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
+
+  # User & Project watching
+  watch(%r{^app/models/(user|project)\.rb}) { "#{rspec.spec_dir}/user_spec.rb" }
+
+
+  
 end

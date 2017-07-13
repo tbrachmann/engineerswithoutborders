@@ -125,7 +125,6 @@ RSpec.describe User, :type => :model do
       before(:each) do
         @example_user2 = FactoryGirl.create(:user, password: "asdfghjkl")
         @example_user3 = FactoryGirl.create(:user, password: "asdfghjkl")
-        #Try this method of adding objects to a has_many relation
         #No role
         @example_user.projects << @example_project
         #with role
@@ -133,6 +132,7 @@ RSpec.describe User, :type => :model do
         #assign role after
         @example_user3.projects << @example_project
         @example_project.assign_role(@example_user3, "engineer")
+        @example_project.assign_role(@example_user3, "cook")
       end
       it "user will be linked to a project" do
         expect(@example_user.projects.count).to eq 1
@@ -140,16 +140,18 @@ RSpec.describe User, :type => :model do
       end
       it "users will be in the list of project's volunteers" do
         expect(@example_project.volunteers.count).to eq 3
-        expect(@example_project.volunteers.first.first_name).to match @example_user.first_name
+        expect(@example_project.volunteers.first.first_name)
+          .to match @example_user.first_name
       end
       it "user 2 and 3 will have correct roles" do
-        expect(@example_project.role_of(@example_user)).to match "No role"
-        expect(@example_project.role_of(@example_user2)).to match "programmer"
-        expect(@example_project.role_of(@example_user3)).to match "engineer"
+        expect(@example_project.role_of(@example_user)).to be_nil
+        expect(@example_project.role_of(@example_user2)).to include "programmer"
+        expect(@example_project.role_of(@example_user3)).to include "engineer"
       end
       it "user can have multiple roles" do
         @example_project.assign_role(@example_user2, "cook")
-        expect(@example_project.role_of(@example_user2)).to match "programmer, cook"
+        expect(@example_project.role_of(@example_user2))
+          .to match_array ["programmer", "cook"]
       end
       it "catches error and returns false if volunteer does not exist" do
         @fake_user = instance_double('User', id: 10)
@@ -197,7 +199,8 @@ RSpec.describe User, :type => :model do
         #expect(@example_manager.project.name).to match @example_project.name
       end
       it "project will be linked to its manager" do
-        expect(@example_project.managers.first.first_name).to match @example_manager.first_name
+        expect(@example_project.managers.first.first_name)
+          .to match @example_manager.first_name
       end
       it "user will not manage project" do
         expect(@example_user.manages.count).to eq 0
@@ -207,11 +210,12 @@ RSpec.describe User, :type => :model do
         expect(@example_project.volunteers.count).to eq 1
       end
       it "manager has correct role" do
-        expect(@example_project.role_of(@example_manager)).to match "manager"
+        expect(@example_project.role_of(@example_manager)).to include "manager"
       end
       it "manager also assigns himself a role" do
         @example_project.assign_role(@example_manager, "programmer")
-        expect(@example_project.role_of(@example_manager)).to match "programmer / manager"
+        expect(@example_project.role_of(@example_manager))
+          .to match_array ["programmer", "manager"]
       end
     end
     context "Manager has multiple projects" do

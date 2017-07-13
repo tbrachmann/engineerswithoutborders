@@ -4,62 +4,63 @@ class Project < ActiveRecord::Base
   #has_and_belongs_to_many :users
   
   has_many :manager_relationships
-  has_many :managers, through: :manager_relationships, source: :user
+  has_many :managers, -> { distinct }, through: :manager_relationships, source: :user
 
   has_many :volunteer_relationships
   has_many :volunteers, through: :volunteer_relationships, source: :user
                                   
-  has_attached_file :image, styles: { large: "600x600>", medium: "300x300>", thumb: "150x150#" }
+  has_attached_file :image, styles: { large: "600x600>",
+                                      medium: "300x300>",
+                                      thumb: "150x150#" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
+  #Overrides the rails-created "volunteers" so that we can return only unique user IDs.
+  def volunteers
+    join_statement = "LEFT OUTER JOIN 'volunteer_relationships' ON 'volunteer_relationships'.'user_id' = 'users'.'id' WHERE 'volunteer_relationships'.'project_id' = #{self.id}"
+    User.joins(join_statement).uniq
+  end
+  
   def add_with_role(volunteer, role)
-    if(User.find(volunteer.id).blank?)
+    #If user does not exist.
+    if(!User.exists?(volunteer.id))
       return false
+    #If user is already a volunteer on this project.
+    elsif(volunteers.include?(volunteer))
+      return false
+    #Else add the volunteer with specified role
+    else
+      self.volunteer_relationships << VolunteerRelationship.new(:user_id => volunteer.id,
+                                                                :project_id => self.id,
+                                                                :role => role)
     end
-    self.volunteer_relationships << VolunteerRelationship.new(:user_id => volunteer.id,
-                                                              :project_id => self.id,
-                                                              :role => role)
   end
 
   def assign_role(volunteer, role)
-    begin
-      relationship = VolunteerRelationship.find(volunteer.id)
-    rescue ActiveRecord::RecordNotFound => e
-      if(!self.managers.include?(volunteer))
-        return false
-      else
-        relationship = VolunteerRelationship.new(:user_id => volunteer.id,
-                                                 :project_id => self.id,
-                                                 :role => role)
-        self.volunteer_relationships << relationship
-        return true
-      end
-    end
-    if(!relationship.role.blank?)
-      relationship.role << (", " + role)
-      #relationship.role << role
+    #If user is not a part of project nor a manager
+    if(!volunteers.include?(volunteer) && !managers.include?(volunteer))
+      return false
+    #Add a new relationship with the new role
     else
-      relationship.role = role
+      relationship = VolunteerRelationship.new(:user_id => volunteer.id,
+                                             :project_id => self.id,
+                                             :role => role)
+      self.volunteer_relationships << relationship
     end
-    relationship.save!
-    return true
   end
 
   def role_of(volunteer)
-    begin
-      User.find(volunteer.id)
-    rescue ActiveRecord::RecordNotFound => e
+    if(!volunteers.include?(volunteer)&& !managers.include?(volunteer))
       return false
     end
-    role = VolunteerRelationship.find(volunteer.id).role
-    if(!role.blank? && self.managers.include?(volunteer))
-      return role + " / manager"
-    elsif(role.blank? && self.managers.include?(volunteer))
-      return "manager"
-    elsif(!role.blank?)
-      return role
+    #role = VolunteerRelationship.find(volunteer.id).role
+    roles = VolunteerRelationship.where(user_id: volunteer.id).pluck(:role)
+    if(managers.include?(volunteer))
+      roles << "manager"
+    end
+    if(roles.all? &:blank?)
+      return nil
     else
-      return "No role"
+      return roles
     end
   end
   
