@@ -71,10 +71,7 @@ class UsersController < ApplicationController
     end
     user = User.find(params[:id])
     # update fields
-    
-    puts user_params
 
-    
     user.first_name = user_params[:first_name]
     user.last_name = user_params[:last_name]
     user.age = user_params[:age]
