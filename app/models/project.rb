@@ -6,7 +6,7 @@ class Project < ActiveRecord::Base
   has_many :manager_relationships
   has_many :managers, -> { distinct }, through: :manager_relationships, source: :user
 
-  has_many :volunteer_relationships
+  has_many :volunteer_relationships, inverse_of: :project
   has_many :volunteers, through: :volunteer_relationships, source: :user
                                   
   has_attached_file :image, styles: { large: "600x600>",
@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
     join_statement = "LEFT OUTER JOIN 'volunteer_relationships' ON 'volunteer_relationships'.'user_id' = 'users'.'id' WHERE 'volunteer_relationships'.'project_id' = #{self.id}"
     User.joins(join_statement).uniq
   end
-  
+
   def add_with_role(volunteer, role)
     #If user does not exist.
     if(!User.exists?(volunteer.id))

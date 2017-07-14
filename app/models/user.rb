@@ -10,8 +10,9 @@ class User < ActiveRecord::Base
   has_many :manager_relationships
   has_many :manages, through: :manager_relationships, source: :project
 
-  has_many :volunteer_relationships
+  has_many :volunteer_relationships, inverse_of: :user
   has_many :projects, through: :volunteer_relationships, source: :project
+  
   
   private :manager_relationships, :manager_relationships=
   private :volunteer_relationships, :volunteer_relationships=

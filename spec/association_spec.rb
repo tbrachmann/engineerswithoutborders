@@ -32,6 +32,8 @@ RSpec.describe User, :type => :model do
         @example_user2 = FactoryGirl.create(:user, password: "asdfghjkl")
         @example_user3 = FactoryGirl.create(:user, password: "asdfghjkl")
         #No role
+        #@example_project.volunteers << @example_user <- THIS IS NOT WORKING
+        #RIGHT NOW because i overrode "volunteers"
         @example_user.projects << @example_project
         #with role
         @example_project.add_with_role(@example_user2, "programmer")
@@ -97,7 +99,8 @@ RSpec.describe User, :type => :model do
     end
     context "Manager has one project" do
       before(:each) do
-        @example_manager.manages << @example_project
+        #@example_manager.manages << @example_project
+        @example_project.managers << @example_manager
         @example_user.projects << @example_project
       end
       it "will be linked to its project" do
