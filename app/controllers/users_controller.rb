@@ -71,6 +71,7 @@ class UsersController < ApplicationController
     end
     user = User.find(params[:id])
     # update fields
+
     user.first_name = user_params[:first_name]
     user.last_name = user_params[:last_name]
     user.age = user_params[:age]
@@ -97,6 +98,7 @@ class UsersController < ApplicationController
     user.friday_availability = user_params[:friday_availability]
     user.saturday_availability = user_params[:saturday_availability]
     user.availability_comments = user_params[:availability_comments]
+    user.skills = Skill.get_skills(user_params[:skill_ids])
     
     user.save
     
