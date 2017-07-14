@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe User, "#first_name" do 
     context "when the user first enters in their first name" do 
