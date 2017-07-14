@@ -17,9 +17,6 @@ RSpec.describe User, :type => :model do
       expect(@example_project).to be_valid
     end
     context "When a new user is created" do
-      # I'm confused. Sometimes these return nil, sometimes they return a 
-      # CollectionProxy
-      # Nil if its a singular relation and CollectionProxy otherwise?
       it "will not be linked to any projects" do
         expect(@example_user.projects.count).to eq 0
       end
