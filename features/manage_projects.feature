@@ -16,7 +16,6 @@ Scenario: Creating and Updating a Project
   And I fill in "Name" with "Remove Snakes From Boots"
   And I fill in "Description" with "Assist toy cowboys with recurring problem."
   And I fill in "Volunteer capacity" with "2"
-  And I fill in "Volunteers" with "1"
   And I fill in "Location" with "Andy's Room"
   And I press "Create Project"
   When I follow "Project Listings"
