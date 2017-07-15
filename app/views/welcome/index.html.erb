@@ -1,36 +1,78 @@
-<% if not user_signed_in? %>
-	<h3>Welcome to the Engineers Without Borders SF Volunteer System!</h3>
-	<p>
-	If you would like to register as a volunteer, please click below!
-	<p>
-	<%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-md btn-primary" %>
-<% elsif not current_user.complete %>
-	<h2>Your account has been created...<font color = "#6495ed"> but we need some more information!</font></h2>
-	<p>
-	Before we can effectively match you to projects, we need to know a little more about you. Please take a couple minutes to complete your newly created profile with some background information.
-	<p>
-	<%= link_to "Update Your Profile", edit_user_path(current_user), class: "btn btn-md btn-danger" %>
-	<br></br>
-	<h4>Other things you can do! </h4>
-	<%= link_to("Event Listings", events_path, class:"btn btn-sm btn-primary") %>
-    <p>Check out current events that are happening!  </p>
-       <%= link_to("Projects Listings", projects_path, class:"btn btn-sm btn-primary") %>
-    <p> Check out current projects we are working on and see how you can help!</p>  	
-</p>	
 
-<% else %>
-	<h3>You're all set!</h3>
-	<p>
-	Thank you for your time completing this application, and your interest in volunteering. We will be in touch with you soon.
-	</p>
-	<p>
-	In the meantime, if you want to make changes to your profile you can update it at any time.
-	<%= link_to "Update Your Profile", edit_user_path(current_user), class: "btn btn-md btn-danger" %>
-	<br></br>
-	<h4>Other things you can do! </h4>
-	<%= link_to("Event Listings", events_path, class:"btn btn-sm btn-primary") %>
-    <p>Check out current events that are happening!  </p>
-       <%= link_to("Projects Listings", projects_path, class:"btn btn-sm btn-primary") %>
-    <p> Check out current projects we are working on and see how you can help!</p>  	
+<div class="page-header header-filter fill">
+	<% if not user_signed_in? %>
+		<div class="row">
+			<div class="row">
+			<div class="col-md-10 col-md-offset-1 text-center">
+				<h3 class="card-title">Welcome to the Engineers Without Borders SF Volunteer System!</h3>
+				<h4>If you would like to register as a volunteer, please click below!</h4>
+				<br>
+				
+				<%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-md btn-color" %>
+			</div>
+		</div>
+		<div class="section col-md-10 col-md-offset-1">
+			<div class="col-md-4">
+				<div class="card-image">
+					<a href="#"><%= image_tag("main1.png") %></a>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card-image">
+					<a href="#"><%= image_tag("main2.png") %></a>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card-image">
+					<a href="#"><%= image_tag("main3.png") %></a>
+				</div>
+			</div>
+		</div>
+		</div>
+		
+	<% elsif not current_user.complete %>
+		<div class="row">
+			<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<p><h2 class="card-title">Your account has been created...</h2>
+				</p>
+				<p><h2><font color = "#6495ed"> but we need some more information!</font></h2>
+				</p>
+		
+				<p>
+				Before we can effectively match you to projects, we need to know a little more about you. Please take a couple minutes to complete your newly created profile with some background information.
+				<p>
+				<%= link_to "Update Your Profile", edit_user_path(current_user), class: "btn btn-md btn-danger" %>
+				<br></br>
+				<h4>Other things you can do! </h4>
+				<%= link_to("Event Listings", events_path, class:"btn btn-sm btn-primary") %>
+			    <p>Check out current events that are happening!  </p>
+			       <%= link_to("Projects Listings", projects_path, class:"btn btn-sm btn-primary") %>
+			    <p> Check out current projects we are working on and see how you can help!</p>  	
+				</p>
+				</div>
+			</div>
+		</div>	
 
-<% end %>
+	<% else %>
+		<div class="row">
+			<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<h3 class="card-title">You're all set!</h3>
+				<p>
+				Thank you for your time completing this application, and your interest in volunteering. We will be in touch with you soon.
+				</p>
+				<p>
+				In the meantime, if you want to make changes to your profile you can update it at any time.
+				<%= link_to "Update Your Profile", edit_user_path(current_user), class: "btn btn-md btn-danger" %>
+				<br></br>
+				<h4>Other things you can do! </h4>
+				<%= link_to("Event Listings", events_path, class:"btn btn-sm btn-primary") %>
+			    <p>Check out current events that are happening!  </p>
+			       <%= link_to("Projects Listings", projects_path, class:"btn btn-sm btn-primary") %>
+			    <p> Check out current projects we are working on and see how you can help!</p> 
+			    </div>
+		    </div>
+	    </div> 	
+	<% end %>
+</div>	
