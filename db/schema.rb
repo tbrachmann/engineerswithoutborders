@@ -13,19 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20170712234605) do
 
-  create_table "events", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "name"
-    t.string   "description"
-    t.date     "start_time"
-    t.date     "end_time"
-    t.string   "location"
-    t.boolean  "repeats"
-    t.string   "days"
-    t.integer  "project_id"
-  end
-
   create_table "projects", force: :cascade do |t|
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
