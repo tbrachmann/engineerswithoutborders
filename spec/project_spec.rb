@@ -30,12 +30,17 @@ RSpec.describe Project, "#volunteer_capacity" do
   end
 end
 
+# This use of "volunteers is deprecated."
 RSpec.describe Project, "#volunteers" do
   context "when a project manager enters the amount of volunteers currently assinged to a project" do
     it "saves the value into the volunteers field" do
-      project = Project.new
-      project.volunteers = 15
-      expect(project.volunteers).to eq 15
+      @project = FactoryGirl.create(:project)
+      15.times do
+        @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
+        @example_user.projects << @project
+      end
+      #project.volunteers = 15
+      expect(@project.volunteers.count).to eq 15
     end
   end
 end
