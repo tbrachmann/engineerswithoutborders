@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
 	private
 
 	def project_params
-		params.require(:project).permit(:name, :description, :start_date, :volunteer_capacity, :volunteers, :location, :image, :hours_per_week)
+		params.require(:project).permit(:name, :description, :start_date, :volunteer_capacity, :location, :image, :hours_per_week)
 	end
 
 	def destroy
