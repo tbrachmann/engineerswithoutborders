@@ -10,13 +10,13 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
-		@all_events = Event.all
+		#@all_events = Event.all
 		session[:current_project_id] = @project.id
 	end
 
 	def new
 		@project = Project.new
-		@all_events = Event.all
+		#@all_events = Event.all
 	end
 	
 	def edit

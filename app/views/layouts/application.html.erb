@@ -35,9 +35,9 @@
           <li class="nav-item">
             <%= link_to("Project Listings", projects_path, class:"nav-link") %></a>
           </li>
-          <li class="nav-item">
-            <%= link_to("Event Listings", events_path, class:"nav-link") %></a>
-          </li>
+          <%#<li class="nav-item">
+            <%= link_to("Event Listings", events_path, class:"nav-link") %><%#</a>
+          </li>%>
           <% if can? :read, :all %>
           <li class="nav-item">
             <%= link_to("Find Volunteers", users_path, class:"nav-link") %></a>
