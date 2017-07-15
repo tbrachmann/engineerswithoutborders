@@ -20,7 +20,6 @@ class UsersController < ApplicationController
   def index
     @user = User.all
     @search = User.search(params[:q])
-    puts @search
     @users = @search.result.page(params[:page]).per(10)
     @search.build_condition
     authorize! :read, @user
