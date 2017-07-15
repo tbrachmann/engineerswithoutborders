@@ -1,7 +1,4 @@
 class Project < ActiveRecord::Base
-  #has_many :events
-  #has_many :roles
-  #has_and_belongs_to_many :users
   
   has_many :manager_relationships
   has_many :managers, -> { distinct }, through: :manager_relationships, source: :user
