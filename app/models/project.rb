@@ -4,20 +4,28 @@ class Project < ActiveRecord::Base
   #has_and_belongs_to_many :users
   
   has_many :manager_relationships
-  has_many :managers, -> { distinct }, through: :manager_relationships, source: :user
+  has_many :managers, -> { distinct }, through: :manager_relationships, source: :user 
 
   has_many :volunteer_relationships, inverse_of: :project
-  has_many :volunteers, through: :volunteer_relationships, source: :user
-                                  
+  has_many :volunteers, through: :volunteer_relationships, source: :user 
   has_attached_file :image, styles: { large: "600x600>",
                                       medium: "300x300>",
                                       thumb: "150x150#" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
-
+  
   #Overrides the rails-created "volunteers" so that we can return only unique user IDs.
-  def volunteers
-    join_statement = "LEFT OUTER JOIN 'volunteer_relationships' ON 'volunteer_relationships'.'user_id' = 'users'.'id' WHERE 'volunteer_relationships'.'project_id' = #{self.id}"
-    User.joins(join_statement).uniq
+  def distinct_volunteers
+    return self.old_volunteers.uniq
+  end
+
+  def method_missing(m, *args)
+    if(m == "volunteers" && !caller(m).include?("project"))
+      puts "butt"
+      return
+    end
+    if (m == "volunteers")
+      puts "didn't catch"
+    end
   end
 
   def add_with_role(volunteer, role)
