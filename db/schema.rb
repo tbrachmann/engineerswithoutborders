@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20170715215531) do
 
   create_table "manager_relationships", force: :cascade do |t|
