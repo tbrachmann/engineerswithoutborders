@@ -1,4 +1,4 @@
-
+<div class="page-header header-filter fill">
 	<% if not user_signed_in? %>
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1 text-center">
@@ -16,7 +16,7 @@
 					</div>
 				</div>
 				<div class="col-md-4">
-					<div class="card-image">
+					<div class="card-images">
 						<a href="#"><%= image_tag("https://news.olemiss.edu/wp-content/uploads/2014/01/Togo1.jpg") %></a>
 					</div>
 				</div>
@@ -28,7 +28,6 @@
 				</div>
 			</div>
 		</div>
-		
 	<% elsif not current_user.complete %>
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
@@ -48,7 +47,6 @@
 				</p>
 			</div>
 		</div>
-
 	<% else %>
 		<div class="row">
 			<div class="col-md-10 col-md-offset-1">
