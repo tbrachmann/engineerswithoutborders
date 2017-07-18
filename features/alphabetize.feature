@@ -6,10 +6,10 @@ Feature: display alphabetized list of volunteers
     
 Background: Volunteers have been added to the project page
 
-    Given the following volunteers exist:
-    |User          |
-    |"Schmoe, Joe" |
-    |"User, Random"|
+    Given the following users exist:
+    |first_name | last_name| email          | password         |
+    |"Joe"      | "Schmoe" | ewb1@gmail.com | "password123"    |
+    |"Clark"    | "Kent"   | ewb2@gmail.com | "kryponite"      |
 
     And I am on a project page
     

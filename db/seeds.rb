@@ -11,6 +11,10 @@ user_list = [["jbarns@berkeley.edu", "password", "Jack", "Barnett", 20],
              ["natalie@gmail.com", "password", "Natalie", "Barnett", 17],
              ["benbarns@gmail.com", "password", "Ben", "Barnett", 14]]
 
+test_project = Project.create(name: "Remba Island Project", description: "Creating a large-scale water filter system", 
+volunteer_capacity: 25, location: "Remba Island, Kenya", pm_name: "John Dracup", pm_phone: "510-123-4567",
+pm_info: "jdracup@berkeley.edu")
+
 user_list.each do |email, password, first_name, last_name, age|
   User.create(email: email, password: password, first_name: first_name, last_name: last_name, age: age)
 end
