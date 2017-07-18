@@ -1,100 +1,104 @@
 require 'rails_helper'
 
-# TODO: test destroying as well
+# User associations: Project (as Volunteer through VolunteerRelationship), Roles (has_one), Skills (HABTM), Certifications (HABTM), Experience (HABTM)
 
 RSpec.describe User, :type => :model do
-  describe "Regular user" do
-    before(:each) do
-      #Need to manually specify the password here, otherwise it won't work,
-      #because of "Strong Params"
-      @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
-      #operating under the assumption that a project can be created without
-      #a manager.
-      @example_project = FactoryGirl.create(:project)
-    end
+  before(:each) do
+    @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
+    @example_project = FactoryGirl.create(:project)
+  end
+  describe "As a volunteer" do
     it "Has a valid factory" do
       expect(@example_user).to be_valid
       expect(@example_project).to be_valid
     end
-    context "When a user is added to a project" do
-      it "user will be linked to a project" do
-        @example_user.projects << @example_project
-        expect(@example_user.projects.count).to eq 1
-        expect(@example_user.projects.first.name).to match @example_project.name
-      end
+    it "Adding projects" do
+      @example_project2 = FactoryGirl.create(:project)
+      @example_user.projects << @example_project
+      @example_user.projects << @example_project2
+      expect(@example_user.projects.count).to eq 2
     end
-    context "When a user is a part of multiple projects" do
-      before(:each) do
-        @example_project2 = FactoryGirl.create(:project)
-      end
-      it "will have multiple projects" do
-        @example_user.projects << @example_project
-        @example_user.projects << @example_project2
-        expect(@example_user.projects.count).to eq 2
-      end
+    it "Removing project from user" do
+      @example_user.projects << @example_project
+      @example_user.projects.delete(@example_project)
+      expect(@example_user.projects.count).to eq 0
+    end
+    it "Destroying project" do
+      @example_user.projects << @example_project
+      @example_project.destroy
+      expect(@example_user.projects.count).to eq 0
     end
   end
-  describe "Manager" do
-    before(:each) do
-      @example_manager = FactoryGirl.create(:manager, password: "asdfghjkl")
-      @example_manager2 = FactoryGirl.create(:manager, password: "asdfghjkl")
-      @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
-      #operating under the assumption that a project can be created without
-      #a manager.
-      @example_project = FactoryGirl.build(:project)
-      @example_project2 = FactoryGirl.build(:project)
-    end
-    it "has a valid factory" do
+  # Add role, skill, experience tests here
+end
+
+RSpec.describe User, :type => :model do
+  before(:each) do
+    @example_manager = FactoryGirl.create(:manager, password: "asdfghjkl")
+    @example_project = FactoryGirl.create(:project)
+  end
+  describe "As a manager" do
+    it "Has a valid factory" do
       expect(@example_manager).to be_valid
       expect(@example_project).to be_valid
     end
-    context "Manager has one project" do
-      before(:each) do
-        #@example_manager.manages << @example_project
-        @example_project.managers << @example_manager
-        @example_user.projects << @example_project
-      end
-      it "will be linked to its project" do
-        expect(@example_manager.manages.first.name).to match @example_project.name
-        #expect(@example_manager.project.name).to match @example_project.name
-      end
-      it "project will be linked to its manager" do
-        expect(@example_project.managers.first.first_name)
-          .to match @example_manager.first_name
-      end
-      it "user will not manage project" do
-        expect(@example_user.manages.count).to eq 0
-      end
-      it "user will not be a manager of project" do
-        expect(@example_project.managers.count).to eq 1
-        expect(@example_project.volunteers.count).to eq 1
-      end
-      it "manager has correct role" do
-        expect(@example_project.role_of(@example_manager)).to include "manager"
-      end
-      it "manager also assigns himself a role" do
-        @example_project.assign_role(@example_manager, "programmer")
-        expect(@example_project.role_of(@example_manager))
-          .to match_array ["programmer", "manager"]
-      end
+    it "Adding managed projects" do
+      @example_project2 = FactoryGirl.create(:project)
+      @example_manager.manages << @example_project
+      @example_manager.manages << @example_project2
+      expect(@example_manager.manages.count).to eq 2
     end
-    context "Manager has multiple projects" do
-      before(:each) do
-        @example_manager.manages << @example_project
-        @example_manager.manages << @example_project2
-        @example_user.projects << @example_project
-      end
-      it "will have multiple projects" do
-        expect(@example_manager.manages.count).to eq 2
-      end
-      it "both projects will point to their manager" do
-        expect(@example_project.managers.count).to eq 1
-        expect(@example_project2.managers.count).to eq 1
-      end
+    it "No duplicate projects" do
+      @example_manager.manages << @example_project
+      @example_manager.manages << @example_project
+      expect(@example_manager.manages.count).to eq 2
+    end
+    it "Lose managerial status" do
+      # No longer be a manager but persist as a user
+      @example_project2 = FactoryGirl.create(:project)
+      @example_manager.manages << @example_project
+      @example_manager.manages << @example_project2
+      @example_manager.manages.delete_all
+      expect(@example_manager.manages.count).to eq 0
+      expect(@example_project.managers.count).to eq 0
+      expect(@example_project2.managers.count).to eq 0
+    end
+    it "Demote manager on all projects" do
+      @example_project2 = FactoryGirl.create(:project)
+      @example_manager.manages << [@example_project, @example_project2]
+      @example_manager.demote_manager_all
+      expect(@example_manager.manages.count).to eq 0
+      expect(@example_manager.projects.count).to eq 2
+      expect(@example_project.managers.count).to eq 0
+      expect(@example_project2.managers.count).to eq 0
+    end
+    it "Adding as volunteer when already manager" do
+      @example_manager.manages << @example_project
+      @example_manager.projects << @example_project
+      expect(@example_manager.projects.count).to eq 0
+      expect(@example_manager.manages.count).to eq 1
+    end
+    it "Adding as manager when already volunteer" do
+      @example_manager.projects << @example_project
+      @example_manager.manages << @example_project
+      expect(@example_manager.projects.count).to eq 0
+      expect(@example_manager.manages.count).to eq 1
+    end
+    it "Removing project from manager" do
+      @example_manager.manages << @example_project
+      @example_manager.manages.delete(@example_project)
+      expect(@example_manager.manages.count).to eq 0
+    end
+    it "Destroying project" do
+      @example_manager.manages << @example_project
+      @example_project.destroy
+      expect(@example_manager.manages.count).to eq 0
     end
   end
 end
 
+# Project associations: Volunteers (Users through VolunteerRelationships), and Managers
+# (Users through ManagerRelationships)
 
 RSpec.describe Project, :type => :model do
   before(:each) do
@@ -108,33 +112,17 @@ RSpec.describe Project, :type => :model do
     it "Adding volunteers" do
       @example_project.volunteers << @example_user
       @example_project.volunteers << @example_user2
-      expect(@example_project.distinct_volunteers.count).to eq 2
+      expect(@example_project.volunteers.count).to eq 2
     end
-    it "catches error and returns false if volunteer does not exist" do
-        @fake_user = instance_double('User', id: 10)
-        expect(@example_project.assign_role(@fake_user, "cook")).to be_falsy
-    end
-    it "Check the roles of volunteers" do
+    it "No duplicate volunteers" do
       @example_project.volunteers << @example_user
-      @example_project.assign_role(@example_user, "programmer")
-      @example_project.add_with_role(@example_user2, "cook")
-      expect(@example_project.role_of(@example_user)).to include "programmer"
-      expect(@example_project.role_of(@example_user2)).to include "cook"
-    end
-    it "volunteer can have multiple roles" do
-      @example_project.add_with_role(@example_user, "programmer")
-      @example_project.assign_role(@example_user, "cook")
-      expect(@example_project.role_of(@example_user))
-        .to match_array ["programmer", "cook"]
-    end
-    it "volunteer with multiple roles is still returned as one volunteer" do
-      @example_project.add_with_role(@example_user, "programmer")
-      @example_project.assign_role(@example_user, "cook")
-      expect(@example_project.distinct_volunteers.count).to eq 1
+      @example_project.volunteers << @example_user2
+      @example_project.volunteers << @example_user
+      expect(@example_project.volunteers.count).to eq 2
     end
     it "Remove volunteers" do
       @example_project.volunteers << @example_user
-      @example_project.volunteers.delete(@example_user.id)
+      @example_project.volunteers.delete(@example_user)
       expect(@example_project.volunteers.count).to eq 0
     end
     it "Destroy volunteer" do
@@ -144,13 +132,31 @@ RSpec.describe Project, :type => :model do
     end
   end
   describe "Managers" do
-    it "Adding managers" do
+    before(:each) do
+      @example_manager = FactoryGirl.create(:manager, password: "asdfghjkl")
+      @example_manager2 = FactoryGirl.create(:manager, password: "asdfghjkl")
     end
-    it "Having multiple managers" do
+    it "Adding managers" do
+      @example_project.managers << @example_manager
+      @example_project.managers << @example_manager2
+      expect(@example_project.managers.count).to eq 2
     end
     it "No duplicate managers" do
+      @example_project.managers << @example_manager
+      @example_project.managers << @example_manager
+      expect(@example_project.managers.count).to eq 1
     end
-    it "Removing managerts" do
+    it "Removing manager from project" do
+      @example_project.managers << @example_manager
+      @example_project.managers << @example_manager2
+      @example_project.managers.delete(@example_manager)
+      expect(@example_project.managers.count).to eq 1
+    end
+    it "Destroying manager" do
+      @example_project.managers << @example_manager
+      @example_project.managers << @example_manager2
+      @example_manager.destroy
+      expect(@example_project.managers.count).to eq 1
     end
   end
 end
