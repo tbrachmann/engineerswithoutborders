@@ -3,7 +3,6 @@ class ProjectsController < ApplicationController
 	
 	def index
 		@all_projects = Project.all
-		# print "********************projects: " + Project.all.to_s
 		@projects = @all_projects.page(params[:page]).per(3)
 		@projects_by_date = @projects.group_by(&:start_date)
 		@date = Date.today
