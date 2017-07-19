@@ -5,8 +5,8 @@ Feature: User Registration
 
 Scenario: Filling out the Volunteer Form by subscribing
   Given I am on the home page
-  Then I should see "GET INVOLVED"
-  When I follow "GET INVOLVED"
+  Then I should see "Sign up now!"
+  When I follow "Sign up now!"
   When I fill in "Email" with "woody@andysroom.com"
   And I fill in "user_password" with "reachforthesky"
   And I fill in "user_password_confirmation" with "reachforthesky"
