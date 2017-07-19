@@ -69,5 +69,3 @@ Given(/^there exists a project "([^"]*)"$/) do |arg1|
   volunteer_capacity: 25, location: "Remba Island, Kenya")
   test_project.save!
 end
-
-
