@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170715215531) do
+ActiveRecord::Schema.define(version: 20170719184113) do
 
   create_table "manager_relationships", force: :cascade do |t|
     t.integer "user_id"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 20170715215531) do
     t.integer  "hours_per_week"
     t.integer  "manager_id"
   end
+
+  create_table "roles", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "name"
+  end
+
+  add_index "roles", ["name"], name: "index_roles_on_name", unique: true
+  add_index "roles", ["user_id"], name: "index_roles_on_user_id"
 
   create_table "skills", force: :cascade do |t|
     t.integer  "user_id"
@@ -75,7 +83,6 @@ ActiveRecord::Schema.define(version: 20170715215531) do
     t.string   "school"
     t.string   "availability"
     t.boolean  "complete",               default: false
-    t.string   "role"
     t.string   "phone"
     t.integer  "zip"
     t.string   "location"
@@ -94,6 +101,8 @@ ActiveRecord::Schema.define(version: 20170715215531) do
     t.string   "availability_comments"
     t.string   "certifications"
     t.string   "travel"
+    t.boolean  "admin",                  default: false
+    t.boolean  "manager",                default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
@@ -102,7 +111,6 @@ ActiveRecord::Schema.define(version: 20170715215531) do
   create_table "volunteer_relationships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "project_id"
-    t.string  "role"
   end
 
   add_index "volunteer_relationships", ["project_id"], name: "index_volunteer_relationships_on_project_id"
