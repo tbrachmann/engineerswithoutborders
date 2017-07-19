@@ -23,7 +23,7 @@
 	}
 </style>
 
-<h1><%= @project.name %> </h1>
+<h1>Project <%= @project.name %> </h1>
 <div class="right">
 <% if can? :manage, @project %>
 	  <%= link_to 'Edit Project', edit_project_path(@project), class: "btn btn-md btn-primary" %>
@@ -50,7 +50,6 @@
 	</div>
 	
 	<div class="col-lg-12">
-		<strong>Project Dates</strong>
 		<%if @project.start_date && @project.start_date.to_date %>
 			<p>This project will start on <%= @project.start_date.to_date %>.</p>
 		<% else %>
@@ -59,17 +58,11 @@
 	</div>
 	
 	<div class="col-md-12">
-		<strong>Project Location: </strong>
+		<strong>Location: </strong>
 		<%= @project.location %>
 	</div>
 	<div class="col-md-12">
 		<p> <strong>Project</strong> <%= @project.name %> Has <strong><%= @project.volunteers.count %></strong> volunteers, needs <strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> more!</p>
-	</div>
-	<div class="col-md-12">
-		<p> <strong>Project Manager: </strong><%= @project.managers.first.first_name %></p>
-	</div>
-	<div class="col-md-12">
-		<p> <strong>Manager Contact Information: </strong> <%=@project.managers.first.email %></p>
 	</div>
 	<p style="page-break-before: always"></p>
 <br>
