@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170718232926) do
+ActiveRecord::Schema.define(version: 20170715215531) do
 
   create_table "manager_relationships", force: :cascade do |t|
     t.integer "user_id"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20170718232926) do
   add_index "manager_relationships", ["user_id"], name: "index_manager_relationships_on_user_id"
 
   create_table "projects", force: :cascade do |t|
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.date     "start_date"
     t.string   "name"
     t.string   "description"
@@ -36,12 +36,6 @@ ActiveRecord::Schema.define(version: 20170718232926) do
     t.datetime "image_updated_at"
     t.integer  "hours_per_week"
     t.integer  "manager_id"
-    t.string   "pm_name"
-    t.string   "pm_phone"
-    t.string   "pm_info"
-    t.string   "project_manager"
-    t.string   "project_manager_phone"
-    t.string   "project_manager_email"
   end
 
   create_table "skills", force: :cascade do |t|
