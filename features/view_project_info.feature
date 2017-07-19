@@ -15,8 +15,8 @@ Feature: Viewing Project Information
     # And I press "Create Project"
     
     Given I am a new, authenticated user
+    And there exists a project "Remba Island Project"
     Given I am on the projects page
-    # And there exists a project "Remba Island Project"
     And I should see "Remba Island Project"
   
   Scenario: Clicking on a Project Listing

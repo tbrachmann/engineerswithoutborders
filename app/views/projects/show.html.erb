@@ -66,13 +66,13 @@
 		<p> <strong>Project</strong> <%= @project.name %> Has <strong><%= @project.volunteers.count %></strong> volunteers, needs <strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> more!</p>
 	</div>
 	<div class="col-md-12">
-		<p> <strong>Project Manager</strong> <%= @project.pm_name %> </p>
+		<p> <strong>Project Manager</strong> <!---<@project.pm_name %>---> </p>
 	</div>
 	<div class="col-md-12">
-		<p> <strong>Phone</strong> <%= @project.pm_phone %> </p>
+		<p> <strong>Phone</strong> <!--- @project.pm_phone %>---> </p>
 	</div>
 	<div class="col-md-12">
-		<p> <strong>Manager Contact Information</strong> <%= @project.pm_info %> </p>
+		<p> <strong>Manager Contact Information</strong> <!--- @project.pm_info %>---> </p>
 	</div>
 	<p style="page-break-before: always"></p>
 <br>

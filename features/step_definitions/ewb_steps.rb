@@ -72,8 +72,7 @@ end
 
 Given(/^there exists a project "([^"]*)"$/) do |arg1|
   test_project = Project.new(name: arg1, description: "Creating a large-scale water filter system", 
-  volunteer_capacity: 25, location: "Remba Island, Kenya", pm_name: "John Dracup", pm_phone: "510-123-4567",
-  pm_info: "jdracup@berkeley.edu")
+  volunteer_capacity: 25, location: "Remba Island, Kenya")
   test_project.save!
 end
 
