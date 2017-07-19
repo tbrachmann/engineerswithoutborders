@@ -33,3 +33,47 @@ Given /^the following users exist:$/ do |table|
 				 :last_name => table_hash[:last_name]).save!
 	end
 end
+
+
+Then(/^I should see "([^"]*)" before "([^"]*)"$/) do |arg1, arg2|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I select "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I press the "([^"]*)" button$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see "([^"]*)" \#A user that meets these specified qualifications$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should not see "([^"]*)" \#A user that does not$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^the following volunteers exist:$/) do |table|
+  # table is a Cucumber::MultilineArgument::DataTable
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I follow a Project Link$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+# Given(/^there exists a project "([^"]*)"$/) do |arg1|
+#   Project.create(name: arg1, description: "Creating a large-scale water filter system", 
+#   volunteer_capacity: 25, location: "Remba Island, Kenya", pm_name: "John Dracup", pm_phone: "510-123-4567",
+#   pm_info: "jdracup@berkeley.edu")
+# end
+
+Given(/^there exists a project "([^"]*)"$/) do |arg1|
+  test_project = Project.new(name: arg1, description: "Creating a large-scale water filter system", 
+  volunteer_capacity: 25, location: "Remba Island, Kenya")
+  test_project.save!
+end
+
+
