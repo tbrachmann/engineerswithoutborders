@@ -62,7 +62,7 @@
 		<%= @project.location %>
 	</div>
 	<div class="col-md-12">
-		<p> <strong>Project</strong> <%= @project.name %> Needs <strong><%= @project.volunteer_capacity %></strong> more!</p>
+		<p> <strong>Project</strong> <%= @project.name %> Has <strong><%= @project.volunteers.count %></strong> volunteers, needs <strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> more!</p>
 	</div>
 	<p style="page-break-before: always"></p>
 <br>
