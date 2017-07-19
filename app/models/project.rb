@@ -32,4 +32,5 @@ class Project < ActiveRecord::Base
   
   private :manager_relationships, :manager_relationships=
   private :volunteer_relationships, :volunteer_relationships=
+
 end

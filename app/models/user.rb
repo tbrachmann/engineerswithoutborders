@@ -35,4 +35,16 @@ class User < ActiveRecord::Base
   
   private :manager_relationships, :manager_relationships=
   private :volunteer_relationships, :volunteer_relationships=
+
+  # Over riding this method specifies which fields we want to be able to search on
+  def self.ransackable_attributes(auth_object = nil)
+    ["first_name",
+    "last_name",
+    "education",
+    "expertise",
+    "description",
+    "school",
+    "certifications"].sort
+  end
+  
 end

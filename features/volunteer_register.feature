@@ -12,5 +12,4 @@ Scenario: Filling out the Volunteer Form by subscribing
   And I fill in "user_password_confirmation" with "reachforthesky"
   And I press "Sign up"
   Then I should see "Update Your Profile"
-  Then I should see "Event Listings"
   Then I should see "Project Listings"
