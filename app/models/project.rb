@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+
   has_many :manager_relationships
   has_many :managers, -> { distinct }, through: :manager_relationships, source: :user do
     def << (*managers)
