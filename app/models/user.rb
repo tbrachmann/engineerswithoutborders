@@ -57,8 +57,7 @@ class User < ActiveRecord::Base
     "education",
     "expertise",
     "description",
-    "school",
-    "certifications"].sort
+    "school"].sort
   end
   
 end
