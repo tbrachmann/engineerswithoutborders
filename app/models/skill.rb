@@ -1,5 +1,5 @@
 class Skill < ActiveRecord::Base
-    has_and_belongs_to_many :users
+  has_and_belongs_to_many :users
     
     def self.get_skills(skill_ids)
         total = []
@@ -14,4 +14,9 @@ class Skill < ActiveRecord::Base
             return []
         end
     end
+    
+    def self.ransackable_attributes(auth_object = nil)
+      ['name']
+    end
+    
 end
