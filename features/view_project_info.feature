@@ -11,5 +11,5 @@ Feature: Viewing Project Information
     Then I should see "Creating a large-scale water filter system"
     And I should see "Remba Island, Kenya"
     And I should see "Luke Skywalker"
-    And I should see "testing@man.net"
+    And I should see "not_current@man.net"
     And I should see "Project has 0 volunteers, needs 25 more!"
