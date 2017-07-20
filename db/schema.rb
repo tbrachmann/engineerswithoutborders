@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(version: 20170720183804) do
     t.string   "friday_availability"
     t.string   "saturday_availability"
     t.string   "availability_comments"
-    t.string   "certifications"
     t.string   "travel"
     t.boolean  "admin",                  default: false
     t.boolean  "manager",                default: false

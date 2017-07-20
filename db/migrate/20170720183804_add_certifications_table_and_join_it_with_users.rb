@@ -1,5 +1,7 @@
 class AddCertificationsTableAndJoinItWithUsers < ActiveRecord::Migration
   def change
+
+    remove_column :users, :certifications
     
     create_table :certifications do |t|
       t.string :name
@@ -11,6 +13,6 @@ class AddCertificationsTableAndJoinItWithUsers < ActiveRecord::Migration
       t.index :user_id
       t.index :certification_id
     end
-    
+
   end
 end
