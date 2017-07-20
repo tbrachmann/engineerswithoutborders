@@ -34,6 +34,18 @@ class User < ActiveRecord::Base
     self.projects << my_projects
     self.manager = false
   end
+
+  def name
+    if self.first_name.nil? && self.last_name.nil?
+      return ""
+    elsif !self.first_name.nil? && self.last_name.nil?
+      return self.first_name
+    elsif self.first_name.nil? && !self.last_name.nil?
+      return self.last_name
+    else
+      return self.first_name + " " + self.last_name
+    end
+  end
   
   private :manager_relationships, :manager_relationships=
   private :volunteer_relationships, :volunteer_relationships=
