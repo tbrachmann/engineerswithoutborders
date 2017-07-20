@@ -24,8 +24,8 @@ module NavigationHelpers
     when /^the list volunteers page$/
        '/volunteers'
        
-    when /^the "Find Volunteers" page$/
-      '/users'
+    #when /^the "Find Volunteers" page$/
+    #  '/users'
 
     when /^the Successfully Created page$/
       'volunteers/' + Volunteer.id
