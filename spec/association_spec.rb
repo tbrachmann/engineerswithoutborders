@@ -133,8 +133,9 @@ RSpec.describe User, :type => :model do
     end
     it "Get certification name" do
       @example_user.certifications << [@example_certification, @example_certification2]
-      expect(@example_user.certifications).to include "Microsoft Excel"
-      expect(@example_user.certifications).to include "Microsoft Word"
+      cert_names = @example_user.certifications.pluck("name")
+      expect(cert_names).to include "Microsoft Excel"
+      expect(cert_names).to include "Microsoft Word"
     end
     it "No duplicate certifications can be added" do
       expect{
@@ -143,7 +144,7 @@ RSpec.describe User, :type => :model do
       }.to raise_error(ActiveRecord::RecordNotUnique)
     end
     it "Build certification off user" do
-      @example_user.create_certification(name: "Microsoft Powerpoint")
+      @example_user.certifications.create(name: "Microsoft Powerpoint")
       expect(@example_user.certifications.first.name).to match "Microsoft Powerpoint"
     end
     it "Blank certification cannot be added" do
@@ -153,9 +154,9 @@ RSpec.describe User, :type => :model do
       }.to raise_error
     end
     it "Certification stays in table if user is deleted" do
-      @example_user.certifications << @example_certification
+      @example_user.certifications.create(name: "Microsoft Powerpoint")
       @example_user.destroy
-      expect(Certification.all.count).to eq 2
+      expect(Certification.all.count).to eq 3
     end
   end
   # Revisit design here - necessary for these to be separate tables?
@@ -183,7 +184,7 @@ RSpec.describe User, :type => :model do
       }.to raise_error(ActiveRecord::RecordNotUnique)
     end
     it "Build construction experience off user" do
-      @example_user.create_construction_experience(name: "Solar")
+      @example_user.construction_experiences.create(name: "Solar")
       expect(@example_user.construction_experiences.first.name).to match "Solar"
     end
     it "Blank construction experience cannot be added" do
@@ -193,7 +194,7 @@ RSpec.describe User, :type => :model do
       }.to raise_error
     end
     it "construction experience stays in table if user is deleted" do
-      @example_user.construction_experiences << @example_experience
+      @example_user.construction_experiences.create(name: "Solar")
       @example_user.destroy
       expect(ConstructionExperience.all.count).to eq 2
     end
@@ -222,7 +223,7 @@ RSpec.describe User, :type => :model do
       }.to raise_error(ActiveRecord::RecordNotUnique)
     end
     it "Build design experience off user" do
-      @example_user.create_design_experience(name: "Solar")
+      @example_user.design_experiences.create(name: "Solar")
       expect(@example_user.design_experiences.first.name).to match "Solar"
     end
     it "Blank design experience cannot be added" do
@@ -232,7 +233,7 @@ RSpec.describe User, :type => :model do
       }.to raise_error
     end
     it "Design experience stays in table if user is deleted" do
-      @example_user.design_experiences << @example_experience
+      @example_user.design_experiences.create(name: "Solar")
       @example_user.destroy
       expect(DesignExperience.all.count).to eq 2
     end

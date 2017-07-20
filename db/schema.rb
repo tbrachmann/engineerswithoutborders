@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170719184113) do
+ActiveRecord::Schema.define(version: 20170720183804) do
+
+  create_table "certifications", force: :cascade do |t|
+    t.string "name"
+  end
+
+  add_index "certifications", ["name"], name: "index_certifications_on_name", unique: true
+
+  create_table "certifications_users", id: false, force: :cascade do |t|
+    t.integer "user_id",          null: false
+    t.integer "certification_id", null: false
+  end
+
+  add_index "certifications_users", ["certification_id"], name: "index_certifications_users_on_certification_id"
+  add_index "certifications_users", ["user_id"], name: "index_certifications_users_on_user_id"
 
   create_table "manager_relationships", force: :cascade do |t|
     t.integer "user_id"
