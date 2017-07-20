@@ -13,3 +13,5 @@ Feature: Viewing Project Information
     And I should see "Project Manager"
     And I should see "Manager Contact Information"
     And I should see "Current Volunteers"
+    And I should see "skill 1"
+    And I should see "skill 2"
