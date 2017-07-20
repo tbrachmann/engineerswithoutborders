@@ -10,8 +10,8 @@ Feature: Reducing search parameters for Find Volunteers page
 
 Scenario: 
   Given I am a project manager
-  Given I am on the "Find Volunteers" page
-  When I select "Education" from "       "
+  Given I am on the list volunteers page
+  # When I select "Education" from "       "
   
   # And test for RESTful URL
   
