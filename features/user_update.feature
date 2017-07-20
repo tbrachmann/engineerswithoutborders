@@ -14,9 +14,9 @@ Scenario: Updating Profile Information
   And I select "Spanish" from "First Language:"
   And I select "5 - Native or Bilingual Proficiency" from "First Language Fluency:"
   And I select "20" from "Age"
-  And I check "monday morning"
-  And I check "wednesday evening"
-  And I check "sunday afternoon"
+  And I select the "Morning" option from the "Monday" drop-down field
+  And I select the "Evening" option from the "Wednesday" drop-down field
+  And I select the "Afternoon" option from the "Sunday" drop-down field
   And I fill in "About:" with "College rules!"
   And I fill in "Name of University/College:" with "Berkeley"
   And I press "Update Background"
