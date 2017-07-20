@@ -3,11 +3,11 @@ require 'rails_helper'
 # User associations: Project (as Volunteer through VolunteerRelationship), Roles (has_one), Skills (HABTM), Certifications (HABTM), Experience (HABTM)
 
 RSpec.describe User, :type => :model do
-  before(:each) do
-    @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
-    @example_project = FactoryGirl.create(:project)
-  end
   describe "As a volunteer" do
+    before(:each) do
+      @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
+      @example_project = FactoryGirl.create(:project)
+    end
     it "Has a valid factory" do
       expect(@example_user).to be_valid
       expect(@example_project).to be_valid
@@ -29,15 +29,11 @@ RSpec.describe User, :type => :model do
       expect(@example_user.projects.count).to eq 0
     end
   end
-  # Add role, skill, experience tests here
-end
-
-RSpec.describe User, :type => :model do
-  before(:each) do
-    @example_manager = FactoryGirl.create(:manager, password: "asdfghjkl")
-    @example_project = FactoryGirl.create(:project)
-  end
   describe "As a manager" do
+    before(:each) do
+      @example_manager = FactoryGirl.create(:manager, password: "asdfghjkl")
+      @example_project = FactoryGirl.create(:project)
+    end
     it "Has a valid factory" do
       expect(@example_manager).to be_valid
       expect(@example_project).to be_valid
@@ -71,6 +67,8 @@ RSpec.describe User, :type => :model do
       expect(@example_manager.projects.count).to eq 2
       expect(@example_project.managers.count).to eq 0
       expect(@example_project2.managers.count).to eq 0
+      # Manager loses manager privileges
+      expect(@example_manager.manager).to be false
     end
     it "Adding as volunteer when already manager" do
       @example_manager.manages << @example_project
@@ -93,6 +91,34 @@ RSpec.describe User, :type => :model do
       @example_manager.manages << @example_project
       @example_project.destroy
       expect(@example_manager.manages.count).to eq 0
+    end
+  end
+  # Add role, skill, experience tests here
+  describe "User roles" do
+    before(:each) do
+      @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
+      @example_role = FactoryGirl.create(:role, name: "Programmer")
+    end
+    it "Adding role column to user" do
+      expect(@example_user.role).to be_nil
+    end
+    it "Get role name" do
+      @example_user.role = @example_role
+      expect(@example_user.role.name).to match "Programmer"
+    end
+    it "No duplicate roles" do
+      expect{
+        @example_role2 = FactoryGirl.create(:role, name: "Programmer")
+      }.to raise_error(ActiveRecord::RecordNotUnique)
+    end
+    it "Build role off user" do
+      @example_user.create_role(name: "Cook")
+      expect(@example_user.role.name).to match "Cook"
+    end
+    it "Role stays in table if user is deleted" do
+      @example_user.role = @example_role
+      @example_user.destroy
+      expect(Role.all.count).to eq 1
     end
   end
 end
