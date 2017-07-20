@@ -35,6 +35,7 @@ Given /^the following users exist:$/ do |table|
 end
 
 Given /^the following volunteers exist: $/ do |table|
+  puts table
   pending
 end
 
