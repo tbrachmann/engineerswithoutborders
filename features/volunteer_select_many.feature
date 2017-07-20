@@ -7,10 +7,12 @@ Feature: Allowing for multiple selection on Find Volunteers page
 Background:
   Given I am a project manager
   And I am on the "Find Volunteers" page
+  And I should see "Listing Users"
   And Volunteer 1 exists
   And Volunteer 2 exists
 
 Scenario: Select multiple volunteers
+  #When I am on the "Find Volunteers" page
   When I press the checkbox next to the first volunteer 
   And press the checkbox next to the second volunteer
   Then the number of checked boxes should be 2

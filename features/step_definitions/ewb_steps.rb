@@ -66,6 +66,9 @@ When /^I follow the project link for "(.+)"$/ do |project_name|
   click_link(project_name)
 end
 
+When(/^I select the "([^"]*)" option from the "([^"]*)" drop\-down field$/) do |arg1, arg2|
+  select(arg1, from: arg2)
+end
 
 Given /^there exists a project "([^"]*)"$/ do |arg1|
   test_project = Project.create(name: arg1,
@@ -80,27 +83,82 @@ Given /^there exists a project "([^"]*)"$/ do |arg1|
   test_project.managers << test_project_manager
 end
 
-# Then(/^I should see "([^"]*)" before "([^"]*)"$/) do |arg1, arg2|
-#   pending # Write code here that turns the phrase above into concrete actions
-# end
+Given(/^the following volunteers exist:$/) do |table|
+  puts table
+  # table is a Cucumber::MultilineArgument::DataTable
+  pending # Write code here that turns the phrase above into concrete actions
+end
 
-# When(/^I select "([^"]*)"$/) do |arg1|
-#   pending # Write code here that turns the phrase above into concrete actions
-# end
+Then(/^I should see "([^"]*)" before "([^"]*)"$/) do |arg1, arg2|
+  puts arg1
+  puts arg2
+  pending # Write code here that turns the phrase above into concrete actions
+end
 
-# When(/^I press the "([^"]*)" button$/) do |arg1|
-#   pending # Write code here that turns the phrase above into concrete actions
-# end
+When(/^I select "([^"]*)"$/) do |arg1|
+  puts arg1
+  pending # Write code here that turns the phrase above into concrete actions
+end
 
-# Then(/^I should see "([^"]*)" \#A user that meets these specified qualifications$/) do |arg1|
-#   pending # Write code here that turns the phrase above into concrete actions
-# end
+When(/^I press the "([^"]*)" button$/) do |arg1|
+  puts arg1
+  pending # Write code here that turns the phrase above into concrete actions
+end
 
-# Then(/^I should not see "([^"]*)" \#A user that does not$/) do |arg1|
-#   pending # Write code here that turns the phrase above into concrete actions
-# end
+Then(/^I should see "([^"]*)" \#A user that meets these specified qualifications$/) do |arg1|
+  puts arg1
+  pending # Write code here that turns the phrase above into concrete actions
+end
 
-# Given(/^the following volunteers exist:$/) do |table|
-#   # table is a Cucumber::MultilineArgument::DataTable
-#   pending # Write code here that turns the phrase above into concrete actions
-# end
+Then(/^I should not see "([^"]*)" \#A user that does not$/) do |arg1|
+  puts arg1
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I select attribute field$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I select predicate field$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^the number of attibute fields should be (\d+)$/) do |arg1|
+  puts arg1
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^the number of predicate fields should be (\d+)$/) do |arg1|
+  puts arg1
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^Volunteer (\d+) exists$/) do |arg1|
+  puts arg1
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I press the checkbox next to the first volunteer$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^press the checkbox next to the second volunteer$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^the number of checked boxes should be (\d+)$/) do |arg1|
+  puts arg1
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^there will be no checked box for the first volunteer$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see that the page headings, font styles, and text sizes are uniform across the website$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see that the page theme and colors are consistent with the main EWB website$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
