@@ -69,8 +69,8 @@ guard :rspec, cmd: "bundle exec spring rspec" do
   end
 
   # User & Project watching
-  watch(%r{^app/models/(user|project)\.rb}) { "#{rspec.spec_dir}/association_spec.rb" }
-
+  watch(%r{^app/models/.+\.rb}) { "#{rspec.spec_dir}/association_spec.rb" }
+  
 
   
 end

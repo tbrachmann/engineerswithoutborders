@@ -7,7 +7,6 @@ FactoryGirl.define do
         sign_in_count 1
         created_at { 10.years.ago }
         updated_at { 10.years.ago }
-        role "volunteer"
     end
     factory :manager, class: User do
         first_name { Faker::Name.first_name }
@@ -17,6 +16,6 @@ FactoryGirl.define do
         sign_in_count 1
         created_at { 10.years.ago }
         updated_at { 10.years.ago }
-        role "manager"
+        manager true
     end
 end

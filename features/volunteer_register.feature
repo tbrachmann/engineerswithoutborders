@@ -7,6 +7,7 @@ Scenario: Filling out the Volunteer Form by subscribing
   Given I am on the home page
   Then I should see "GET INVOLVED"
   When I press "sign-up"
+  When I follow "GET INVOLVED"
   When I fill in "Email" with "woody@andysroom.com"
   And I fill in "user_password" with "reachforthesky"
   And I fill in "user_password_confirmation" with "reachforthesky"

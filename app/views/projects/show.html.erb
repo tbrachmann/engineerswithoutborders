@@ -62,14 +62,14 @@
 		<%= @project.location %>
 	</div>
 	<div class="col-md-12">
-		<p> <strong>Project</strong> <%= @project.name %> Has <strong><%= @project.volunteers.count %></strong> volunteers, needs <strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> more!</p>
+		<p> <strong>Project</strong> <%= @project.name %> has <strong><%= @project.volunteers.count %></strong> volunteers, needs <strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> more!</p>
 	</div>
 	<div class="col-md-12">
 		<%if @project.managers.count == 0 || @project.managers == "" %>
 			<p><strong>Project Manager: ---- </strong></p>
 			<p><strong>Manager Contact Information: ---- </strong></p>
 		<% else %>
-			<p> <strong>Project Manager: </strong><%= @project.managers.first.first_name %></p>
+			<p> <strong>Project Manager: </strong><%= @project.managers.first.name %></p>
 			<p> <strong>Manager Contact Information: </strong> <%=@project.managers.first.email %></p>
 		<% end %>
 	</div>
