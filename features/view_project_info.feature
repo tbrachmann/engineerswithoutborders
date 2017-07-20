@@ -13,3 +13,5 @@ Feature: Viewing Project Information
     And I should see "Luke Skywalker"
     And I should see "not_current@man.net"
     And I should see "Project has 0 volunteers, needs 25 more!"
+    And I should see "CAD"
+    And I should see "Geospatial Analysis"

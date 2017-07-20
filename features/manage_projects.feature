@@ -17,6 +17,8 @@ Scenario: Creating and Updating a Project
   And I fill in "Description" with "Assist toy cowboys with recurring problem."
   And I fill in "Volunteer capacity" with "2"
   And I fill in "Location" with "Andy's Room"
+  And I fill in "key skill 1" with "CAD"
+  And I fill in "key skill 2" with "Geospatial analysis"
   And I press "Create Project"
   When I follow "Project Listings"
   Then I should be on the projects page

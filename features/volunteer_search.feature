@@ -16,13 +16,11 @@ Scenario: Minimize attribute filter criteria to fields like certifications
   But I should not see "created at"
   And I should not see "id"
   
-  
 Scenario: Minimize predicate criteria to contains
   When I select predicate field
   Then I should see "contains"
   But I should not see "null"
   And I should not see "eq"
-  # And test for RESTful URL
   
 Scenario: Be able to properly add conditions to search by
   When I press the "Add Conditions" button

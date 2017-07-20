@@ -57,6 +57,11 @@ Given /^the following users exist:$/ do |table|
 	end
 end
 
+Given /^the following volunteers exist: $/ do |table|
+  puts table
+  pending
+end
+
 When /^I follow the project link for "(.+)"$/ do |project_name|
   click_link(project_name)
 end
