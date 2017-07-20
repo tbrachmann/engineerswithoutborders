@@ -11,7 +11,7 @@ Background:
 
 Scenario: Creating and Updating a Project
   Given I am on the projects page
-  When I follow "New Project"
+  When I follow "Create New Project"
   Then I should be on the new project page
   And I fill in "Name" with "Remove Snakes From Boots"
   And I fill in "Description" with "Assist toy cowboys with recurring problem."

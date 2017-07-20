@@ -3,7 +3,7 @@ Given /^I am not authenticated$/ do
 end
 
 Given /^I am a new, authenticated user$/ do
-  email = 'testing@man.net'
+  email = 'testing@user.net'
   password = 'secretpass'
   User.new(:email => email, :password => password, :password_confirmation => password).save!
 
@@ -13,17 +13,34 @@ Given /^I am a new, authenticated user$/ do
   click_button "Log in"
 end
 
-Given /^I am a project manager$/ do
-  email = 'testing@man.net'
-  password = 'secretpass'
-  role = 'manager'
-  User.new(:email => email, :password => password, :role => role).save!
+Given /^I am a project manager on "(.+)"/ do |project_name|
+  manager = User.create(email: 'testing@man.net', password: "asdfghjkl", manager: true)
+  if(!Project.exists?(name: project_name))
+    Project.create(name: project_name,
+                   description: "Creating a large-scale water filter system",
+                   volunteer_capacity: 25, location: "Remba Island, Kenya")
+  end
+  project = Project.find_by name: project_name
+  project.managers << manager
 
   visit new_user_session_path
   fill_in "user_email", :with => email
   fill_in "user_password", :with => password
   click_button "Log in"
 end
+
+
+Given /^I am a project manager$/ do
+  email = 'testing@man.net'
+  password = 'secretpass'
+  User.create(:email => email, :password => password, :manager => true)
+
+  visit new_user_session_path
+  fill_in "user_email", :with => email
+  fill_in "user_password", :with => password
+  click_button "Log in"
+end
+
 
 Given /^the following users exist:$/ do |table|
 	table.hashes.each do |table_hash|
@@ -32,6 +49,24 @@ Given /^the following users exist:$/ do |table|
 				 :first_name => table_hash[:first_name],
 				 :last_name => table_hash[:last_name]).save!
 	end
+end
+
+When /^I follow the project link for "(.+)"$/ do |project_name|
+  click_link(project_name)
+end
+
+
+Given /^there exists a project "([^"]*)"$/ do |arg1|
+  test_project = Project.create(name: arg1,
+                                description: "Creating a large-scale water filter system", 
+                                volunteer_capacity: 25,
+                                location: "Remba Island, Kenya")
+  test_project_manager = User.create(first_name: "Luke",
+                                     last_name: "Skywalker",
+                                     email: 'testing@man.net',
+                                     password: "asdfghjkl",
+                                     manager: true)
+  test_project.managers << test_project_manager
 end
 
 # Then(/^I should see "([^"]*)" before "([^"]*)"$/) do |arg1, arg2|
@@ -58,14 +93,3 @@ end
 #   # table is a Cucumber::MultilineArgument::DataTable
 #   pending # Write code here that turns the phrase above into concrete actions
 # end
-
-# When(/^I follow a Project Link$/) do
-#   pending # Write code here that turns the phrase above into concrete actions
-# end
-
-
-Given(/^there exists a project "([^"]*)"$/) do |arg1|
-  test_project = Project.new(name: arg1, description: "Creating a large-scale water filter system", 
-  volunteer_capacity: 25, location: "Remba Island, Kenya")
-  test_project.save!
-end
