@@ -14,7 +14,13 @@ Given /^I am a new, authenticated user$/ do
 end
 
 Given /^I am a project manager on "(.+)"/ do |project_name|
-  manager = User.create(email: 'testing@man.net', password: "asdfghjkl", manager: true)
+  email = "testing@man.net"
+  password = "asdfghjkl"
+  if(!User.exists?(email: email))
+    manager = User.create(email: email, password: password, manager: true)
+  else
+    manager = User.find_by email: email
+  end
   if(!Project.exists?(name: project_name))
     Project.create(name: project_name,
                    description: "Creating a large-scale water filter system",
@@ -63,7 +69,7 @@ Given /^there exists a project "([^"]*)"$/ do |arg1|
                                 location: "Remba Island, Kenya")
   test_project_manager = User.create(first_name: "Luke",
                                      last_name: "Skywalker",
-                                     email: 'testing@man.net',
+                                     email: 'not_current@man.net',
                                      password: "asdfghjkl",
                                      manager: true)
   test_project.managers << test_project_manager
