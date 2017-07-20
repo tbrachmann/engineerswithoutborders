@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_and_belongs_to_many :skills
+  has_one :role
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -26,11 +27,24 @@ class User < ActiveRecord::Base
       end
     end
   end
-
+  
   def demote_manager_all
     my_projects = self.manages.to_a
     self.manages.delete_all
     self.projects << my_projects
+    self.manager = false
+  end
+
+  def name
+    if self.first_name.nil? && self.last_name.nil?
+      return ""
+    elsif !self.first_name.nil? && self.last_name.nil?
+      return self.first_name
+    elsif self.first_name.nil? && !self.last_name.nil?
+      return self.last_name
+    else
+      return self.first_name + " " + self.last_name
+    end
   end
   
   private :manager_relationships, :manager_relationships=
