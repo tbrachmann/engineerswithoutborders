@@ -1,6 +1,6 @@
 <div class="field">
     <%= f.attribute_fields do |a| %>
-        <%= a.attribute_select %>
+        <%= a.attribute_select associations: [:role]%>
     <% end %>
     <%= f.predicate_select :only => [:cont] %>
     <%= f.value_fields do |v| %>
