@@ -8,10 +8,32 @@ Feature: Reducing search parameters for Find Volunteers page
   # I should be able to register as a volunteer
   # So that I can be added to projects
 
+Background: Volunteers have been added to the project page
+
+
+    # going to add some weird functionality to the Given the following volunteers exist at some point.
+    Given the following volunteers exist:
+    |User          | availability                         | Fluency in Spanish | 
+    |"Schmoe, Joe" | [:friday_afternoon, :sunday_morning] |                 Yes|
+    |"User, Random"|                    [:sunday_morning] |                  No|
+
+
+
+
 Scenario: 
   Given I am a project manager
   Given I am on the "Find Volunteers" page
   When I select "Education" from "       "
+
+Scenario: Filter by time availability
+  Given I am a project manager
+  Given I am on the "Find Volunteers" page
+  When I press "filter options"
+  Then I should see "availability"
+  When I select "sunday morning"
+  When I press "submit"
+  Then I should see "Joe"
+  Then I should see "Random"
   
   # And test for RESTful URL
   
