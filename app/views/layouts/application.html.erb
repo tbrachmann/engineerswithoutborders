@@ -22,8 +22,8 @@
         <a class="navbar-brand" href="#"><%= image_tag("ewb-sfp-logo.png", height:"32") %></a>
       </div>
       <ul class="nav navbar-nav navbar-right">
-        <li class="nav-item active">
-          <%= link_to("Home", root_path, class:"glyphicon glyphicon-home") %></a>
+        <li class="nav-item">
+          <%= link_to("Home", root_path) %></a>
         </li>
         <% if user_signed_in? %>
           <li class="nav-item">
@@ -44,22 +44,20 @@
             <div class="nav-link">Signed in as <strong><%= current_user.email %></strong></div>
           </li>
         <% else %>
-        <li>
-          <%= link_to("Login", user_session_path, class:"nav-item glyphicon glyphicon-log-in") %></a>
+        <li class="nav-item">
+          <%= link_to("Login", user_session_path) %></a>
         </li>
         <% end %> 
       </ul>
       </div>
   </nav>
 </div>
-    <div class="container fill">
-      <div class="col-md-10 col-md-offset-1 fill">
-      <div class="section fill">
-        <div class="card fill">
+    <div class="main main-raised">
+      <div class="container">
+        <div class="section">
           <%= yield %>
+        </div>
       </div>
-    </div>
-    </div>
     </div>
   </body>
 </html>
