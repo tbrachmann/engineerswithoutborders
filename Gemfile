@@ -14,6 +14,7 @@ gem 'uglifier'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails'
 gem 'jquery-rails'
+gem 'gon'
 gem 'jquery-ui-rails'
 gem 'bootstrap-datepicker-rails'
 gem "paperclip"

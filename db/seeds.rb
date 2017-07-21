@@ -14,3 +14,9 @@ user_list = [["jbarns@berkeley.edu", "password", "Jack", "Barnett", 20],
 user_list.each do |email, password, first_name, last_name, age|
   User.create(email: email, password: password, first_name: first_name, last_name: last_name, age: age)
 end
+
+skill_list = ["test1", "test2", "test3"]
+
+skill_list.each do |name|
+    Skill.create(name: name)
+end

@@ -154,6 +154,8 @@ class UsersController < ApplicationController
     @user = User.all
     @search = User.search(params[:q])
     @users = @search.result.page(params[:page]).per(10)
+    gon.users = @users
+    gon.skills = Skill.all
     @search.build_condition
     authorize! :read, @user
   end
