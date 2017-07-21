@@ -15,35 +15,44 @@ $(document).ready(function(){
 function change(id) {
 //    console.log("I've been clicked!!")
     var $skill_checkbox = $("#" + id)
-    $.ajax({type: "GET",
-	    url: "/users",
-	    data: {skill_name: id},
-	    error: function(e) {
-		console.log("failed!");
-		return null
-	    },
-	    success: function(data) {
-		console.log(data);
-		var ids = []
-		/*
-		for (var i in data) {
-		    ids.concat(data[i][id])
-		}
-*/
-		/*
-		var ids = data.map(function(x) {
-		    return x[id]
-		});
-		*/
-		var user_rows = $("div[klass='user_row']")
-		console.log(user_rows)
-		for (var i in user_rows) {
-		    if(data[id] != $(user_rows[i]).attr('id')) {
-			$(user_rows[i]).hide()
+    if($skill_checkbox.is( ":checked" )) {
+	$.ajax({type: "GET",
+		url: "/users",
+		data: {skill_name: id},
+		dataType: "json",
+		error: function(e) {
+		    console.log("failed!");
+		    return null
+		},
+		success: function(data) {
+		    console.log(data);
+		    var id = data.id
+		    /*
+		      for (var i in data) {
+		      ids.concat(data[i][id])
+		      }
+		    */
+		    /*
+		      var ids = data.map(function(x) {
+		      return x[id]
+		      });
+		    */
+		    var user_rows = $("div[klass='user_row']")
+		    for (var i=0; i < user_rows.length; i++) {
+			if(data.id != $(user_rows[i]).attr('id')) {
+			    $(user_rows[i]).hide()
+			    $(user_rows[i]).next("hr").hide()
+			}
 		    }
 		}
-	    }
-	   });
+	       });
+    } else {
+	var user_rows = $("div[klass='user_row']");
+	for (var i=0; i < user_rows.length; i++) {
+	    $(user_rows[i]).show()
+	    $(user_rows[i]).next("hr").show()
+	}
+    }
     /*
     var item = '#' + id;
     var users = gon.users;
