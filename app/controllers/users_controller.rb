@@ -18,6 +18,14 @@ class UsersController < ApplicationController
   end
 
   def index
+    if request.xhr?
+      skill_name = params[:skill_name]
+      puts "skill_name"
+      skill_obj = Skill.find_by name: skill_name
+      @user = skill_obj.users.first
+      render :json => @user
+      return
+    end
     @user = User.all
     @search = User.search(params[:q])
     @users = @search.result.page(params[:page]).per(10)
@@ -151,6 +159,14 @@ class UsersController < ApplicationController
   end
 
   def index
+    if request.xhr?
+      skill_name = params[:skill_name]
+      puts "skill_name"
+      skill_obj = Skill.find_by name: skill_name
+      @user = skill_obj.users.first
+      render :json => @user
+      return
+    end
     @user = User.all
     @search = User.search(params[:q])
     @users = @search.result.page(params[:page]).per(10)
