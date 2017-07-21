@@ -1,4 +1,6 @@
-<h1>Listing Users</h1>
+<head><%= include_gon %></head>
+
+<h1 id="test">Listing Users</h1>
 
 <div class="row">
 <div class="col-md-12">
@@ -12,15 +14,32 @@
 </div>
 </div>
 
+<div class = "row">
+  <div class = "col-md-12">
+    <div role = "tab">
+      <span>Skills</span>
+      <div aria-expanded = "true" role = "tabpanel">
+        <% Skill.all.each do |skill| %>
+          <label role = "checkbox" aria-checked = "false" aria-disabled = "false">
+            <input type = "checkbox" id = <%= skill.name %> onchange="change(id)"/>
+              <label for=<%=skill.name %>> <%= skill.name %></label>
+          </label>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <hr>
 <% @users.each do |user| %>
-  <div class="row">
+  <div class="row" id= <%= user.id %> class="user">
     <div class="col-md-7">
     <a href=<%= user_path(user) %>><strong><%= user.first_name %> <%= user.last_name %></strong></a> <br>
     <strong>Age: </strong> <%= user.age %>
     <strong>Education: </strong> <%= user.education %> from <%= user.school %>
     <strong> Field: </strong> <%= user.expertise %><br>
     <strong>Availability: </strong><%= user.availability %> <br>
+    <strong><% if user.skills[0] %><%= user.skills[0].name %><%end%></strong>
     </div>
     <div class="col-md-2">
     <button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal">Contact <%= user.first_name %></button>
