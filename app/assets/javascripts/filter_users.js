@@ -13,6 +13,41 @@ $(document).ready(function(){
 });
 
 function change(id) {
+<<<<<<< HEAD
+=======
+//    console.log("I've been clicked!!")
+    var $skill_checkbox = $("#" + id)
+    $.ajax({type: "GET",
+	    url: "/users",
+	    data: {skill_name: id},
+	    error: function(e) {
+		console.log("failed!");
+		return null
+	    },
+	    success: function(data) {
+		console.log(data);
+		var ids = []
+		/*
+		for (var i in data) {
+		    ids.concat(data[i][id])
+		}
+*/
+		/*
+		var ids = data.map(function(x) {
+		    return x[id]
+		});
+		*/
+		var user_rows = $("div[klass='user_row']")
+		console.log(user_rows)
+		for (var i in user_rows) {
+		    if(data[id] != $(user_rows[i]).attr('id')) {
+			$(user_rows[i]).hide()
+		    }
+		}
+	    }
+	   });
+    /*
+>>>>>>> 68f07b34f84871275bb5d78dd61126bd9b929d54
     var item = '#' + id;
     var users = gon.users;
     var skills = gon.skills
@@ -24,6 +59,12 @@ function change(id) {
         //console.log(users[i]);
         //filter(users[i], id);
     }
+<<<<<<< HEAD
+=======
+    */
+
+    
+>>>>>>> 68f07b34f84871275bb5d78dd61126bd9b929d54
     
     //<% @users.each do |user| %>
       //filter(user, id)

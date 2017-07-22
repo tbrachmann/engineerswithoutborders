@@ -116,9 +116,126 @@ RSpec.describe User, :type => :model do
       expect(@example_user.role.name).to match "Cook"
     end
     it "Role stays in table if user is deleted" do
-      @example_user.role = @example_role
+      @example_user.create_role(name: "Cook")
       @example_user.destroy
-      expect(Role.all.count).to eq 1
+      expect(Role.all.count).to eq 2
+    end
+  end
+  describe "User certifications" do
+    before(:each) do
+      @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
+      @example_certification = FactoryGirl.create(:certification, name: "Microsoft Excel")
+      @example_certification2 = FactoryGirl.create(:certification, name: "Microsoft Word")
+    end
+    it "Add multiple certifications to user" do
+      @example_user.certifications << [@example_certification, @example_certification2]
+      expect(@example_user.certifications.count).to eq 2
+    end
+    it "Get certification name" do
+      @example_user.certifications << [@example_certification, @example_certification2]
+      cert_names = @example_user.certifications.pluck("name")
+      expect(cert_names).to include "Microsoft Excel"
+      expect(cert_names).to include "Microsoft Word"
+    end
+    it "No duplicate certifications can be added" do
+      expect{
+        @example_certification3 = FactoryGirl.create(:certification,
+                                                     name: "Microsoft Excel")
+      }.to raise_error(ActiveRecord::RecordNotUnique)
+    end
+    it "Build certification off user" do
+      @example_user.certifications.create(name: "Microsoft Powerpoint")
+      expect(@example_user.certifications.first.name).to match "Microsoft Powerpoint"
+    end
+    it "Blank certification cannot be added" do
+      expect{
+        @example_certification3 = FactoryGirl.create(:certification,
+                                                     name: "")
+      }.to raise_error
+    end
+    it "Certification stays in table if user is deleted" do
+      @example_user.certifications.create(name: "Microsoft Powerpoint")
+      @example_user.destroy
+      expect(Certification.all.count).to eq 3
+    end
+  end
+  # Revisit design here - necessary for these to be separate tables?
+  describe "User construction experience" do
+    before(:each) do
+      @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
+      @example_experience = FactoryGirl.create(:construction_experience,
+                                               name: "Well")
+      @example_experience2 = FactoryGirl.create(:construction_experience,
+                                                name: "Road")
+    end
+    it "Add multiple construction experiences to user" do
+      @example_user.construction_experiences << [@example_experience, @example_experience2]
+      expect(@example_user.construction_experiences.count).to eq 2
+    end
+    it "Get construction experience name" do
+      @example_user.construction_experiences << [@example_experience, @example_experience2]
+      expect(@example_user.construction_experiences).to include "Well"
+      expect(@example_user.construction_experiences).to include "Road"
+    end
+    it "No duplicate construction experiences can be added" do
+      expect{
+        @example_experience3 = FactoryGirl.create(:construction_experience,
+                                                  name: "Well")
+      }.to raise_error(ActiveRecord::RecordNotUnique)
+    end
+    it "Build construction experience off user" do
+      @example_user.construction_experiences.create(name: "Solar")
+      expect(@example_user.construction_experiences.first.name).to match "Solar"
+    end
+    it "Blank construction experience cannot be added" do
+      expect{
+        @example_experience3 = FactoryGirl.create(:construction_experience,
+                                                  name: "")
+      }.to raise_error
+    end
+    it "construction experience stays in table if user is deleted" do
+      @example_user.construction_experiences.create(name: "Solar")
+      @example_user.destroy
+      expect(ConstructionExperience.all.count).to eq 2
+    end
+  end
+  describe "User design experience" do
+    before(:each) do
+      @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
+      @example_experience = FactoryGirl.create(:design_experience,
+                                               name: "Well")
+      @example_experience2 = FactoryGirl.create(:design_experience,
+                                                name: "Road")
+    end
+    it "Add multiple design experiences to user" do
+      @example_user.design_experiences << [@example_experience, @example_experience2]
+      expect(@example_user.design_experiences.count).to eq 2
+    end
+    it "Get design experience name" do
+      @example_user.design_experiences << [@example_experience, @example_experience2]
+      expect(@example_user.design_experiences).to include "Well"
+      expect(@example_user.design_experiences).to include "Road"
+    end
+    it "No duplicate design experiences can be added" do
+      expect{
+        @example_experience3 = FactoryGirl.create(:design_experience,
+                                                  name: "Well")
+      }.to raise_error(ActiveRecord::RecordNotUnique)
+    end
+    it "Build design experience off user" do
+      @example_user.design_experiences.create(name: "Solar")
+      expect(@example_user.design_experiences.first.name).to match "Solar"
+    end
+    it "Blank design experience cannot be added" do
+      expect{
+        @example_experience3 = FactoryGirl.create(:design_experience,
+                                                  name: "")
+      }.to raise_error
+    end
+    it "Design experience stays in table if user is deleted" do
+      @example_user.design_experiences.create(name: "Solar")
+      @example_user.destroy
+      expect(DesignExperience.all.count).to eq 2
     end
   end
 end
