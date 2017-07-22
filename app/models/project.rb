@@ -25,6 +25,10 @@ class Project < ActiveRecord::Base
     end
   end
   
+  has_and_belongs_to_many :design_experiences
+  has_and_belongs_to_many :construction_experiences
+  
+  
   has_attached_file :image, styles: { large: "600x600>",
                                       medium: "300x300>",
                                       thumb: "150x150#" }
