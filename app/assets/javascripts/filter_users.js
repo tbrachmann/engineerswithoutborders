@@ -13,7 +13,7 @@ $(document).ready(function(){
 });
 
 function change(id) {
-<<<<<<< HEAD
+
 //    console.log("I've been clicked!!")
     var $skill_checkbox = $("#" + id)
     $.ajax({type: "GET",
@@ -36,55 +36,20 @@ function change(id) {
 		    return x[id]
 		});
 		*/
-		var user_rows = $("div[klass='user_row']")
-		console.log(user_rows)
-		for (var i in user_rows) {
-		    if(data[id] != $(user_rows[i]).attr('id')) {
-			$(user_rows[i]).hide()
+
+		    var user_rows = $("div[klass='user_row']")
+		    for (var i=0; i < user_rows.length; i++) {
+			if(data.id != $(user_rows[i]).attr('id')) {
+			    $(user_rows[i]).hide()
+			    $(user_rows[i]).next("hr").hide()
+			}
 		    }
 		}
-	    }
-	   });
-    /*
-=======
->>>>>>> Filtering users by skills. Able to grab skill object upon checking the box.
-    var item = '#' + id;
-    var users = gon.users;
-    var skills = gon.skills
-    for (var i in skills) {
-        if (skills[i].name == id) {
-            skill = skills[i];
-            console.log(skill);
-        }
-        //console.log(users[i]);
-        //filter(users[i], id);
-    }
-<<<<<<< HEAD
-    */
-
-    
-=======
->>>>>>> Filtering users by skills. Able to grab skill object upon checking the box.
-    
-    //<% @users.each do |user| %>
-      //filter(user, id)
-    //<% end %>
-    //$.each($('input[type=checkbox'), function(i, val) {
-    //    console.log(val);
-    //  if ($(val).is(':checked')) {
-   //     console.log("yay");
-    //  } 
-   // });
+	       });
 }
 
 function filter(user, id) {
     var skills = user.skills;
     
     console.log(skills);
-    //<% user.skills.each do |skill| %>
-     // <% if skill.name == id %>
-      //  console.log(<%= user.name %>)
-     //   console.log(<%=skill.name%>)
-     // <% end %>
-  //  <% end %>
 }

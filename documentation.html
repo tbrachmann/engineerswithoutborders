@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>documentation.html</title>
+
+</head>
+
+<body>
+
+<h1 id="documentation-on-tobys-changes-week-710">Documentation on Toby's Changes Week 7/10</h1>
+<h2 id="i.-updates">I. Updates</h2>
+<ul>
+<li>Updated <strong>Rails</strong> to version 4.2.9</li>
+<li>Updated <strong>Ruby</strong> to version 2.4.1</li>
+</ul>
+<pre><code>bundle update
+bundle install</code></pre>
+<p>I haven't found anything that breaks, but keep a look out.</p>
+<h2 id="ii.-database-changes">II. Database Changes</h2>
+<ul>
+<li><code>:has_many through</code> association on Projects and Users</li>
+<li>A user has many projects as <code>projects</code> and a project has many users as <code>volunteers</code> through <code>VolunteerRelationship</code></li>
+<li>A manager has many projects as <code>manages</code> and a project has many managers as <code>managers</code> through <code>ManagerRelationship</code></li>
+<li>A manager is just a user with role set to &quot;manager&quot; - in the future we can either make this a boolean, or check the <code>ManagerRelationship</code> table to see if the user manages any projects</li>
+<li>Besides the <code>user_id</code> and <code>project_id</code>, the <code>VolunteerRelationship</code> (table) also holds the role of the volunteer on the project</li>
+<li>A user can have multiple roles on a project, and manager can both be a manager and have a separate role on a project</li>
+<li>This means that there can be multiple entries in the <code>VolunteerRelationship</code> table for the same user on the same project provided that the role is different</li>
+<li>The plan for roles is that the project manager specifies a list of roles, and then can assign them through a dropdown to volunteers</li>
+</ul>
+<h2 id="iii.-convenience-methods">III. Convenience Methods</h2>
+<h4 id="on-the-project-model">On the <code>Project</code> model:</h4>
+<p>Getting volunteers:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="ot">@example_project</span>.volunteers</code></pre></div>
+<p>Although there may be many entries for each volunteer in the <code>VolunteerRelationship</code> table, this method will return only unique users.</p>
+<p>Getting managers:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="ot">@example_project</span>.managers</code></pre></div>
+<p>Assigning volunteers:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="ot">@example_project</span>.volunteers &lt;&lt; <span class="ot">@example_volunteer</span></code></pre></div>
+<p>Assigning managers:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="ot">@example_project</span>.managers &lt;&lt; <span class="ot">@example_manager</span></code></pre></div>
+<p>Add and assign role:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">add_with_role(volunteer, role)</code></pre></div>
+<p>If user does not exist, or volunteer is already a volunteer on the project, return false. Otherwise, create a new <code>VolunteerRelationship</code> associated with user, project, and specified role.</p>
+<p>Assign role:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">assign_role(volunteer, role)</code></pre></div>
+<p>If user is not a part of the project nor a manager, return false. Otherwise, create a new <code>VolunteerRelationship</code> associated with user, project, and specified role.</p>
+<p>Get role of user on project:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby">role_of(volunteer)</code></pre></div>
+<p>If user is not a part of the project nor a manager, return false. Otherwise return an array of strings of the roles of a user on a project. If the volunteer is also a manger, append &quot;manager&quot; to the array.</p>
+<h4 id="on-the-user-model">On the <code>User</code> model:</h4>
+<p>Getting projects the user is assigned to:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="ot">@example_user</span>.projects</code></pre></div>
+<p>Assigning projects to the user:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="ot">@example_user</span>.projects &lt;&lt; <span class="ot">@example_project</span></code></pre></div>
+<p>Getting projects that the user manages:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="ot">@example_user</span>.manages</code></pre></div>
+<p>Assigning projects for the user to manage:</p>
+<div class="sourceCode"><pre class="sourceCode ruby"><code class="sourceCode ruby"><span class="ot">@example_user</span>.manages &lt;&lt; <span class="ot">@example_project</span></code></pre></div>
+<p>See more usage examples in <code>spec/association_spec.rb</code>.</p>
+
+</body>
+</html>
