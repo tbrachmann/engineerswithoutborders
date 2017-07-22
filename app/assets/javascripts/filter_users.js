@@ -13,6 +13,7 @@ $(document).ready(function(){
 });
 
 function change(id) {
+<<<<<<< HEAD
 //    console.log("I've been clicked!!")
     var $skill_checkbox = $("#" + id)
     $.ajax({type: "GET",
@@ -45,6 +46,8 @@ function change(id) {
 	    }
 	   });
     /*
+=======
+>>>>>>> Filtering users by skills. Able to grab skill object upon checking the box.
     var item = '#' + id;
     var users = gon.users;
     var skills = gon.skills
@@ -56,9 +59,12 @@ function change(id) {
         //console.log(users[i]);
         //filter(users[i], id);
     }
+<<<<<<< HEAD
     */
 
     
+=======
+>>>>>>> Filtering users by skills. Able to grab skill object upon checking the box.
     
     //<% @users.each do |user| %>
       //filter(user, id)

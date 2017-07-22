@@ -32,7 +32,11 @@
 
 <hr>
 <% @users.each do |user| %>
+<<<<<<< HEAD
   <div class="row" id= <%= user.id %> class="user" klass="user_row">
+=======
+  <div class="row" id= <%= user.id %> class="user">
+>>>>>>> Filtering users by skills. Able to grab skill object upon checking the box.
     <div class="col-md-7">
     <a href=<%= user_path(user) %>><strong><%= user.first_name %> <%= user.last_name %></strong></a> <br>
     <strong>Age: </strong> <%= user.age %>
