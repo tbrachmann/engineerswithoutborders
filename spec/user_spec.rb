@@ -60,6 +60,7 @@ RSpec.describe User, "#expertise" do
     end
 end
 
+=begin
 RSpec.describe User, "#certifications" do 
     context "when the user first enters in their certifications" do 
         it "will save their certifications into the certificartions field" do
@@ -69,6 +70,7 @@ RSpec.describe User, "#certifications" do
         end
     end
 end
+=end
 
 RSpec.describe User, "#time_commitment" do 
     context "when the user first enters in their time commitment" do 
