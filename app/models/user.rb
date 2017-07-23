@@ -52,6 +52,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :design_experiences
   has_and_belongs_to_many :construction_experiences
   
+  has_one :availability
+  
   private :manager_relationships, :manager_relationships=
   private :volunteer_relationships, :volunteer_relationships=
 
@@ -64,5 +66,24 @@ class User < ActiveRecord::Base
     "description",
     "school"].sort
   end
+  
+  def update_availability(user_params)
+    
+    [:monday_morning]
+    
+    availability_hash = {}
+    a = [ 
+      :monday_morning, :monday_afternoon, :monday_evening, :tuesday_morning,
+      :tuesday_afternoon, :tuesday_evening, :wednesday_morning, :wednesday_afternoon,
+      :wednesday_evening, :thursday_morning, :thursday_afternoon, :thursday_evening,
+      :friday_morning, :friday_afternoon, :friday_evening, :saturday_morning,
+      :saturday_afternoon, :saturday_evening, :sunday_morning, :sunday_afternoon, :sunday_evening
+    ]
+    availability_hash = user_params.select{|x, y| a.include? x }
+    self.availability = Availability.create(availability_hash)
+  end
+      
+    
+  
   
 end

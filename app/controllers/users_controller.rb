@@ -90,6 +90,8 @@ class UsersController < ApplicationController
     # availability
     user.travel = user_params[:travel]
     user.time_commitment = user_params[:time_commitment]
+    
+    
     user.sunday_availability = user_params[:sunday_availability]
     user.monday_availability = user_params[:monday_availability]
     user.tuesday_availability = user_params[:tuesday_availability]
@@ -98,6 +100,9 @@ class UsersController < ApplicationController
     user.friday_availability = user_params[:friday_availability]
     user.saturday_availability = user_params[:saturday_availability]
     user.availability_comments = user_params[:availability_comments]
+    
+    user.update_availability(user_params)
+    
     user.skills = Skill.get_skills(user_params[:skill_ids])
     
     user.save
