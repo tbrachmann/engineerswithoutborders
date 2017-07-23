@@ -160,11 +160,16 @@ class UsersController < ApplicationController
 
   def index
     if request.xhr?
-      skill_name = params[:skill_name]
-      puts "skill_name"
-      skill_obj = Skill.find_by name: skill_name
-      @users = skill_obj.users
-      render :json => @users
+      #skill_name = params[:skill_name]
+      @skills = Hash.new
+      users = User.all
+      users.each do |user|
+        @skills[user[:id]] = []
+        user.skills.each do |skill|
+          @skills[user[:id]].push skill[:name]
+        end
+      end
+      render :json => @skills
       return
     end
     @user = User.all
