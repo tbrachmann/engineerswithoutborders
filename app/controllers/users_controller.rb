@@ -163,8 +163,8 @@ class UsersController < ApplicationController
       skill_name = params[:skill_name]
       puts "skill_name"
       skill_obj = Skill.find_by name: skill_name
-      @user = skill_obj.users.first
-      render :json => @user
+      @users = skill_obj.users
+      render :json => @users
       return
     end
     @user = User.all

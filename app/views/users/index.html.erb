@@ -32,11 +32,7 @@
 
 <hr>
 <% @users.each do |user| %>
-<<<<<<< HEAD
-  <div class="row" id= <%= user.id %> class="user">
-=======
   <div class="row" id= <%= user.id %> class="user" klass="user_row">
->>>>>>> 68f07b34f84871275bb5d78dd61126bd9b929d54
     <div class="col-md-7">
     <a href=<%= user_path(user) %>><strong><%= user.first_name %> <%= user.last_name %></strong></a> <br>
     <strong>Age: </strong> <%= user.age %>
