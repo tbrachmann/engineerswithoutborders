@@ -155,15 +155,15 @@ p, div, strong {
   transition: background-color .1s 0s ease-in-out, color .1s 0s ease-in-out
 }
 .btn-round:hover {
-  background-color: #313844;
+  background-color: #000000;
   color: white;
   
 }
 
 .btn-round:active {
   background-color: #121721;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+  box-shadow: 0 1px #666;
+  transform: translateY(1px);
 }
 .nav-item {
   font-family: 'Open Sans', Helvetica, sans-serif;
@@ -183,7 +183,6 @@ p, div, strong {
 .sqs-block-btn {
   transition: .1s opacity linear;
   -webkit-backface-visibility: hidden;
-  padding: 21px 34px;
   font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -191,7 +190,6 @@ p, div, strong {
   font-style: normal;
   font-size: 13px;
   color: #fff;
-  background-color: #36b3a8;
   border-color: #272727;
   display: inline-block;
   width: auto;
@@ -204,7 +202,11 @@ p, div, strong {
   line-height: normal;
   size: small;
 }
-.sqs-block-btn:hover {
+.btn-mint {
+  background-color: #36b3a8;
+  padding: 21px 34px;
+}
+.btn-mint:hover {
   background-color: #36b3a8;
   background-repeat:no-repeat;
   border: none;
@@ -215,9 +217,29 @@ p, div, strong {
   text-decoration: none;
   filter: grayscale(30%);
 }
+.btn-black {
+  background-color: #000000;
+  padding: 12px 14px;
+}
+.btn-black:hover {
+  background-color: #000000;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color: white;
+  text-decoration: none;
+  filter: grayscale(90%);
+}
+.btn-black:active {
+  background-color: #000000;
+  box-shadow: 0 1px #666;
+  transform: translateY(1px);
+}
+
 .background-img {
   position: relative;
-  // background-image: url("https://umaine.edu/ewb/wp-content/uploads/sites/211/2016/05/ewb-usa-logo-color.jpg");
   background-repeat: no-repeat;
 }
 .background-img::after {
@@ -231,4 +253,27 @@ p, div, strong {
   position: absolute;
   z-index: -1; 
   background-repeat: no-repeat;
+}
+
+.form-control {
+  border: 0;
+  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+  background-size: 0 2px, 100% 1px;
+  background-repeat: no-repeat;
+  background-position: center bottom, center calc(100% - 1px);
+  background-color: transparent;
+  transition: background 0s ease-out;
+  float: none;
+  box-shadow: none;
+  border-radius: 0;
+  font-weight: 400;
+}
+.form-control {  
+  color: #555;
+}
+.form-control:focus {
+  border: 0;
+  background-image: linear-gradient(#9c27b3, black), linear-gradient(black, black);
+  background-size: 0 2px, 100% 2px;
+  box-shadow: none;
 }
