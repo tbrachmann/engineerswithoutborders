@@ -21,6 +21,21 @@
 		position:absolute;
 		display:inline-block;
 	}
+	table#managers {
+  	margin: 10px;
+  	border-collapse: collapse;
+  	width: 100%;
+  	border-bottom: 2px solid black;
+	}
+	table#managers th {
+  	border: 2px solid white;
+  	font-weight: bold;
+  	background-color: lightseagreen;
+	}
+	table#managers th, table#managers td {
+  	padding: 4px;
+  	text-align: left;
+	}
 </style>
 
 <h1>Project <%= @project.name %> </h1>
@@ -43,7 +58,6 @@
 	  <%= image_tag @project.image.url(:medium) %> <br><br>
   <% end %>
  </div>
-
 
 	<div class="col-lg-12">
 		<p><strong>Project Description: </strong><%= @project.description %></p>
@@ -70,7 +84,7 @@
 	</div>
 	<div class="col-md-12">
 		<%if @project.volunteers.count == 0 || @project.volunteers == "" %>
-			<p> <strong> Project Capacity: <%= @project.volunteer_capacity %> </strong></p>
+			<p> <strong> Project Capacity: </strong> <%= @project.volunteer_capacity %> </p>
 		<% else %>
 			<p> <strong>Project</strong> <%= @project.name %> has <strong><%= @project.volunteers.count %></strong> volunteers, needs <strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> more!</p>
 		<% end %>
@@ -80,8 +94,30 @@
 			<p><strong>Project Manager: ---- </strong></p>
 			<p><strong>Manager Contact Information: ---- </strong></p>
 		<% else %>
-			<p> <strong>Project Manager: </strong><%= @project.managers.first.name %></p>
-			<p> <strong>Manager Contact Information: </strong> <%=@project.managers.first.email %></p>
+			<table id="managers">
+				<thead>
+					<tr>
+						<th>Project Manager</th>
+						<th>Email</th>
+						<th>Phone</th>
+					</tr>
+				</thead>
+				<tbody>
+    				<% @project.managers.each do |pm| %>
+    				<tr>
+        				<td>
+          					<%= pm.name %>
+          				</td>
+        				<td>
+          					<%= pm.email %>
+        				</td>
+        				<td>
+          					<%= pm.phone %>
+        				</td>
+      				</tr>
+    				<% end %>
+    			</tbody>
+    		</table>
 		<% end %>
 	</div>
 	<p style="page-break-before: always"></p>
