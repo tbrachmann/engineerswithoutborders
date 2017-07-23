@@ -151,7 +151,7 @@ RSpec.describe User, :type => :model do
       expect{
         @example_certification3 = FactoryGirl.create(:certification,
                                                      name: "")
-      }.to raise_error
+      }.to raise_error(ActiveRecord::RecordInvalid)
     end
     it "Certification stays in table if user is deleted" do
       @example_user.certifications.create(name: "Microsoft Powerpoint")
@@ -174,8 +174,9 @@ RSpec.describe User, :type => :model do
     end
     it "Get construction experience name" do
       @example_user.construction_experiences << [@example_experience, @example_experience2]
-      expect(@example_user.construction_experiences).to include "Well"
-      expect(@example_user.construction_experiences).to include "Road"
+      names = @example_user.construction_experiences.pluck("name")
+      expect(names).to include "Well"
+      expect(names).to include "Road"
     end
     it "No duplicate construction experiences can be added" do
       expect{
@@ -191,12 +192,12 @@ RSpec.describe User, :type => :model do
       expect{
         @example_experience3 = FactoryGirl.create(:construction_experience,
                                                   name: "")
-      }.to raise_error
+      }.to raise_error(ActiveRecord::RecordInvalid)
     end
     it "construction experience stays in table if user is deleted" do
       @example_user.construction_experiences.create(name: "Solar")
       @example_user.destroy
-      expect(ConstructionExperience.all.count).to eq 2
+      expect(ConstructionExperience.all.count).to eq 3
     end
   end
   describe "User design experience" do
@@ -213,8 +214,9 @@ RSpec.describe User, :type => :model do
     end
     it "Get design experience name" do
       @example_user.design_experiences << [@example_experience, @example_experience2]
-      expect(@example_user.design_experiences).to include "Well"
-      expect(@example_user.design_experiences).to include "Road"
+      names = @example_user.design_experiences.pluck("name")
+      expect(names).to include "Well"
+      expect(names).to include "Road"
     end
     it "No duplicate design experiences can be added" do
       expect{
@@ -230,12 +232,12 @@ RSpec.describe User, :type => :model do
       expect{
         @example_experience3 = FactoryGirl.create(:design_experience,
                                                   name: "")
-      }.to raise_error
+      }.to raise_error(ActiveRecord::RecordInvalid)
     end
     it "Design experience stays in table if user is deleted" do
       @example_user.design_experiences.create(name: "Solar")
       @example_user.destroy
-      expect(DesignExperience.all.count).to eq 2
+      expect(DesignExperience.all.count).to eq 3
     end
   end
 end
