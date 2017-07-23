@@ -243,7 +243,7 @@ RSpec.describe User, :type => :model do
 end
 
 # Project associations: Volunteers (Users through VolunteerRelationships), and Managers
-# (Users through ManagerRelationships)
+# (Users through ManagerRelationships), Skills, Certifications, etc.
 
 RSpec.describe Project, :type => :model do
   before(:each) do

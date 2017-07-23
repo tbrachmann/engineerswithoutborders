@@ -88,6 +88,11 @@ ActiveRecord::Schema.define(version: 20170723000827) do
     t.integer  "manager_id"
   end
 
+  create_table "projects_skills", id: false, force: :cascade do |t|
+    t.integer "skill_id"
+    t.integer "project_id"
+  end
+
   create_table "roles", force: :cascade do |t|
     t.integer "user_id"
     t.string  "name"
