@@ -162,14 +162,22 @@ class UsersController < ApplicationController
     if request.xhr?
       #skill_name = params[:skill_name]
       @skills = Hash.new
+      @certs = Hash.new
       users = User.all
       users.each do |user|
         @skills[user[:id]] = []
+        @certs[user[:id]] = []
+        user.certifications.each do |cert|
+          @certs[user[:id]].push cert[:name]
+        end
         user.skills.each do |skill|
           @skills[user[:id]].push skill[:name]
         end
       end
-      render :json => @skills
+      data = {:skills => @skills, :certs => @certs}
+      puts '*************************************'
+      puts data
+      render :json => data
       return
     end
     @user = User.all

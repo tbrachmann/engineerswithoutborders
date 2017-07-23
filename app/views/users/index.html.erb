@@ -14,19 +14,25 @@
 </div>
 </div>
 
+<br/>
 <div class = "row">
-  <div class = "col-md-12">
-    <div role = "tab">
-      <span>Skills</span>
-      <div aria-expanded = "true" role = "tabpanel">
+  <div class = "col-md-4" >
+    <h3>Skills</h3>
+      <div>
         <% Skill.all.each do |skill| %>
-          <label role = "checkbox" aria-checked = "false" aria-disabled = "false">
-            <input type = "checkbox" id = <%= skill.name %> onchange="change(id)"/>
-              <label for=<%=skill.name %>> <%= skill.name %></label>
-          </label>
+          <input type = "checkbox" id = <%= skill.name + '_skill'%> onchange="change(id)"/>
+          <label for=<%=skill.name %>> <%= skill.name %></label>
         <% end %>
       </div>
-    </div>
+  </div>
+  <div class = "col-md-4" >
+    <h3>Certifications</h3>
+      <div>
+        <% Certification.all.each do |cert| %>
+          <input type = "checkbox" id = <%= cert.name + '_cert'%> onchange="change(id)"/>
+          <label for=<%cert.name %>> <%= cert.name %></label>
+        <% end %>
+      </div>
   </div>
 </div>
 
