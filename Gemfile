@@ -15,6 +15,7 @@ gem 'uglifier'
 gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'gon'
 gem 'bootstrap-datepicker-rails'
 gem "paperclip"
 gem 'rails4-autocomplete'
