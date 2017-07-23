@@ -6,14 +6,15 @@ Rails.application.routes.draw do
   # suggested from http://stackoverflow.com/questions/10900664/rails-devise-how-can-i-edit-user-information
   resources :users, only: [:index, :show, :edit, :update]
   resources :projects, only: [:index, :show, :new, :create, :edit, :update]
-  resources :events, only: [:index, :show, :new, :create, :edit, :update]
   resources :users do
     get :autocomplete_user_school, :on => :collection
   end
   resources :users do
-    collection { post :search, to: 'users#index'}
+    collection { post :search, to: 'user#index'}
   end
-    
+  
+  get '/users/:id/manages', to: 'users#manages', as: "user_manages"
+  
   # WELCOME ROUTES
   get 'welcome/index' => 'welcome#index'
   root to: 'welcome#index'
