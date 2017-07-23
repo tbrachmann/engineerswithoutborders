@@ -178,4 +178,5 @@ ActiveRecord::Schema.define(version: 20170723003711) do
 
   add_index "volunteer_relationships", ["project_id"], name: "index_volunteer_relationships_on_project_id"
   add_index "volunteer_relationships", ["user_id"], name: "index_volunteer_relationships_on_user_id"
+
 end
