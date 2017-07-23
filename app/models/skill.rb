@@ -19,5 +19,7 @@ class Skill < ActiveRecord::Base
     def self.ransackable_attributes(auth_object = nil)
       ['name']
     end
+
+    validates :name, presence: true, allow_blank: false
     
 end

@@ -11,13 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723000827) do
+ActiveRecord::Schema.define(version: 20170723003711) do
 
   create_table "certifications", force: :cascade do |t|
     t.string "name"
   end
 
   add_index "certifications", ["name"], name: "index_certifications_on_name", unique: true
+
+  create_table "certifications_projects", id: false, force: :cascade do |t|
+    t.integer "project_id",       null: false
+    t.integer "certification_id", null: false
+  end
+
+  add_index "certifications_projects", ["certification_id"], name: "index_certifications_projects_on_certification_id"
+  add_index "certifications_projects", ["project_id"], name: "index_certifications_projects_on_project_id"
 
   create_table "certifications_users", id: false, force: :cascade do |t|
     t.integer "user_id",          null: false
@@ -109,6 +117,7 @@ ActiveRecord::Schema.define(version: 20170723000827) do
     t.datetime "updated_at"
   end
 
+  add_index "skills", ["name"], name: "index_skills_on_name", unique: true
   add_index "skills", ["user_id"], name: "index_skills_on_user_id"
 
   create_table "skills_users", id: false, force: :cascade do |t|

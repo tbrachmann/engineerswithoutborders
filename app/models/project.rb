@@ -1,6 +1,5 @@
 class Project < ActiveRecord::Base
   has_many :manager_relationships
-  has_and_belongs_to_many :skills
   has_many :managers, -> { distinct }, through: :manager_relationships, source: :user do
     def << (*managers)
       # If user is already a volunteer on the project, promote him to a manager
@@ -25,7 +24,9 @@ class Project < ActiveRecord::Base
       end
     end
   end
-  
+
+  has_and_belongs_to_many :skills
+  has_and_belongs_to_many :certifications
   has_and_belongs_to_many :design_experiences
   has_and_belongs_to_many :construction_experiences
   
