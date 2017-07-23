@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
@@ -180,6 +178,4 @@ ActiveRecord::Schema.define(version: 20170723003711) do
 
   add_index "volunteer_relationships", ["project_id"], name: "index_volunteer_relationships_on_project_id"
   add_index "volunteer_relationships", ["user_id"], name: "index_volunteer_relationships_on_user_id"
-
 end
->>>>>>> 3103b0ac119bcfd63791dde3050bd3f43a372342
