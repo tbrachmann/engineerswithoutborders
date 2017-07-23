@@ -102,13 +102,13 @@
     <%= f.input :description, label: "About:", as: :text, hint: "Please tell us very briefly a little about yourself and why you want to volunteer for Engineers without Borders.", :input_html => {:style => 'width: 100%', :rows => 4, class: 'response-project'} %>
     </div>
   </div>
-  <%= f.button :submit, "Update Background", class: "btn btn-md btn-success"%>
+  <%= f.button :submit, "Update Background", class: "btn btn-sm sqs-block-btn btn-black"%>
   </fieldset>
   <p></p>
   <fieldset>
   <legend>Account Information</legend>
   <%= f.input :email, disabled: true %>
-  <%= link_to "Change Email or Password", edit_user_registration_path, class: "btn btn-md btn-warning" %>
+  <%= link_to "Change Email or Password", edit_user_registration_path, class: "btn btn-sm sqs-block-btn btn-black" %>
   </fieldset>
 <% end %>
 <p></p>
