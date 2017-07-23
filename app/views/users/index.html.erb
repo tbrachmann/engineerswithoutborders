@@ -1,6 +1,5 @@
-<head><%= include_gon %></head>
 
-<h1 id="test">Listing Users</h1>
+<h1>Listing Users</h1>
 
 <div class="row">
 <div class="col-md-12">
@@ -38,7 +37,7 @@
 
 <hr>
 <% @users.each do |user| %>
-  <div class="row" id= <%= user.id %> class="user" klass="user_row">
+  <div class="row" id= <%= user.id %> klass="user_row">
     <div class="col-md-7">
     <a href=<%= user_path(user) %>><strong><%= user.first_name %> <%= user.last_name %></strong></a> <br>
     <strong>Age: </strong> <%= user.age %>
