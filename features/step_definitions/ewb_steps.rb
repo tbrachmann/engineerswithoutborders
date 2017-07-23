@@ -83,10 +83,16 @@ Given /^there exists a project "([^"]*)"$/ do |arg1|
   test_project.managers << test_project_manager
 end
 
-Given(/^the following volunteers exist:$/) do |table|
-  puts table
-  # table is a Cucumber::MultilineArgument::DataTable
-  pending # Write code here that turns the phrase above into concrete actions
+Given(/^the following volunteers exist:$/) do |volunteer_table|
+  volunteer_table.hashes.each do |volunteer|
+    User.create!(volunteer)
+  end
+end
+
+Given(/^the following skill table exists:$/) do |skill_table|
+  skill_table.hashes.each do |skill|
+    Skill.create!(skill)
+  end
 end
 
 Then(/^I should see "([^"]*)" before "([^"]*)"$/) do |arg1, arg2|
@@ -106,13 +112,19 @@ When(/^I press the "([^"]*)" button$/) do |arg1|
 end
 
 Then(/^I should see "([^"]*)" \#A user that meets these specified qualifications$/) do |arg1|
-  puts arg1
-  pending # Write code here that turns the phrase above into concrete actions
+  name = arg1.split(/\s+/)
+  if page.respond_to? :should
+    page.should have_content(name[0])
+    page.should have_content(name[1])
+  else
+    assert page.has_content?(text)
+  end
+   # Write code here that turns the phrase above into concrete actions
 end
 
 Then(/^I should not see "([^"]*)" \#A user that does not$/) do |arg1|
   puts arg1
-  pending # Write code here that turns the phrase above into concrete actions
+   # Write code here that turns the phrase above into concrete actions
 end
 
 When(/^I select attribute field$/) do

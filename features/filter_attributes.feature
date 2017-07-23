@@ -7,22 +7,27 @@ Feature: display list of volunteers filtered by different skills/certifications
 Background: Volunteers have been added to the project page
 
     Given the following volunteers exist:
-    |User          | ABET Certified?| Fluency in Spanish | Skills                       |
-    |"Schmoe, Joe" |             N/A|                 Yes| Pump Design, Solar Panels    |
-    |"User, Random"|             Yes|                  No| Solar Panels                 |
-
-    And I am on the find volunteers page
+    |last_name  | first_name        | email           | password            |
+    |"Schmoe"   | "Joe"             | "joe@joe.com"   | "password"          |
+    |"User"     | "Random"          | "rando@bob.com" | "abcdefg"           |
+    
+    Given the following skill table exists:
+    |user_id    | name                              |
+    | 1         | "Pump Design"                     |
+    | 1         | "Professional Fluency in Spanish" |
+    | 2         | "Solar Panels"                    |
+    
+    And I am a project manager
+    And I am on the "Find Volunteers" page
     
     Scenario: filter the volunteers list by a certain attribute
-      When I select "ABET Certified"
-      When I select "Professional Fluency in Spanish"
-      When I press the "Apply" button
-      Then I should see "Schmoe, Joe" #A user that meets these specified qualifications
-      Then I should not see "User, Random" #A user that does not
+      #When I select "Skills"
+      When I check "Professional Fluency in Spanish"
+      Then I should see "Joe Schmoe" #A user that meets these specified qualifications
+      Then I should not see "Random User" 
     
     Scenario: Filter volunteers by multiple critera
-      When I select "Pump Design"
-      And I select "Solar Panels"
-      And I press the "Apply" button
-      Then I should see "Schmoe, Joe"
-      And I should not see "User, Random"
+      When I check "Pump Design"
+      And I check "Solar Panels"
+      Then I should see "Joe Schmoe" #A user that meets these specified qualifications
+      And I should see "Random User" #A user that meets these specified qualifications
