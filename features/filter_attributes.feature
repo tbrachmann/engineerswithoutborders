@@ -7,19 +7,27 @@ Feature: display list of volunteers filtered by different skills/certifications
 Background: Volunteers have been added to the project page
 
     Given the following volunteers exist:
-    |User          | ABET Certified?| Fluency in Spanish | 
-    |"Schmoe, Joe" |             N/A|                 Yes|
-    |"User, Random"|             Yes|                  No|
-
-    And I am on a project page
+    |last_name  | first_name        | email           | password            |
+    |"Schmoe"   | "Joe"             | "joe@joe.com"   | "password"          |
+    |"User"     | "Random"          | "rando@bob.com" | "abcdefg"           |
     
-Scenario: filter the volunteers list by a certain attribute
-    When I select "ABET Certified"
+    Given the following skill table exists:
+    |user_id    | name                              |
+    | 1         | "Pump Design"                     |
+    | 1         | "Professional Fluency in Spanish" |
+    | 2         | "Solar Panels"                    |
     
-    When I select "Professional Fluency in Spanish"
-
-    When I press the "Apply" button
+    And I am a project manager
+    And I am on the "Find Volunteers" page
     
-    Then I should see "Schmoe, Joe" #A user that meets these specified qualifications
+    Scenario: filter the volunteers list by a certain attribute
+      #When I select "Skills"
+      When I check "Professional Fluency in Spanish"
+      Then I should see "Joe Schmoe" #A user that meets these specified qualifications
+      Then I should not see "Random User" 
     
-    Then I should not see "User, Random" #A user that does not
+    Scenario: Filter volunteers by multiple critera
+      When I check "Pump Design"
+      And I check "Solar Panels"
+      Then I should see "Joe Schmoe" #A user that meets these specified qualifications
+      And I should see "Random User" #A user that meets these specified qualifications

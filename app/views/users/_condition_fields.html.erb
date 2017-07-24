@@ -2,7 +2,8 @@
   <div class="col-md-8 col-md-offset-2 section"> 
     <div class="field">
         <%= f.attribute_fields do |a| %>
-            <%= a.attribute_select associations: [:role, :skills, :certifications]%>
+        <%= a.attribute_select associations: [:role, :skills, :certifications,
+	    :design_experiences, :construction_experiences]%>
         <% end %>
         <%= f.predicate_select :only => [:cont] %>
         <%= f.value_fields do |v| %>
