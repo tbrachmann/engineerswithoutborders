@@ -10,5 +10,5 @@ Background:
 Scenario: View project required skills
   Given I am on the projects page
   When I follow the project link for "Remba Island Project"
-  Then I should see "Required Skills"
-  And I should see "Well"
+  Then I should see "Key Skills"
+  And I should see "Ruby"
