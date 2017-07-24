@@ -31,7 +31,7 @@ class Ability
 
      user ||= User.new # guest user (not logged in)
       # manager abilities
-      if user.manager
+      if user.manager?
         can :manage, Project
         can :read, :all
       end

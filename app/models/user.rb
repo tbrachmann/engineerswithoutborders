@@ -64,5 +64,9 @@ class User < ActiveRecord::Base
     "description",
     "school"].sort
   end
+
+  def manager?
+    return self.manager
+  end
   
 end
