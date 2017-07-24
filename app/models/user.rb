@@ -48,6 +48,10 @@ class User < ActiveRecord::Base
     end
   end
   
+    
+  has_and_belongs_to_many :design_experiences
+  has_and_belongs_to_many :construction_experiences
+  
   private :manager_relationships, :manager_relationships=
   private :volunteer_relationships, :volunteer_relationships=
 

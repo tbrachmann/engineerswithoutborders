@@ -9,7 +9,12 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-		@project = Project.find(params[:id])
+	       @project = Project.find(params[:id])
+=begin       
+		if @project && @project.skills
+			@skills = @project.skills().map{|x| x.name}.join(", ")
+		end
+=end
 		session[:current_project_id] = @project.id
 	end
 
