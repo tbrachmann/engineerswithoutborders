@@ -75,18 +75,18 @@ class User < ActiveRecord::Base
     "school"].sort
   end
   
-  def update_availability(user_params)
-    
-    availability_hash = user_params.select{|x, y|  @@preset_time_slots.include? x }
-    self.availability = Availability.create(availability_hash)
+  def update_availability(availability_params)
+    symbol_int_availability = Hash[availability_params.map{|x, y| [x.to_sym , y == "1"]}]
+    if self.availability
+      self.availability.update(symbol_int_availability)
+    else
+      self.availability = Availability.create(symbol_int_availability)
+    end
+    self.availability.save!
   end
   
   def preset_time_slots
     @@preset_time_slots
-  end
-  
-  def availability
-    @availability
   end
   
   

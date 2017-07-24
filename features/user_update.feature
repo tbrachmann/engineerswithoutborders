@@ -14,10 +14,7 @@ Scenario: Updating Profile Information
   And I select "Spanish" from "First Language:"
   And I select "5 - Native or Bilingual Proficiency" from "First Language Fluency:"
   And I select "20" from "Age"
-  And I select the "Morning" option from the "Monday" drop-down field
-  And I select the "Evening" option from the "Wednesday" drop-down field
-  And I select the "Afternoon" option from the "Sunday" drop-down field
-  And I fill in "About:" with "College rules!"
+  And I fill in "Please tell us very briefly a little about yourself and why you want to volunteer for Engineers without Borders." with "College rules!"
   And I fill in "Name of University/College:" with "Berkeley"
   And I press "Update Background"
 
@@ -26,7 +23,4 @@ Scenario: Updating Profile Information
   Then I should see "20"
   Then I should see "College rules!"
   Then I should see "Berkeley"
-  Then I should see "Available: monday morning"
-  Then I should see "Available: wednesday evening"
-  Then I should see "Available: sunday afternoon"
 
