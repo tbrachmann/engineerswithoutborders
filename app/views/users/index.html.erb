@@ -14,10 +14,34 @@
   </div>
 </div>
 
+<br/>
+<div class = "row">
+  <div class = "col-md-4" >
+    <h3>Skills</h3>
+      <div>
+        <% Skill.all.each do |skill| %>
+          <input type = "checkbox" id = <%= skill.name + '_skill'%> onchange="change(id)"/>
+          <label for=<%=skill.name %>> <%= skill.name %></label>
+          <br/>
+        <% end %>
+      </div>
+  </div>
+  <div class = "col-md-4" >
+    <h3>Certifications</h3>
+      <div>
+        <% Certification.all.each do |cert| %>
+          <input type = "checkbox" id = <%= cert.name + '_cert'%> onchange="change(id)"/>
+          <label for=<%cert.name %>> <%= cert.name %></label>
+          <br/>
+        <% end %>
+      </div>
+  </div>
+</div>
+
 <hr>
 <form>
 <% @users.each do |user| %>
-  <div class="row">
+  <div class="row" id=<%= user.id %> klass="user_row">
     <div id="user-checkbox">
       <input type="checkbox" action="/people" name= "user"> <br>  
     </div>
