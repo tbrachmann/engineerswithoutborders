@@ -22,9 +22,34 @@ Given /^I am a project manager on "(.+)"/ do |project_name|
     manager = User.find_by email: email
   end
   if(!Project.exists?(name: project_name))
-    Project.create(name: project_name,
-                   description: "Creating a large-scale water filter system",
-                   volunteer_capacity: 25, location: "Remba Island, Kenya")
+    test_project = Project.create(name: project_name,
+                                  description: "Creating a large-scale water filter system",
+                                  volunteer_capacity: 25, location: "Remba Island, Kenya")
+    skill = Skill.new(name: "Ruby")
+    if Skill.exists?(:name => "Ruby")
+      test_project.skills << Skill.find_by_name(skill.name)
+    else
+      test_project.skills << skill
+    end
+    cert = Certification.new(name: "Microsoft Excel")
+    if Certification.exists?(:name => "Microsoft Excel")
+      test_project.certifications << Certification.find_by_name(cert.name)
+    else
+      test_project.certifications << cert
+    end
+    construction_exp = ConstructionExperience.new(name: "Well")
+    if ConstructionExperience.exists?(:name => "Well")
+      test_project.construction_experiences << ConstructionExperience
+                                                 .find_by_name(construction_exp.name)
+    else
+      test_project.construction_experiences << construction_exp
+    end
+    design_exp = DesignExperience.new(name: "Road")
+    if DesignExperience.exists?(:name => "Road")
+      test_project.design_experiences << DesignExperience.find_by_name(design_exp.name)
+    else
+      test_project.design_experiences << design_exp
+    end
   end
   project = Project.find_by name: project_name
   project.managers << manager
@@ -81,12 +106,42 @@ Given /^there exists a project "([^"]*)"$/ do |arg1|
                                      password: "asdfghjkl",
                                      manager: true)
   test_project.managers << test_project_manager
+  skill = Skill.new(name: "Ruby")
+  if Skill.exists?(:name => "Ruby")
+    test_project.skills << Skill.find_by_name(skill.name)
+  else
+    test_project.skills << skill
+  end
+  cert = Certification.new(name: "Microsoft Excel")
+  if Certification.exists?(:name => "Microsoft Excel")
+    test_project.certifications << Certification.find_by_name(cert.name)
+  else
+    test_project.certifications << cert
+  end
+  construction_exp = ConstructionExperience.new(name: "Well")
+  if ConstructionExperience.exists?(:name => "Well")
+    test_project.construction_experiences << ConstructionExperience.find_by_name(construction_exp.name)
+  else
+    test_project.construction_experiences << construction_exp
+  end
+  design_exp = DesignExperience.new(name: "Road")
+  if DesignExperience.exists?(:name => "Road")
+    test_project.design_experiences << DesignExperience.find_by_name(design_exp.name)
+  else
+    test_project.design_experiences << design_exp
+  end
 end
 
-Given(/^the following volunteers exist:$/) do |table|
-  puts table
-  # table is a Cucumber::MultilineArgument::DataTable
-  pending # Write code here that turns the phrase above into concrete actions
+Given(/^the following volunteers exist:$/) do |volunteer_table|
+  volunteer_table.hashes.each do |volunteer|
+    User.create!(volunteer)
+  end
+end
+
+Given(/^the following skill table exists:$/) do |skill_table|
+  skill_table.hashes.each do |skill|
+    Skill.create!(skill)
+  end
 end
 
 Then(/^I should see "([^"]*)" before "([^"]*)"$/) do |arg1, arg2|
@@ -106,13 +161,19 @@ When(/^I press the "([^"]*)" button$/) do |arg1|
 end
 
 Then(/^I should see "([^"]*)" \#A user that meets these specified qualifications$/) do |arg1|
-  puts arg1
-  pending # Write code here that turns the phrase above into concrete actions
+  name = arg1.split(/\s+/)
+  if page.respond_to? :should
+    page.should have_content(name[0])
+    page.should have_content(name[1])
+  else
+    assert page.has_content?(text)
+  end
+   # Write code here that turns the phrase above into concrete actions
 end
 
 Then(/^I should not see "([^"]*)" \#A user that does not$/) do |arg1|
   puts arg1
-  pending # Write code here that turns the phrase above into concrete actions
+   # Write code here that turns the phrase above into concrete actions
 end
 
 When(/^I select attribute field$/) do

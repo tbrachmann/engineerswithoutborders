@@ -18,6 +18,14 @@ class UsersController < ApplicationController
   end
 
   def index
+    if request.xhr?
+      skill_name = params[:skill_name]
+      puts "skill_name"
+      skill_obj = Skill.find_by name: skill_name
+      @user = skill_obj.users.first
+      render :json => @user
+      return
+    end
     @user = User.all
     @search = User.search(params[:q])
     @users = @search.result.page(params[:page]).per(10)
@@ -88,7 +96,7 @@ class UsersController < ApplicationController
     user.school = user_params[:school]
     user.expertise = user_params[:expertise]
     user.description = user_params[:description]
-    user.certifications = user_params[:certifications]
+    #user.certifications = user_params[:certifications]
     user.phone = user_params[:phone]
     user.zip = user_params[:zip]
     # languages
@@ -165,6 +173,25 @@ class UsersController < ApplicationController
   end
 
   def index
+    if request.xhr?
+      #skill_name = params[:skill_name]
+      @skills = Hash.new
+      @certs = Hash.new
+      users = User.all
+      users.each do |user|
+        @skills[user[:id]] = []
+        @certs[user[:id]] = []
+        user.certifications.each do |cert|
+          @certs[user[:id]].push cert[:name]
+        end
+        user.skills.each do |skill|
+          @skills[user[:id]].push skill[:name]
+        end
+      end
+      data = {:skills => @skills, :certs => @certs}
+      render :json => data
+      return
+    end
     @user = User.all
     @search = User.search(params[:q])
     @users = @search.result.page(params[:page]).per(10)
@@ -229,7 +256,8 @@ class UsersController < ApplicationController
     user.school = user_params[:school]
     user.expertise = user_params[:expertise]
     user.description = user_params[:description]
-    user.certifications << user_params[:certifications]
+
+    #user.certifications = user_params[:certifications]
     user.phone = user_params[:phone]
     user.zip = user_params[:zip]
     # languages

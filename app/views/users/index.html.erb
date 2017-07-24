@@ -1,7 +1,7 @@
 <div class="row section">
-  <div class="col-md-8 col-md-offset-2 section">
+	<div class="col-md-8 col-md-offset-2 section">
     <h1 class="text-center">Listing Users</h1>
-    
+    <br>
     <div class="row">
     <div class="col-md-12">
     <%= search_form_for @search, url: search_users_path, method: :post do |f| %>
@@ -17,14 +17,14 @@
     <hr>
     <% @users.each do |user| %>
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-8">
         <a href=<%= user_path(user) %>><strong><%= user.first_name %> <%= user.last_name %></strong></a> <br>
         <strong>Age: </strong> <%= user.age %>
         <strong>Education: </strong> <%= user.education %> from <%= user.school %>
         <strong> Field: </strong> <%= user.expertise %><br>
         <strong>Availability: </strong><%= user.availability %> <br>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
         <button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal">Contact <%= user.first_name %></button>
         </div>
       </div>

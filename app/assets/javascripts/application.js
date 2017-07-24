@@ -26,3 +26,5 @@
 // $( function() {
 // $( "#project_start_date" ).datepicker();
 // } );
+
+//= require filter_users.js

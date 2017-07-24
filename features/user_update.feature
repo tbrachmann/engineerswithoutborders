@@ -10,7 +10,7 @@ Scenario: Updating Profile Information
   And I follow "Edit Profile"
   And I select "Bachelor's Degree" from "Education:"
   And I select "Computer Science" from "Field of Study or Expertise:"
-  And I select "Chemical" from "Certifications Related to Field:"
+  #And I select "Chemical" from "Certifications Related to Field:"
   And I select "Spanish" from "First Language:"
   And I select "5 - Native or Bilingual Proficiency" from "First Language Fluency:"
   And I select "20" from "Age"

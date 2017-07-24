@@ -12,7 +12,15 @@ user_list = [["jbarns@berkeley.edu", "password", "Jack", "Barnett", 20],
              ["benbarns@gmail.com", "password", "Ben", "Barnett", 14]]
 
 user_list.each do |email, password, first_name, last_name, age|
-  User.create(email: email, password: password, first_name: first_name, last_name: last_name, age: age)
+  User.create(email: email, password: password, first_name: first_name,
+              last_name: last_name, age: age)
+end
+
+skill_list = ["test1", "test2", "test3"]
+
+skill_list.each do |name|
+    Skill.create(name: name)
+end
   
 test_manager = User.create(first_name: Faker::Name::first_name, 
     last_name: Faker::Name.last_name, 
@@ -43,6 +51,3 @@ test_project = Project.create(name: "Remba Island Project",
 test_project.managers << test_manager
 test_project.managers << test_manager_two
 test_project.managers << test_manager_three
-
-
-end
