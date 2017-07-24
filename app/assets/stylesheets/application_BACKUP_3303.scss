@@ -1,0 +1,307 @@
+
+
+html, body { 
+  height: 100%;
+  min-height: 100%
+  }
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require jquery.ui.datepicker
+ *= require jquery-ui
+ *= require_self
+ *= require_tree .
+ *= require jquery-ui
+ *= require bootstrap-datepicker
+ */
+ 
+ h1, h2, h3, h4, h5, h6 {
+    font-family: "proxima-nova";
+    font-weight: bold;
+}
+p, div, strong {
+    font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+ #projects .calendar {
+  border-collapse: collapse;
+  width: 100%;
+
+  td, th {
+    font-family: "Lucida Grande", arial, helvetica, sans-serif;
+    font-size: 10px;
+    padding: 6px;
+    border: 1px solid #999;
+  }
+
+  th {
+  
+    color: #666;
+    text-align: center;
+    width: 14.2857142857143%;
+  }
+
+  td {
+    background: #FFF;
+    color: #777;
+    height: 80px;
+    vertical-align: top;
+    font-size: 16px;
+  }
+
+  .notmonth, .notmonth a { color: #CCC; }
+  .today { background-color: #D7F2FF; }
+}
+
+#projects #month {
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 22px;
+  a {
+    text-decoration: none;
+    padding: 0 10px;
+    color: #999;
+  }
+}
+
+#projects ul {
+  font-size: 11px;
+  padding-left: 20px;
+}
+
+.temp {
+        background-image: url('/assets/ewb.jpg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        width: 100%;
+        height: 90%;
+      }
+.fill { 
+    height: 100%;
+    min-height: 100%;
+  }
+.main {
+    background: #FFFFFF;
+    position: relative;
+    z-index: 3;
+}
+.main-raised {
+    margin: -60px 30px 0px;
+    border-radius: 6px;
+    /* box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); */
+}
+.section {
+    background-position: center center;
+    background-size: cover;
+    padding: 70px 0;
+}
+.card {
+    border-radius: 6px;
+    box-shadow: 0 16px 24px 2px #333, 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    color: rgba(0,0,0, 0.87);
+    background: #fff;
+    padding: 7%;
+}
+.card-title {
+    font-weight: 700;
+    font-family: nanum-barun-gothic-regular;
+}
+.card-image {
+    margin: 0;
+    border-radius: 3px;
+    height: 60%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.btn-color {
+  background-color: #3D3C40;
+  color: #FFFFFF;
+}
+.bg-color {
+  background-color: #E5E5E5;
+}
+.nav-shadow{
+      box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.btn-round{
+  border-radius: 300px;
+  background-color: transparent;
+  -webkit-font-smoothing: subpixel-antialiased;
+  border: 2px solid #000;
+  color: #000;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-style: normal;
+  margin-left: 1em;
+  padding: 1em 1.5em !important;
+  transition: background-color .1s 0s ease-in-out, color .1s 0s ease-in-out
+}
+.btn-round:hover {
+  background-color: #000000;
+  color: white;
+  
+}
+
+.btn-round:active {
+  background-color: #121721;
+<<<<<<< HEAD
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.row .col-md-7 {
+  left: 50px;
+}
+
+// .search-checkbox {
+//   position: relative;
+//   left: 25px;
+//   top: 50px;
+// }
+
+.search-checkbox {
+  #search-submit {
+    position:absolute;
+    width: 20%;
+    height: 20%;
+    top: 13%;
+    right: 5%;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+=======
+  box-shadow: 0 1px #666;
+  transform: translateY(1px);
+}
+.nav-item {
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+.filter {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.multi_bg_example {
+  width: 100%;
+  height: 400px;
+  background-image: url(main1.png), url(main2.png), linear-gradient(to right, rgba(30, 75, 115, 1), rgba(255, 255, 255, 0));
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: bottom right, left, right;
+}
+.sqs-block-btn {
+  transition: .1s opacity linear;
+  -webkit-backface-visibility: hidden;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 13px;
+  color: #fff;
+  border-color: #272727;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  border-width: 0;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  -webkit-appearance: none;
+  line-height: normal;
+  size: small;
+}
+.btn-mint {
+  background-color: #36b3a8;
+  padding: 21px 34px;
+}
+.btn-mint:hover {
+  background-color: #36b3a8;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color: white;
+  text-decoration: none;
+  filter: grayscale(30%);
+}
+.btn-black {
+  background-color: #000000;
+  padding: 12px 14px;
+}
+.btn-black:hover {
+  background-color: #000000;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  color: white;
+  text-decoration: none;
+  filter: grayscale(90%);
+}
+.btn-black:active {
+  background-color: #000000;
+  box-shadow: 0 1px #666;
+  transform: translateY(1px);
+}
+
+.background-img {
+  position: relative;
+  background-repeat: no-repeat;
+}
+.background-img::after {
+  content: "";
+  background-image: url("https://umaine.edu/ewb/wp-content/uploads/sites/211/2016/05/ewb-usa-logo-color.jpg");
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; 
+  background-repeat: no-repeat;
+}
+
+.form-control {
+  border: 0;
+  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+  background-size: 0 2px, 100% 1px;
+  background-repeat: no-repeat;
+  background-position: center bottom, center calc(100% - 1px);
+  background-color: transparent;
+  transition: background 0s ease-out;
+  float: none;
+  box-shadow: none;
+  border-radius: 0;
+  font-weight: 400;
+}
+.form-control {  
+  color: #555;
+}
+.form-control:focus {
+  border: 0;
+  background-image: linear-gradient(#9c27b3, black), linear-gradient(black, black);
+  background-size: 0 2px, 100% 2px;
+  box-shadow: none;
+>>>>>>> e4e9f27d67527a9e38927c28a8b70703d73e75e2
+}

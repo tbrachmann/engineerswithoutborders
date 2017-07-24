@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_and_belongs_to_many :skills
+  has_and_belongs_to_many :certifications
   has_one :role
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -47,6 +48,10 @@ class User < ActiveRecord::Base
     end
   end
   
+    
+  has_and_belongs_to_many :design_experiences
+  has_and_belongs_to_many :construction_experiences
+  
   private :manager_relationships, :manager_relationships=
   private :volunteer_relationships, :volunteer_relationships=
 
@@ -57,8 +62,7 @@ class User < ActiveRecord::Base
     "education",
     "expertise",
     "description",
-    "school",
-    "certifications"].sort
+    "school"].sort
   end
   
 end

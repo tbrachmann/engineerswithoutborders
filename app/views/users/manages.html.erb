@@ -1,0 +1,21 @@
+<div class="row section">
+  <div class="col-md-8 col-md-offset-2 section">
+    <h2 class="text-center">My Projects</h2>
+    <% if can? :read, :all %>
+      <p><%= link_to "Create New Project", new_project_path, class: "btn btn-sm sqs-block-btn btn-black" %></p>
+    <% end %>
+
+    <hr>
+    <ul>
+    <% @projects.each do |project| %>
+    <li>
+      <h4><a href="<%= project_path(project.id) %>" ><%= project.name %></a></h4>
+      <p><%= project.description %><p>
+      </p>
+      </p>
+     </li>
+    <% end %>
+
+    <%= paginate @projects %>
+  </div>
+</div>
