@@ -74,6 +74,10 @@ class User < ActiveRecord::Base
     "description",
     "school"].sort
   end
+
+  def manager?
+    return self.manager
+  end
   
   def update_availability(availability_params)
     symbol_int_availability = Hash[availability_params.map{|x, y| [x.to_sym , y == "1"]}]
