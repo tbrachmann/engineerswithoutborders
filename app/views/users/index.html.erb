@@ -23,11 +23,10 @@
 <div class="search-checkbox">
   <form>
     <% @users.each do |user| %>
-    <input type="checkbox" name=user.first_name> <%= user.email %> <br>
+    <input type="checkbox" action="/people" name= "user"> <%= user.email %> <br>
     <% end %>
     <div id="search-submit">
-      <input type="submit" type="button" class="btn btn-success btn-sm btn-block" 
-      data-toggle="modal" data-target="#myModal" name="submit">
+      <!--<input type="submit" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal">Contact All</button>-->
     </div>
   </form>
 </div>
@@ -36,15 +35,15 @@
 <% @users.each do |user| %>
   <div class="row">
     <div class="col-md-7">
-      <a href=<%= user_path(user) %>><strong><%= user.first_name %> <%= user.last_name %></strong></a> <br>
-      <strong>Age: </strong> <%= user.age %> <br>
-      <strong>Education: </strong> <%= user.education %> from <%= user.school %> <br>
-      <strong> Field: </strong> <%= user.expertise %> <br>
-      <strong>Availability: </strong><%= user.availability %> <br>
-      </div>
-      <div class="col-md-2">
-      <!--<button type="button" id="contact-btn" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal">Contact <%= user.first_name %></button>-->
-      </div>
+    <a href=<%= user_path(user) %>><strong><%= user.first_name %> <%= user.last_name %></strong></a> <br>
+    <strong>Age: </strong> <%= user.age %>
+    <strong>Education: </strong> <%= user.education %> from <%= user.school %>
+    <strong> Field: </strong> <%= user.expertise %><br>
+    <strong>Availability: </strong><%= user.availability %> <br>
+    </div>
+    <div class="col-md-2">
+    <button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal">Contact <%= user.first_name %></button>
+    </div>
   </div>
   <hr>
 <% end %>
@@ -62,17 +61,12 @@
       <div class="modal-body" >
         <p class="form-control" contenteditable="true">After looking over your qualifications, I think that you would be a great fit for my project! Please accept my invitation to join.</p>
       </div>
-      <hr>
-    <% end %>
-    <!-- Modal -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+      <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
       </div>
     </div>
 
-      </div>
-    </div>
-    <%= paginate @users %>
   </div>
 </div>
+<%= paginate @users %>
