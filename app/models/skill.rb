@@ -1,10 +1,7 @@
 class Skill < ActiveRecord::Base
     has_and_belongs_to_many :users
     has_and_belongs_to_many :projects
-<<<<<<< HEAD
-=======
 
->>>>>>> 9d4fbe9781b7a0f28cb3c7d22e2e13c1b5864bdd
     def self.get_skills(skill_ids)
         total = []
         if skill_ids

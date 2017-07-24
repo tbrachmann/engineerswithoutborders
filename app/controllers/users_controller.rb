@@ -151,8 +151,6 @@ class UsersController < ApplicationController
     params.require(:user)
   end    
 end
-<<<<<<< HEAD
-=======
 
 
 class UsersController < ApplicationController
@@ -311,4 +309,3 @@ class UsersController < ApplicationController
     params.require(:user).permit!
   end    
 end
->>>>>>> 9d4fbe9781b7a0f28cb3c7d22e2e13c1b5864bdd
