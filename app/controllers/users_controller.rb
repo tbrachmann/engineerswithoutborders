@@ -88,6 +88,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     # update fields
 
+
     user.first_name = user_params[:first_name]
     user.last_name = user_params[:last_name]
     user.age = user_params[:age]
@@ -106,6 +107,8 @@ class UsersController < ApplicationController
     # availability
     user.travel = user_params[:travel]
     user.time_commitment = user_params[:time_commitment]
+    
+    
     user.sunday_availability = user_params[:sunday_availability]
     user.monday_availability = user_params[:monday_availability]
     user.tuesday_availability = user_params[:tuesday_availability]
@@ -114,6 +117,7 @@ class UsersController < ApplicationController
     user.friday_availability = user_params[:friday_availability]
     user.saturday_availability = user_params[:saturday_availability]
     user.availability_comments = user_params[:availability_comments]
+    
     user.skills = Skill.get_skills(user_params[:skill_ids])
     
     user.save
@@ -147,6 +151,8 @@ class UsersController < ApplicationController
     params.require(:user)
   end    
 end
+
+
 class UsersController < ApplicationController
   before_action only: [:show, :edit, :update, :age_sorting]
   
@@ -227,7 +233,7 @@ class UsersController < ApplicationController
     @travel_availability = ["Yes", "No"]
     @field_choices = ["Civil Engineering","Environmental Engineering","Mechanical Engineering","Electrical Engineering","Materials Science","Chemical Engineering","Hydraulics / Hydrology","Computer Science","Education","International Development"]
     @certificate_choices = ["Agricultural and Biological Engineering","Architectural","Chemical","Civil: Construction","Civil: Geotechnical","Civil: Structural","Civil: Transportation","Civil: Water Resources and Environmental","Control Systems","Electrical and Computer: Computer Engineering","Electrical and Computer: Electrical and Electronics","Electrical and Computer: Power","Environmental","Fire Protection","Industrial and Systems","Mechanical: HVAC and Refrigeration","Mechanical: Machine Design and Materials","Mechanical: Thermal and Fluids Systems","Metallurgical and Materials","Mining and Mineral Processing","Naval Architecture and Marine","Nuclear","Petroleum","Software","Structural"]
-    
+    @current_availability = @user.availability.as_json
     authorize! :manage, @user
   end
 
@@ -240,6 +246,9 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     # update fields
 
+    user.update_availability(user_params[:availability])
+
+
     user.first_name = user_params[:first_name]
     user.last_name = user_params[:last_name]
     user.age = user_params[:age]
@@ -247,6 +256,7 @@ class UsersController < ApplicationController
     user.school = user_params[:school]
     user.expertise = user_params[:expertise]
     user.description = user_params[:description]
+
     #user.certifications = user_params[:certifications]
     user.phone = user_params[:phone]
     user.zip = user_params[:zip]
@@ -296,6 +306,6 @@ class UsersController < ApplicationController
   private
   def user_params
     # this simply makes it easier to access params[:user_params[:param]]
-    params.require(:user)
+    params.require(:user).permit!
   end    
 end

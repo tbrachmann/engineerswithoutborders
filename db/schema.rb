@@ -11,7 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723003711) do
+ActiveRecord::Schema.define(version: 20170723234439) do
+
+  create_table "availabilities", force: :cascade do |t|
+    t.boolean "monday_morning",      default: false, null: false
+    t.boolean "monday_afternoon",    default: false, null: false
+    t.boolean "monday_evening",      default: false, null: false
+    t.boolean "tuesday_morning",     default: false, null: false
+    t.boolean "tuesday_afternoon",   default: false, null: false
+    t.boolean "tuesday_evening",     default: false, null: false
+    t.boolean "wednesday_morning",   default: false, null: false
+    t.boolean "wednesday_afternoon", default: false, null: false
+    t.boolean "wednesday_evening",   default: false, null: false
+    t.boolean "thursday_morning",    default: false, null: false
+    t.boolean "thursday_afternoon",  default: false, null: false
+    t.boolean "thursday_evening",    default: false, null: false
+    t.boolean "friday_morning",      default: false, null: false
+    t.boolean "friday_afternoon",    default: false, null: false
+    t.boolean "friday_evening",      default: false, null: false
+    t.boolean "saturday_morning",    default: false, null: false
+    t.boolean "saturday_afternoon",  default: false, null: false
+    t.boolean "saturday_evening",    default: false, null: false
+    t.boolean "sunday_morning",      default: false, null: false
+    t.boolean "sunday_afternoon",    default: false, null: false
+    t.boolean "sunday_evening",      default: false, null: false
+    t.integer "user_id"
+  end
 
   create_table "certifications", force: :cascade do |t|
     t.string "name"
@@ -166,6 +191,7 @@ ActiveRecord::Schema.define(version: 20170723003711) do
     t.string   "travel"
     t.boolean  "admin",                  default: false
     t.boolean  "manager",                default: false
+    t.integer  "availability_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
