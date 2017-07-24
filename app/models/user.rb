@@ -84,7 +84,10 @@ class User < ActiveRecord::Base
   def preset_time_slots
     @@preset_time_slots
   end
-    
+  
+  def availability
+    @availability
+  end
   
   
 end
