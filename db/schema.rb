@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724181444) do
+ActiveRecord::Schema.define(version: 20170724185808) do
 
   create_table "availabilities", force: :cascade do |t|
     t.boolean "monday_morning",      default: false, null: false
@@ -127,8 +127,7 @@ ActiveRecord::Schema.define(version: 20170724181444) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string  "name"
-    t.integer "user_id"
+    t.string "name"
   end
 
   add_index "roles", ["name"], name: "index_roles_on_name", unique: true
