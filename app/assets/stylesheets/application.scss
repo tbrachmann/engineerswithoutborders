@@ -176,6 +176,13 @@ p, div, strong {
 //   top: 50px;
 // }
 
+#user-checkbox {
+  position: relative;
+  left: 35px;
+  top: 40px;
+  // margin-bottom: 50px;
+}
+
 .search-checkbox {
   #search-submit {
     position:absolute;
@@ -187,9 +194,11 @@ p, div, strong {
     font-weight: bold;
   }
   
+  
   box-shadow: 0 1px #666;
   transform: translateY(1px);
 }
+
 .nav-item {
   font-family: 'Open Sans', Helvetica, sans-serif;
   text-transform: uppercase;

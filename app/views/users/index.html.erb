@@ -20,20 +20,27 @@
 <!--  document.getElementById("demo").innerHTML = selected-users;-->
 <!--</script>-->
 
-<div class="search-checkbox">
-  <form>
-    <% @users.each do |user| %>
-    <input type="checkbox" action="/people" name= "user"> <%= user.email %> <br>
-    <% end %>
-    <div id="search-submit">
-      <!--<input type="submit" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal">Contact All</button>-->
-    </div>
-  </form>
-</div>
+<!--<div class="search-checkbox">-->
+<!--  <form>-->
+<!--    <% @users.each do |user| %>-->
+<!--    <div id="user-checkbox">-->
+<!--      <input type="checkbox" action="/people" name= "user"> <%= user.email %> <br>  -->
+<!--    </div>-->
+<!--    <% end %>-->
+<!--    <div id="search-submit">-->
+<!--      <input type="submit" value="Contact All" button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal"></button>-->
+<!--    </div>-->
+<!--  </form>-->
+<!--</div>-->
 
 <hr>
+<form>
 <% @users.each do |user| %>
   <div class="row">
+    <div id="user-checkbox">
+      <input type="checkbox" action="/people" name= "user"> <br>  
+    </div>
+
     <div class="col-md-7">
     <a href=<%= user_path(user) %>><strong><%= user.first_name %> <%= user.last_name %></strong></a> <br>
     <strong>Age: </strong> <%= user.age %>
@@ -47,6 +54,10 @@
   </div>
   <hr>
 <% end %>
+  <div id="search-submit">
+    <input type="submit" value="Contact All" button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal"></button>
+  </div>
+</form>
 <!-- Modal -->
 
 <div id="myModal" class="modal fade" role="dialog">
