@@ -19,6 +19,14 @@ class User < ActiveRecord::Base
     end
   end
 
+    @@preset_time_slots = [ 
+      :monday_morning, :monday_afternoon, :monday_evening, :tuesday_morning,
+      :tuesday_afternoon, :tuesday_evening, :wednesday_morning, :wednesday_afternoon,
+      :wednesday_evening, :thursday_morning, :thursday_afternoon, :thursday_evening,
+      :friday_morning, :friday_afternoon, :friday_evening, :saturday_morning,
+      :saturday_afternoon, :saturday_evening, :sunday_morning, :sunday_afternoon, :sunday_evening
+    ]
+
   has_many :volunteer_relationships #, inverse_of: :user
   has_many :projects, through: :volunteer_relationships, source: :project do
     def << (*projects)
@@ -69,20 +77,13 @@ class User < ActiveRecord::Base
   
   def update_availability(user_params)
     
-    [:monday_morning]
-    
-    availability_hash = {}
-    a = [ 
-      :monday_morning, :monday_afternoon, :monday_evening, :tuesday_morning,
-      :tuesday_afternoon, :tuesday_evening, :wednesday_morning, :wednesday_afternoon,
-      :wednesday_evening, :thursday_morning, :thursday_afternoon, :thursday_evening,
-      :friday_morning, :friday_afternoon, :friday_evening, :saturday_morning,
-      :saturday_afternoon, :saturday_evening, :sunday_morning, :sunday_afternoon, :sunday_evening
-    ]
-    availability_hash = user_params.select{|x, y| a.include? x }
+    availability_hash = user_params.select{|x, y|  @@preset_time_slots.include? x }
     self.availability = Availability.create(availability_hash)
   end
-      
+  
+  def preset_time_slots
+    @@preset_time_slots
+  end
     
   
   
