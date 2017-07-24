@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724204508) do
+ActiveRecord::Schema.define(version: 20170724230412) do
 
   create_table "availabilities", force: :cascade do |t|
     t.boolean "monday_morning",      default: false, null: false
@@ -170,7 +170,6 @@ ActiveRecord::Schema.define(version: 20170724204508) do
     t.string   "expertise"
     t.string   "description"
     t.string   "school"
-    t.string   "availability"
     t.boolean  "complete",               default: false
     t.string   "phone"
     t.integer  "zip"
@@ -180,13 +179,6 @@ ActiveRecord::Schema.define(version: 20170724204508) do
     t.string   "lang2"
     t.string   "lang2_fluency"
     t.string   "time_commitment"
-    t.string   "sunday_availability"
-    t.string   "monday_availability"
-    t.string   "tuesday_availability"
-    t.string   "wednesday_availability"
-    t.string   "thursday_availability"
-    t.string   "friday_availability"
-    t.string   "saturday_availability"
     t.string   "availability_comments"
     t.string   "travel"
     t.boolean  "admin",                  default: false
