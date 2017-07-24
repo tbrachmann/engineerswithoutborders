@@ -6,7 +6,7 @@ class CreateRoleTable < ActiveRecord::Migration
     end
 
     remove_column :users, :role
-    add_foreign_key :users, :roles
+    #add_foreign_key :users, :roles
     
   end
 end

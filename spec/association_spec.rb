@@ -120,6 +120,14 @@ RSpec.describe User, :type => :model do
       @example_user.destroy
       expect(Role.all.count).to eq 2
     end
+    it "Multiple user have the same role" do
+      @example_user2 = FactoryGirl.create(:user, password: "asdfghjkl")
+      @example_user.role = @example_role
+      @example_user.save
+      @example_user2.role = @example_role
+      @example_user2.save
+      expect(@example_role.users.count).to eq 2
+    end
   end
   describe "User skills" do
     before(:each) do
