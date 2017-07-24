@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170723234439) do
+ActiveRecord::Schema.define(version: 20170724181444) do
 
   create_table "availabilities", force: :cascade do |t|
     t.boolean "monday_morning",      default: false, null: false
@@ -192,6 +192,7 @@ ActiveRecord::Schema.define(version: 20170723234439) do
     t.boolean  "admin",                  default: false
     t.boolean  "manager",                default: false
     t.integer  "availability_id"
+    t.integer  "role_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
