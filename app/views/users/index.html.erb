@@ -12,6 +12,18 @@
 </div>
 </div>
 
+<div class="search-checkbox">
+  <form>
+    <% @users.each do |user| %>
+    <input type="checkbox" name=user.first_name> <%= user.email %> <br>
+    <% end %>
+    <div id="search-submit">
+      <input type="submit" type="button" class="btn btn-success btn-sm btn-block" 
+      data-toggle="modal" data-target="#myModal" name="submit">
+    </div>
+  </form>
+</div>
+
 <hr>
 <% @users.each do |user| %>
   <div class="row">
