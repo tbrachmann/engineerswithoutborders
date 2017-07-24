@@ -1,10 +1,18 @@
-
-    
 <div class="row section">
   <div class="col-md-8 col-md-offset-2 section">
     <h2 class="text-center">Listing Projects</h2>
-
     <hr>
+    <% @projects.each do |project| %>
+      <%if project.skills.count != 0 %>
+        <% project.skills.each do |skill| %>
+          <div class="alert alert-info alert-dismissable">
+            <a href= "<%= project_path(project.id) %>" 
+            class="close" data-dismiss="alert" 
+            aria-label="close">&times;<% project.name %></a> requires <% skill.name %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
     <ul>
     <% @projects.each do |project| %>
     <li>
@@ -14,7 +22,6 @@
       </p>
      </li>
     <% end %>
-
     <%= paginate @projects %>
   </div>
 </div>
