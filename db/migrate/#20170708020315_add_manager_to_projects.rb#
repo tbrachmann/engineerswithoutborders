@@ -4,3 +4,4 @@ class AddManagerToProjects < ActiveRecord::Migration
     add_foreign_key :projects, :users
   end
 end
+rs

@@ -1,5 +1,5 @@
 class Role < ActiveRecord::Base
-  belongs_to :users
+  has_many :users
 
   def self.ransackable_attributes(auth_object = nil)
     ['name']
