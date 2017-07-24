@@ -162,6 +162,7 @@ p, div, strong {
 
 .btn-round:active {
   background-color: #121721;
+<<<<<<< HEAD
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -176,13 +177,6 @@ p, div, strong {
 //   top: 50px;
 // }
 
-#user-checkbox {
-  position: relative;
-  left: 35px;
-  top: 40px;
-  // margin-bottom: 50px;
-}
-
 .search-checkbox {
   #search-submit {
     position:absolute;
@@ -194,11 +188,10 @@ p, div, strong {
     font-weight: bold;
   }
   
-  
+=======
   box-shadow: 0 1px #666;
   transform: translateY(1px);
 }
-
 .nav-item {
   font-family: 'Open Sans', Helvetica, sans-serif;
   text-transform: uppercase;
@@ -310,4 +303,5 @@ p, div, strong {
   background-image: linear-gradient(#9c27b3, black), linear-gradient(black, black);
   background-size: 0 2px, 100% 2px;
   box-shadow: none;
+>>>>>>> e4e9f27d67527a9e38927c28a8b70703d73e75e2
 }

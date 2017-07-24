@@ -162,43 +162,9 @@ p, div, strong {
 
 .btn-round:active {
   background-color: #121721;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-
-.row .col-md-7 {
-  left: 50px;
-}
-
-// .search-checkbox {
-//   position: relative;
-//   left: 25px;
-//   top: 50px;
-// }
-
-#user-checkbox {
-  position: relative;
-  left: 35px;
-  top: 40px;
-  // margin-bottom: 50px;
-}
-
-.search-checkbox {
-  #search-submit {
-    position:absolute;
-    width: 20%;
-    height: 20%;
-    top: 13%;
-    right: 5%;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  
   box-shadow: 0 1px #666;
   transform: translateY(1px);
 }
-
 .nav-item {
   font-family: 'Open Sans', Helvetica, sans-serif;
   text-transform: uppercase;
