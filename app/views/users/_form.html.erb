@@ -1,114 +1,187 @@
-<%= simple_form_for @user do |f| %>
-  <fieldset>
-  <legend>Background Information</legend>
-  <div class="row">
-    <!--Basic Info-->
-    <div class="col-md-5">
-    <%= f.input :first_name, label: "First Name:" %>
-    </div>
-    <div class="col-md-5">
-    <%= f.input :last_name, label: "Last Name:" %>
-    </div>
-    <div class="col-md-2">
-    <%= f.input :age, collection:  15 .. 100 %>
-    </div>
-  </div>
-  <div class="row">
-  <!--Education and background-->
-    <div class="col-md-3">
-      <%= f.input :education, label: "Education:", collection: @education_choices %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :school, label:"Name of University/College:" %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :expertise, label:"Field of Study or Expertise:", collection: @field_choices %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :certifications, label:"Certifications Related to Field:", collection: @certificate_choices %>
-    </div>
-  </div>
-  <div class="row">
-    <!--Outreach Information-->
-    <div class="col-md-6">
-      <%= f.input :phone, label: "Phone Number:" %>
-    </div>
-  </div>
-  <div class="row">
-  <!--Languages-->
-      <div class="col-lg-12">
-        <p>If you have proficiency in other languages than English, please indicate below:</p>
+<div class="row section">
+  <div class="col-md-10 col-md-offset-1 section">
+    <%= simple_form_for @user do |f| %>
+      <fieldset>
+      <legend>Background Information</legend>
+      <div class="row">
+        <!--Basic Info-->
+        <div class="col-md-5">
+        <%= f.input :first_name, label: "First Name:" %>
+        </div>
+        <div class="col-md-5">
+        <%= f.input :last_name, label: "Last Name:" %>
+        </div>
+        <div class="col-md-2">
+        <%= f.input :age, collection:  15 .. 100 %>
+        </div>
       </div>
-      <div class="col-md-4">
-        <%= f.input :lang1, label:"First Language:", collection: LanguageList::COMMON_LANGUAGES %>
+      <div class="row">
+      <!--Education and background-->
+        <div class="col-md-3">
+          <%= f.input :education, label: "Education:", collection: @education_choices %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :school, label:"Name of University/College:" %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :expertise, label:"Field of Study or Expertise:", collection: @field_choices %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :certifications, label:"Certifications Related to Field:", collection: @certificate_choices %>
+        </div>
       </div>
-      <div class="col-md-6">
-        <%= f.input :lang1_fluency, label:"First Language Fluency:", collection: @proficiency_choices %>
+      <div class="row">
+        <!--Outreach Information-->
+        <div class="col-md-6">
+          <%= f.input :phone, label: "Phone Number:" %>
+        </div>
       </div>
-      <div class="col-md-4">
-        <%= f.input :lang2, label:"Second Language:", collection: LanguageList::COMMON_LANGUAGES  %>
+      <div class="row">
+      <!--Languages-->
+          <div class="col-lg-12">
+            <p>If you have proficiency in other languages than English, please indicate below:</p>
+          </div>
+          <div class="col-md-4">
+            <%= f.input :lang1, label:"First Language:", collection: LanguageList::COMMON_LANGUAGES %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :lang1_fluency, label:"First Language Fluency:", collection: @proficiency_choices %>
+          </div>
+          <div class="col-md-4">
+            <%= f.input :lang2, label:"Second Language:", collection: LanguageList::COMMON_LANGUAGES  %>
+          </div>
+          <div class="col-md-6">
+            <%= f.input :lang2_fluency, label:"Second Language Fluency:", collection: @proficiency_choices %>
+          </div>
       </div>
-      <div class="col-md-6">
-        <%= f.input :lang2_fluency, label:"Second Language Fluency:", collection: @proficiency_choices %>
-      </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <%= f.input :time_commitment, label: "Please indicate how much time you are interested in volunteering:", collection: @time_commitment_choices %>
-    </div>
-    <div class="col-md-12">
-      <%= f.input :travel, label: "Please indicate whether or not you can travel:", collection: @travel_availability %>
-    </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.input :time_commitment, label: "Please indicate how much time you are interested in volunteering:", collection: @time_commitment_choices %>
+        </div>
+        <div class="col-md-12">
+          <%= f.input :travel, label: "Please indicate whether or not you can travel:", collection: @travel_availability %>
+        </div>
+        <%= f.fields_for :availability do |a| %>
 
-    <!--availability-->
-    <p>Please describe your general availability on a weekly basis.</p>
-
-    <div class="col-md-3">
-      <%= f.input :sunday_availability, label: "Sunday:", collection: @availability_choices %>
+        <div class="col-md-12">
+          <label>Please indicate your general availability on a weekly basis:</label>
+          <table style="width:100%">
+            <tr>
+              <th></th>
+              <th>Monday</th>
+              <th>Tuesday</th> 
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th> 
+              <th>Saturday</th>
+              <th>Sunday</th>
+            </tr>
+            <tr>
+              <td>
+                Morning (8:00am - 12:00pm)
+              </td>
+              <td>
+                <%= a.check_box :monday_morning %>    
+              </td> 
+              <td>
+                <%= a.check_box :tuesday_morning %>    
+              </td> 
+              <td>
+                <%= a.check_box :wednesday_morning %>    
+              </td>
+              <td>
+                <%= a.check_box :thursday_morning %>    
+              </td>
+              <td>
+                <%= a.check_box :friday_morning %>    
+              </td>
+              <td>
+                <%= a.check_box :saturday_morning %>    
+              </td>
+              <td>
+                <%= a.check_box :sunday_morning %>    
+              </td> 
+            </tr>
+            <tr>
+              <td>
+                Afternoon (12:00pm - 5:00pm)
+              </td>
+              <td>
+                <%= a.check_box :monday_afternoon %>    
+              </td> 
+              <td>
+                <%= a.check_box :tuesday_afternoon %>    
+              </td> 
+              <td>
+                <%= a.check_box :wednesday_afternoon %>    
+              </td>
+              <td>
+                <%= a.check_box :thursday_afternoon %>    
+              </td>
+              <td>
+                <%= a.check_box :friday_afternoon %>    
+              </td>
+              <td>
+                <%= a.check_box :saturday_afternoon %>    
+              </td>
+              <td>
+                <%= a.check_box :sunday_afternoon %> 
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Evening (5:00pm - 10:00pm)
+              </td>
+              <td>
+                <%= a.check_box :monday_evening %>    
+              </td> 
+              <td>
+                <%= a.check_box :tuesday_evening %>    
+              </td> 
+              <td>
+                <%= a.check_box :wednesday_evening %>    
+              </td>
+              <td>
+                <%= a.check_box :thursday_evening %>    
+              </td>
+              <td>
+                <%= a.check_box :friday_evening %>    
+              </td>
+              <td>
+                <%= a.check_box :saturday_evening %>    
+              </td>
+              <td>
+                <%= a.check_box :sunday_evening %> 
+              </td>
+            </tr>
+          </table>
+        </div>
+              <% end %>
+      </div>
+      <!-- other details -->
+      <div class="row">
+        <div class="col-md-12">
+          &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="col-md-12">
+          <%= simple_form_for @user do |f| %>
+            <%= f.association :skills, label: "Please select skills you have:" %>
+          <% end %>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+        <br>
+        <%= f.input :description, as: :text, id: "About:", label: "Please tell us very briefly a little about yourself and why you want to volunteer for Engineers without Borders.", :input_html => {:style => 'width: 100%', :rows => 4, class: 'response-project'} %>
+        </div>
+      </div>
+      <%= f.button :submit, "Update Background", class: "btn btn-md btn-success"%>
+      </fieldset>
+      <fieldset>
+      <legend>Account Information</legend>
+      <%= f.input :email, disabled: true %>
+      <%= link_to "Change Email or Password", edit_user_registration_path, class: "btn btn-md btn-warning" %>
+      </fieldset>
+    <% end %>
+    <p></p>
     </div>
-    <div class="col-md-3">
-      <%= f.input :monday_availability, label: "Monday:", collection: @availability_choices %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :tuesday_availability, label: "Tuesday:", collection: @availability_choices %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :wednesday_availability, label: "Wednesday:", collection: @availability_choices %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :thursday_availability, label: "Thursday:", collection: @availability_choices %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :friday_availability, label: "Friday:", collection: @availability_choices %>
-    </div>
-    <div class="col-md-3">
-      <%= f.input :saturday_availability, label: "Saturday:", collection: @availability_choices %>
-    </div>
-    <div class="col-md-12">
-      <%= f.input :availability_comments, label: "Anything else we should know about your availability?" %>
-    </div>
-  </div>
-  <!-- other details -->
-  <div class="row">
-    <div class="col-xl-12">
-      <%= simple_form_for @user do |f| %>
-        <%= f.association :skills %>
-      <% end %>
-    </div>
-  </div>
-  
-  <div class="row">
-    <div class="col-md-12">
-    <%= f.input :description, label: "About:", as: :text, hint: "Please tell us very briefly a little about yourself and why you want to volunteer for Engineers without Borders.", :input_html => {:style => 'width: 100%', :rows => 4, class: 'response-project'} %>
-    </div>
-  </div>
-  <%= f.button :submit, "Update Background", class: "btn btn-md btn-success"%>
-  </fieldset>
-  <p></p>
-  <fieldset>
-  <legend>Account Information</legend>
-  <%= f.input :email, disabled: true %>
-  <%= link_to "Change Email or Password", edit_user_registration_path, class: "btn btn-md btn-warning" %>
-  </fieldset>
-<% end %>
-<p></p>

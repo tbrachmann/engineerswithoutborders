@@ -15,7 +15,7 @@ Feature: Refactor Events
     Then I should not see "Event Listings"
     
   Scenario: On a Project Page
-    When I follow "Project Listings"
+    When I follow "My Projects"
     And I follow "Create New Project"
     Then I should be on the new project page
     And I fill in "Name" with "Tester Project"

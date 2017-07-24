@@ -22,9 +22,34 @@ Given /^I am a project manager on "(.+)"/ do |project_name|
     manager = User.find_by email: email
   end
   if(!Project.exists?(name: project_name))
-    Project.create(name: project_name,
-                   description: "Creating a large-scale water filter system",
-                   volunteer_capacity: 25, location: "Remba Island, Kenya")
+    test_project = Project.create(name: project_name,
+                                  description: "Creating a large-scale water filter system",
+                                  volunteer_capacity: 25, location: "Remba Island, Kenya")
+    skill = Skill.new(name: "Ruby")
+    if Skill.exists?(:name => "Ruby")
+      test_project.skills << Skill.find_by_name(skill.name)
+    else
+      test_project.skills << skill
+    end
+    cert = Certification.new(name: "Microsoft Excel")
+    if Certification.exists?(:name => "Microsoft Excel")
+      test_project.certifications << Certification.find_by_name(cert.name)
+    else
+      test_project.certifications << cert
+    end
+    construction_exp = ConstructionExperience.new(name: "Well")
+    if ConstructionExperience.exists?(:name => "Well")
+      test_project.construction_experiences << ConstructionExperience
+                                                 .find_by_name(construction_exp.name)
+    else
+      test_project.construction_experiences << construction_exp
+    end
+    design_exp = DesignExperience.new(name: "Road")
+    if DesignExperience.exists?(:name => "Road")
+      test_project.design_experiences << DesignExperience.find_by_name(design_exp.name)
+    else
+      test_project.design_experiences << design_exp
+    end
   end
   project = Project.find_by name: project_name
   project.managers << manager
@@ -81,6 +106,30 @@ Given /^there exists a project "([^"]*)"$/ do |arg1|
                                      password: "asdfghjkl",
                                      manager: true)
   test_project.managers << test_project_manager
+  skill = Skill.new(name: "Ruby")
+  if Skill.exists?(:name => "Ruby")
+    test_project.skills << Skill.find_by_name(skill.name)
+  else
+    test_project.skills << skill
+  end
+  cert = Certification.new(name: "Microsoft Excel")
+  if Certification.exists?(:name => "Microsoft Excel")
+    test_project.certifications << Certification.find_by_name(cert.name)
+  else
+    test_project.certifications << cert
+  end
+  construction_exp = ConstructionExperience.new(name: "Well")
+  if ConstructionExperience.exists?(:name => "Well")
+    test_project.construction_experiences << ConstructionExperience.find_by_name(construction_exp.name)
+  else
+    test_project.construction_experiences << construction_exp
+  end
+  design_exp = DesignExperience.new(name: "Road")
+  if DesignExperience.exists?(:name => "Road")
+    test_project.design_experiences << DesignExperience.find_by_name(design_exp.name)
+  else
+    test_project.design_experiences << design_exp
+  end
 end
 
 Given(/^the following volunteers exist:$/) do |volunteer_table|

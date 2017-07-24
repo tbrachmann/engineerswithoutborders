@@ -52,9 +52,11 @@ function includesAny(arr1, arr2) {
 
 function shouldShow(user_id) {
 	if (all_checked_boxes.length === 0 || includesAny(users_to_skills[user_id], checked_skills) || includesAny(users_to_certs[user_id], checked_certs)) {
-		$('#' + user_id).show();
+	    $('#' + user_id).show();
+	    $('#' + user_id).next("hr").show()
 	} else {
-		$('#' + user_id).hide();
+	    $('#' + user_id).hide();
+	    $('#' + user_id).next("hr").hide()
 	}
 }
 
