@@ -1,7 +1,7 @@
 class AddManagerToProjects < ActiveRecord::Migration
   def change
-    add_reference :projects, :users, index: true
+    #add_reference :projects, :users, index: true
+    add_column :projects, :user_id, :integer
     add_foreign_key :projects, :users
   end
 end
-rs
