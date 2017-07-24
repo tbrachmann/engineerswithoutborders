@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get :autocomplete_user_school, :on => :collection
   end
   resources :users do
-    collection { post :search, to: 'user#index'}
+    collection { post :search, to: 'users#index'}
   end
   
   get '/users/:id/manages', to: 'users#manages', as: "user_manages"

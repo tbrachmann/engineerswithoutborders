@@ -95,7 +95,7 @@ class UsersController < ApplicationController
     user.school = user_params[:school]
     user.expertise = user_params[:expertise]
     user.description = user_params[:description]
-    user.certifications = user_params[:certifications]
+    #user.certifications = user_params[:certifications]
     user.phone = user_params[:phone]
     user.zip = user_params[:zip]
     # languages
@@ -247,7 +247,7 @@ class UsersController < ApplicationController
     user.school = user_params[:school]
     user.expertise = user_params[:expertise]
     user.description = user_params[:description]
-    user.certifications = user_params[:certifications]
+    #user.certifications = user_params[:certifications]
     user.phone = user_params[:phone]
     user.zip = user_params[:zip]
     # languages
