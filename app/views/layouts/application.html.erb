@@ -29,24 +29,26 @@
           <li class="nav-item">
             <%= link_to("Profile", user_path(current_user), class:"nav-link") %></a>
           </li>
-          <li class="nav-item">
+	  <% if can? :read, :all %>
+	    <li class="nav-item">
+              <%= link_to("My Projects", user_manages_path(current_user), class:"nav-link") %></a>
+            </li>
+	  <% end %>
+	  <li class="nav-item">
             <%= link_to("Project Listings", projects_path, class:"nav-link") %></a>
           </li>
           <% if can? :read, :all %>
-          <li class="nav-item">
-            <%= link_to("Find Volunteers", users_path, class:"nav-link") %></a>
-          </li>
+            <li class="nav-item">
+              <%= link_to("Find Volunteers", users_path, class:"nav-link") %></a>
+            </li>
           <% end %>
-          <li class="nav-item" style="float: right;">
+          <li class="nav-item">
             <%= link_to("Logout", destroy_user_session_path, method: :delete, class:"nav-link") %></a>
           </li>
-          <li class="nav-item" style="float: right;">
-            <div class="nav-link">Signed in as <strong><%= current_user.email %></strong></div>
-          </li>
         <% else %>
-        <li class="nav-item">
-          <%= link_to("Login", user_session_path) %></a>
-        </li>
+          <li class="nav-item">
+            <%= link_to("Login", user_session_path) %></a>
+          </li>
         <% end %> 
       </ul>
       </div>

@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170723234439) do
 
   create_table "availabilities", force: :cascade do |t|
@@ -37,12 +38,23 @@ ActiveRecord::Schema.define(version: 20170723234439) do
     t.boolean "sunday_evening",      default: false, null: false
     t.integer "user_id"
   end
+=======
+ActiveRecord::Schema.define(version: 20170723003711) do
+>>>>>>> e4e9f27d67527a9e38927c28a8b70703d73e75e2
 
   create_table "certifications", force: :cascade do |t|
     t.string "name"
   end
 
   add_index "certifications", ["name"], name: "index_certifications_on_name", unique: true
+
+  create_table "certifications_projects", id: false, force: :cascade do |t|
+    t.integer "project_id",       null: false
+    t.integer "certification_id", null: false
+  end
+
+  add_index "certifications_projects", ["certification_id"], name: "index_certifications_projects_on_certification_id"
+  add_index "certifications_projects", ["project_id"], name: "index_certifications_projects_on_project_id"
 
   create_table "certifications_users", id: false, force: :cascade do |t|
     t.integer "user_id",          null: false
@@ -57,6 +69,8 @@ ActiveRecord::Schema.define(version: 20170723234439) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "construction_experiences", ["name"], name: "index_construction_experiences_on_name", unique: true
 
   create_table "construction_experiences_projects", id: false, force: :cascade do |t|
     t.integer "construction_experience_id"
@@ -73,6 +87,8 @@ ActiveRecord::Schema.define(version: 20170723234439) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "design_experiences", ["name"], name: "index_design_experiences_on_name", unique: true
 
   create_table "design_experiences_projects", id: false, force: :cascade do |t|
     t.integer "design_experience_id"
@@ -130,6 +146,7 @@ ActiveRecord::Schema.define(version: 20170723234439) do
     t.datetime "updated_at"
   end
 
+  add_index "skills", ["name"], name: "index_skills_on_name", unique: true
   add_index "skills", ["user_id"], name: "index_skills_on_user_id"
 
   create_table "skills_users", id: false, force: :cascade do |t|
