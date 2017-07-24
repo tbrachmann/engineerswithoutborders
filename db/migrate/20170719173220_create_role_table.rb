@@ -4,7 +4,7 @@ class CreateRoleTable < ActiveRecord::Migration
       t.string :name, default: nil
     end
 
-    remove_column :users, :role
+    remove_column :users, :role, :string
 
   end
 end

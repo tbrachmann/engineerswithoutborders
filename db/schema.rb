@@ -127,12 +127,11 @@ ActiveRecord::Schema.define(version: 20170724181444) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.integer "user_id"
     t.string  "name"
+    t.integer "user_id"
   end
 
   add_index "roles", ["name"], name: "index_roles_on_name", unique: true
-  add_index "roles", ["user_id"], name: "index_roles_on_user_id"
 
   create_table "skills", force: :cascade do |t|
     t.integer  "user_id"
