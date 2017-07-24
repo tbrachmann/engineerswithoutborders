@@ -161,3 +161,26 @@ p, div {
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+.row .col-md-7 {
+  left: 50px;
+}
+
+// .search-checkbox {
+//   position: relative;
+//   left: 25px;
+//   top: 50px;
+// }
+
+.search-checkbox {
+  #search-submit {
+    position:absolute;
+    width: 20%;
+    height: 10%;
+    top: 13%;
+    right: 5%;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+}
