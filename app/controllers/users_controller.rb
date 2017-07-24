@@ -220,6 +220,11 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     # update fields
 
+
+    p "\n" * 20
+    p user_params
+    
+
     user.first_name = user_params[:first_name]
     user.last_name = user_params[:last_name]
     user.age = user_params[:age]
@@ -227,7 +232,7 @@ class UsersController < ApplicationController
     user.school = user_params[:school]
     user.expertise = user_params[:expertise]
     user.description = user_params[:description]
-    user.certifications = user_params[:certifications]
+    user.certifications = user_params[:certifications].empty? ? []: user_params[:certifications]
     user.phone = user_params[:phone]
     user.zip = user_params[:zip]
     # languages

@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170723234439) do
 
   create_table "availabilities", force: :cascade do |t|
@@ -38,9 +37,6 @@ ActiveRecord::Schema.define(version: 20170723234439) do
     t.boolean "sunday_evening",      default: false, null: false
     t.integer "user_id"
   end
-=======
-ActiveRecord::Schema.define(version: 20170723003711) do
->>>>>>> e4e9f27d67527a9e38927c28a8b70703d73e75e2
 
   create_table "certifications", force: :cascade do |t|
     t.string "name"
