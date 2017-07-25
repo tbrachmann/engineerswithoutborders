@@ -33,6 +33,7 @@ gem 'kaminari'
 gem 'rails_admin'
 gem 'json'
 gem 'rake' # , '10.4.2'
+gem 'faker'
 
 group :development, :test do
   gem 'sqlite3'
@@ -40,7 +41,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'test-unit'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'guard-rspec'
 end
 
