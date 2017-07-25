@@ -1,0 +1,387 @@
+/* line 3, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+html, body {
+  height: 100%;
+  min-height: 100%;
+}
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require jquery.ui.datepicker
+ *= require jquery-ui
+ *= require_self
+ *= require_tree .
+ *= require jquery-ui
+ *= require bootstrap-datepicker
+ */
+/* line 25, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "proxima-nova";
+  font-weight: bold;
+}
+
+/* line 29, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+p, div, strong {
+  font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* line 35, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+#projects .calendar {
+  border-collapse: collapse;
+  width: 100%;
+}
+/* line 39, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+#projects .calendar td, #projects .calendar th {
+  font-family: "Lucida Grande", arial, helvetica, sans-serif;
+  font-size: 10px;
+  padding: 6px;
+  border: 1px solid #999;
+}
+/* line 46, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+#projects .calendar th {
+  color: #666;
+  text-align: center;
+  width: 14.2857142857143%;
+}
+/* line 53, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+#projects .calendar td {
+  background: #FFF;
+  color: #777;
+  height: 80px;
+  vertical-align: top;
+  font-size: 16px;
+}
+/* line 61, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+#projects .calendar .notmonth, #projects .calendar .notmonth a {
+  color: #CCC;
+}
+/* line 62, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+#projects .calendar .today {
+  background-color: #D7F2FF;
+}
+
+/* line 65, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+#projects #month {
+  margin: 0;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 22px;
+}
+/* line 70, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+#projects #month a {
+  text-decoration: none;
+  padding: 0 10px;
+  color: #999;
+}
+
+/* line 77, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+#projects ul {
+  font-size: 11px;
+  padding-left: 20px;
+}
+
+/* line 82, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.temp {
+  background-image: url("/assets/ewb.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  width: 100%;
+  height: 90%;
+}
+
+/* line 90, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.fill {
+  height: 100%;
+  min-height: 100%;
+}
+
+/* line 94, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.main {
+  background: #FFFFFF;
+  position: relative;
+  z-index: 3;
+}
+
+/* line 99, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.main-raised {
+  margin: -60px 30px 0px;
+  border-radius: 6px;
+  /* box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2); */
+}
+
+/* line 104, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.section {
+  background-position: center center;
+  background-size: cover;
+  padding: 70px 0;
+}
+
+/* line 109, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.card {
+  border-radius: 6px;
+  -webkit-box-shadow: 0 16px 24px 2px #333, 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 16px 24px 2px #333, 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+  color: rgba(0, 0, 0, 0.87);
+  background: #fff;
+  padding: 7%;
+}
+
+/* line 120, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.card-title {
+  font-weight: 700;
+  font-family: nanum-barun-gothic-regular;
+}
+
+/* line 124, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.card-image {
+  margin: 0;
+  border-radius: 3px;
+  height: 60%;
+  position: relative;
+  overflow: hidden;
+  -webkit-box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* line 132, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.btn-color {
+  background-color: #3D3C40;
+  color: #FFFFFF;
+}
+
+/* line 136, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.bg-color {
+  background-color: #E5E5E5;
+}
+
+/* line 139, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.nav-shadow {
+  -webkit-box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* line 142, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.btn-round {
+  border-radius: 300px;
+  background-color: transparent;
+  -webkit-font-smoothing: subpixel-antialiased;
+  border: 2px solid #000;
+  color: #000;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-style: normal;
+  margin-left: 1em;
+  padding: 1em 1.5em !important;
+  -webkit-transition: background-color 0.1s 0s ease-in-out, color 0.1s 0s ease-in-out;
+  transition: background-color 0.1s 0s ease-in-out, color 0.1s 0s ease-in-out;
+}
+
+/* line 157, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.btn-round:hover {
+  background-color: #000000;
+  color: white;
+}
+
+/* line 163, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.btn-round:active {
+  background-color: #121721;
+  -webkit-box-shadow: 0 5px #666;
+          box-shadow: 0 5px #666;
+  -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+}
+
+/* line 169, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.row .col-md-7 {
+  left: 50px;
+}
+
+/* line 179, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+#user-checkbox {
+  position: relative;
+  left: 35px;
+  top: 40px;
+}
+
+/* line 186, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.search-checkbox {
+  -webkit-box-shadow: 0 1px #666;
+          box-shadow: 0 1px #666;
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+/* line 187, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.search-checkbox #search-submit {
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  top: 13%;
+  right: 5%;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* line 202, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.nav-item {
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+/* line 207, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.filter {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* line 210, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.multi_bg_example {
+  width: 100%;
+  height: 400px;
+  background-image: url(main1.png), url(main2.png), -webkit-gradient(linear, left top, right top, from(#1e4b73), to(rgba(255, 255, 255, 0)));
+  background-image: url(main1.png), url(main2.png), linear-gradient(to right, #1e4b73, rgba(255, 255, 255, 0));
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: bottom right, left, right;
+}
+
+/* line 217, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.sqs-block-btn {
+  -webkit-transition: .1s opacity linear;
+  transition: .1s opacity linear;
+  -webkit-backface-visibility: hidden;
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 13px;
+  color: #fff;
+  border-color: #272727;
+  display: inline-block;
+  width: auto;
+  height: auto;
+  border-width: 0;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  -webkit-appearance: none;
+  line-height: normal;
+  size: small;
+}
+
+/* line 239, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.btn-mint {
+  background-color: #36b3a8;
+  padding: 21px 34px;
+}
+
+/* line 243, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.btn-mint:hover {
+  background-color: #36b3a8;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: white;
+  text-decoration: none;
+  -webkit-filter: grayscale(30%);
+          filter: grayscale(30%);
+}
+
+/* line 254, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.btn-black {
+  background-color: #000000;
+  padding: 12px 14px;
+}
+
+/* line 258, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.btn-black:hover {
+  background-color: #000000;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: white;
+  text-decoration: none;
+  -webkit-filter: grayscale(90%);
+          filter: grayscale(90%);
+}
+
+/* line 269, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.btn-black:active {
+  background-color: #000000;
+  -webkit-box-shadow: 0 1px #666;
+          box-shadow: 0 1px #666;
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+}
+
+/* line 275, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.background-img {
+  position: relative;
+  background-repeat: no-repeat;
+}
+
+/* line 279, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.background-img::after {
+  content: "";
+  background-image: url("https://umaine.edu/ewb/wp-content/uploads/sites/211/2016/05/ewb-usa-logo-color.jpg");
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  background-repeat: no-repeat;
+}
+
+/* line 292, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.form-control {
+  border: 0;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#9c27b0), to(#9c27b0)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+  background-size: 0 2px, 100% 1px;
+  background-repeat: no-repeat;
+  background-position: center bottom, center calc(100% - 1px);
+  background-color: transparent;
+  -webkit-transition: background 0s ease-out;
+  transition: background 0s ease-out;
+  float: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-radius: 0;
+  font-weight: 400;
+}
+
+/* line 305, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.form-control {
+  color: #555;
+}
+
+/* line 308, /home/ubuntu/workspace/engineerswithoutborders/app/assets/stylesheets/application.scss */
+.form-control:focus {
+  border: 0;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#9c27b3), to(black)), -webkit-gradient(linear, left top, left bottom, from(black), to(black));
+  background-image: linear-gradient(#9c27b3, black), linear-gradient(black, black);
+  background-size: 0 2px, 100% 2px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
