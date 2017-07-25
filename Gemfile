@@ -34,13 +34,13 @@ gem 'rails_admin'
 gem 'json'
 gem 'rake' # , '10.4.2'
 gem 'faker'
+gem 'factory_girl_rails'
 
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'
   gem 'rspec-rails'
   gem 'test-unit'
-  gem 'factory_girl_rails'
   gem 'guard-rspec'
 end
 
