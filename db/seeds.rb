@@ -19,7 +19,7 @@ user_list.map! do |email, password, first_name, last_name, age|
               last_name: last_name, age: age)
 end
 
-skills = [Faker::Job.key_skill, Faker::Job.key_skill, Faker::Job.key_skill]
+skills = [Faker::Job.unique.key_skill, Faker::Job.unique.key_skill, Faker::Job.unique.key_skill]
 
 skills.map! do |skill|
     Skill.create(name: skill)
@@ -32,21 +32,21 @@ end
   
 test_manager = User.create(first_name: Faker::Name::first_name, 
     last_name: Faker::Name.last_name, 
-    email: Faker::Internet.email, password: "asdfghjkl", 
+    email: Faker::Internet.unique.email, password: "asdfghjkl", 
     encrypted_password: "asdf", sign_in_count: 1, 
     created_at: 10.years.ago, 
     updated_at: 10.years.ago)
     
 test_manager_two = User.create(first_name: Faker::Name::first_name, 
     last_name: Faker::Name.last_name, 
-    email: Faker::Internet.email, password: "asdfghjkl", 
+    email: Faker::Internet.unique.email, password: "asdfghjkl", 
     encrypted_password: "asdf", sign_in_count: 1, 
     created_at: 10.years.ago, 
     updated_at: 10.years.ago)
 
 test_manager_three = User.create(first_name: Faker::Name::first_name, 
     last_name: Faker::Name.last_name, 
-    email: Faker::Internet.email, password: "asdfghjkl", 
+    email: Faker::Internet.unique.email, password: "asdfghjkl", 
     encrypted_password: "asdf", sign_in_count: 1, 
     created_at: 10.years.ago, 
     updated_at: 10.years.ago)
@@ -62,21 +62,20 @@ test_project.managers << test_manager_three
 
 # Will generate some fake data for Adolfo
 
-User.create(first_name: "Tobias", last_name: "Brachmann",
-            email: "tobybrachmann@gmail.com", password: "asdfgh",
-            manager: true, admin: true)
-
 adolfo = User.create(first_name: "Adolfo", last_name: "Espino",
                      email: "adolfo.espino@gmail.com", password: "asdfgh")
 test_project = FactoryGirl.create(:project)
 adolfo.manager = true
 adolfo.manages << test_project
 
-5.times do
-  FactoryGirl.create(:project)
-end
+@user = User.create(first_name: "Tobias", last_name: "Brachmann",
+            email: "tobybrachmann@gmail.com", password: "asdfgh",
+            manager: true, admin: true)
 
-10.times do
-  FactoryGirl.create(:user, password: "asdfgh")
+5.times do
+  @project = FactoryGirl.create(:project)
+  @user.manages << @project
+  @user = FactoryGirl.create(:user, password: "asdfgh")
+  @user.manages << @project
 end
 
