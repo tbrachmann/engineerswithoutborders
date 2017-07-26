@@ -25,31 +25,31 @@ Given /^I am a project manager on "(.+)"/ do |project_name|
     test_project = Project.create(name: project_name,
                                   description: "Creating a large-scale water filter system",
                                   volunteer_capacity: 25, location: "Remba Island, Kenya")
-    skill = Skill.new(name: "Ruby")
-    if Skill.exists?(:name => "Ruby")
-      test_project.skills << Skill.find_by_name(skill.name)
-    else
-      test_project.skills << skill
-    end
-    cert = Certification.new(name: "Microsoft Excel")
-    if Certification.exists?(:name => "Microsoft Excel")
-      test_project.certifications << Certification.find_by_name(cert.name)
-    else
-      test_project.certifications << cert
-    end
-    construction_exp = ConstructionExperience.new(name: "Well")
-    if ConstructionExperience.exists?(:name => "Well")
-      test_project.construction_experiences << ConstructionExperience
-                                                 .find_by_name(construction_exp.name)
-    else
-      test_project.construction_experiences << construction_exp
-    end
-    design_exp = DesignExperience.new(name: "Road")
-    if DesignExperience.exists?(:name => "Road")
-      test_project.design_experiences << DesignExperience.find_by_name(design_exp.name)
-    else
-      test_project.design_experiences << design_exp
-    end
+  end
+  skill = Skill.new(name: "Ruby")
+  if Skill.exists?(:name => "Ruby")
+    test_project.skills << Skill.find_by_name(skill.name)
+  else
+    test_project.skills << skill
+  end
+  cert = Certification.new(name: "Microsoft Excel")
+  if Certification.exists?(:name => "Microsoft Excel")
+    test_project.certifications << Certification.find_by_name(cert.name)
+  else
+    test_project.certifications << cert
+  end
+  construction_exp = ConstructionExperience.new(name: "Well")
+  if ConstructionExperience.exists?(:name => "Well")
+    test_project.construction_experiences << ConstructionExperience
+                                               .find_by_name(construction_exp.name)
+  else
+    test_project.construction_experiences << construction_exp
+  end
+  design_exp = DesignExperience.new(name: "Road")
+  if DesignExperience.exists?(:name => "Road")
+    test_project.design_experiences << DesignExperience.find_by_name(design_exp.name)
+  else
+    test_project.design_experiences << design_exp
   end
   project = Project.find_by name: project_name
   project.managers << manager
@@ -74,17 +74,28 @@ end
 
 
 Given /^the following users exist:$/ do |table|
-	table.hashes.each do |table_hash|
-		User.new(:email => table_hash[:email], 
-				 :password => table_hash[:password],
-				 :first_name => table_hash[:first_name],
-				 :last_name => table_hash[:last_name]).save!
-	end
+  table.hashes.each do |table_hash|
+    User.new(:email => table_hash[:email], 
+	     :password => table_hash[:password],
+	     :first_name => table_hash[:first_name],
+	     :last_name => table_hash[:last_name]).save!
+  end
 end
 
-Given /^the following volunteers exist: $/ do |table|
-  puts table
-  pending
+Given /^the following volunteers are on "(.+)":$/ do |project_name, table|
+  if(!Project.exists?(name: project_name))
+    Project.create(name: project_name,
+                   description: "Creating a large-scale water filter system",
+                   volunteer_capacity: 25, location: "Remba Island, Kenya")
+  end
+  project = Project.find_by_name(project_name)
+  table.hashes.each do |table_hash|
+    user = User.create(:email => table_hash[:email], 
+	               :password => "asdfghjk",
+	               :first_name => table_hash[:first_name],
+	               :last_name => table_hash[:last_name])
+    user.projects << project
+  end
 end
 
 When /^I follow the project link for "(.+)"$/ do |project_name|
@@ -120,7 +131,8 @@ Given /^there exists a project "([^"]*)"$/ do |arg1|
   end
   construction_exp = ConstructionExperience.new(name: "Well")
   if ConstructionExperience.exists?(:name => "Well")
-    test_project.construction_experiences << ConstructionExperience.find_by_name(construction_exp.name)
+    test_project.construction_experiences << ConstructionExperience
+                                               .find_by_name(construction_exp.name)
   else
     test_project.construction_experiences << construction_exp
   end
@@ -168,20 +180,34 @@ Then(/^I should see "([^"]*)" \#A user that meets these specified qualifications
   else
     assert page.has_content?(text)
   end
-   # Write code here that turns the phrase above into concrete actions
 end
 
 Then(/^I should not see "([^"]*)" \#A user that does not$/) do |arg1|
-  puts arg1
-   # Write code here that turns the phrase above into concrete actions
+  #Pending
 end
 
-When(/^I select attribute field$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
+  case field
+  when "attribute"
+    locator = "q_c_0_a_0_name"
+  when "predicate"
+    locator = "q_c_0_p"
+  else
+    locator = field
+  end
+  expect(page).to have_select(locator, :with_options => [value])
 end
 
-When(/^I select predicate field$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |field, parent, value|
+  case field
+  when "attribute"
+    locator = "q_c_0_a_0_name"
+  when "predicate"
+    locator = "q_c_0_p"
+  else
+    locator = field
+  end
+  expect(page).not_to have_select(locator, :with_options => [value])
 end
 
 Then(/^the number of attibute fields should be (\d+)$/) do |arg1|
