@@ -74,12 +74,12 @@ end
 
 
 Given /^the following users exist:$/ do |table|
-	table.hashes.each do |table_hash|
-		User.new(:email => table_hash[:email], 
-				 :password => table_hash[:password],
-				 :first_name => table_hash[:first_name],
-				 :last_name => table_hash[:last_name]).save!
-	end
+  table.hashes.each do |table_hash|
+    User.new(:email => table_hash[:email], 
+	     :password => table_hash[:password],
+	     :first_name => table_hash[:first_name],
+	     :last_name => table_hash[:last_name]).save!
+  end
 end
 
 Given /^the following volunteers exist: $/ do |table|
@@ -176,13 +176,41 @@ Then(/^I should not see "([^"]*)" \#A user that does not$/) do |arg1|
    # Write code here that turns the phrase above into concrete actions
 end
 
+Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
+  case field
+  when "attribute"
+    locator = "q_c_0_a_0_name"
+  when "predicate"
+    locator = "q_c_0_p"
+  else
+    locator = field
+  end
+  expect(page).to have_select(locator, :with_options => [value])
+end
+
+Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |field, parent, value|
+  case field
+  when "attribute"
+    locator = "q_c_0_a_0_name"
+  when "predicate"
+    locator = "q_c_0_p"
+  else
+    locator = field
+  end
+  expect(page).not_to have_select(locator, :with_options => [value])
+end
+
+
+=begin
 When(/^I select attribute field$/) do
+  page.find(".field").first("select").click
   pending # Write code here that turns the phrase above into concrete actions
 end
 
 When(/^I select predicate field$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
+=end
 
 Then(/^the number of attibute fields should be (\d+)$/) do |arg1|
   puts arg1
