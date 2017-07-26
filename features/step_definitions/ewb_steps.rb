@@ -223,3 +223,31 @@ end
 Then(/^I should see that the page theme and colors are consistent with the main EWB website$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
+
+Given(/^the following users exist with the given qualities:$/) do |table|
+  puts table
+  # table is a Cucumber::MultilineArgument::DataTable
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see "([^"]*)"'s qualities$/) do |arg1|
+  puts arg1
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should not see "([^"]*)"'s qualities$/) do |arg1|
+  puts arg1
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see everyone$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see noone$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see everyone's qualities$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
