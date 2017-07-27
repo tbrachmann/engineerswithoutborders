@@ -33,3 +33,19 @@ Scenario: Adding a new role
   And I enter "Programmer" into "New Role"
   And I press "Update Background"
   Then I should see "Programmer"
+  
+  
+Scenario: User sees own availability after edit profile
+  Given I am a new, authenticated user
+  Given I am on the home page
+  When I follow "Profile"
+  And I follow "Edit Profile"
+  And I check "Wednesday Morning"
+  And I check "Saturday Evening"
+  And I press "Update Background"
+  Then I should see "Wednesday Morning"
+  Then I should see "Saturday Evening"
+
+  
+
+  
