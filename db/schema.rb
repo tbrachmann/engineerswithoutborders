@@ -118,6 +118,10 @@ ActiveRecord::Schema.define(version: 20170724230412) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "hours_per_week"
+<<<<<<< HEAD
+=======
+    t.integer  "manager_id"
+>>>>>>> efd883bd85ed818278433841847dcf671326f40e
   end
 
   create_table "projects_skills", id: false, force: :cascade do |t|
