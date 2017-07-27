@@ -10,7 +10,7 @@ Scenario: Updating Profile Information
   And I follow "Edit Profile"
   And I select "Bachelor's Degree" from "Education:"
   And I select "Computer Science" from "Field of Study or Expertise:"
-  #And I select "Chemical" from "Certifications Related to Field:"
+  And I select "Chemical" from "Certifications"
   And I select "Spanish" from "First Language:"
   And I select "5 - Native or Bilingual Proficiency" from "First Language Fluency:"
   And I select "20" from "Age"
@@ -24,3 +24,28 @@ Scenario: Updating Profile Information
   Then I should see "College rules!"
   Then I should see "Berkeley"
 
+Scenario: Adding a new role
+  Given I am a new, authenticated user
+  Given I am on the home page
+  When I follow "Profile"
+  And I follow "Edit Profile"
+  And I select "Other" from "Role"
+  And I enter "Programmer" into "New Role"
+  And I press "Update Background"
+  Then I should see "Programmer"
+  
+  
+Scenario: User sees own availability after edit profile
+  Given I am a new, authenticated user
+  Given I am on the home page
+  When I follow "Profile"
+  And I follow "Edit Profile"
+  And I check "Wednesday Morning"
+  And I check "Saturday Evening"
+  And I press "Update Background"
+  Then I should see "Wednesday Morning"
+  Then I should see "Saturday Evening"
+
+  
+
+  
