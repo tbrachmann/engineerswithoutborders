@@ -21,3 +21,15 @@
 
 en:
   hello: "Hello world"
+  ransack:
+    attributes:
+      certification:
+        name: Certification
+      role:
+        name: Role
+      skill:
+        name: Skill
+      design_experience:
+        name: Design Experience
+      construction_experience:
+        name: Construction Experience

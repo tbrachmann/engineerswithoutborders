@@ -1,3 +1,4 @@
+=begin
 class UsersController < ApplicationController
   before_action only: [:show, :edit, :update, :age_sorting]
   
@@ -6,7 +7,7 @@ class UsersController < ApplicationController
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to main_app.root_url, :alert => exception.message
   end
-
+  
   def create
     @user = User.new(params[:user])
     if @user.save
@@ -27,9 +28,9 @@ class UsersController < ApplicationController
       return
     end
     @user = User.all
-    @search = User.search(params[:q])
-    @users = @search.result.page(params[:page]).per(10)
-    @search.build_condition
+    @q = User.ransack(params[:q])
+    @users = @q.result.page(params[:page]).per(10)
+#    @search.build_condition
     authorize! :read, @user
   end
 
@@ -143,7 +144,7 @@ class UsersController < ApplicationController
     params.require(:user)
   end    
 end
-
+=end
 
 class UsersController < ApplicationController
   before_action only: [:show, :edit, :update, :age_sorting]
@@ -185,9 +186,15 @@ class UsersController < ApplicationController
       return
     end
     @user = User.all
-    @search = User.search(params[:q])
-    @users = @search.result.page(params[:page]).per(10)
-    @search.build_condition
+    if params.key?(:q) && params[:q].key?(:c)
+      params[:q][:c].keys.each do |condition_index|
+        params[:q][:c][condition_index.to_s].merge!(:p => "cont")
+      end
+    end
+    @q = User.ransack(params[:q])
+    #[:p] = "cont"
+    @users = @q.result.includes(:role).page(params[:page]).per(10)
+    @q.build_condition
     authorize! :read, @user
   end
   

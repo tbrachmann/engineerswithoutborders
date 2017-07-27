@@ -64,15 +64,20 @@ class User < ActiveRecord::Base
   
   private :manager_relationships, :manager_relationships=
   private :volunteer_relationships, :volunteer_relationships=
-
+                                    
   # Over riding this method specifies which fields we want to be able to search on
   def self.ransackable_attributes(auth_object = nil)
-    ["first_name",
-    "last_name",
-    "education",
+    ["education",
     "expertise",
     "description",
-    "school"].sort
+    "school"] + _ransackers.keys
+  end
+
+  ransacker :name do |parent|
+    Arel::Nodes::InfixOperation.new('||',
+      Arel::Nodes::InfixOperation.new('||',
+        parent.table[:first_name], Arel::Nodes.build_quoted(' ')),
+      parent.table[:last_name])
   end
   
   def update_availability(availability_params)
