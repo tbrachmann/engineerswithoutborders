@@ -27,11 +27,13 @@ function change(id_class) {
 	switch(klass) {
 		case 'skill': 
 			processBoxes(checkbox, checked_skills, id);
+			break;
 		case 'cert':
 			processBoxes(checkbox, checked_certs, id);
+			break;
 		default:
-		    processBoxes(checkbox, all_checked_boxes, id);
 	}
+    processBoxes(checkbox, all_checked_boxes, id);
     filterUsers();
 }
 
@@ -44,14 +46,17 @@ function filterUsers() {
 }
 
 //returns true if arr1 includes any element in arr2
-function includesAny(arr1, arr2) {
-    return arr2.some(function (a) {
+function includesAll(arr1, arr2) {
+	arr1.forEach(function (b, index, arr1) {
+		arr1[index] = b.replace(" ", "");
+	});
+    return arr2.every(function (a) {
         return arr1.indexOf(a) >= 0;
     });
 }
 
 function shouldShow(user_id) {
-	if (all_checked_boxes.length === 0 || includesAny(users_to_skills[user_id], checked_skills) || includesAny(users_to_certs[user_id], checked_certs)) {
+	if (all_checked_boxes.length === 0 || (includesAll(users_to_skills[user_id], checked_skills) && includesAll(users_to_certs[user_id], checked_certs))) {
 	    $('#' + user_id).show();
 	    $('#' + user_id).next("hr").show()
 	} else {
