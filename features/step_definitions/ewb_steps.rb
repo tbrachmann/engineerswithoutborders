@@ -282,3 +282,24 @@ end
 Then(/^I should see everyone's qualities$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
+
+Given(/^I click "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I type in "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I am a volunteer$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I enter "([^"]*)" into "([^"]*)"$/) do |arg1, arg2|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^the number of attribute fields should be (\d+)$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+

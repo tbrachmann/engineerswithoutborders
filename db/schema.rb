@@ -118,10 +118,7 @@ ActiveRecord::Schema.define(version: 20170724230412) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "hours_per_week"
-    t.integer  "users_id"
   end
-
-  add_index "projects", ["users_id"], name: "index_projects_on_users_id"
 
   create_table "projects_skills", id: false, force: :cascade do |t|
     t.integer "skill_id"
