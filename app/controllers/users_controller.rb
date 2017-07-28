@@ -194,7 +194,7 @@ class UsersController < ApplicationController
     @q = User.ransack(params[:q])
     #[:p] = "cont"
     @users = @q.result.includes(:role).page(params[:page]).per(10)
-    @q.build_condition
+    @q.build_condition if @q.conditions.empty?
     authorize! :read, @user
   end
   

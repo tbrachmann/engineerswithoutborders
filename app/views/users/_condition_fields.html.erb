@@ -1,13 +1,15 @@
 <div class="field">
-    <%= f.attribute_fields do |a| %>
-    <%= a.attribute_select associations: [:role, :skills, :certifications,
-  :design_experiences, :construction_experiences]%>
-    <% end %>
-    <%= f.predicate_select :only => [:cont] %>
-    <%= f.value_fields do |v| %>
-        <%= v.text_field :value %>
-    <% end %>
-    <%= link_to "remove", '#', class:"remove_fields" %>
+  <%= f.attribute_fields do |a| %>
+    <% a.attribute_select associations: [:role, :skills,
+					 :certifications,
+					 :construction_experiences,
+					 :design_experiences] %>
+  <% end %>
+  contains
+  <%= f.value_fields do |v| %>
+    <%= v.text_field :value %>
+  <% end %>
+  <%= link_to "remove", '#', class:"remove_fields" %>
 </div>
 <br>
 
