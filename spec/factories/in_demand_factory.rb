@@ -1,5 +1,7 @@
 FactoryGirl.define do
   factory :in_demand do
-    name "s"
+    project_id 3
+    table_name "Skills"
+    table_id 2
   end
 end
