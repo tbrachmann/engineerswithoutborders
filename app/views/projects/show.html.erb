@@ -42,10 +42,10 @@
 <div class="right">
 <% if can? :manage, @project %>
   <%= link_to 'Edit Project', edit_project_path(@project),
-  class: "btn btn-md btn-primary" %>
-  <%= link_to 'Home', root_path, class: "btn btn-md btn-primary" %>
+  class: "btn sqs-block-btn btn-black btn-md" %>
+  <%= link_to 'Home', root_path, class: "btn sqs-block-btn btn-black btn-md" %>
 <% else %>
-  <%= link_to 'Home', root_path, class: "btn btn-md btn-primary" %>
+  <%= link_to 'Home', root_path, class: "btn sqs-block-btn btn-black btn-md" %>
 <% end %>
 </div>
 

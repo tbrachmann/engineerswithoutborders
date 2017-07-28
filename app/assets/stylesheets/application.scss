@@ -251,9 +251,14 @@ p, div, strong {
   text-decoration: none;
   filter: grayscale(30%);
 }
+.btn-lg{
+  padding: 21px 34px;
+}
+.btn-md {
+  padding: 12px 14px;
+}
 .btn-black {
   background-color: #000000;
-  padding: 12px 14px;
 }
 .btn-black:hover {
   background-color: #000000;
