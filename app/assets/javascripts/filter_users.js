@@ -48,7 +48,7 @@ function filterUsers() {
 //returns true if arr1 includes any element in arr2
 function includesAll(arr1, arr2) {
 	arr1.forEach(function (b, index, arr1) {
-		arr1[index] = b.replace(" ", "");
+		arr1[index] = b.replace(/[^A-Z0-9]/ig, '');
 	});
     return arr2.every(function (a) {
         return arr1.indexOf(a) >= 0;

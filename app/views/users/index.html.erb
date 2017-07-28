@@ -20,8 +20,8 @@
     <h3>Skills</h3>
       <div>
         <% Skill.all.each do |skill| %>
-          <input type = "checkbox" id = <%= skill.name.gsub(/\s+/, "") + '_skill'%> onchange="change(id)"/>
-          <label for=<%=skill.name.gsub(/\s+/, "") + '_skill' %>> <%= skill.name %></label>
+          <input type = "checkbox" id = <%= skill.name.gsub(/[^a-zA-Z]/, '') + '_skill'%> onchange="change(id)"/>
+          <label> <%= skill.name %></label>
           <br/>
         <% end %>
       </div>
@@ -30,8 +30,8 @@
     <h3>Certifications</h3>
       <div>
         <% Certification.all.each do |cert| %>
-          <input type = "checkbox" id = <%= cert.name.gsub(/\s+/, "") + '_cert'%> onchange="change(id)"/>
-          <label for=<%cert.name.gsub(/\s+/, "") + '_cert' %>> <%= cert.name %></label>
+          <input type = "checkbox" id = <%= cert.name.gsub(/[^a-zA-Z]/, '') + '_cert'%> onchange="change(id)"/>
+          <label> <%= cert.name %></label>
           <br/>
         <% end %>
       </div>
