@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
       end
     end
   end
-
+  has_many :in_demand
   has_many :volunteer_relationships #, inverse_of: :project
   has_many :volunteers, -> { distinct }, through: :volunteer_relationships, source: :user do
     # If user is already a manager, do nothing
@@ -35,6 +35,15 @@ class Project < ActiveRecord::Base
                                       medium: "300x300>",
                                       thumb: "150x150#" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  
+  def in_demand_qualities
+    # should return array of in demand qualities of potentially different types (skill, construction experience, role)
+    InDemand.qualities_by_project_id self.id
+  end
+  
+  def add_in_demand quality
+    InDemand.add_in_demand_quality self.id, quality
+  end
   
   private :manager_relationships, :manager_relationships=
   private :volunteer_relationships, :volunteer_relationships=
