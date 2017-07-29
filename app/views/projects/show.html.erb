@@ -38,108 +38,112 @@
 	}
 </style>
 
-<h1>Project <%= @project.name %> </h1>
-<div class="right">
-<% if can? :manage, @project %>
-  <%= link_to 'Edit Project', edit_project_path(@project),
-  class: "btn btn-md btn-primary" %>
-  <%= link_to 'Home', root_path, class: "btn btn-md btn-primary" %>
-<% else %>
-  <%= link_to 'Home', root_path, class: "btn btn-md btn-primary" %>
-<% end %>
+<div class="row section">
+  <div class="col-md-8 col-md-offset-2 section">
+    <h2 class="text-center">Project (<%= @project.name %>) </h2>
+    <div class="row text-right">
+    <% if can? :manage, @project %>
+      <%= link_to 'Edit Project', edit_project_path(@project),
+      class: "btn sqs-block-btn btn-black btn-md" %>
+      <%= link_to 'Home', root_path, class: "btn sqs-block-btn btn-black btn-md" %>
+    <% else %>
+      <%= link_to 'Home', root_path, class: "btn sqs-block-btn btn-black btn-md" %>
+    <% end %>
+    </div>
+    <br>
+    <script async defer type="text/javascript"
+    	src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <%= javascript_include_tag "application" %>
+    
+    
+    <div class="image">
+      <% if @project.image_file_name != nil %>
+        <%= image_tag @project.image.url(:medium) %> <br><br>
+      <% end %>
+    </div>
+    
+    <div class="col-lg-12">
+      <p><strong>Project Description: </strong><%= @project.description %></p>
+    </div>
+    	
+    <div class="col-lg-12">
+      <% if @project.start_date && @project.start_date.to_date %>
+        <p>This project will start on <%= @project.start_date.to_date %>.</p>
+      <% else %>
+        <p>Project start date to be announced </p>
+      <% end %>
+    </div>
+    	
+    <div class="col-md-12">
+      <% if !@project.skills.blank? %>
+        <strong>Key Skills: </strong>
+        <%= @project.skills.pluck("name").join(", ") %>
+      <%end%>
+    </div>
+    
+    <div class="col-md-12">
+      <% if !@project.certifications.blank? %>
+        <strong>Key Certifications: </strong>
+        <%= @project.certifications.pluck("name").join(", ") %>
+      <%end%>
+    </div>
+    
+    <div class="col-md-12">
+      <% if !@project.construction_experiences.blank? %>
+        <strong>Key Construction Experience: </strong>
+        <%= @project.construction_experiences.pluck("name").join(", ") %>
+      <%end%>
+    </div>
+    
+    <div class="col-md-12">
+      <% if !@project.design_experiences.blank? %>
+        <strong>Key Design Experience: </strong>
+        <%= @project.design_experiences.pluck("name").join(", ") %>
+      <%end%>
+    </div>
+    	
+    <div class="col-md-12">
+        <strong>Location: </strong><%= @project.location %>
+    </div>
+    <div class="col-md-12">
+      <% if @project.volunteers.count == 0 || @project.volunteers == "" %>
+        <p> <strong> Project Capacity: </strong> <%= @project.volunteer_capacity %> </p>
+      <% else %>
+        <p> 
+    	<strong>Project</strong> <%= @project.name %> has 
+    	<strong><%= @project.volunteers.count %></strong> volunteers, needs 
+    	<strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> 
+    	more!
+        </p>
+      <% end %>
+    </div>
+    <div class="col-md-12">
+      <%if @project.managers.count == 0 || @project.managers == "" %>
+        <p><strong>Project Manager: ---- </strong></p>
+        <p><strong>Manager Contact Information: ---- </strong></p>
+      <% else %>
+        <table id="managers">
+          <thead>
+            <tr>
+              <th class="table-color">Project Manager</th>
+              <th class="table-color">Email</th>
+    	  <th class="table-color">Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @project.managers.each do |pm| %>
+              <tr>
+                <td><%= pm.name %></td>
+                <td><%= pm.email %></td>
+                <td><%= pm.phone %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+    </div>
+    <p style="page-break-before: always"></p>
+    <br>
+    <br>
+  </div>
 </div>
-
-<script async defer type="text/javascript"
-	src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-<%= javascript_include_tag "application" %>
-
-
-<div class="image">
-  <% if @project.image_file_name != nil %>
-    <%= image_tag @project.image.url(:medium) %> <br><br>
-  <% end %>
-</div>
-
-<div class="col-lg-12">
-  <p><strong>Project Description: </strong><%= @project.description %></p>
-</div>
-	
-<div class="col-lg-12">
-  <% if @project.start_date && @project.start_date.to_date %>
-    <p>This project will start on <%= @project.start_date.to_date %>.</p>
-  <% else %>
-    <p>Project start date to be announced </p>
-  <% end %>
-</div>
-	
-<div class="col-md-12">
-  <% if !@project.skills.blank? %>
-    <strong>Key Skills: </strong>
-    <%= @project.skills.pluck("name").join(", ") %>
-  <%end%>
-</div>
-
-<div class="col-md-12">
-  <% if !@project.certifications.blank? %>
-    <strong>Key Certifications: </strong>
-    <%= @project.certifications.pluck("name").join(", ") %>
-  <%end%>
-</div>
-
-<div class="col-md-12">
-  <% if !@project.construction_experiences.blank? %>
-    <strong>Key Construction Experience: </strong>
-    <%= @project.construction_experiences.pluck("name").join(", ") %>
-  <%end%>
-</div>
-
-<div class="col-md-12">
-  <% if !@project.design_experiences.blank? %>
-    <strong>Key Design Experience: </strong>
-    <%= @project.design_experiences.pluck("name").join(", ") %>
-  <%end%>
-</div>
-	
-<div class="col-md-12">
-    <strong>Location: </strong><%= @project.location %>
-</div>
-<div class="col-md-12">
-  <% if @project.volunteers.count == 0 || @project.volunteers == "" %>
-    <p> <strong> Project Capacity: </strong> <%= @project.volunteer_capacity %> </p>
-  <% else %>
-    <p> 
-	<strong>Project</strong> <%= @project.name %> has 
-	<strong><%= @project.volunteers.count %></strong> volunteers, needs 
-	<strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> 
-	more!
-    </p>
-  <% end %>
-</div>
-<div class="col-md-12">
-  <%if @project.managers.count == 0 || @project.managers == "" %>
-    <p><strong>Project Manager: ---- </strong></p>
-    <p><strong>Manager Contact Information: ---- </strong></p>
-  <% else %>
-    <table id="managers">
-      <thead>
-        <tr>
-          <th>Project Manager</th>
-          <th>Email</th>
-	  <th>Phone</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @project.managers.each do |pm| %>
-          <tr>
-            <td><%= pm.name %></td>
-            <td><%= pm.email %></td>
-            <td><%= pm.phone %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
-</div>
-<p style="page-break-before: always"></p>
-<br>
-<br>
