@@ -23,21 +23,36 @@ html, body {
  */
  
  h1, h2, h3, h4, h5, h6 {
-    font-family: "proxima-nova";
-    font-weight: bold;
+    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-style: normal;
+    text-transform: uppercase;
+
+    // font-weight: bold;
 }
-p, div, strong {
-    font-family: "proxima-nova", Helvetica, Arial, sans-serif;
+p, div, strong, input {
+    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 1px;
     font-size: 18px;
-    font-weight: bold;
+
+}
+label {
+  color: "blue";
+  font-weight: 350;
 }
 
+.font-pn {
+  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 1px;
+}
  #projects .calendar {
   border-collapse: collapse;
   width: 100%;
 
   td, th {
-    font-family: "Lucida Grande", arial, helvetica, sans-serif;
+    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    letter-spacing: 1px;
     font-size: 10px;
     padding: 6px;
     border: 1px solid #999;
@@ -315,4 +330,10 @@ p, div, strong {
   background-image: linear-gradient(#9c27b3, black), linear-gradient(black, black);
   background-size: 0 2px, 100% 2px;
   box-shadow: none;
+  
 }
+label {
+  color: "blue";
+  
+}
+
