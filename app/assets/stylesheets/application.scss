@@ -24,7 +24,7 @@ html, body {
  
  h1, h2, h3, h4, h5, h6 {
     font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    letter-spacing: 1px;
+    // letter-spacing: 1px;
     font-weight: 400;
     font-style: normal;
     text-transform: uppercase;
@@ -35,11 +35,9 @@ p, div, strong, input {
     font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: 1px;
     font-size: 18px;
+    color: rgba(26,26,26,.8);
+    font-weight: 400;
 
-}
-label {
-  color: "blue";
-  font-weight: 350;
 }
 
 .font-pn {
@@ -273,10 +271,10 @@ label {
   padding: 12px 14px;
 }
 .btn-black {
-  background-color: #000000;
+  background-color: #272727;
 }
 .btn-black:hover {
-  background-color: #000000;
+  background-color: #404040;
   background-repeat:no-repeat;
   border: none;
   cursor:pointer;
@@ -333,7 +331,10 @@ label {
   
 }
 label {
-  color: "blue";
+  font-weight: 400 !important;
   
+}
+.table-color {
+  background-color: #E5E5E5 !important;
 }
 
