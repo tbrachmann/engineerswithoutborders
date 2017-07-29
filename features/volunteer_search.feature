@@ -13,8 +13,8 @@ Scenario: Minimize attribute filter criteria to fields like certifications
   And the "attribute" field should contain "Last name"
   And the "attribute" field should contain "Role"
   And the "attribute" field should contain "Skill"
-  And the "attribute" field should contain "Construction experience"
-  And the "attribute" field should contain "Design experience"
+  And the "attribute" field should contain "Construction Experience"
+  And the "attribute" field should contain "Design Experience"
   But the "attribute" field should not contain "created at"
   And the "attribute" field should not contain "id"
   
