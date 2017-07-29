@@ -4,10 +4,19 @@ class InDemand < ActiveRecord::Base
   @@models = [Skill, ConstructionExperience, DesignExperience, Role]
   
   def self.add_in_demand_quality project_id, quality
-    if InDemand.exists? table_name: quality.class.name, table_id: quality.id, project_id: project_id
+    #First check if the quality exists
+    quality_class = quality.class
+    if !quality_class.exists?(quality.id)
+      quality.save!
+    end
+    if InDemand.exists?(table_name: quality.class.name,
+                        table_id: quality.id,
+                        project_id: project_id)
         p "Already an In Demand skill"
     else
-        InDemand.create table_name: quality.class.name, table_id: quality.id, project_id: project_id
+      InDemand.create(table_name: quality.class.name,
+                      table_id: quality.id,
+                      project_id: project_id)
     end
   end
   
@@ -21,7 +30,7 @@ class InDemand < ActiveRecord::Base
     name = self.table_name
     id = self.table_id
     # get model class from name
-    quality_model = name.constantize
+    quality_model = name.classify.constantize
     # return instance of quality
     quality_model.find(id)
   end

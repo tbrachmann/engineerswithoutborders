@@ -41,7 +41,7 @@ class Project < ActiveRecord::Base
     InDemand.qualities_by_project_id self.id
   end
   
-  def add_in_demand quality
+  def add_in_demand_quality quality
     InDemand.add_in_demand_quality self.id, quality
   end
   
