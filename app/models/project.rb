@@ -46,7 +46,6 @@ class Project < ActiveRecord::Base
   end
   
   def availability_hash
-    time_slots = User.preset_time_slots
     vs = self.volunteers
     availability_array = []
     # iterate through volunteers
@@ -56,7 +55,7 @@ class Project < ActiveRecord::Base
         availability_array += v.availability._to_s_helper
       end
     end
-    hash_count = Hash.new(0).tap { |h| availability_array.each { |word| h[word] += 1 } }
+    Hash.new(0).tap { |h| availability_array.each { |word| h[word] += 1 } }
     # what is the expected behavior, we want to display the top 3 available times. a graph?.
   end
   
