@@ -83,6 +83,16 @@ RSpec.describe Project, "#availability_hash" do
       expect(project.availability_hash.length).to eq 3
       expect(project.availability_hash).to eq({"Monday Morning"=>1,
         "Thursday Afternoon"=>1, "Saturday Evening"=>1})
+        
+      # now test adding multiple users
+      
+      example_user2 = FactoryGirl.create(:user, first_name: "george", password: "asdfghjkl")
+      example_user2.availability = Availability.create(thursday_afternoon: true,
+      friday_morning: true, saturday_evening: false, monday_morning: true)
+      project.volunteers << example_user2
+      expect(project.volunteers.length).to eq(2)
+      expect(project.availability_hash).to eq({"Monday Morning"=>2,
+        "Thursday Afternoon"=>2, "Saturday Evening"=>1, "Friday Morning"=>1})
 
     end
   end

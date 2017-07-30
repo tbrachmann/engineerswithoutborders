@@ -57,6 +57,7 @@ class Project < ActiveRecord::Base
       end
     end
     hash_count = Hash.new(0).tap { |h| availability_array.each { |word| h[word] += 1 } }
+    # what is the expected behavior, we want to display the top 3 available times. a graph?.
   end
   
   private :manager_relationships, :manager_relationships=
