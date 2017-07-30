@@ -186,6 +186,7 @@ class UsersController < ApplicationController
       return
     end
     @user = User.all
+    @field_choices = ["Civil Engineering","Environmental Engineering","Mechanical Engineering","Electrical Engineering","Materials Science","Chemical Engineering","Hydraulics / Hydrology","Computer Science","Education","International Development"]
     if params.key?(:q) && params[:q].key?(:c)
       params[:q][:c].keys.each do |condition_index|
         params[:q][:c][condition_index.to_s].merge!(:p => "cont")

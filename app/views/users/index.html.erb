@@ -19,14 +19,13 @@
   </div>
 </div>
 
-<br/>
 <div class = "row">
   <div class = "col-md-4" >
     <h3>Skills</h3>
       <div>
         <% Skill.all.each do |skill| %>
           <input type = "checkbox" id = <%= skill.name.gsub(/[^a-zA-Z]/, '') + '_skill'%> onchange="change(id)"/>
-          <label> <%= skill.name %></label>
+          <span> <%= skill.name %></span>
           <br/>
         <% end %>
       </div>
@@ -36,10 +35,20 @@
       <div>
         <% Certification.all.each do |cert| %>
           <input type = "checkbox" id = <%= cert.name.gsub(/[^a-zA-Z]/, '') + '_cert'%> onchange="change(id)"/>
-          <label> <%= cert.name %></label>
+          <span> <%= cert.name %></span>
           <br/>
         <% end %>
       </div>
+  </div>
+  <div class = "col-md-4">
+    <h3>Field of Study</h3>
+    <div>
+      <% @field_choices.each do |field| %>
+      <input type = "checkbox" id = <%= field + '_field'%> onchange="change(id)"/>
+      <span> <%=field%> </span>
+      <br/>
+      <%end%>
+    </div>
   </div>
 </div>
 
