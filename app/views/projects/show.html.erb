@@ -38,6 +38,11 @@
 	}
 </style>
 
+<head>
+  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+</head>
+
+
 <div class="row section">
   <div class="col-md-8 col-md-offset-2 section">
     <h2 class="text-center">Project (<%= @project.name %>) </h2>
@@ -116,6 +121,17 @@
     	more!
         </p>
       <% end %>
+    </div>
+    <div class="col-md-12">
+      <p></p>
+    </div>
+
+    <div class="col-md-12">
+        <% if @project_availability_hash %>
+          <strong>Volunteer Availability: </strong>
+          <br><br>
+          <%= column_chart @project_availability_hash %>
+        <% end %>
     </div>
     <div class="col-md-12">
       <%if @project.managers.count == 0 || @project.managers == "" %>

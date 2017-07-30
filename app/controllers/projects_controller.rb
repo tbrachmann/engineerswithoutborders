@@ -9,7 +9,8 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
-	       @project = Project.find(params[:id])
+	    @project = Project.find(params[:id])
+	    @project_availability_hash = @project.availability_hash   
 =begin       
 		if @project && @project.skills
 			@skills = @project.skills().map{|x| x.name}.join(", ")
