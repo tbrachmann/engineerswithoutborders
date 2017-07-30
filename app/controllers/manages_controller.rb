@@ -4,8 +4,7 @@ class ManagesController < ApplicationController
     if(!current_user.manager?)
       redirect_to projects_path
     end
-    @all_projects = current_user.manages
-    @projects = @all_projects.page(params[:page]).per(3)
+    @projects = @all_projects = current_user.manages
   end
 
   def show
