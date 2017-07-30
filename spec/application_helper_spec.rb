@@ -17,11 +17,3 @@ RSpec.describe ApplicationHelper, "#helper" do
   end
 end
 
-RSpec.describe ApplicationHelper, "#helper" do
-  context "when sortable is called" do
-    it "lets see what it does" do
-        
-    end
-  end
-end
-
