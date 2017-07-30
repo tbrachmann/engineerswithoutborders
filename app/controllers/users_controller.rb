@@ -221,6 +221,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize! :read, @user
   end
+<<<<<<< HEAD
 
   def manages
     if(!current_user.manager?)
@@ -228,6 +229,8 @@ class UsersController < ApplicationController
     end
     @projects = @all_projects = current_user.manages
   end
+=======
+>>>>>>> 30ae762c3914b645d7c594583a8071bb2e3a398a
   
   # GET /users/1/edit
   def edit

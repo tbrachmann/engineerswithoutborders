@@ -53,28 +53,43 @@
 
     <div class="col-md-7">
     <a href=<%= user_path(user) %>><strong><%= user.first_name %> <%= user.last_name %></strong></a> <br>
-    <strong>Age: </strong> <%= user.age %>
-    <strong>Education: </strong> <%= user.education %> from <%= user.school %>
-    <strong> Field: </strong> <%= user.expertise %><br>
-    <strong>Availability: </strong><%= user.availability %> <br>
-    <strong>Skills:</strong>
-    <% user.skills.each_with_index do |skill, index| %>
-      <% if (index == (user.skills.size - 1)) %>
-        <%= skill.name %>
-      <% else %>
-        <%= skill.name + ', '%>
-      <% end %>
+    <% if user.age %>
+      <strong>Age: </strong> <%= user.age %><br>
     <% end %>
-    <br/>
-    <strong>Certifications:</strong>
-    <% user.certifications.each_with_index do |cert, index| %>
-      <% if (index == (user.certifications.size - 1))  %>
-        <%= cert.name %>
-      <% else %>
-        <%= cert.name + ', '%>
-      <% end %>
+    <% if  user.education && user.school %>
+      <strong>Education: </strong> <%= user.education %> from <%= user.school %><br>
+    <% elsif user.education  %>
+      <strong>Education: </strong>  <%= user.education %>
     <% end %>
-    <br/>
+    <% if user.expertise %>
+      <strong> Field: </strong> <%= user.expertise %><br>
+    <% end %>
+    <% if user.availability %>
+      <strong>Availability: </strong><%= user.availability %> <br>
+    <% end %>
+    <% if user.skills  && user.skills.length > 0 %>
+      <strong>Skills:</strong>
+      <% user.skills.each_with_index do |skill, index| %>
+        <% if (index == (user.skills.size - 1)) %>
+          <%= skill.name %>
+        <% else %>
+          <%= skill.name + ', '%>
+        <% end %>
+      <% end %>
+      <br/>
+    <% end %>
+    <% if user.certifications && user.certifications.length > 0 %>
+      <strong>Certifications:</strong>
+      <% user.certifications.each_with_index do |cert, index| %>
+        <% if (index == (user.certifications.size - 1))  %>
+          <%= cert.name %>
+        <% else %>
+          <%= cert.name + ', '%>
+        <% end %>
+      <% end %>
+      <br/>
+    <% end %>
+
     </div>
     <div class="col-md-2">
     <!--<button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal">Contact <%= user.first_name %></button>-->

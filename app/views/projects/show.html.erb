@@ -38,6 +38,11 @@
 	}
 </style>
 
+<head>
+  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+</head>
+
+
 <div class="row section">
   <div class="col-md-8 col-md-offset-2 section">
     <h2 class="text-center">Project (<%= @project.name %>) </h2>
@@ -116,6 +121,10 @@
     	  <strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> more!
         </p>
       <% end %>
+    </div>
+    
+    <div class="col-md-12">
+      <p></p>
     </div>
     
     <div class="col-md-12">
