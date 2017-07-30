@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe Project, "#name" do
   context "when a project manager enters a project name" do
@@ -61,6 +61,29 @@ RSpec.describe Project, "#hours_per_week" do
       project = Project.new
       project.hours_per_week = 5
       expect(project.hours_per_week).to eq 5
+    end
+  end
+end
+
+
+RSpec.describe Project, "#availability_hash" do
+  context "when a project manager views their dashboard" do
+    it "it shows the volunteers on the project and their availability" do
+      project = Project.new
+      example_user = FactoryGirl.create(:user, password: "asdfghjkl")
+      example_user.availability = Availability.create(thursday_afternoon: true,
+      friday_morning: false, saturday_evening: true, monday_morning: false)
+      example_user.save!
+      project.volunteers << example_user
+      expect(project.availability_hash.length).to eq 2
+      expect(project.availability_hash).to eq({"Thursday Afternoon"=>1,
+        "Saturday Evening"=>1})
+      project.volunteers.first.update_availability({monday_morning: true})
+      project.volunteers.first.availability.save!
+      expect(project.availability_hash.length).to eq 3
+      expect(project.availability_hash).to eq({"Monday Morning"=>1,
+        "Thursday Afternoon"=>1, "Saturday Evening"=>1})
+
     end
   end
 end

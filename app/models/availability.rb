@@ -18,14 +18,28 @@ class Availability < ActiveRecord::Base
         return_str.join(" ")
     end
     
-    def to_s
+    
+    def _to_s_helper
+        # returns human readable list of availabilities
         avail = []
         self.attributes.each do |x, y|
             if y && !!y == y
                 avail << x
             end
         end
-        avail.map{|k| (symbol_to_readable(k))}.join(", ")
+        avail.map{|k| (symbol_to_readable(k))}
+    end
+    
+    def to_s
+        # returns human readable string of availabilities
+        _to_s_helper.join(", ")
+        # avail = []
+        # self.attributes.each do |x, y|
+        #     if y && !!y == y
+        #         avail << x
+        #     end
+        # end
+        # avail.map{|k| (symbol_to_readable(k))}.join(", ")
     end
     
 end

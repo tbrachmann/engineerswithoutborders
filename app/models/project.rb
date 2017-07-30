@@ -45,6 +45,20 @@ class Project < ActiveRecord::Base
     InDemand.add_in_demand_quality self.id, quality
   end
   
+  def availability_hash
+    time_slots = User.preset_time_slots
+    vs = self.volunteers
+    availability_array = []
+    # iterate through volunteers
+    vs.each do |v|
+      # check if volunteer has availability object
+      if v.availability
+        availability_array += v.availability._to_s_helper
+      end
+    end
+    hash_count = Hash.new(0).tap { |h| availability_array.each { |word| h[word] += 1 } }
+  end
+  
   private :manager_relationships, :manager_relationships=
   private :volunteer_relationships, :volunteer_relationships=
 end
