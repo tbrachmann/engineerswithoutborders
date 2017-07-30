@@ -25,8 +25,8 @@
     <h3>Skills</h3>
       <div>
         <% Skill.all.each do |skill| %>
-          <input type = "checkbox" id = <%= skill.name + '_skill'%> onchange="change(id)"/>
-          <label for=<%=skill.name %>> <%= skill.name %></label>
+          <input type = "checkbox" id = <%= skill.name.gsub(/[^a-zA-Z]/, '') + '_skill'%> onchange="change(id)"/>
+          <label> <%= skill.name %></label>
           <br/>
         <% end %>
       </div>
@@ -35,8 +35,8 @@
     <h3>Certifications</h3>
       <div>
         <% Certification.all.each do |cert| %>
-          <input type = "checkbox" id = <%= cert.name + '_cert'%> onchange="change(id)"/>
-          <label for=<%cert.name %>> <%= cert.name %></label>
+          <input type = "checkbox" id = <%= cert.name.gsub(/[^a-zA-Z]/, '') + '_cert'%> onchange="change(id)"/>
+          <label> <%= cert.name %></label>
           <br/>
         <% end %>
       </div>
@@ -57,6 +57,24 @@
     <strong>Education: </strong> <%= user.education %> from <%= user.school %>
     <strong> Field: </strong> <%= user.expertise %><br>
     <strong>Availability: </strong><%= user.availability %> <br>
+    <strong>Skills:</strong>
+    <% user.skills.each_with_index do |skill, index| %>
+      <% if (index == (user.skills.size - 1)) %>
+        <%= skill.name %>
+      <% else %>
+        <%= skill.name + ', '%>
+      <% end %>
+    <% end %>
+    <br/>
+    <strong>Certifications:</strong>
+    <% user.certifications.each_with_index do |cert, index| %>
+      <% if (index == (user.certifications.size - 1))  %>
+        <%= cert.name %>
+      <% else %>
+        <%= cert.name + ', '%>
+      <% end %>
+    <% end %>
+    <br/>
     </div>
     <div class="col-md-2">
     <!--<button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal">Contact <%= user.first_name %></button>-->
