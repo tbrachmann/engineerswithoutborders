@@ -32,3 +32,5 @@
 
 //= require Chart.bundle
 //= require chartkick
+//= ra.filtering-multiselect
+//= ra.remote-form

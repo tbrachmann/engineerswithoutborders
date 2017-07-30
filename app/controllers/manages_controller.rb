@@ -29,4 +29,7 @@ class ManagesController < ApplicationController
   def destroy
   end
 
+  def edit_volunteers
+  end
+
 end

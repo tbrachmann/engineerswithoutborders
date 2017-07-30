@@ -155,6 +155,13 @@
         </table>
       <% end %>
     </div>
+
+    <%= link_to 'Edit Volunteers',
+    user_manages_edit_volunteers_path(current_user.id, @project.id),
+    class: "btn sqs-block-btn btn-black btn-md" %>
+    
+    
+    
     <p style="page-break-before: always"></p>
     <br>
     <br>
