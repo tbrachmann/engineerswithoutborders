@@ -11,6 +11,7 @@ class ManagesController < ApplicationController
   def show
     @project = Project.find(params[:id])
     session[:current_project_id] = @project.id
+	  @project_availability_hash = @project.availability_hash   
   end
   
   def create

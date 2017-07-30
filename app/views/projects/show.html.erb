@@ -125,14 +125,7 @@
     <div class="col-md-12">
       <p></p>
     </div>
-
-    <div class="col-md-12">
-        <% if @project_availability_hash %>
-          <strong>Volunteer Availability: </strong>
-          <br><br>
-          <%= column_chart @project_availability_hash %>
-        <% end %>
-    </div>
+    
     <div class="col-md-12">
       <%if @project.managers.count == 0 || @project.managers == "" %>
         <p><strong>Project Manager: ---- </strong></p>
