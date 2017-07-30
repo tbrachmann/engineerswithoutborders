@@ -18,7 +18,7 @@
 <div class = "row">
   <div class = "col-md-4" >
     <h3>Skills</h3>
-      <div>
+      <div class = "user-qualities">
         <% Skill.all.each do |skill| %>
           <input type = "checkbox" id = <%= skill.name.gsub(/[^a-zA-Z]/, '') + '_skill'%> onchange="change(id)"/>
           <label> <%= skill.name %></label>
@@ -28,7 +28,7 @@
   </div>
   <div class = "col-md-4" >
     <h3>Certifications</h3>
-      <div>
+      <div class = "user-qualities">
         <% Certification.all.each do |cert| %>
           <input type = "checkbox" id = <%= cert.name.gsub(/[^a-zA-Z]/, '') + '_cert'%> onchange="change(id)"/>
           <label> <%= cert.name %></label>
@@ -48,11 +48,12 @@
 
     <div class="col-md-7">
     <a href=<%= user_path(user) %>><strong><%= user.first_name %> <%= user.last_name %></strong></a> <br>
-    <strong>Age: </strong> <%= user.age %>
-    <strong>Education: </strong> <%= user.education %> from <%= user.school %>
-    <strong> Field: </strong> <%= user.expertise %><br>
-    <strong>Availability: </strong><%= user.availability %> <br>
+    <strong>Age: </strong> <span class="user-qualities"><%= user.age %></span>
+    <strong>Education: </strong> <span class="user-qualities"><%= user.education %> from <%= user.school %></span>
+    <strong> Field: </strong> <span class="user-qualities"><%= user.expertise %></span><br/>
+    <strong>Availability: </strong><span class="user-qualities"><%= user.availability %></span> <br/>
     <strong>Skills:</strong>
+    <span class="user-qualities">
     <% user.skills.each_with_index do |skill, index| %>
       <% if (index == (user.skills.size - 1)) %>
         <%= skill.name %>
@@ -60,8 +61,10 @@
         <%= skill.name + ', '%>
       <% end %>
     <% end %>
+    </span>
     <br/>
     <strong>Certifications:</strong>
+    <span class="user-qualities">
     <% user.certifications.each_with_index do |cert, index| %>
       <% if (index == (user.certifications.size - 1))  %>
         <%= cert.name %>
@@ -69,6 +72,7 @@
         <%= cert.name + ', '%>
       <% end %>
     <% end %>
+    </span>
     <br/>
     </div>
     <div class="col-md-2">
