@@ -221,14 +221,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize! :read, @user
   end
-
-  def manages
-    if(!current_user.manager?)
-      redirect_to projects_path
-    end
-    @all_projects = current_user.manages
-    @projects = @all_projects.page(params[:page]).per(3)
-  end
   
   # GET /users/1/edit
   def edit

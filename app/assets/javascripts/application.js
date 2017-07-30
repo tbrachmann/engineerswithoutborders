@@ -28,3 +28,7 @@
 // } );
 
 //= require filter_users.js
+
+
+//= require Chart.bundle
+//= require chartkick
