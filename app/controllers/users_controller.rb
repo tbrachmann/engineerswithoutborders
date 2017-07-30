@@ -151,12 +151,14 @@ class UsersController < ApplicationController
   
   autocomplete :user, :school
   
+  
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to main_app.root_url, :alert => exception.message
   end
 
   def create
     @user = User.new(params[:user])
+    @user.availability = Availability.create()
     if @user.save
       UserMailer.signup_confirmation(@user).deliver
       redirect_to @user, notice: "Signed up successfully"
@@ -232,7 +234,7 @@ class UsersController < ApplicationController
     @travel_availability = ["Yes", "No"]
     @field_choices = ["Civil Engineering","Environmental Engineering","Mechanical Engineering","Electrical Engineering","Materials Science","Chemical Engineering","Hydraulics / Hydrology","Computer Science","Education","International Development"]
     @certificate_choices = ["Agricultural and Biological Engineering","Architectural","Chemical","Civil: Construction","Civil: Geotechnical","Civil: Structural","Civil: Transportation","Civil: Water Resources and Environmental","Control Systems","Electrical and Computer: Computer Engineering","Electrical and Computer: Electrical and Electronics","Electrical and Computer: Power","Environmental","Fire Protection","Industrial and Systems","Mechanical: HVAC and Refrigeration","Mechanical: Machine Design and Materials","Mechanical: Thermal and Fluids Systems","Metallurgical and Materials","Mining and Mineral Processing","Naval Architecture and Marine","Nuclear","Petroleum","Software","Structural"]
-    @current_availability = @user.availability.as_json
+    @current_availability = @user.availability ? @user.availability.as_json : {}
     authorize! :manage, @user
   end
 
