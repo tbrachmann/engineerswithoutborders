@@ -44,7 +44,7 @@
     <h3>Field of Study</h3>
     <div>
       <% @field_choices.each do |field| %>
-      <input type = "checkbox" id = <%= field + '_field'%> onchange="change(id)"/>
+      <input type = "checkbox" id = <%= field.gsub(/[^a-zA-Z]/, '') + '_field'%> onchange="change(id)"/>
       <span> <%=field%> </span>
       <br/>
       <%end%>

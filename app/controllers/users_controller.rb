@@ -170,23 +170,34 @@ class UsersController < ApplicationController
       #skill_name = params[:skill_name]
       @skills = Hash.new
       @certs = Hash.new
+      @fields = Hash.new
       users = User.all
       users.each do |user|
         @skills[user[:id]] = []
         @certs[user[:id]] = []
+        @fields[user[:id]] = []
         user.certifications.each do |cert|
           @certs[user[:id]].push cert[:name]
         end
         user.skills.each do |skill|
           @skills[user[:id]].push skill[:name]
         end
+        puts "************************"
+        puts user.expertise
+        if user.expertise
+          #user.expertise.each do |field|
+            @fields[user[:id]].push user.expertise
+          #end
+        end
       end
-      data = {:skills => @skills, :certs => @certs}
+      puts "******************************************"
+      data = {:skills => @skills, :certs => @certs, :fields => @fields}
+      puts data
       render :json => data
       return
     end
-    @user = User.all
     @field_choices = ["Civil Engineering","Environmental Engineering","Mechanical Engineering","Electrical Engineering","Materials Science","Chemical Engineering","Hydraulics / Hydrology","Computer Science","Education","International Development"]
+    @user = User.all
     if params.key?(:q) && params[:q].key?(:c)
       params[:q][:c].keys.each do |condition_index|
         params[:q][:c][condition_index.to_s].merge!(:p => "cont")

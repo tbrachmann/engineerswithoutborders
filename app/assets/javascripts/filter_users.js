@@ -4,7 +4,12 @@ var users_to_skills;
 var checked_certs=[];
 var users_to_certs;
 
+var checked_fields =[];
+var users_to_fields;
+
 var all_checked_boxes=[];
+
+
 
 $(document).ready(function(){
   $.ajax({type: "GET",
@@ -16,6 +21,7 @@ $(document).ready(function(){
 	    success: function(data) {
 	    users_to_skills = data['skills'];
 	    users_to_certs = data['certs'];
+	    users_to_fields = data['fields'];
 	    }
   });
 });
@@ -31,6 +37,9 @@ function change(id_class) {
 		case 'cert':
 			processBoxes(checkbox, checked_certs, id);
 			break;
+		case 'field':
+			processBoxes(checkbox, checked_fields, id);
+			break;
 		default:
 	}
     processBoxes(checkbox, all_checked_boxes, id);
@@ -45,7 +54,7 @@ function filterUsers() {
 	}
 }
 
-//returns true if arr1 includes any element in arr2
+//returns true if arr1 includes all elements in arr2
 function includesAll(arr1, arr2) {
 	arr1.forEach(function (b, index, arr1) {
 		arr1[index] = b.replace(/[^A-Z0-9]/ig, '');
@@ -56,7 +65,7 @@ function includesAll(arr1, arr2) {
 }
 
 function shouldShow(user_id) {
-	if (all_checked_boxes.length === 0 || (includesAll(users_to_skills[user_id], checked_skills) && includesAll(users_to_certs[user_id], checked_certs))) {
+	if (all_checked_boxes.length === 0 || (includesAll(users_to_skills[user_id], checked_skills) && includesAll(users_to_certs[user_id], checked_certs) && includesAll(users_to_fields[user_id], checked_fields))) {
 	    $('#' + user_id).show();
 	    $('#' + user_id).next("hr").show()
 	} else {
