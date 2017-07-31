@@ -32,3 +32,4 @@
 
 //= require Chart.bundle
 //= require chartkick
+//= require magnific-popup

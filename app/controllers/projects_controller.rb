@@ -2,6 +2,7 @@ class ProjectsController < ApplicationController
 	before_filter :authenticate_user!, except: [:index, :show]
 	
 	def index
+
 		@projects = @all_projects = Project.all
 		@projects_by_date = @projects.group_by(&:start_date)
 		@date = Date.today

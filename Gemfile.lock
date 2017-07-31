@@ -211,6 +211,7 @@ GEM
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.12)
+    magnific-popup-rails (1.1.0)
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
     main (6.2.2)
@@ -482,6 +483,7 @@ DEPENDENCIES
   json
   kaminari
   language_list
+  magnific-popup-rails (~> 1.1.0)
   metric_fu
   paperclip
   pg
@@ -511,4 +513,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.2
+   1.15.3
