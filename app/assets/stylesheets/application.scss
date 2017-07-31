@@ -1,4 +1,4 @@
-
+@import "magnific-popup";
 
 html, body { 
   height: 100%;
@@ -273,6 +273,7 @@ p, div, strong, input {
 }
 .btn-black {
   background-color: #272727;
+  color: #fff;
 }
 .btn-black:hover {
   background-color: #404040;
@@ -338,6 +339,15 @@ label {
 .table-color {
   background-color: #E5E5E5 !important;
 }
+
+
+.white-popup-block {
+  background: #FFF;
+  padding: 20px 30px;
+  text-align: left;
+  max-width: 650px;
+  margin: 40px auto;
+  position: relative;
 
 .show-img {
   height: 24px;
