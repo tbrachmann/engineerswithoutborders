@@ -243,6 +243,8 @@ GEM
     mimemagic (0.3.2)
     mini_portile2 (2.2.0)
     minitest (5.10.2)
+    multi-select-rails (0.9.12)
+      railties (>= 3.0)
     multi_json (1.12.1)
     multi_test (0.1.2)
     nenv (0.3.0)
@@ -483,6 +485,7 @@ DEPENDENCIES
   kaminari
   language_list
   metric_fu
+  multi-select-rails
   paperclip
   pg
   rails (= 4.2.9)

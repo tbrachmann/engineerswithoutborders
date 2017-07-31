@@ -16,6 +16,7 @@
 //= require jquery_ujs
 //= require jquery-ui
 
+//= require multi-select
 
 //= require turbolinks
 //= require tether
@@ -32,5 +33,3 @@
 
 //= require Chart.bundle
 //= require chartkick
-//= ra.filtering-multiselect
-//= ra.remote-form
