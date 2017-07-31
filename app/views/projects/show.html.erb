@@ -188,7 +188,7 @@
             <% @project.volunteers.each do |vol| %>
               <tr>
                 <td> <a href= "<%= user_path(vol.id) %>"> <%= vol.name %> </a></td>
-                <td><%= vol.role.name %></td>
+                <td><%= vol.role ? vol.role.name : "" %></td>
                 <td><%= vol.email %></td>
                 <td><%= vol.phone %></td>
               </tr>
