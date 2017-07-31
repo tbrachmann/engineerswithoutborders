@@ -10,7 +10,8 @@ class ManagesController < ApplicationController
   def show
     @project = Project.find(params[:id])
     session[:current_project_id] = @project.id
-	  @project_availability_hash = @project.availability_hash   
+	  @project_availability_hash = @project.availability_hash
+	  @in_demand = InDemand.qualities_by_project_id(@project.id)
   end
   
   def create

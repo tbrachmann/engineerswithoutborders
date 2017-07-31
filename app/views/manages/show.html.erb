@@ -64,6 +64,17 @@
     	src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <%= javascript_include_tag "application" %>
     
+    <% if @in_demand && @in_demand.count != 0 %>
+      <p><strong>Project In-Demand Qualities </strong></p>
+      <div class="col-lg-12">
+        <ul>
+        <% @in_demand.each do |quality|  %>
+          <li>
+            <%= quality.name %>
+          </li>
+        <% end %>
+      </div>
+    <% end %>
     
     <div class="image">
       <% if @project.image_file_name != nil %>

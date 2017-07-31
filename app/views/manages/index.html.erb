@@ -4,7 +4,7 @@
     <% if can? :read, :all %>
       <p><%= link_to "Create New Project", new_project_path, class: "btn sqs-block-btn btn-black btn-md" %></p>
     <% end %>
-
+    
     <hr>
     <ul>
     <% @projects.each do |project| %>
