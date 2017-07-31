@@ -283,7 +283,9 @@ Given(/^I type in "([^"]*)"$/) do |arg1|
 end
 
 Given(/^I am a volunteer$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+  a = User.create(first_name: "Bill", last_name: "Jacamo", email: "p@gmail.com", password: "1234r56")
+  a.role = Role.exists?(name: "volunteer") ? Role.find_by(name: "volunteer") :  Role.create(name: "volunteer")
+  a.role.save
 end
 
 When(/^I enter "([^"]*)" into "([^"]*)"$/) do |arg1, arg2|
