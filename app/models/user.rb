@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  paginates_per 50
+  
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :certifications
   belongs_to :role
@@ -81,7 +83,7 @@ class User < ActiveRecord::Base
   end
   
   def update_availability(availability_params)
-    symbol_int_availability = Hash[availability_params.map{|x, y| [x.to_sym , y == "1"]}]
+    symbol_int_availability = Hash[availability_params.map{|x, y| [x.to_sym , y == "1" || y == true]}]
     if self.availability
       self.availability.update(symbol_int_availability)
     else
@@ -91,6 +93,10 @@ class User < ActiveRecord::Base
   end
   
   def preset_time_slots
+    @@preset_time_slots
+  end
+  
+  def self.preset_time_slots
     @@preset_time_slots
   end
   

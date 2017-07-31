@@ -2,10 +2,11 @@
 	<div class="col-md-12 section">
         <h2 class="text-center">Edit Your Profile</h2>
         <p></p>
-        
+        <div class="row text-right">
+        <%= link_to 'Show Profile', @user, class:"btn btn-md sqs-block-btn btn-black"  %> |
+        <%= link_to 'Home', root_path, class:"btn btn-md sqs-block-btn btn-black" %>
+        </div>
         <%= render 'form' %>
         
-        <%= link_to 'Show Profile', @user  %> |
-        <%= link_to 'Home', root_path %>
     </div>
 </div>

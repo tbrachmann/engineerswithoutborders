@@ -157,7 +157,8 @@ Given(/^the following skill table exists:$/) do |skill_table|
 end
 
 Given(/^"([^"]*)" is available on "([^"]*)"$/) do |arg1, arg2|
-  pending # Write code here that turns the phrase above into concrete actions
+  fail
+  # Write code here that turns the phrase above into concrete actions
 end
 
 
@@ -213,16 +214,6 @@ Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |f
     locator = field
   end
   expect(page).not_to have_select(locator, :with_options => [value])
-end
-
-Then(/^the number of attibute fields should be (\d+)$/) do |arg1|
-  puts arg1
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^the number of predicate fields should be (\d+)$/) do |arg1|
-  puts arg1
-  pending # Write code here that turns the phrase above into concrete actions
 end
 
 Given(/^Volunteer (\d+) exists$/) do |arg1|
@@ -299,7 +290,13 @@ When(/^I enter "([^"]*)" into "([^"]*)"$/) do |arg1, arg2|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Then(/^the number of attribute fields should be (\d+)$/) do |arg1|
-  pending # Write code here that turns the phrase above into concrete actions
+When /^(?:|I )follow "([^"]*)"$/ do |link|
+  expect(page).to have_link(link)
+  first(:link, link).click
+end
+
+Then /^the number of attribute fields should be (\d+)$/ do |arg1|
+  expect(page).to have_selector("p div.field", wait: 60)
+  expect(page.all(".field").count).to eq 2
 end
 
