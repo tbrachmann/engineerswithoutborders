@@ -27,14 +27,31 @@ $(document).ready(function(){
   
   $("#skills_toggle").click(function(){
   	if ($("#skill_checkboxes").is(":visible")) {
-      $("#skills_toggle").attr("src", "/assets/plus_icon.png")//$("#skills_toggle").attr("src").replace("/assets/plus_icon.png", "/assets/minus-icon.svg"));
+      $("#skills_toggle").attr("src", "/assets/plus_icon.png");
     } else {
-      $("#skills_toggle").attr("src", "/assets/minus-icon.svg")//$("#skills_toggle").attr("src").replace("/assets/minus-icon.svg", "/assets/plus_icon.png"));
+      $("#skills_toggle").attr("src", "/assets/minus-icon.svg");
     }
     $("#skill_checkboxes").toggle();
-       // $("#skills_toggle").attr("src", "plus_icon.png");
-        
     });
+    
+  $("#cert_toggle").click(function(){
+  	if ($("#cert_checkboxes").is(":visible")) {
+      $("#cert_toggle").attr("src", "/assets/plus_icon.png");
+    } else {
+      $("#cert_toggle").attr("src", "/assets/minus-icon.svg");
+    }
+    $("#cert_checkboxes").toggle();
+    });
+    
+  $("#field_toggle").click(function(){
+  	if ($("#field_checkboxes").is(":visible")) {
+      $("#field_toggle").attr("src", "/assets/plus_icon.png");
+    } else {
+      $("#field_toggle").attr("src", "/assets/minus-icon.svg");
+    }
+    $("#field_checkboxes").toggle();
+    });
+
 });
 
 function change(id_class) {
@@ -68,7 +85,9 @@ function filterUsers() {
 //returns true if arr1 includes all elements in arr2
 function includesAll(arr1, arr2) {
 	arr1.forEach(function (b, index, arr1) {
-		arr1[index] = b.replace(/[^A-Z0-9]/ig, '');
+		if (b) {
+		  arr1[index] = b.replace(/[^A-Z0-9]/ig, '');
+		}
 	});
     return arr2.every(function (a) {
         return arr1.indexOf(a) >= 0;
