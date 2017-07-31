@@ -13,7 +13,8 @@ Background:
   
   Given "Buzz" is available on "Monday Morning"
   Given "Woody" is available on "Sunday Afternoon"
-  And I am on the "My Projects" page
+  And I am on the home page
+  When I follow "My Projects"
 
 Scenario: View volunteers on project
   When I follow "Remba Island Project"
@@ -26,5 +27,5 @@ Scenario: View volunteers on project
 Scenario: Edit project
   When I follow "Remba Island Project"
   Then I should see "Edit Project"
-  When I press "Edit Project"
-  Then I should be on the "Edit Project" page
+  When I follow "Edit Project"
+  Then I should see "Editing Project"

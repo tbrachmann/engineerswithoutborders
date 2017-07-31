@@ -30,11 +30,11 @@ module NavigationHelpers
     when /^the Successfully Created page$/
       'volunteers/' + Volunteer.id
 
-    when /^the "My Projects" page$/
-      '/users/:id/manages'
-
     when /^the "Edit Project" page$/
       '/projects/:id/edit'
+
+    when /^the "Project Listings" page$/
+      '/projects'
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

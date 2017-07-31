@@ -5,7 +5,7 @@ Feature: Adding "In-Demand Skills" to individual project pages
 
 Background:
     Given I am a project manager
-    And I am on the "Projects Listings" page
+    And I am on the "Project Listings" page
     And I should see "Remba Island"
     And I should see "Peru Project"
     And I follow "Remba Island"

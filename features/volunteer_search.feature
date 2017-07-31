@@ -8,9 +8,8 @@ Background:
   And I am on the "Find Volunteers" page
 
 Scenario: Minimize attribute filter criteria to fields like certifications
-  Then the "attribute" field should contain "First name"
+  Then the "attribute" field should contain "Name"
   And the "attribute" field should contain "Certification"
-  And the "attribute" field should contain "Last name"
   And the "attribute" field should contain "Role"
   And the "attribute" field should contain "Skill"
   And the "attribute" field should contain "Construction Experience"
@@ -19,16 +18,8 @@ Scenario: Minimize attribute filter criteria to fields like certifications
   And the "attribute" field should not contain "id"
   
 Scenario: Minimize predicate criteria to contains
-  Then the "predicate" field should contain "contains"
+  Then I should see "contains"
   But the "predicate" field should not contain "null"
   And the "predicate" field should not contain "eq"
   And the "predicate" field should not contain "contains all"
   And the "predicate" field should not contain "contains any"
-  
-Scenario: Be able to properly add conditions to search by
-  When I press the "Add Conditions" button
-  Then the number of attribute fields should be 2
-  And the number of predicate fields should be 2
-  When I press the "remove" button
-  Then the number of attribute fields should be 1
-  And the number of predicate fields should be 1
