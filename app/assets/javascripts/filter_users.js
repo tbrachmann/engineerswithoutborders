@@ -24,6 +24,17 @@ $(document).ready(function(){
 	    users_to_fields = data['fields'];
 	    }
   });
+  
+  $("#skills_toggle").click(function(){
+  	if ($("#skill_checkboxes").is(":visible")) {
+      $("#skills_toggle").attr("src", "/assets/plus_icon.png")//$("#skills_toggle").attr("src").replace("/assets/plus_icon.png", "/assets/minus-icon.svg"));
+    } else {
+      $("#skills_toggle").attr("src", "/assets/minus-icon.svg")//$("#skills_toggle").attr("src").replace("/assets/minus-icon.svg", "/assets/plus_icon.png"));
+    }
+    $("#skill_checkboxes").toggle();
+       // $("#skills_toggle").attr("src", "plus_icon.png");
+        
+    });
 });
 
 function change(id_class) {
