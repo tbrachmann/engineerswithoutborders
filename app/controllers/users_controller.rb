@@ -147,6 +147,7 @@ end
 =end
 
 class UsersController < ApplicationController
+  
   before_action only: [:show, :edit, :update, :age_sorting]
   
   autocomplete :user, :school
@@ -168,6 +169,7 @@ class UsersController < ApplicationController
   end
 
   def index
+
     if request.xhr?
       #skill_name = params[:skill_name]
       @skills = Hash.new
@@ -200,11 +202,22 @@ class UsersController < ApplicationController
         params[:q][:c][condition_index.to_s].merge!(:p => "cont")
       end
     end
+   
     @q = User.ransack(params[:q])
     #[:p] = "cont"
-    @users = @q.result.includes(:role)#.page(params[:page]).per(25)
+    @users = @q.result.includes(:role).page(params[:page]).per(25)
     @q.build_condition if @q.conditions.empty?
     authorize! :read, @user
+  
+    if params[:emails]
+      # puts "**********called volunteers with emails: " + params.to_s
+
+      @email_list = ""
+      params[:emails].each do |email|
+        # puts "running through loop once: "
+        @email_list = @email_list + email.to_s() + ";"
+      end
+    end
   end
   
   def age_sorting

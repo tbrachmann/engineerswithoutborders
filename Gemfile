@@ -79,5 +79,4 @@ end
 
 gem "haml"
 
-
 gem "chartkick"
