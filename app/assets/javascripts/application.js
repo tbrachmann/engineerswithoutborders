@@ -15,6 +15,7 @@
 //= require autocomplete-rails
 //= require jquery_ujs
 //= require jquery-ui
+//= require magnific-popup
 
 
 //= require turbolinks
@@ -32,4 +33,3 @@
 
 //= require Chart.bundle
 //= require chartkick
-//= require magnific-popup
