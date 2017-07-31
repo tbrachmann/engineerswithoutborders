@@ -25,32 +25,26 @@ $(document).ready(function(){
 	    }
   });
   
-  $("#skills_toggle").click(function(){
-  	if ($("#skill_checkboxes").is(":visible")) {
-      $("#skills_toggle").attr("src", "/assets/plus_icon.png");
-    } else {
-      $("#skills_toggle").attr("src", "/assets/minus-icon.svg");
-    }
-    $("#skill_checkboxes").toggle();
-    });
+  $("#skills_toggle").click(function() {
+  	toggle($("#skills_toggle"), $("#skill_checkboxes"))
+  	});
     
-  $("#cert_toggle").click(function(){
-  	if ($("#cert_checkboxes").is(":visible")) {
-      $("#cert_toggle").attr("src", "/assets/plus_icon.png");
-    } else {
-      $("#cert_toggle").attr("src", "/assets/minus-icon.svg");
-    }
-    $("#cert_checkboxes").toggle();
-    });
+  $("#cert_toggle").click(function() {
+  	toggle($("#cert_toggle"), $("#cert_checkboxes"))
+  	});
     
-  $("#field_toggle").click(function(){
-  	if ($("#field_checkboxes").is(":visible")) {
-      $("#field_toggle").attr("src", "/assets/plus_icon.png");
+  $("#field_toggle").click(function() {
+  	toggle($("#field_toggle"), $("#field_checkboxes"))
+  	});
+  	
+  function toggle(toggle_icon, field_to_toggle) {
+	if (field_to_toggle.is(":visible")) {
+      toggle_icon.attr("src", "/assets/plus_icon.png");
     } else {
-      $("#field_toggle").attr("src", "/assets/minus-icon.svg");
+      toggle_icon.attr("src", "/assets/minus-icon.svg");
     }
-    $("#field_checkboxes").toggle();
-    });
+    field_to_toggle.toggle();
+}
 
 });
 
@@ -112,3 +106,5 @@ function processBoxes(new_check, already_checked, id) {
     }
 	
 }
+
+
