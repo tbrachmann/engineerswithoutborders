@@ -248,9 +248,19 @@ Then(/^I should see that the page theme and colors are consistent with the main 
 end
 
 Given(/^the following users exist with the given qualities:$/) do |table|
-  puts table
-  # table is a Cucumber::MultilineArgument::DataTable
-  pending # Write code here that turns the phrase above into concrete actions
+  table.hashes.each do |hash|
+    steps %Q{
+      Given the following users exist:
+        #{hash}
+    }
+    hash[:skills].split(/\s*,\s*/).each do |skill|
+      user.skills.build(:name => skill)
+    end
+    hash[:certifications].split(/\s*,\s*/).each do |cert|
+      user.certifications.build(:name => cert)
+    end
+    user[:expertise] = hash[:field_of_study].split(/\s*,\s*/)
+  end
 end
 
 Then(/^I should see "([^"]*)"'s qualities$/) do |arg1|
