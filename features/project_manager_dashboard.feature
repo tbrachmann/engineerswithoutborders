@@ -21,8 +21,7 @@ Scenario: View volunteers on project
   Then I should see "Buzz"
   And I should see "Lightyear"
   And I should see "buzz@lightyear.com"
-  And I should see "Monday Morning"
-  And I should see "Sunday Afternoon"
+
 
 Scenario: Edit project
   When I follow "Remba Island Project"
