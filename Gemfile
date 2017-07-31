@@ -77,11 +77,6 @@ group :production do
   gem 'rails_12factor'
 end
 
-<<<<<<< HEAD
 gem "haml"
-=======
-gem "haml"
-
 
 gem "chartkick"
->>>>>>> d52deaa4a20c0a87495cef178a31a2c9b9c3415a
