@@ -165,9 +165,9 @@
         </div>
         <div class="col-md-12">
           <%= simple_form_for @user do |f| %>
-            <%= f.association :skills, label: "Please select skills you have:" %>
+            <%= f.association :skills, label: "Please select skills you have:", class:"ra-multiselect" %>
           <% end %>
-      </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-12">
