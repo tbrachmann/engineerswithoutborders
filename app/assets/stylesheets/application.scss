@@ -1,4 +1,4 @@
-
+@import "magnific-popup";
 
 html, body { 
   height: 100%;
@@ -20,6 +20,7 @@ html, body {
  *= require_tree .
  *= require jquery-ui
  *= require bootstrap-datepicker
+ *= require magnific-popup
  */
  
  h1, h2, h3, h4, h5, h6 {
@@ -196,9 +197,38 @@ p, div, strong, input {
   // margin-bottom: 50px;
 }
 
+.volunteer-emails-box{
+  // background-color: #3D3C40;
+  // color: #FFFFFF;
+  background-color: rgba(248, 247, 216, 0.7);
+  margin: auto;
+  width: 80%;
+  border: 3px solid #5cb85c;
+  // border-color: #3D3C40;
+  padding-left: 10px;
+  
+  .header{
+    font-size: 20px;
+    padding-top: 0px;
+  }
+  
+  .emails{
+    font-weight: normal;
+    font-size: 14px;
+  }
+  
+  #confirmation{
+    position: absolute;
+    right: 10%;
+    top: 17.8%;
+    width: 80px;
+    height: 50px;
+  }
+}
+
 .search-checkbox {
   #search-submit {
-    position:absolute;
+    position: absolute;
     width: 20%;
     height: 20%;
     top: 13%;
@@ -272,6 +302,7 @@ p, div, strong, input {
 }
 .btn-black {
   background-color: #272727;
+  color: #fff;
 }
 .btn-black:hover {
   background-color: #404040;
@@ -336,6 +367,16 @@ label {
 }
 .table-color {
   background-color: #E5E5E5 !important;
+}
+
+
+.white-popup-block {
+  background: #FFF;
+  padding: 20px 30px;
+  text-align: left;
+  max-width: 650px;
+  margin: 40px auto;
+  position: relative;
 }
 
 .show-img {
