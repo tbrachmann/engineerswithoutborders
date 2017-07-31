@@ -6,12 +6,10 @@
     
     <ul>
     <% @projects.each do |project| %>
-      <% if project.in_demand && project.in_demand.count != 0 %>
-        <% project.in_demand.each do |qual| %>
-          <li>
-            <h4> <a href="<%= project_path(project.id) %>" ><% qual.name %></a> </h4>
-          </li>
-        <% end %>
+      <% project.in_demand_qualities.each do |qual| %>
+        <li>
+          <h4> <a href="<%= project_path(project.id) %>"> <%= qual.name %></a> </h4>
+        </li>
       <% end %>
     <% end %>
   

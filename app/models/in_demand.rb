@@ -38,7 +38,7 @@ class InDemand < ActiveRecord::Base
   
   def self.qualities_by_project_id project_id
     in_demand_rows = InDemand.where(project_id: project_id)
-    in_demand_rows.map{|x| x.get_instance}
+    in_demand_rows.map{|x| x.get_instance}.select{|y| (y.name != nil && y.name != "")}
   end
   
 end
