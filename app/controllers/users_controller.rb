@@ -147,6 +147,11 @@ end
 =end
 
 class UsersController < ApplicationController
+  include Rails.application.routes.url_helpers
+  include ActionView::Helpers::TextHelper
+  include ActionView::Helpers::TagHelper
+  include ActionView::Helpers::UrlHelper
+  
   before_action only: [:show, :edit, :update, :age_sorting]
   
   autocomplete :user, :school
@@ -166,6 +171,10 @@ class UsersController < ApplicationController
   end
 
   def index
+    # dummy code to test checkboxes
+    @all_ratings = ['G', 'PG', 'PG-13', 'ADF']
+    # puts "**********called index with emails: " + params[:emails].to_s
+    
     if request.xhr?
       #skill_name = params[:skill_name]
       @skills = Hash.new
@@ -196,6 +205,16 @@ class UsersController < ApplicationController
     @users = @q.result.includes(:role).page(params[:page]).per(10)
     @q.build_condition if @q.conditions.empty?
     authorize! :read, @user
+
+    if params[:emails]
+      puts "**********called volunteers with emails: " + params.to_s
+
+      @email_list = ""
+      params[:emails].each do |email|
+        # puts "running through loop once: "
+        @email_list = @email_list + email.to_s() + ";"
+      end
+    end
   end
   
   def age_sorting

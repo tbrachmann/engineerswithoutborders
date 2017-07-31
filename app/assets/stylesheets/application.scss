@@ -183,9 +183,38 @@ p, div, strong {
   // margin-bottom: 50px;
 }
 
+.volunteer-emails-box{
+  // background-color: #3D3C40;
+  // color: #FFFFFF;
+  background-color: rgba(248, 247, 216, 0.7);
+  margin: auto;
+  width: 80%;
+  border: 3px solid #5cb85c;
+  // border-color: #3D3C40;
+  padding-left: 10px;
+  
+  .header{
+    font-size: 20px;
+    padding-top: 0px;
+  }
+  
+  .emails{
+    font-weight: normal;
+    font-size: 14px;
+  }
+  
+  #confirmation{
+    position: absolute;
+    right: 10%;
+    top: 17.8%;
+    width: 80px;
+    height: 50px;
+  }
+}
+
 .search-checkbox {
   #search-submit {
-    position:absolute;
+    position: absolute;
     width: 20%;
     height: 20%;
     top: 13%;
