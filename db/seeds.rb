@@ -91,3 +91,7 @@ certifications = ["Agricultural and Biological Engineering", "Architectural", "C
 certifications.each do |name|
     Certification.create!(name: name)
 end
+
+test_project.in_demand << InDemand.add_in_demand_quality(test_project.id, Certification.create!(name: "Software Engineering"))
+test_project.in_demand << InDemand.add_in_demand_quality(test_project.id, Certification.create!(name: "Naval Engineering"))
+test_project.in_demand << InDemand.add_in_demand_quality(test_project.id, Certification.create!(name: "Nuclear Engineering"))

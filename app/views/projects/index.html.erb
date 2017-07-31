@@ -1,20 +1,17 @@
 <div class="row section">
   <div class="col-md-8 col-md-offset-2 section">
-
-    <h2 class = "text-center"> In-Demand Qualities</h2>
-    <hr>
-    
-    <ul>
-    <% @projects.each do |project| %>
-      <% if project.in_demand && project.in_demand.count != 0 %>
-        <% project.in_demand.each do |qual| %>
-          <li>
-            <h4> <a href="<%= project_path(project.id) %>" ><% qual.name %></a> </h4>
-          </li>
-        <% end %>
+  
+    <% if @in_demand && @in_demand.count != 0 %>
+      <h2 class = "text-center"> In-Demand Qualities</h2>
+      <hr>
+      <ul>
+      <% @in_demand.each do |quality|  %>
+        <li>
+          <h4> <a href = "<%= project_path(quality.project_id) %>" > <%= (quality.get_instance).name %> </a> </h4>
+        </li>
       <% end %>
     <% end %>
-  
+    
     <h2 class="text-center">Listing Projects</h2>
     <hr>
     
