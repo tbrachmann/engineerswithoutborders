@@ -172,21 +172,28 @@ class UsersController < ApplicationController
       #skill_name = params[:skill_name]
       @skills = Hash.new
       @certs = Hash.new
+      @fields = Hash.new
       users = User.all
       users.each do |user|
         @skills[user[:id]] = []
         @certs[user[:id]] = []
+        @fields[user[:id]] = []
         user.certifications.each do |cert|
           @certs[user[:id]].push cert[:name]
         end
         user.skills.each do |skill|
           @skills[user[:id]].push skill[:name]
         end
+        #if user.expertise
+          @fields[user[:id]].push user.expertise
+        #end
       end
-      data = {:skills => @skills, :certs => @certs}
+      data = {:skills => @skills, :certs => @certs, :fields => @fields}
       render :json => data
       return
     end
+    @field_choices = ["Civil Engineering","Environmental Engineering","Mechanical Engineering","Electrical Engineering","Materials Science","Chemical Engineering","Hydraulics / Hydrology","Computer Science","Education","International Development"]
+    @field_choices.sort_by! { |field| field.downcase}
     @user = User.all
     if params.key?(:q) && params[:q].key?(:c)
       params[:q][:c].keys.each do |condition_index|
@@ -195,7 +202,7 @@ class UsersController < ApplicationController
     end
     @q = User.ransack(params[:q])
     #[:p] = "cont"
-    @users = @q.result.includes(:role).page(params[:page]).per(10)
+    @users = @q.result.includes(:role)#.page(params[:page]).per(25)
     @q.build_condition if @q.conditions.empty?
     authorize! :read, @user
   end
