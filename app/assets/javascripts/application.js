@@ -15,6 +15,7 @@
 //= require autocomplete-rails
 //= require jquery_ujs
 //= require jquery-ui
+//= require magnific-popup
 
 
 //= require turbolinks
@@ -53,3 +54,4 @@ $(document).ready(function() {
 		}
 	});
 });
+

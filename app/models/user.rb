@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  paginates_per 50
+  
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :certifications
   belongs_to :role
