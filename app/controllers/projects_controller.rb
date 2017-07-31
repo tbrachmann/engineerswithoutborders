@@ -2,14 +2,16 @@ class ProjectsController < ApplicationController
 	before_filter :authenticate_user!, except: [:index, :show]
 	
 	def index
-		@all_projects = Project.all
-		@projects = @all_projects.page(params[:page]).per(3)
+		@projects = @all_projects = Project.all
 		@projects_by_date = @projects.group_by(&:start_date)
 		@date = Date.today
+		@in_demand = InDemand.all
 	end
 
 	def show
-	       @project = Project.find(params[:id])
+	    @project = Project.find(params[:id])
+	    @project_availability_hash = @project.availability_hash
+	    @in_demand = InDemand.qualities_by_project_id(@project.id)
 =begin       
 		if @project && @project.skills
 			@skills = @project.skills().map{|x| x.name}.join(", ")
@@ -29,7 +31,7 @@ class ProjectsController < ApplicationController
 	def create
 		@project = Project.new(project_params)
 		if @project.save
-                        @project.managers << current_user
+			@project.managers << current_user
 			redirect_to @project, notice: "Successfully created project."
 		else
 			render :new

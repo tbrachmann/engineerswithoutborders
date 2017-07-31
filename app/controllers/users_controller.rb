@@ -147,9 +147,11 @@ end
 =end
 
 class UsersController < ApplicationController
+  
   before_action only: [:show, :edit, :update, :age_sorting]
   
   autocomplete :user, :school
+  
   
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to main_app.root_url, :alert => exception.message
@@ -157,6 +159,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.availability = Availability.create()
     if @user.save
       UserMailer.signup_confirmation(@user).deliver
       redirect_to @user, notice: "Signed up successfully"
@@ -166,6 +169,7 @@ class UsersController < ApplicationController
   end
 
   def index
+
     if request.xhr?
       #skill_name = params[:skill_name]
       @skills = Hash.new
@@ -198,11 +202,22 @@ class UsersController < ApplicationController
         params[:q][:c][condition_index.to_s].merge!(:p => "cont")
       end
     end
+   
     @q = User.ransack(params[:q])
     #[:p] = "cont"
-    @users = @q.result.includes(:role)#.page(params[:page]).per(25)
+    @users = @q.result.includes(:role).page(params[:page]).per(25)
     @q.build_condition if @q.conditions.empty?
     authorize! :read, @user
+  
+    if params[:emails]
+      # puts "**********called volunteers with emails: " + params.to_s
+
+      @email_list = ""
+      params[:emails].each do |email|
+        # puts "running through loop once: "
+        @email_list = @email_list + email.to_s() + ";"
+      end
+    end
   end
   
   def age_sorting
@@ -228,14 +243,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     authorize! :read, @user
   end
-
-  def manages
-    if(!current_user.manager?)
-      redirect_to projects_path
-    end
-    @all_projects = current_user.manages
-    @projects = @all_projects.page(params[:page]).per(3)
-  end
   
   # GET /users/1/edit
   def edit
@@ -247,7 +254,7 @@ class UsersController < ApplicationController
     @travel_availability = ["Yes", "No"]
     @field_choices = ["Civil Engineering","Environmental Engineering","Mechanical Engineering","Electrical Engineering","Materials Science","Chemical Engineering","Hydraulics / Hydrology","Computer Science","Education","International Development"]
     @certificate_choices = ["Agricultural and Biological Engineering","Architectural","Chemical","Civil: Construction","Civil: Geotechnical","Civil: Structural","Civil: Transportation","Civil: Water Resources and Environmental","Control Systems","Electrical and Computer: Computer Engineering","Electrical and Computer: Electrical and Electronics","Electrical and Computer: Power","Environmental","Fire Protection","Industrial and Systems","Mechanical: HVAC and Refrigeration","Mechanical: Machine Design and Materials","Mechanical: Thermal and Fluids Systems","Metallurgical and Materials","Mining and Mineral Processing","Naval Architecture and Marine","Nuclear","Petroleum","Software","Structural"]
-    @current_availability = @user.availability.as_json
+    @current_availability = @user.availability ? @user.availability.as_json : {}
     authorize! :manage, @user
   end
 

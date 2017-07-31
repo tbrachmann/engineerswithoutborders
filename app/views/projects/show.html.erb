@@ -1,6 +1,6 @@
 <style>
 	h1{
-        font: bold 34px "Century Schoolbook", Georgia, Times, serif;
+    font: bold 34px "Century Schoolbook", Georgia, Times, serif;
 		color: #333;
 		letter-spacing: -2px;
 		display:inline-block;
@@ -21,13 +21,18 @@
 		position:absolute;
 		display:inline-block;
 	}
-	table#managers {
+	table#volunteers {
   	margin: 10px;
   	border-collapse: collapse;
   	width: 100%;
   	border-bottom: 2px solid black;
 	}
-	table#managers th {
+	table#managers {
+	  margin: 10px;
+  	border-collapse: collapse;
+  	width: 100%;
+	}
+	table#managers th, table#volunteers th {
   	border: 2px solid white;
   	font-weight: bold;
   	background-color: lightseagreen;
@@ -36,7 +41,16 @@
   	padding: 4px;
   	text-align: left;
 	}
+	table#volunteers th, table#volunteers td {
+	  padding: 4px;
+	  text-align: left; 
+	}
 </style>
+
+<head>
+  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
+</head>
+
 
 <div class="row section">
   <div class="col-md-8 col-md-offset-2 section">
@@ -55,6 +69,17 @@
     	src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <%= javascript_include_tag "application" %>
     
+    <% if @in_demand && @in_demand.count != 0 %>
+      <p><strong>Project In-Demand Qualities </strong></p>
+      <div class="col-lg-12">
+        <ul>
+        <% @in_demand.each do |quality|  %>
+          <li>
+            <%= quality.name %>
+          </li>
+        <% end %>
+      </div>
+    <% end %>
     
     <div class="image">
       <% if @project.image_file_name != nil %>
@@ -101,22 +126,27 @@
         <%= @project.design_experiences.pluck("name").join(", ") %>
       <%end%>
     </div>
-    	
+    
     <div class="col-md-12">
         <strong>Location: </strong><%= @project.location %>
     </div>
+    
     <div class="col-md-12">
       <% if @project.volunteers.count == 0 || @project.volunteers == "" %>
         <p> <strong> Project Capacity: </strong> <%= @project.volunteer_capacity %> </p>
       <% else %>
         <p> 
-    	<strong>Project</strong> <%= @project.name %> has 
-    	<strong><%= @project.volunteers.count %></strong> volunteers, needs 
-    	<strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> 
-    	more!
+    	  <strong>Project</strong> <%= @project.name %> has 
+    	  <strong><%= @project.volunteers.count %></strong> volunteers, needs 
+    	  <strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> more!
         </p>
       <% end %>
     </div>
+    
+    <div class="col-md-12">
+      <p></p>
+    </div>
+    
     <div class="col-md-12">
       <%if @project.managers.count == 0 || @project.managers == "" %>
         <p><strong>Project Manager: ---- </strong></p>
@@ -127,7 +157,7 @@
             <tr>
               <th class="table-color">Project Manager</th>
               <th class="table-color">Email</th>
-    	  <th class="table-color">Phone</th>
+    	        <th class="table-color">Phone</th>
             </tr>
           </thead>
           <tbody>
@@ -142,6 +172,34 @@
         </table>
       <% end %>
     </div>
+    
+    <div class="col-md-12">
+      <%if @project.volunteers.count != 0 %>
+        <table id="volunteers">
+          <thead>
+            <tr>
+              <th class="table-color">Volunteer</th>
+              <th class="table-color">Role</th>
+              <th class="table-color">Email</th>
+    	        <th class="table-color">Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @project.volunteers.each do |vol| %>
+              <tr>
+                <td> <a href= "<%= user_path(vol.id) %>"> <%= vol.name %> </a></td>
+                <td><%= vol.role ? vol.role.name : "" %></td>
+                <td><%= vol.email %></td>
+                <td><%= vol.phone %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <strong> No volunteers have been added to this project. </strong>
+      <% end %>
+    </div>
+    
     <p style="page-break-before: always"></p>
     <br>
     <br>

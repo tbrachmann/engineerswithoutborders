@@ -35,6 +35,7 @@ gem 'json'
 gem 'rake' # , '10.4.2'
 gem 'faker'
 gem 'factory_girl_rails'
+gem 'magnific-popup-rails', '~> 1.1.0'
 
 group :development, :test do
   gem 'sqlite3'
@@ -78,3 +79,4 @@ end
 
 gem "haml"
 
+gem "chartkick"
