@@ -9,8 +9,6 @@ var users_to_fields;
 
 var all_checked_boxes=[];
 
-
-
 $(document).ready(function(){
   $.ajax({type: "GET",
 	    url: "/users",
@@ -37,15 +35,6 @@ $(document).ready(function(){
   	toggle($("#field_toggle"), $("#field_checkboxes"))
   	});
   	
-  function toggle(toggle_icon, field_to_toggle) {
-	if (field_to_toggle.is(":visible")) {
-      toggle_icon.attr("src", "/assets/plus_icon.png");
-    } else {
-      toggle_icon.attr("src", "/assets/minus-icon.svg");
-    }
-    field_to_toggle.toggle();
-}
-
 });
 
 function change(id_class) {
@@ -76,7 +65,7 @@ function filterUsers() {
 	}
 }
 
-//returns true if arr1 includes all elements in arr2
+/* Returns true if arr1 includes all elements in arr2. */
 function includesAll(arr1, arr2) {
 	arr1.forEach(function (b, index, arr1) {
 		if (b) {
@@ -107,4 +96,11 @@ function processBoxes(new_check, already_checked, id) {
 	
 }
 
-
+function toggle(toggle_icon, field_to_toggle) {
+  if (field_to_toggle.is(":visible")) {
+    toggle_icon.attr("src", "/assets/plus_icon.png");
+  } else {
+    toggle_icon.attr("src", "/assets/minus-icon.svg");
+  }
+  field_to_toggle.toggle();
+}
