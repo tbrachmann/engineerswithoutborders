@@ -203,6 +203,12 @@ class UsersController < ApplicationController
       end
     end
    
+    @q = User.ransack(params[:q])
+    #[:p] = "cont"
+    @users = @q.result.includes(:role).page(params[:page]).per(25)
+    @q.build_condition if @q.conditions.empty?
+    authorize! :read, @user
+  
     if params[:emails]
       # puts "**********called volunteers with emails: " + params.to_s
 
@@ -212,12 +218,6 @@ class UsersController < ApplicationController
         @email_list = @email_list + email.to_s() + ";"
       end
     end
-    
-    @q = User.ransack(params[:q])
-    #[:p] = "cont"
-    # @users = @q.result.includes(:role)#.page(params[:page]).per(25)
-    @q.build_condition if @q.conditions.empty?
-    authorize! :read, @user
   end
   
   def age_sorting
