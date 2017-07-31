@@ -257,9 +257,12 @@ end
 
 Given(/^the following users exist with the given qualities:$/) do |table|
   table.hashes.each do |hash|
-    user = User.create!(:last_name => hash[:last_name], :first_name => hash[:first_name], :email => hash[:email], :password => hash[:password])
+    steps %Q{
+      Given the following users exist:
+        #{hash}
+    }
     hash[:skills].split(/\s*,\s*/).each do |skill|
-      bob = user.skills.build(:name => skill)
+      user.skills.build(:name => skill)
     end
     hash[:certifications].split(/\s*,\s*/).each do |cert|
       user.certifications.build(:name => cert)
