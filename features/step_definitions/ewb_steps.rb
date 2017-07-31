@@ -157,8 +157,9 @@ Given(/^the following skill table exists:$/) do |skill_table|
 end
 
 Given(/^"([^"]*)" is available on "([^"]*)"$/) do |arg1, arg2|
-  fail
-  # Write code here that turns the phrase above into concrete actions
+  user1 = User.find_by(first_name: arg1)
+  time = arg2.gsub(" ", "_").downcase
+  user1.update_availability({time.to_sym => true})
 end
 
 
