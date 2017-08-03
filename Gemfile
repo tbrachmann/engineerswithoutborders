@@ -66,6 +66,7 @@ group :test do
   # required for Cucumber
   gem 'database_cleaner'
   gem 'autotest-rails'
+  gem 'selenium-webdriver'
   # gem 'factory_girl_rails' # if using FactoryGirl
   gem 'metric_fu' # collect code metrics
 end

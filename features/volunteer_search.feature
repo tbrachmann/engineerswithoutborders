@@ -23,3 +23,8 @@ Scenario: Minimize predicate criteria to contains
   And the "predicate" field should not contain "eq"
   And the "predicate" field should not contain "contains all"
   And the "predicate" field should not contain "contains any"
+
+@javascript
+Scenario: Add condidions
+  When I follow "Add Conditions"
+  Then the number of attribute fields should be 2
