@@ -311,3 +311,16 @@ Then /^the number of attribute fields should be (\d+)$/ do |arg1|
   expect(page.all(".field").count).to eq 2
 end
 
+Then(/^I should see the toggles on the left side of the column$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see the images not stacked on each other$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^the following users should exist$/) do |table|
+  puts table
+  # table is a Cucumber::MultilineArgument::DataTable
+  pending # Write code here that turns the phrase above into concrete actions
+end
