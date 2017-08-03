@@ -28,3 +28,12 @@ Feature: Viewing Project Information
     When I follow the project link for "Remba Island Project"
     And I should see "Remba Island, Kenya"
     And I should not see "Edit Project"
+
+Scenario: As a project manager, I should not be able to add a picture to a project page
+    Given I am a project manager
+    Given I am on the welcome page
+    When I follow "My Projects"
+    And I follow "Remba Island Project"
+    And I follow "Edit Project"
+    Then I should not see "Image"
+    And I should not see "Choose File" 
