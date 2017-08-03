@@ -6,10 +6,13 @@ Feature: Viewing Project Information
 Background:
   Given there exists a project "Remba Island Project"
 
+  Background:
+    Given there exists a project "Remba Island Project"
+
   Scenario: Clicking on a Project Listing
     Given I am a new, authenticated user
     Given I am on the projects page
-    Then I should see "Project Listings"
+    And I should see "Project Listings"
     When I follow the project link for "Remba Island Project"
     Then I should see "Creating a large-scale water filter system"
     And I should see "Remba Island, Kenya"
