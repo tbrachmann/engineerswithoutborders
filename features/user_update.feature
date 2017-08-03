@@ -45,6 +45,19 @@ Scenario: User sees own availability after edit profile
   And I press "Update Background"
   Then I should see "Wednesday Morning"
   Then I should see "Saturday Evening"
+  
+Scenario: User sees own availability after edit profile
+  Given I am a new, authenticated user
+  Given I am on the home page
+  When I follow "Profile"
+  And I follow "Edit Profile"
+  Then I should see "Upload Image"
+  When I follow "Upload a photo"
+  And I attach a "thumbnail" image to "image_source_file"
+  And I press "Upload photo"
+  And I press "Update Background"
+  Then I should see "image"
+  
 
 Scenario: Adding a new Skill
   Given I am a new, authenticated user

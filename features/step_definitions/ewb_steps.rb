@@ -72,6 +72,16 @@ Given /^I am a project manager$/ do
   click_button "Log in"
 end
 
+Given /^I am a user with a password "(.+)" and I input "(.+)"/ do |correct_pw, incorrect_pw|
+  puts correct_pw
+  puts incorrect_pw
+  pending
+end
+
+Given /^my name is "(.+)" / do  |name|
+  puts name
+  pending
+end
 
 Given /^the following users exist:$/ do |table|
   table.hashes.each do |table_hash|

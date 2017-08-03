@@ -17,3 +17,14 @@ Feature: Viewing Project Information
     And I should see "Microsoft Excel"
     And I should see "Well"
     And I should see "Road"
+    And I should not see "VOLUNTEER_TABLE"
+    
+    
+    
+  Scenario: As a project manager, I should not be able to edit a project if I am not the assigned PM
+    Given I am a project manager
+    Given there exists a project "Remba Island Project"
+    Given I am on the projects page
+    When I follow the project link for "Remba Island Project"
+    And I should see "Remba Island, Kenya"
+    And I should not see "Edit Project"
