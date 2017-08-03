@@ -72,6 +72,16 @@ Given /^I am a project manager$/ do
   click_button "Log in"
 end
 
+Given /^I am a user with a password "(.+)" and I input "(.+)"/ do |correct_pw, incorrect_pw|
+  puts correct_pw
+  puts incorrect_pw
+  pending
+end
+
+Given /^my name is "(.+)" / do  |name|
+  puts name
+  pending
+end
 
 Given /^the following users exist:$/ do |table|
   table.hashes.each do |table_hash|
@@ -248,9 +258,19 @@ Then(/^I should see that the page theme and colors are consistent with the main 
 end
 
 Given(/^the following users exist with the given qualities:$/) do |table|
-  puts table
-  # table is a Cucumber::MultilineArgument::DataTable
-  pending # Write code here that turns the phrase above into concrete actions
+  table.hashes.each do |hash|
+    steps %Q{
+      Given the following users exist:
+        #{hash}
+    }
+    hash[:skills].split(/\s*,\s*/).each do |skill|
+      user.skills.build(:name => skill)
+    end
+    hash[:certifications].split(/\s*,\s*/).each do |cert|
+      user.certifications.build(:name => cert)
+    end
+    user[:expertise] = hash[:field_of_study].split(/\s*,\s*/)
+  end
 end
 
 Then(/^I should see "([^"]*)"'s qualities$/) do |arg1|
@@ -301,3 +321,16 @@ Then /^the number of attribute fields should be (\d+)$/ do |arg1|
   expect(page.all(".field").count).to eq 2
 end
 
+Then(/^I should see the toggles on the left side of the column$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see the images not stacked on each other$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^the following users should exist$/) do |table|
+  puts table
+  # table is a Cucumber::MultilineArgument::DataTable
+  pending # Write code here that turns the phrase above into concrete actions
+end

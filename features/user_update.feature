@@ -45,7 +45,41 @@ Scenario: User sees own availability after edit profile
   And I press "Update Background"
   Then I should see "Wednesday Morning"
   Then I should see "Saturday Evening"
+  
+Scenario: User sees own availability after edit profile
+  Given I am a new, authenticated user
+  Given I am on the home page
+  When I follow "Profile"
+  And I follow "Edit Profile"
+  Then I should see "Upload Image"
+  When I follow "Upload a photo"
+  And I attach a "thumbnail" image to "image_source_file"
+  And I press "Upload photo"
+  And I press "Update Background"
+  Then I should see "image"
+  
 
+Scenario: Adding a new Skill
+  Given I am a new, authenticated user
+  Given I am on the home page
+  When I follow "Profile"
+  And I follow "Edit Profile"
+  And I follow "Add new skill"
+  And I enter "Rails" into the field
+  When I press "Save"
+  Then I should see "Rails"
+  
+Scenario: Adding a new experience
+  Given I am a new, authenticated user
+  Given I am on the home page
+  When I follow "Profile"
+  And I follow "Edit Profile"
+  Then I should see "Add a new experience"
+  When I follow "Add a new experience"
+  And I fill in "Experience" with "Programming experience"
+  When I press "Save"
+  Then I should see "Programming experience"
+  
   
 
   
