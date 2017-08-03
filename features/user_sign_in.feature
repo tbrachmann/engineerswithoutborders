@@ -9,7 +9,8 @@ Feature: Updating Volunteer Information
     When I press "GET INVOLVED"
     Given my name is "joe"
     Given I am a user with a password "apple" and I input "carrot"
-    And I press
+    And I press "Log In"
+    Then I should see "Incorrect Password"
     
   Scenario: Signing Up
     Given I am on the home page
