@@ -3,10 +3,13 @@ Feature: Viewing Project Information
   I should be able to view information about various projects
   So that I can choose projects to apply for
 
+  Background:
+    Given there exists a project "Remba Island Project"
+
   Scenario: Clicking on a Project Listing
     Given I am a new, authenticated user
-    Given there exists a project "Remba Island Project"
     Given I am on the projects page
+    And I should see "Project Listings"
     When I follow the project link for "Remba Island Project"
     Then I should see "Creating a large-scale water filter system"
     And I should see "Remba Island, Kenya"
@@ -23,7 +26,6 @@ Feature: Viewing Project Information
     
   Scenario: As a project manager, I should not be able to edit a project if I am not the assigned PM
     Given I am a project manager
-    Given there exists a project "Remba Island Project"
     Given I am on the projects page
     When I follow the project link for "Remba Island Project"
     And I should see "Remba Island, Kenya"
