@@ -73,10 +73,13 @@ Given /^I am a project manager$/ do
 end
 
 Given /^I am a user with a password "(.+)" and I input "(.+)"/ do |correct_pw, incorrect_pw|
+  puts correct_pw
+  puts incorrect_pw
   pending
 end
 
-Given /^my name is "(.+)" / do 
+Given /^my name is "(.+)" / do  |name|
+  puts name
   pending
 end
 
