@@ -56,5 +56,17 @@ Scenario: Adding a new Skill
   When I press "Save"
   Then I should see "Rails"
   
+Scenario: Adding a new experience
+  Given I am a new, authenticated user
+  Given I am on the home page
+  When I follow "Profile"
+  And I follow "Edit Profile"
+  Then I should see "Add a new experience"
+  When I follow "Add a new experience"
+  And I fill in "Experience" with "Programming experience"
+  When I press "Save"
+  Then I should see "Programming experience"
+  
+  
 
   
