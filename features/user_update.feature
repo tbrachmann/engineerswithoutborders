@@ -46,6 +46,15 @@ Scenario: User sees own availability after edit profile
   Then I should see "Wednesday Morning"
   Then I should see "Saturday Evening"
 
+Scenario: Adding a new Skill
+  Given I am a new, authenticated user
+  Given I am on the home page
+  When I follow "Profile"
+  And I follow "Edit Profile"
+  And I follow "Add new skill"
+  And I enter "Rails" into the field
+  When I press "Save"
+  Then I should see "Rails"
   
 
   
