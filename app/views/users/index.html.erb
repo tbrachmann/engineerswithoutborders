@@ -6,14 +6,14 @@
     <br>
     <div class="row">
       <div class="col-md-12">
-	<%= search_form_for @q do |f| %>
-	  <% @search_on = [:first_name, :last_name] %>
-	  <%= f.condition_fields do |c| %>
-	    <%= render "condition_fields", f: c %>
-	  <% end %>
-	  <p><%= link_to_add_fields "Add Conditions", f, :condition %></p>
-	  <%= f.submit %>
-	<% end %>
+      	<%= search_form_for @q do |f| %>
+      	  <% @search_on = [:first_name, :last_name] %>
+      	  <%= f.condition_fields do |c| %>
+      	    <%= render "condition_fields", f: c %>
+      	  <% end %>
+      	  <p><%= link_to_add_fields "Add Conditions", f, :condition %></p>
+      	  <%= f.submit %>
+      	<% end %>
       </div>
     </div>
   </div>
