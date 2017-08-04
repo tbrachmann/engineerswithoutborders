@@ -206,6 +206,7 @@ p, div, strong, input {
   border: 3px solid #5cb85c;
   // border-color: #3D3C40;
   padding-left: 10px;
+  position: relative;
   
   .header{
     font-size: 20px;
@@ -216,15 +217,20 @@ p, div, strong, input {
     font-weight: normal;
     font-size: 14px;
   }
-  
+    
   #confirmation{
     position: absolute;
-    right: 10%;
-    top: 17.8%;
-    width: 80px;
-    height: 50px;
+    right: -12%;
+    top: -1.5%;
+    width: 150px;
+    height: 99px;
+    
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
   }
 }
+
 
 .search-checkbox {
   #search-submit {
@@ -394,3 +400,39 @@ label {
   display:none;
   padding-left: 20px;
 }
+
+.right{
+	position:absolute;
+	display:inline-block;
+	top:70px;
+}
+
+.col-md-6{
+	position:absolute;
+	display:inline-block;
+}
+table#volunteers {
+	margin: 10px;
+	border-collapse: collapse;
+	width: 100%;
+	border-bottom: 2px solid black;
+}
+table#managers {
+  margin: 10px;
+	border-collapse: collapse;
+	width: 100%;
+}
+table#managers th, table#volunteers th {
+	border: 2px solid white;
+	font-weight: bold;
+	background-color: lightseagreen;
+}
+table#managers th, table#managers td {
+	padding: 4px;
+	text-align: left;
+}
+table#volunteers th, table#volunteers td {
+  padding: 4px;
+  text-align: left; 
+}
+
