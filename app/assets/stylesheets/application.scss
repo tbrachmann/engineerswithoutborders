@@ -383,3 +383,38 @@ label {
   height: 24px;
   width: 24px;
 }
+
+.right{
+	position:absolute;
+	display:inline-block;
+	top:70px;
+}
+
+.col-md-6{
+	position:absolute;
+	display:inline-block;
+}
+table#volunteers {
+	margin: 10px;
+	border-collapse: collapse;
+	width: 100%;
+	border-bottom: 2px solid black;
+}
+table#managers {
+  margin: 10px;
+	border-collapse: collapse;
+	width: 100%;
+}
+table#managers th, table#volunteers th {
+	border: 2px solid white;
+	font-weight: bold;
+	background-color: lightseagreen;
+}
+table#managers th, table#managers td {
+	padding: 4px;
+	text-align: left;
+}
+table#volunteers th, table#volunteers td {
+  padding: 4px;
+  text-align: left; 
+}
