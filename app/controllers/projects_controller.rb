@@ -5,11 +5,17 @@ class ProjectsController < ApplicationController
 		@projects = @all_projects = Project.all
 		@projects_by_date = @projects.group_by(&:start_date)
 		@date = Date.today
+		@in_demand = InDemand.all
 	end
 
 	def show
+		@show_volunteers = current_user.manager?
 	    @project = Project.find(params[:id])
-	    @project_availability_hash = @project.availability_hash   
+	    
+	    @can_edit = @project.managers.include?(current_user)
+	    
+	    @project_availability_hash = @project.availability_hash
+	    @in_demand = InDemand.qualities_by_project_id(@project.id)
 =begin       
 		if @project && @project.skills
 			@skills = @project.skills().map{|x| x.name}.join(", ")

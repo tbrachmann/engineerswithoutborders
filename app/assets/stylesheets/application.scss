@@ -1,4 +1,4 @@
-
+@import "magnific-popup";
 
 html, body { 
   height: 100%;
@@ -21,6 +21,7 @@ html, body {
  *= require jquery-ui
  *= require bootstrap-datepicker
  *= require multi-select
+ *= require magnific-popup
  */
  
  h1, h2, h3, h4, h5, h6 {
@@ -197,9 +198,44 @@ p, div, strong, input {
   // margin-bottom: 50px;
 }
 
+.volunteer-emails-box{
+  // background-color: #3D3C40;
+  // color: #FFFFFF;
+  background-color: rgba(248, 247, 216, 0.7);
+  margin: auto;
+  width: 80%;
+  border: 3px solid #5cb85c;
+  // border-color: #3D3C40;
+  padding-left: 10px;
+  position: relative;
+  
+  .header{
+    font-size: 20px;
+    padding-top: 0px;
+  }
+  
+  .emails{
+    font-weight: normal;
+    font-size: 14px;
+  }
+    
+  #confirmation{
+    position: absolute;
+    right: -12%;
+    top: -1.5%;
+    width: 150px;
+    height: 99px;
+    
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+
 .search-checkbox {
   #search-submit {
-    position:absolute;
+    position: absolute;
     width: 20%;
     height: 20%;
     top: 13%;
@@ -273,6 +309,7 @@ p, div, strong, input {
 }
 .btn-black {
   background-color: #272727;
+  color: #fff;
 }
 .btn-black:hover {
   background-color: #404040;
@@ -337,5 +374,66 @@ label {
 }
 .table-color {
   background-color: #E5E5E5 !important;
+}
+
+
+.white-popup-block {
+  background: #FFF;
+  padding: 20px 30px;
+  text-align: left;
+  max-width: 650px;
+  margin: 40px auto;
+  position: relative;
+}
+
+.show-img {
+  height: 24px;
+  width: 24px;
+}
+
+.user_toggle {
+  padding: 1px 20px 8px 20px;
+  background-color: #D3D3D3;
+  border-radius: 15px;
+}
+
+.user_checkboxes {
+  display:none;
+  padding-left: 20px;
+}
+
+.right{
+	position:absolute;
+	display:inline-block;
+	top:70px;
+}
+
+.col-md-6{
+	position:absolute;
+	display:inline-block;
+}
+table#volunteers {
+	margin: 10px;
+	border-collapse: collapse;
+	width: 100%;
+	border-bottom: 2px solid black;
+}
+table#managers {
+  margin: 10px;
+	border-collapse: collapse;
+	width: 100%;
+}
+table#managers th, table#volunteers th {
+	border: 2px solid white;
+	font-weight: bold;
+	background-color: lightseagreen;
+}
+table#managers th, table#managers td {
+	padding: 4px;
+	text-align: left;
+}
+table#volunteers th, table#volunteers td {
+  padding: 4px;
+  text-align: left; 
 }
 

@@ -36,6 +36,7 @@ gem 'rake' # , '10.4.2'
 gem 'faker'
 gem 'factory_girl_rails'
 gem 'multi-select-rails'
+gem 'magnific-popup-rails', '~> 1.1.0'
 
 group :development, :test do
   gem 'sqlite3'
@@ -78,6 +79,5 @@ group :production do
 end
 
 gem "haml"
-
 
 gem "chartkick"

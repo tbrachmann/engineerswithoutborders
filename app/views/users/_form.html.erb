@@ -165,9 +165,21 @@
         </div>
         <div class="col-md-12">
           <%= simple_form_for @user do |f| %>
-            <%= f.association :skills, label: "Please select skills you have:" %>
+            <%= f.association :skills, label: "Please select skills you have:", class:"ra-multiselect" %>
           <% end %>
-      </div>
+        </div>
+        <div class="col-md-12">
+          <a class="popup-with-form btn btn-black" href="#test-form">Add a new Role</a>
+          <form id="test-form" class="white-popup-block mfp-hide">
+        	<fieldset style="border:0;">
+        		<ul>
+        			<li>
+        			  <%= f.input :role, label: "Role"  %>
+        			</li>
+        		</ul>
+        	</fieldset>
+        </form>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-12">

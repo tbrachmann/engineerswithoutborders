@@ -13,18 +13,26 @@ Background:
   
   Given "Buzz" is available on "Monday Morning"
   Given "Woody" is available on "Sunday Afternoon"
-  And I am on the "My Projects" page
+  And I am on the home page
+  When I follow "My Projects"
 
 Scenario: View volunteers on project
   When I follow "Remba Island Project"
   Then I should see "Buzz"
   And I should see "Lightyear"
   And I should see "buzz@lightyear.com"
-  And I should see "Monday Morning"
-  And I should see "Sunday Afternoon"
+
 
 Scenario: Edit project
   When I follow "Remba Island Project"
   Then I should see "Edit Project"
-  When I press "Edit Project"
-  Then I should be on the "Edit Project" page
+  When I follow "Edit Project"
+  Then I should see "Editing Project"
+
+Scenario: Add volunteers to project
+  When I follow "Edit Volunteers"
+  Then I should see "Editing Volunteers"
+  When I click on "Adolfo Espino"
+  When I follow "Save"
+  Then I should see "Remba Island Project"
+  And I should see "Adolfo Espino"
