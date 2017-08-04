@@ -4,8 +4,7 @@
         <%= f.input :name %>
         <%= f.input :description %>
         <%= f.label :Start_Date %>:
-        <%= f.label :Start_Date %>:
-        <%= f.datetime_select :start_date, { :include_blank => false } %>
+        <%= f.date_select :start_date, { :include_blank => true } %>
         <%= f.input :volunteer_capacity %>
         <%= f.input :location %>
         <%= f.label :Time_Commitment %><br>
