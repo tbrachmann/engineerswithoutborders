@@ -32,15 +32,15 @@ document.addEventListener("turbolinks:load", function() {
     field_to_toggle.toggle();
   }  
   
-  $("#skills_toggle").click(function() {
+  $("#skills_div").click(function() {
   	toggle($("#skills_toggle"), $("#skill_checkboxes"))
   	});
     
-  $("#cert_toggle").click(function() {
+  $("#cert_div").click(function() {
   	toggle($("#cert_toggle"), $("#cert_checkboxes"))
   	});
     
-  $("#field_toggle").click(function() {
+  $("#field_div").click(function() {
   	toggle($("#field_toggle"), $("#field_checkboxes"))
   	});
 });
