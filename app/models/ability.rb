@@ -35,7 +35,11 @@ class Ability
         can :manage, Project
         can :read, :all
       end
-      # common abilities
+
+      can :access, :rails_admin   # grant access to rails_admin
+      can :dashboard              # grant access to the dashboard
+
+      # # common abilities
       can :read, User, :id => user.id  
       can :manage, User, :id => user.id
   end

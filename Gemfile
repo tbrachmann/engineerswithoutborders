@@ -80,3 +80,6 @@ end
 gem "haml"
 
 gem "chartkick"
+
+# help manage admin routes
+gem "cancancan"
