@@ -11,6 +11,9 @@ class ProjectsController < ApplicationController
 	def show
 		@show_volunteers = current_user.manager?
 	    @project = Project.find(params[:id])
+	    
+	    @can_edit = @project.managers.include?(current_user)
+	    
 	    @project_availability_hash = @project.availability_hash
 	    @in_demand = InDemand.qualities_by_project_id(@project.id)
 =begin       
