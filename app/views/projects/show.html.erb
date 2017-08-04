@@ -47,10 +47,6 @@
 	}
 </style>
 
-<head>
-  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
-</head>
-
 
 <div class="row section">
   <div class="col-md-8 col-md-offset-2 section">
@@ -66,9 +62,6 @@
     </div>
     
     <br>
-    <script async defer type="text/javascript"
-    	src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <%= javascript_include_tag "application" %>
     
     <% if @in_demand && @in_demand.count != 0 %>
       <p><strong>Project In-Demand Qualities </strong></p>

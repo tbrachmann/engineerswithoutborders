@@ -17,6 +17,7 @@
 //= require jquery-ui
 //= require magnific-popup
 
+//= require multi-select
 
 //= require turbolinks
 //= require tether
@@ -56,4 +57,3 @@ $(document).ready(function() {
 	
 	
 });
-

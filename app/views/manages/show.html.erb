@@ -11,9 +11,6 @@
     <% end %>
     </div>
     <br>
-    <script async defer type="text/javascript"
-    	src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-    <%= javascript_include_tag "application" %>
     
     <% if @in_demand && @in_demand.count != 0 %>
       <p><strong>Project In-Demand Qualities </strong></p>
@@ -157,6 +154,10 @@
         <strong> No volunteers have been added to this project! </strong>
       <% end %>
     </div>
+    <%= link_to 'Edit Volunteers',
+    user_manages_edit_volunteers_path(current_user.id, @project.id),
+    class: "btn sqs-block-btn btn-black btn-md" %>
+    
   
     <p style="page-break-before: always"></p>
     <br>
