@@ -4,15 +4,12 @@
         <%= f.input :name %>
         <%= f.input :description %>
         <%= f.label :Start_Date %>:
-        <%= f.label :Start_Date %>:
-        <%= f.datetime_select :start_date, { :include_blank => false } %>
+        <%= f.date_select :start_date, { :include_blank => true } %>
         <%= f.input :volunteer_capacity %>
         <%= f.input :location %>
         <%= f.label :Time_Commitment %><br>
         <%= f.input :hours_per_week %>
-        
-        <%= f.label :image %><br>
-        <%= f.file_field :image %><br><br>
+
         <%= f.button :submit, class: "btn btn-md sqs-block-btn btn-black" %><br><br>
     <% end %>
   <!--</div>-->
