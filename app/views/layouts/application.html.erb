@@ -31,7 +31,14 @@
       <div class="container-fluid">
       <div class="navbar-header">
         <a class="navbar-brand" href="https://ewb-sfp.org/"><%= image_tag("ewb-sfp-logo.png", height:"32") %></a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+        		<span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+    		</button>
       </div>
+      <div class="collapse navbar-collapse" id="navigation-example">
       <ul class="nav navbar-nav navbar-right">
         <li class="nav-item">
           <%= link_to("Home", root_path) %></a>
@@ -63,6 +70,7 @@
         <% end %> 
       </ul>
       </div>
+      </div>
   </nav>
 </div>
     <div class="main main-raised">
@@ -72,10 +80,6 @@
         </div>
       </div>
     </div>
-    <script>
-      $(document).ready()
-    </script>
-    
   </body>
 </html>
 
