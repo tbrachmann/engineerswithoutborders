@@ -206,6 +206,7 @@ p, div, strong, input {
   border: 3px solid #5cb85c;
   // border-color: #3D3C40;
   padding-left: 10px;
+  position: relative;
   
   .header{
     font-size: 20px;
@@ -216,15 +217,20 @@ p, div, strong, input {
     font-weight: normal;
     font-size: 14px;
   }
-  
+    
   #confirmation{
     position: absolute;
-    right: 10%;
-    top: 17.8%;
-    width: 80px;
-    height: 50px;
+    right: -12%;
+    top: -1.5%;
+    width: 150px;
+    height: 99px;
+    
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
   }
 }
+
 
 .search-checkbox {
   #search-submit {
