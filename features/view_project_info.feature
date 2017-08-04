@@ -2,9 +2,6 @@ Feature: Viewing Project Information
   As a volunteer for Engineers Without Borders
   I should be able to view information about various projects
   So that I can choose projects to apply for
-  
-Background:
-  Given there exists a project "Remba Island Project"
 
   Background:
     Given there exists a project "Remba Island Project"
