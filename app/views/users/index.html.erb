@@ -32,12 +32,11 @@
   </div>
 <% end %>
 
-<br/>
-
 <div class = "row">
   <div class = "col-md-4" >
-    <h3>Skills<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "skills_toggle") %></img></h3><span></span>
-      <div style="display:none" id="skill_checkboxes">
+    <div id="skills_div" class="user_toggle"><h3>Skills<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "skills_toggle" ) %></img></h3></div>
+      <br/>
+      <div class="user_checkboxes" id="skill_checkboxes">
         <% Skill.all.each do |skill| %>
           <input type = "checkbox" id = <%= skill.name.gsub(/[^a-zA-Z]/, '') + '_skill'%> onchange="change(id)"/>
           <span> <%= skill.name %></span>
@@ -46,8 +45,9 @@
       </div>
   </div>
   <div class = "col-md-4" >
-    <h3>Certifications<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "cert_toggle") %></img></h3><span></span>
-      <div style="display:none" id="cert_checkboxes">
+    <div id="cert_div" class="user_toggle"><h3>Certifications<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "cert_toggle") %></img></h3></div>
+      <br/>
+      <div class="user_checkboxes" id="cert_checkboxes">
         <% Certification.all.each do |cert| %>
           <input type = "checkbox" id = <%= cert.name.gsub(/[^a-zA-Z]/, '') + '_cert'%> onchange="change(id)"/>
           <span> <%= cert.name %></span>
@@ -56,8 +56,9 @@
       </div>
   </div>
   <div class = "col-md-4">
-    <h3>Field of Study<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "field_toggle") %></img></h3><span></span>
-      <div style="display:none" id="field_checkboxes">
+    <div id="field_div" class="user_toggle"><h3>Field of Study<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "field_toggle") %></img></h3></div>
+      <br/>
+      <div class="user_checkboxes" id="field_checkboxes">
       <% @field_choices.each do |field| %>
       <input type = "checkbox" id = <%= field.gsub(/[^a-zA-Z]/, '') + '_field'%> onchange="change(id)"/>
       <span> <%=field%> </span>

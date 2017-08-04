@@ -390,6 +390,17 @@ label {
   width: 24px;
 }
 
+.user_toggle {
+  padding: 1px 20px 8px 20px;
+  background-color: #D3D3D3;
+  border-radius: 15px;
+}
+
+.user_checkboxes {
+  display:none;
+  padding-left: 20px;
+}
+
 .right{
 	position:absolute;
 	display:inline-block;
@@ -424,3 +435,4 @@ table#volunteers th, table#volunteers td {
   padding: 4px;
   text-align: left; 
 }
+
