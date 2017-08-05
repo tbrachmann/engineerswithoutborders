@@ -249,7 +249,29 @@ p, div, strong, input {
   box-shadow: 0 1px #666;
   transform: translateY(1px);
 }
+.navbar {
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+}
+.navbar .navbar-nav > li > a {
+  color: inherit;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 3px;
+}
 
+.navbar .navbar-brand {
+  position: relative;
+  height: 50px;
+  line-height: 30px;
+  color: inherit;
+  padding: 10px 15px;
+}
 .nav-item {
   font-family: 'Open Sans', Helvetica, sans-serif;
   text-transform: uppercase;
