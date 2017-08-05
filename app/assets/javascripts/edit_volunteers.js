@@ -68,6 +68,7 @@ var EditVolunteers = {
 	    },
 	    success: function(data) {
 		$('#success:hidden').show()
+		location.replace(data.new_path)
 	    },
 	    data: { "volunteers" : JSON.stringify(selected) },
 	    contentType: "application/json"
