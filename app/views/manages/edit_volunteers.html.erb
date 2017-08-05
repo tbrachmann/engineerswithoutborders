@@ -1,5 +1,14 @@
-<%= stylesheet_link_tag "multi-select" %>
-<%= javascript_include_tag "multi-select" %>
+<style>
+  .ms-container {
+  zoom: 1.5;
+  }
+
+  .search-input {
+  width: 100%;
+  }
+  
+</style>
+
 <div class="row section">
   <div class="col-md-8 col-md-offset-2 section">
 
@@ -28,8 +37,7 @@
 	<% end %>
       </select>
       <br>
-      <a class="btn btn-md sqs-block-btn btn-black" id="submit">Update</a>
-      <%= link_to "Back", user_manage_path(@user.id, @project.id), class: "btn btn-md sqs-block-btn btn-black", id: "submit" %>
+      <a class="btn btn-md sqs-block-btn btn-black" id="submit">Save</a>
     </center>
   </div>
 </div>
