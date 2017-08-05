@@ -38,6 +38,7 @@ class ManagesController < ApplicationController
       @project.volunteers = @volunteers.map do |id|
         User.find(id.to_i)
       end
+      render :json => { :new_path => user_manage_path(current_user.id, @project.id) }
       return
     end
   end
