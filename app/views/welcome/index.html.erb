@@ -29,33 +29,63 @@
 	<div class="background-img">
 	<div class="row section">
 		<div class="section col-md-10 col-md-offset-1">
-			<div class="col-md-5 col-md-offset-1 section padding">
+			<table>
+				<tr>
+					<th>
+							<p><h3>Need more information</h3>
+							</p>
+							<p>
+							Before we can effectively match you to projects, we need to know a little more about you. Please take a couple minutes to complete your newly created profile with some background information.
+							</p>
+					</th>
+					<th>
+							<p>
+								
+							<h3>Other things you can do </h3>
+							</p>
+						    <p> Check out current projects we are working on and see how you can help.</p>  	
+							</p>
+					</th>
+				</tr>
+				<tr>
+					<td class="text-center">
+
+							<%= link_to "Update Your Profile", edit_user_path(current_user), class: "btn sqs-block-btn btn-black btn-lg"  %>
+
+					</td>
+					<td class="text-center">
+					       <%= link_to("Projects Listings", projects_path, class:"btn sqs-block-btn btn-black btn-lg") %>
+
+					</td>
+				</tr>
+			</table>
+			<!--<div class="col-md-5 col-md-offset-1 section padding">-->
 				<!--<h2>ABOUT OUR CHAPTER</h2>-->
-				<p><h3>Need more information</h3>
-				</p>
-				<p>
-				Before we can effectively match you to projects, we need to know a little more about you. Please take a couple minutes to complete your newly created profile with some background information.
-				</p>
-				<p class="at-bottom">
-					<%= link_to "Update Your Profile", edit_user_path(current_user), class: "btn sqs-block-btn btn-black btn-lg"  %>
-				</p>
-			</div>
-			<div class="col-md-5 col-md-offset-1 section padding">
-				<h3>Other things you can do </h3>
-			    <p> Check out current projects we are working on and see how you can help.</p>  	
-				</p>
-				<p class="at-bottom">
-			       <%= link_to("Projects Listings", projects_path, class:"btn sqs-block-btn btn-black btn-lg") %>
-				</p>
-			</div>
-			<div class="section col-md-10 col-md-offset-1 padding">
-				<div class="col-md-5 col-md-offset-1 padding">
+			<!--	<p><h3>Need more information</h3>-->
+			<!--	</p>-->
+			<!--	<p>-->
+			<!--	Before we can effectively match you to projects, we need to know a little more about you. Please take a couple minutes to complete your newly created profile with some background information.-->
+			<!--	</p>-->
+			<!--	<p class="at-bottom">-->
+			<!--		<%= link_to "Update Your Profile", edit_user_path(current_user), class: "btn sqs-block-btn btn-black btn-lg"  %>-->
+			<!--	</p>-->
+			<!--</div>-->
+			<!--<div class="col-md-5 col-md-offset-1 section padding">-->
+			<!--	<h3>Other things you can do </h3>-->
+			<!--    <p> Check out current projects we are working on and see how you can help.</p>  	-->
+			<!--	</p>-->
+			<!--	<p class="at-bottom">-->
+			<!--       <%= link_to("Projects Listings", projects_path, class:"btn sqs-block-btn btn-black btn-lg") %>-->
+			<!--	</p>-->
+			<!--</div>-->
+			<!--<div class="section col-md-10 col-md-offset-1 padding">-->
+			<!--	<div class="col-md-5 col-md-offset-1 padding">-->
 					
-				</div>
-				<div class="col-md-5 col-md-offset-1 padding">
+			<!--	</div>-->
+			<!--	<div class="col-md-5 col-md-offset-1 padding">-->
 					
-				</div>
-			</div>
+			<!--	</div>-->
+			<!--</div>-->
 		</div>
 	</div>
 	</div>

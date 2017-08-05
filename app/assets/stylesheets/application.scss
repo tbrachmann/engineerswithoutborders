@@ -33,7 +33,7 @@ html, body {
 
     // font-weight: bold;
 }
-p, div, strong, input {
+p, div, strong, input, span {
     font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: 1px;
     font-size: 18px;
@@ -514,4 +514,11 @@ table#volunteers th, table#volunteers td {
   padding: 4px;
   text-align: left; 
 
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
 }
