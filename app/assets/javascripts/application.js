@@ -36,7 +36,7 @@
 //= require chartkick
 //= require magnific-popup
 
-$(document).ready(function() {
+$(document).addEventListener("turbolinks:load", function() {
 	$('.popup-with-form').magnificPopup({
 		type: 'inline',
 		preloader: false,
