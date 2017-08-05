@@ -175,16 +175,21 @@ class UsersController < ApplicationController
       @skills = Hash.new
       @certs = Hash.new
       @fields = Hash.new
+      @role = Hash.new
       users = User.all
       users.each do |user|
         @skills[user[:id]] = []
         @certs[user[:id]] = []
         @fields[user[:id]] = []
+        @role[user[:id]] = []
         user.certifications.each do |cert|
           @certs[user[:id]].push cert[:name]
         end
         user.skills.each do |skill|
           @skills[user[:id]].push skill[:name]
+        end
+        user.role.each do |roles|
+          @role[user[:id]].push roles[:name]
         end
         #if user.expertise
           @fields[user[:id]].push user.expertise
@@ -255,6 +260,7 @@ class UsersController < ApplicationController
     @field_choices = ["Civil Engineering","Environmental Engineering","Mechanical Engineering","Electrical Engineering","Materials Science","Chemical Engineering","Hydraulics / Hydrology","Computer Science","Education","International Development"]
     @certificate_choices = ["Agricultural and Biological Engineering","Architectural","Chemical","Civil: Construction","Civil: Geotechnical","Civil: Structural","Civil: Transportation","Civil: Water Resources and Environmental","Control Systems","Electrical and Computer: Computer Engineering","Electrical and Computer: Electrical and Electronics","Electrical and Computer: Power","Environmental","Fire Protection","Industrial and Systems","Mechanical: HVAC and Refrigeration","Mechanical: Machine Design and Materials","Mechanical: Thermal and Fluids Systems","Metallurgical and Materials","Mining and Mineral Processing","Naval Architecture and Marine","Nuclear","Petroleum","Software","Structural"]
     @current_availability = @user.availability ? @user.availability.as_json : {}
+    @role = Role.all
     authorize! :manage, @user
   end
 
@@ -291,6 +297,7 @@ class UsersController < ApplicationController
     user.time_commitment = user_params[:time_commitment]
     user.availability_comments = user_params[:availability_comments]
     user.skills = Skill.get_skills(user_params[:skill_ids])
+    user.role = Role.get_roles(user_params[:role_ids])
     
     user.save
     

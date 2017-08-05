@@ -169,6 +169,9 @@
           <% end %>
         </div>
         <div class="col-md-12">
+          <%= simple_form_for @user do |f| %>
+            <%= f.association :role, label: "Please select role you have:", class:"ra-multiselect" %>
+          <% end %>
           <a class="popup-with-form btn btn-black" href="#test-form">Add a new Role</a>
           <form id="test-form" class="white-popup-block mfp-hide">
         	<fieldset style="border:0;">
@@ -197,3 +200,24 @@
     <% end %>
     <p></p>
     </div>
+    <script>
+      $(document).ready(function() {
+      	$('.popup-with-form').magnificPopup({
+      		type: 'inline',
+      		preloader: false,
+      		focus: '#name',
+      
+      		// When elemened is focused, some mobile browsers in some cases zoom in
+      		// It looks not nice, so we disable it:
+      		callbacks: {
+      			beforeOpen: function() {
+      				if($(window).width() < 700) {
+      					this.st.focus = false;
+      				} else {
+      					this.st.focus = '#name';
+      				}
+      			}
+      		}
+      	});
+      });
+    </script>
