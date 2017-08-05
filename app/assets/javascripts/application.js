@@ -61,3 +61,6 @@ var AddRoles = {
 $(document).on("turbolinks:load ready", function() {
     AddRoles.init()
 })
+
+//= require jquery.quicksearch
+
