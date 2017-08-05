@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag "multi-select" %>
+<%= javascript_include_tag "multi-select" %>
+<div class="row section">
+  <div class="col-md-8 col-md-offset-2 section">
+
+    <div>
+      <h2 class="text-center">Editing Volunteers on <%= @project.name%></h2>
+    </div>
+
+    <div id="success" hidden>
+      <div class="volunteer-emails-box text-center">
+	Volunteers updated!
+      </div>
+      <br>
+    </div>
+
+    <center id="edit_volunteers" hidden>
+      <select multiple="multiple" id="my-select" name="my-select[]">
+	<% @project.volunteers.each do |volunteer| %>
+	  <option id="<%= volunteer.id %>" value="<%= volunteer.name %>" selected>
+	    <%= volunteer.name %>
+	  </option>
+	<% end %>
+	<% @eligible_volunteers.each do |volunteer| %>
+	  <option id="<%= volunteer.id %>" value="<%= volunteer.name %>">
+	    <%= volunteer.name %>
+	  </option>
+	<% end %>
+      </select>
+      <br>
+      <a class="btn btn-md sqs-block-btn btn-black" id="submit">Update</a>
+      <%= link_to "Back", user_manage_path(@user.id, @project.id), class: "btn btn-md sqs-block-btn btn-black", id: "submit" %>
+    </center>
+  </div>
+</div>

@@ -20,6 +20,7 @@ html, body {
  *= require_tree .
  *= require jquery-ui
  *= require bootstrap-datepicker
+ *= require multi-select
  *= require magnific-popup
  */
  
@@ -404,6 +405,7 @@ label {
   height: 24px;
   width: 24px;
 }
+<<<<<<< HEAD
 .padding {
   padding-top: 1px;
   padding-right: 1px;
@@ -441,5 +443,52 @@ label {
     color: #000;
     width: 22px;
     height: 22px;
+=======
+
+.user_toggle {
+  padding: 1px 20px 8px 20px;
+  background-color: #D3D3D3;
+  border-radius: 15px;
+}
+
+.user_checkboxes {
+  display:none;
+  padding-left: 20px;
+}
+
+.right{
+	position:absolute;
+	display:inline-block;
+	top:70px;
+}
+
+.col-md-6{
+	position:absolute;
+	display:inline-block;
+}
+table#volunteers {
+	margin: 10px;
+	border-collapse: collapse;
+	width: 100%;
+	border-bottom: 2px solid black;
+}
+table#managers {
+  margin: 10px;
+	border-collapse: collapse;
+	width: 100%;
+}
+table#managers th, table#volunteers th {
+	border: 2px solid white;
+	font-weight: bold;
+	background-color: lightseagreen;
+}
+table#managers th, table#managers td {
+	padding: 4px;
+	text-align: left;
+}
+table#volunteers th, table#volunteers td {
+  padding: 4px;
+  text-align: left; 
+>>>>>>> 7d4ea681c1f216dce3ed128a1d856d968709ce1b
 }
 

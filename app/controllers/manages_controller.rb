@@ -29,4 +29,17 @@ class ManagesController < ApplicationController
   def destroy
   end
 
+  def edit_volunteers
+    @user = current_user
+    @project = Project.find(params[:id])
+    @eligible_volunteers = @project.eligible_volunteers
+    if request.xhr?
+      @volunteers = JSON.parse(params[:volunteers])
+      @project.volunteers = @volunteers.map do |id|
+        User.find(id.to_i)
+      end
+      return
+    end
+  end
+
 end
