@@ -110,4 +110,12 @@ $(document).on("turbolinks:load", function() {
   var EditSkills = new MultiSelect("Eligible Skills", "Your Skills",
 				   $('#skills-select'))
   EditSkills.init();
+  var EditConstructionExperiences = new MultiSelect("Eligible Construction Experiences",
+						    "Your Construction Experiences",
+						    $("#const-exp-select"))
+  EditConstructionExperiences.init()
+  var EditDesignExperiences = new MultiSelect("Eligible Design Experiences",
+					      "Your Design Experiences",
+					      $("#des-exp-select"))
+  EditDesignExperiences.init()
 })

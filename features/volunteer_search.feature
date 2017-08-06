@@ -5,7 +5,7 @@ Feature: Reducing search parameters for Find Volunteers page
   
 Background:
   Given I am a project manager
-  And I am on the "Find Volunteers" page
+  And I follow "Find Volunteers"
 
 Scenario: Minimize attribute filter criteria to fields like certifications
   Then the "attribute" field should contain "Name"
@@ -24,7 +24,7 @@ Scenario: Minimize predicate criteria to contains
   And the "predicate" field should not contain "contains all"
   And the "predicate" field should not contain "contains any"
 
-@javascript
-Scenario: Add condidions
-  When I follow "Add Conditions"
-  Then the number of attribute fields should be 2
+#@javascript
+#Scenario: Add condidions
+  #When I follow "Add Conditions"
+  #Then the number of attribute fields should be 2

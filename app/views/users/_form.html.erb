@@ -181,11 +181,22 @@
 	   .search-input {
 	       width: 100%;
 	   }
+	   .volunteer-emails-box#failure {
+	       background-color: rgba(255,0,0,0.7);	
+	       //background-color: red;
+	       border: 3px solid #ff0000;
+	   }
 	  </style>
 	  <a class="popup-with-form btn btn-black" href="#new-skill-form" id="a-new-skill">
 	    Add a new Skill
 	  </a>
 	  <div class="white-popup-block mfp-hide" id="new-skill-form">
+	    <div id="failure" hidden>
+	      <div class="volunteer-emails-box text-center" id="failure">
+		Skill already exists.
+	      </div>
+	      <br>
+	    </div>
 	    <%= form_tag do %>
 	      <%= label_tag(:new_skill, "Add new Skill") %>
 	      <%= text_field_tag(:new_skill, nil, class: "form-control string optional") %>
@@ -210,6 +221,90 @@
             </fieldset>
           </form>
         </div>
+	<div class="col-md-12">
+	  Please select the construction experience you have:
+          <select multiple="multiple" id="const-exp-select" name="const_exp[]">
+	    <% @myConstructionExperiences.each do |exp| %>
+	      <option id="<%= exp.id %>" value="<%= exp.id %>" selected>
+		<%= exp.name %>
+	      </option>
+	    <% end %>
+	    <% @constructionExperiences.each do |exp| %>
+	      <option id="<%= exp.id %>" value="<%= exp.id %>">
+		<%= exp.name %>
+	      </option>
+	    <% end %>
+	  </select>
+	  <style>
+	   .search-input {
+	       width: 100%;
+	   }
+	   .volunteer-emails-box#failure {
+	       background-color: rgba(255,0,0,0.7);	
+	       //background-color: red;
+	       border: 3px solid #ff0000;
+	   }
+	  </style>
+	  <a class="popup-with-form btn btn-black" href="#new-const-exp-form" id="a-new-const-exp">
+	    Add a new Construction Experience
+	  </a>
+	  <div class="white-popup-block mfp-hide" id="new-const-exp-form">
+	    <div id="failure" hidden>
+	      <div class="volunteer-emails-box text-center" id="failure">
+		Construction Experience already exists.
+	      </div>
+	      <br>
+	    </div>
+	    <%= form_tag edit_user_path(@user), id: "new-const-exp-form1" do %>
+	      <%= label_tag(:new_const_exp, "Add a new Construction Experience") %>
+	      <%= text_field_tag(:new_const_exp, nil, class: "form-control string optional") %>
+	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
+			     id: "new-const-exp-submit") %>
+	    <% end %>
+          </div>
+	</div>
+	<div class="col-md-12">
+	  Please select the design experience you have:
+          <select multiple="multiple" id="des-exp-select" name="des_exp[]">
+	    <% @myDesignExperiences.each do |exp| %>
+	      <option id="<%= exp.id %>" value="<%= exp.id %>" selected>
+		<%= exp.name %>
+	      </option>
+	    <% end %>
+	    <% @designExperiences.each do |exp| %>
+	      <option id="<%= exp.id %>" value="<%= exp.id %>">
+		<%= exp.name %>
+	      </option>
+	    <% end %>
+	  </select>
+	  <style>
+	   .search-input {
+	       width: 100%;
+	   }
+	   .volunteer-emails-box#failure {
+	       background-color: rgba(255,0,0,0.7);	
+	       //background-color: red;
+	       border: 3px solid #ff0000;
+	   }
+	  </style>
+	  <a class="popup-with-form btn btn-black" href="#new-des-exp-form" id="a-new-des-exp">
+	    Add a new Design Experience
+	  </a>
+	  <div class="white-popup-block mfp-hide" id="new-des-exp-form">
+	    <div id="failure" hidden>
+	      <div class="volunteer-emails-box text-center" id="failure">
+		Desruction Experience already exists.
+	      </div>
+	      <br>
+	    </div>
+	    <%= form_tag edit_user_path(@user), id: "new-des-exp-form1" do %>
+	      <%= label_tag(:new_des_exp, "Add a new Design Experience") %>
+	      <%= text_field_tag(:new_des_exp, nil, class: "form-control string optional") %>
+	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
+			     id: "new-des-exp-submit") %>
+	    <% end %>
+          </div>
+	</div>
       </div>
       <div class="row">
         <div class="col-md-12">
