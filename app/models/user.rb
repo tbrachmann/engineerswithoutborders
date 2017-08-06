@@ -100,5 +100,8 @@ class User < ActiveRecord::Base
     @@preset_time_slots
   end
   
+  def role?(role)
+    roles.include? role.to_s
+  end
   
 end

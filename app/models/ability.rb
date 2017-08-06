@@ -29,19 +29,24 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-     user ||= User.new # guest user (not logged in)
+    user ||= User.new # guest user (not logged in)
+    
+    if user.admin      # need to figure out how to check if admin
+      can :manage, :all   
+      can :dashboard      
+    else
+
       # manager abilities
       if user.manager
         can :manage, Project
         can :read, :all
       end
+    end
 
-      can :access, :rails_admin   # grant access to rails_admin
-      can :dashboard              # grant access to the dashboard
-
-      # # common abilities
-      can :read, User, :id => user.id  
-      can :manage, User, :id => user.id
+    # # common abilities
+    can :read, User, :id => user.id
+    can :manage, User, :id => user.id
+    # cnan :access, :rails_admin
   end
 end
 

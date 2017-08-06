@@ -147,6 +147,7 @@ end
 =end
 
 class UsersController < ApplicationController
+  # load_and_authorize_resource
   
   before_action only: [:show, :edit, :update, :age_sorting]
   
