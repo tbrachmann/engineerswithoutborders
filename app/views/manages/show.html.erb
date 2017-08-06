@@ -1,104 +1,121 @@
-<div class="row section">
-  <div class="col-md-8 col-md-offset-2 section">
-    <h2 class="text-center">Project (<%= @project.name %>) </h2>
-    <div class="row text-right">
-    <% if can? :manage, @project %>
-      <%= link_to 'Edit Project', edit_project_path(@project),
-      class: "btn sqs-block-btn btn-black btn-md" %>
-      <%= link_to 'Home', root_path, class: "btn sqs-block-btn btn-black btn-md" %>
-    <% else %>
-      <%= link_to 'Home', root_path, class: "btn sqs-block-btn btn-black btn-md" %>
-    <% end %>
-    </div>
-    <br>
-    
-    <% if @in_demand && @in_demand.count != 0 %>
-      <p><strong>Project In-Demand Qualities </strong></p>
-      <div class="col-lg-12">
-        <ul>
-        <% @in_demand.each do |quality|  %>
-          <li>
-            <%= quality.name %>
-          </li>
-        <% end %>
-      </div>
-    <% end %>
-    
-    <div class="image">
-      <% if @project.image_file_name != nil %>
-        <%= image_tag @project.image.url(:medium) %> <br><br>
-      <% end %>
-    </div>
-    
-    <div class="col-lg-12">
-      <p><strong>Project Description: </strong><%= @project.description %></p>
-    </div>
-    	
-    <div class="col-lg-12">
+<%= javascript_include_tag "users" %>
+
+<div class="row text-right">
+  <br><br><br>
+  <% if can? :manage, @project %>
+    <%= link_to 'Edit Project', edit_project_path(@project),
+    class: "btn sqs-block-btn btn-black btn-md" %>
+  <% end %>
+</div>
+<h2 class="text-center">Project (<%= @project.name %>) </h2>
+<div class="col-md-12">
+    <strong>Project Description: </strong><%= @project.description %>
+    <br><br>
+</div>
+<div class="col-md-4">
+  <div class="col-md-12"  style="background:#99b2e5;opacity: 0.95;">
+    <h2 style="font-size:115%">Logistics<img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "logistics_toggle") %></img></h2>
+    <div class="" id="log_dropdown">
       <% if @project.start_date && @project.start_date.to_date %>
         <p>This project will start on <%= @project.start_date.to_date %>.</p>
       <% else %>
         <p>Project start date to be announced </p>
       <% end %>
-    </div>
-    	
-    <div class="col-md-12">
-      <% if !@project.skills.blank? %>
-        <strong>Key Skills: </strong>
-        <%= @project.skills.pluck("name").join(", ") %>
-      <%end%>
-    </div>
-    
-    <div class="col-md-12">
-      <% if !@project.certifications.blank? %>
-        <strong>Key Certifications: </strong>
-        <%= @project.certifications.pluck("name").join(", ") %>
-      <%end%>
-    </div>
-    
-    <div class="col-md-12">
-      <% if !@project.construction_experiences.blank? %>
-        <strong>Key Construction Experience: </strong>
-        <%= @project.construction_experiences.pluck("name").join(", ") %>
-      <%end%>
-    </div>
-    
-    <div class="col-md-12">
-      <% if !@project.design_experiences.blank? %>
-        <strong>Key Design Experience: </strong>
-        <%= @project.design_experiences.pluck("name").join(", ") %>
-      <%end%>
-    </div>
-    	
-    <div class="col-md-12">
-        <strong>Location: </strong><%= @project.location %>
-    </div>
-    <div class="col-md-12">
+
+      <p><strong>Location: </strong><%= @project.location %></p>
+      
       <% if @project.volunteers.count == 0 || @project.volunteers == "" %>
         <p> <strong> Project Capacity: </strong> <%= @project.volunteer_capacity %> </p>
       <% else %>
-        <p> 
-    	<strong>Project</strong> <%= @project.name %> has 
-    	<strong><%= @project.volunteers.count %></strong> volunteers, needs 
-    	<strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> 
-    	more!
-        </p>
+      <p> 
+      	<strong>Project</strong> <%= @project.name %> has 
+      	<strong><%= @project.volunteers.count %></strong> volunteers, needs 
+      	<strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> 
+      	more!
+      </p>
       <% end %>
     </div>
+  </div>&nbsp;
+    <div class="col-md-12"  style="background:#99b2e5;opacity: 0.95;">
+      
+      <h2 style="font-size:115%">We're looking for<img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "qualities_toggle") %></img></h2>
+      <div class="qualities" id="quality_dropdown">
+        <% if @in_demand && @in_demand.count != 0 %>
+          <p><strong>We really need:</strong>
+            <div class="col-lg-12">
+              <ul>
+              <% @in_demand.each do |quality|  %>
+                <li>
+                  <%= quality.name %>
+                </li>
+              <% end %>
+            </div>
+          </p>
+        <% end %>
 
-    <div class="col-md-12">
-      <p></p>
+        <% if @project.skills && @project.skills.length > 0 %>
+          <p><strong>Key Skills:</strong>
+            <div class="col-lg-12">
+              <ul>
+              <% @project.skills.each do |quality|  %>
+                <li>
+                  <%= quality.name %>
+                </li>
+              <% end %>
+            </div>
+          </p>
+        <%end%>
+
+        <% if @project.certifications && @project.certifications.length > 0 %>
+          <p><strong>Key Certifications:</strong></p>
+          <div class="col-lg-12">
+            <ul>
+            <% @project.certifications.each do |quality|  %>
+              <li>
+                <%= quality.name %>
+              </li>
+            <% end %>
+          </div>
+        <%end%>
+
+        <% if @project.construction_experiences && @project.construction_experiences.length > 0 %>
+          <p><strong>Key Construction Experiences:</strong></p>
+          <div class="col-lg-12">
+            <ul>
+            <% @project.construction_experiences.each do |quality|  %>
+              <li>
+                <%= quality.name %>
+              </li>
+            <% end %>
+          </div>
+        <%end%>
+        <% if @project.design_experiences && @project.design_experiences.length > 0 %>
+          <p><strong>Key Design Experiences:</strong></p>
+          <div class="col-lg-12">
+            <ul>
+            <% @project.design_experiences.each do |quality|  %>
+              <li>
+                <%= quality.name %>
+              </li>
+            <% end %>
+          </div>
+        <%end%>
+      </div>
     </div>
-
-    <div class="col-md-12">
-      <% if @project_availability_hash && @project_availability_hash.length > 0%>
-        <strong>Volunteer Availability: </strong>
-        <br><br>
+</div>
+<div class="col-md-8">
+  <% if @project_availability_hash && @project_availability_hash.length > 0%>
+    <div class="col-md-12" style="outline:#99b2e5 solid;">
+      <h2 style="font-size:115%;">Volunteer Availability<img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "availability_toggle") %></img></h2>
+      <div id="availability_chart">
         <%= column_chart @project_availability_hash %>
-      <% end %>
+      </div>
     </div>
-
-    <div class="col-md-12">
+  <% end %>
+  &nbsp;
+  <div class="col-md-12" style="outline:#99b2e5 solid;">
+    <h2 style="font-size:115%;">Project Manager(s)<img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "pm_toggle") %></img></h2>
+    <div id="pm_dropdown">
       <%if @project.managers.count == 0 || @project.managers == "" %>
         <p><strong>Project Manager: ---- </strong></p>
         <p><strong>Manager Contact Information: ---- </strong></p>
@@ -123,8 +140,11 @@
         </table>
       <% end %>
     </div>
-    
-    <div class="col-md-12">
+  </div>
+  <br><br>&nbsp;
+  <div class="col-md-12" style="outline:#99b2e5 solid;">
+    <h2 style="font-size:115%;">Volunteers <%= link_to 'Edit Volunteers', user_manages_edit_volunteers_path(current_user.id, @project.id), class: "btn sqs-block-btn btn-black btn-md" %><img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "vol_toggle") %></img></h2>
+    <div id="vol_dropdown">
       <%if @project.volunteers.count != 0 %>
         <table id="volunteers">
           <thead>
@@ -139,11 +159,11 @@
             <% @project.volunteers.each do |vol| %>
               <tr>
                 <td> <a href= "<%= user_path(vol.id) %>"> <%= vol.name %> </a></td>
-		<%if !vol.role.blank? %>
-		  <td><%= vol.role.name %></td>
-		<% else %>
-		  <td></td>
-		<% end %>
+  	<%if !vol.role.blank? %>
+  	  <td><%= vol.role.name %></td>
+  	<% else %>
+  	  <td></td>
+  	<% end %>
                 <td><%= vol.email %></td>
                 <td><%= vol.phone %></td>
               </tr>
@@ -154,13 +174,7 @@
         <strong> No volunteers have been added to this project! </strong>
       <% end %>
     </div>
-    <%= link_to 'Edit Volunteers',
-    user_manages_edit_volunteers_path(current_user.id, @project.id),
-    class: "btn sqs-block-btn btn-black btn-md" %>
-    
-  
-    <p style="page-break-before: always"></p>
-    <br>
-    <br>
+
+
   </div>
 </div>
