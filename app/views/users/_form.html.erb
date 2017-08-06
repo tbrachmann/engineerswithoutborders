@@ -1,22 +1,22 @@
 <!--<div class="row section">-->
-  <div class="col-md-10 col-md-offset-1 section">
-    <%= simple_form_for @user do |f| %>
-      <fieldset>
+<div class="col-md-10 col-md-offset-1 section">
+  <%= simple_form_for @user do |f| %>
+    <fieldset>
       <legend>Background Information</legend>
       <div class="row">
         <!--Basic Info-->
         <div class="col-md-5">
-        <%= f.input :first_name, label: "First Name:"  %>
+          <%= f.input :first_name, label: "First Name:"  %>
         </div>
         <div class="col-md-5">
-        <%= f.input :last_name, label: "Last Name:" %>
+          <%= f.input :last_name, label: "Last Name:" %>
         </div>
         <div class="col-md-2">
-        <%= f.input :age, collection:  15 .. 100 %>
+          <%= f.input :age, collection:  15 .. 100 %>
         </div>
       </div>
       <div class="row">
-      <!--Education and background-->
+	<!--Education and background-->
         <div class="col-md-4">
           <%= f.input :education, label: "Education:", collection: @education_choices %>
         </div>
@@ -37,22 +37,22 @@
         </div>
       </div>
       <div class="row">
-      <!--Languages-->
-          <div class="col-md-12">
-            <p>If you have proficiency in other languages than English, please indicate below:</p>
-          </div>
-          <div class="col-md-3">
-            <%= f.input :lang1, label:"First Language:", collection: LanguageList::COMMON_LANGUAGES %>
-          </div>
-          <div class="col-md-3">
-            <%= f.input :lang1_fluency, label:"First Language Fluency:", collection: @proficiency_choices %>
-          </div>
-          <div class="col-md-3">
-            <%= f.input :lang2, label:"Second Language:", collection: LanguageList::COMMON_LANGUAGES  %>
-          </div>
-          <div class="col-md-3">
-            <%= f.input :lang2_fluency, label:"Second Language Fluency:", collection: @proficiency_choices %>
-          </div>
+	<!--Languages-->
+        <div class="col-md-12">
+          <p>If you have proficiency in other languages than English, please indicate below:</p>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :lang1, label:"First Language:", collection: LanguageList::COMMON_LANGUAGES %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :lang1_fluency, label:"First Language Fluency:", collection: @proficiency_choices %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :lang2, label:"Second Language:", collection: LanguageList::COMMON_LANGUAGES  %>
+        </div>
+        <div class="col-md-3">
+          <%= f.input :lang2_fluency, label:"Second Language Fluency:", collection: @proficiency_choices %>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -63,100 +63,100 @@
         </div>
         <%= f.fields_for :availability do |a| %>
 
-        <div class="col-md-12">
-          <label>Please indicate your general availability on a weekly basis:</label>
-          <table style="width:100%">
-            <tr>
-              <th></th>
-              <th>Monday</th>
-              <th>Tuesday</th> 
-              <th>Wednesday</th>
-              <th>Thursday</th>
-              <th>Friday</th> 
-              <th>Saturday</th>
-              <th>Sunday</th>
-            </tr>
-            <tr>
-              <td>
-                Morning (8:00am - 12:00pm)
-              </td>
-              <td>
-                <%= a.check_box :monday_morning, {:checked => @current_availability["monday_morning"]}  %>    
-              </td> 
-              <td>
-                <%= a.check_box :tuesday_morning, {:checked => @current_availability["tuesday_morning"]} %>    
-              </td> 
-              <td>
-                <%= a.check_box :wednesday_morning, {:checked => @current_availability["wednesday_morning"]} %>    
-              </td>
-              <td>
-                <%= a.check_box :thursday_morning, {:checked => @current_availability["thursday_morning"]} %>    
-              </td>
-              <td>
-                <%= a.check_box :friday_morning, {:checked => @current_availability["friday_morning"]} %>    
-              </td>
-              <td>
-                <%= a.check_box :saturday_morning, {:checked => @current_availability["saturday_morning"]} %>    
-              </td>
-              <td>
-                <%= a.check_box :sunday_morning, {:checked => @current_availability["sunday_morning"]}%>    
-              </td> 
-            </tr>
-            <tr>
-              <td>
-                Afternoon (12:00pm - 5:00pm)
-              </td>
-              <td>
-                <%= a.check_box :monday_afternoon, {:checked => @current_availability["monday_afternoon"]} %>    
-              </td> 
-              <td>
-                <%= a.check_box :tuesday_afternoon, {:checked => @current_availability["tuesday_afternoon"]} %>    
-              </td> 
-              <td>
-                <%= a.check_box :wednesday_afternoon, {:checked => @current_availability["wednesday_afternoon"]} %>    
-              </td>
-              <td>
-                <%= a.check_box :thursday_afternoon, {:checked => @current_availability["thursday_afternoon"]} %>    
-              </td>
-              <td>
-                <%= a.check_box :friday_afternoon, {:checked => @current_availability["friday_afternoon"]} %>    
-              </td>
-              <td>
-                <%= a.check_box :saturday_afternoon, {:checked => @current_availability["saturday_afternoon"]} %>    
-              </td>
-              <td>
-                <%= a.check_box :sunday_afternoon, {:checked => @current_availability["sunday_afternoon"]}%> 
-              </td>
-            </tr>
-            <tr>
-              <td>
-                Evening (5:00pm - 10:00pm)
-              </td>
-              <td>
-                <%= a.check_box :monday_evening, {:checked => @current_availability["monday_evening"]} %>    
-              </td> 
-              <td>
-                <%= a.check_box :tuesday_evening, {:checked => @current_availability["tuesday_evening"]} %>    
-              </td> 
-              <td>
-                <%= a.check_box :wednesday_evening, {:checked => @current_availability["wednesday_evening"]} %>    
-              </td>
-              <td>
-                <%= a.check_box :thursday_evening, {:checked => @current_availability["thursday_evening"]} %>    
-              </td>
-              <td>
-                <%= a.check_box :friday_evening, {:checked => @current_availability["friday_evening"]} %>    
-              </td>
-              <td>
-                <%= a.check_box :saturday_evening, {:checked => @current_availability["saturday_evening"]} %>    
-              </td>
-              <td>
-                <%= a.check_box :sunday_evening, {:checked => @current_availability["sunday_evening"]} %> 
-              </td>
-            </tr>
-          </table>
-        </div>
-              <% end %>
+          <div class="col-md-12">
+            <label>Please indicate your general availability on a weekly basis:</label>
+            <table style="width:100%">
+              <tr>
+		<th></th>
+		<th>Monday</th>
+		<th>Tuesday</th> 
+		<th>Wednesday</th>
+		<th>Thursday</th>
+		<th>Friday</th> 
+		<th>Saturday</th>
+		<th>Sunday</th>
+              </tr>
+              <tr>
+		<td>
+                  Morning (8:00am - 12:00pm)
+		</td>
+		<td>
+                  <%= a.check_box :monday_morning, {:checked => @current_availability["monday_morning"]}  %>    
+		</td> 
+		<td>
+                  <%= a.check_box :tuesday_morning, {:checked => @current_availability["tuesday_morning"]} %>    
+		</td> 
+		<td>
+                  <%= a.check_box :wednesday_morning, {:checked => @current_availability["wednesday_morning"]} %>    
+		</td>
+		<td>
+                  <%= a.check_box :thursday_morning, {:checked => @current_availability["thursday_morning"]} %>    
+		</td>
+		<td>
+                  <%= a.check_box :friday_morning, {:checked => @current_availability["friday_morning"]} %>    
+		</td>
+		<td>
+                  <%= a.check_box :saturday_morning, {:checked => @current_availability["saturday_morning"]} %>    
+		</td>
+		<td>
+                  <%= a.check_box :sunday_morning, {:checked => @current_availability["sunday_morning"]}%>    
+		</td> 
+              </tr>
+              <tr>
+		<td>
+                  Afternoon (12:00pm - 5:00pm)
+		</td>
+		<td>
+                  <%= a.check_box :monday_afternoon, {:checked => @current_availability["monday_afternoon"]} %>    
+		</td> 
+		<td>
+                  <%= a.check_box :tuesday_afternoon, {:checked => @current_availability["tuesday_afternoon"]} %>    
+		</td> 
+		<td>
+                  <%= a.check_box :wednesday_afternoon, {:checked => @current_availability["wednesday_afternoon"]} %>    
+		</td>
+		<td>
+                  <%= a.check_box :thursday_afternoon, {:checked => @current_availability["thursday_afternoon"]} %>    
+		</td>
+		<td>
+                  <%= a.check_box :friday_afternoon, {:checked => @current_availability["friday_afternoon"]} %>    
+		</td>
+		<td>
+                  <%= a.check_box :saturday_afternoon, {:checked => @current_availability["saturday_afternoon"]} %>    
+		</td>
+		<td>
+                  <%= a.check_box :sunday_afternoon, {:checked => @current_availability["sunday_afternoon"]}%> 
+		</td>
+              </tr>
+              <tr>
+		<td>
+                  Evening (5:00pm - 10:00pm)
+		</td>
+		<td>
+                  <%= a.check_box :monday_evening, {:checked => @current_availability["monday_evening"]} %>    
+		</td> 
+		<td>
+                  <%= a.check_box :tuesday_evening, {:checked => @current_availability["tuesday_evening"]} %>    
+		</td> 
+		<td>
+                  <%= a.check_box :wednesday_evening, {:checked => @current_availability["wednesday_evening"]} %>    
+		</td>
+		<td>
+                  <%= a.check_box :thursday_evening, {:checked => @current_availability["thursday_evening"]} %>    
+		</td>
+		<td>
+                  <%= a.check_box :friday_evening, {:checked => @current_availability["friday_evening"]} %>    
+		</td>
+		<td>
+                  <%= a.check_box :saturday_evening, {:checked => @current_availability["saturday_evening"]} %>    
+		</td>
+		<td>
+                  <%= a.check_box :sunday_evening, {:checked => @current_availability["sunday_evening"]} %> 
+		</td>
+              </tr>
+            </table>
+          </div>
+        <% end %>
       </div>
       <!-- other details -->
       <div class="row">
@@ -164,30 +164,57 @@
           &nbsp;&nbsp;&nbsp;&nbsp;
         </div>
         <div class="col-md-12">
-          <%= simple_form_for @user do |f| %>
-            <%= f.association :skills, label: "Please select skills you have:", class:"ra-multiselect" %>
-          <% end %>
-        </div>
+	  Please select skills you have:
+          <select multiple="multiple" id="skills-select" name="skills[]">
+	    <% @mySkills.each do |skill| %>
+	      <option id="<%= skill.id %>" value="<%= skill.id %>" selected>
+		<%= skill.name %>
+	      </option>
+	    <% end %>
+	    <% @skills.each do |skill| %>
+	      <option id="<%= skill.id %>" value="<%= skill.id %>">
+		<%= skill.name %>
+	      </option>
+	    <% end %>
+	  </select>
+	  <style>
+	   .search-input {
+	       width: 100%;
+	   }
+	  </style>
+	  <a class="popup-with-form btn btn-black" href="#new-skill-form" id="a-new-skill">
+	    Add a new Skill
+	  </a>
+	  <div class="white-popup-block mfp-hide" id="new-skill-form">
+	    <%= form_tag do %>
+	      <%= label_tag(:new_skill, "Add new Skill") %>
+	      <%= text_field_tag(:new_skill, nil, class: "form-control string optional") %>
+	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
+			     id: "new-skill-submit") %>
+	    <% end %>
+          </div>
+	</div>
+	<br>
         <div class="col-md-12">
           <%= simple_form_for @user do |f| %>
             <%= f.association :role, label: "Please select role you have:", class:"ra-multiselect" %>
           <% end %>
           <a class="popup-with-form btn btn-black" href="#test-form">Add a new Role</a>
           <form id="test-form" class="white-popup-block mfp-hide">
-        	<fieldset style="border:0;">
-        		<ul>
-        			<li>
-        			  <%= f.input :role, label: "Role"  %>
-        			</li>
-        		</ul>
-        	</fieldset>
-        </form>
+            <fieldset style="border:0;">
+              <ul>
+        	<li>
+        	  <%= f.input :role, label: "Role"  %>
+        	</li>
+              </ul>
+            </fieldset>
+          </form>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-        <br>
-        <%= f.input :description, as: :text, id: "About:", label: "Please tell us very briefly a little about yourself and why you want to volunteer for Engineers without Borders.", :input_html => {:style => 'width: 100%', :rows => 4, class: 'response-project'} %>
+          <br>
+          <%= f.input :description, as: :text, id: "About:", label: "Please tell us very briefly a little about yourself and why you want to volunteer for Engineers without Borders.", :input_html => {:style => 'width: 100%', :rows => 4, class: 'response-project'} %>
         </div>
       </div>
       <%= f.button :submit, "Update Background", class: "btn sqs-block-btn btn-black btn-md"%>
@@ -199,5 +226,5 @@
       </fieldset>
     <% end %>
     <p></p>
-    </div>
+</div>
     

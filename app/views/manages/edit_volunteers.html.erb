@@ -23,8 +23,8 @@
       <br>
     </div>
 
-    <center id="edit_volunteers" hidden>
-      <select multiple="multiple" id="my-select" name="my-select[]">
+    <center id="edit_volunteers">
+      <select multiple="multiple" id="volunteers-select" name="my-select[]">
 	<% @project.volunteers.each do |volunteer| %>
 	  <option id="<%= volunteer.id %>" value="<%= volunteer.name %>" selected>
 	    <%= volunteer.name %>
@@ -37,7 +37,7 @@
 	<% end %>
       </select>
       <br>
-      <a class="btn btn-md sqs-block-btn btn-black" id="submit">Save</a>
+      <a class="btn btn-md sqs-block-btn btn-black" id="volunteers-submit">Save</a>
     </center>
   </div>
 </div>
