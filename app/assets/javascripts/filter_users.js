@@ -35,6 +35,10 @@ $(document).ready(function(){
   	toggle($("#field_toggle"), $("#field_checkboxes"))
   	});
   	
+  $("#logistics_toggle").click(function() {
+  	toggle($("#logistics_toggle"), $("#log_dropdown"))
+  	});
+  	
 });
 
 function change(id_class) {
@@ -97,9 +101,12 @@ function processBoxes(new_check, already_checked, id) {
 }
 
 function toggle(toggle_icon, field_to_toggle) {
+  console.log("in toggle");
   if (field_to_toggle.is(":visible")) {
+  	console.log("in visible");
     toggle_icon.attr("src", "/assets/plus_icon.png");
   } else {
+  	console.log("in not visible")
     toggle_icon.attr("src", "/assets/minus-icon.svg");
   }
   field_to_toggle.toggle();

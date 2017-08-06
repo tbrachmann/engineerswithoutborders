@@ -1,3 +1,6 @@
+<%= javascript_include_tag "users" %>
+
+
 <div class="row section">
   <div class="row text-right">
     <% if can? :manage, @project %>
@@ -10,7 +13,30 @@
 </div>
 
 <div class="col-md-4">
-  <div class="col-md-12"  style="background:#36b3a8">
+  <div class="col-md-12"  style="background:#99b2e5;opacity: 0.95;">
+    <h2 style="font-size:150%">Logistics<img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "logistics_toggle") %></img></h2>
+    <div class="col-md-12 apple" id="log_dropdown">
+      <% if @project.start_date && @project.start_date.to_date %>
+        <p>This project will start on <%= @project.start_date.to_date %>.</p>
+      <% else %>
+        <p>Project start date to be announced </p>
+      <% end %>
+
+        <strong>Location: </strong><%= @project.location %>
+
+      <% if @project.volunteers.count == 0 || @project.volunteers == "" %>
+        <p> <strong> Project Capacity: </strong> <%= @project.volunteer_capacity %> </p>
+      <% else %>
+        <p> 
+    	<strong>Project</strong> <%= @project.name %> has 
+    	<strong><%= @project.volunteers.count %></strong> volunteers, needs 
+    	<strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> 
+    	more!
+        </p>
+      <% end %>
+    </div>
+  </div>&nbsp;
+    <div class="col-md-12"  style="background:#99b2e5;opacity: 0.95;">
     <span style="text-align: center">What we're looking for</span>
     <div class="qualities" style="color:red">
       <% if @in_demand && @in_demand.count != 0 %>
@@ -90,33 +116,11 @@
   </div>
 </div>
 <div class="col-md-8">
-  <div class="col-md-12"  style="background:#36b3a8">
-    Logistics
-    <div class="col-lg-12">
-      <% if @project.start_date && @project.start_date.to_date %>
-        <p>This project will start on <%= @project.start_date.to_date %>.</p>
-      <% else %>
-        <p>Project start date to be announced </p>
-      <% end %>
-    </div>
-    	
-    <div class="col-md-12">
-        <strong>Location: </strong><%= @project.location %>
-    </div>
-    
-    <div class="col-md-12">
-      <% if @project.volunteers.count == 0 || @project.volunteers == "" %>
-        <p> <strong> Project Capacity: </strong> <%= @project.volunteer_capacity %> </p>
-      <% else %>
-        <p> 
-    	<strong>Project</strong> <%= @project.name %> has 
-    	<strong><%= @project.volunteers.count %></strong> volunteers, needs 
-    	<strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> 
-    	more!
-        </p>
-      <% end %>
-    </div>
-  </div>
+  <% if @project_availability_hash && @project_availability_hash.length > 0%>
+    <strong>Volunteer Availability: </strong>
+    <br><br>
+    <%= column_chart @project_availability_hash %>
+  <% end %>
   <div >
       <%if @project.managers.count == 0 || @project.managers == "" %>
         <p><strong>Project Manager: ---- </strong></p>
