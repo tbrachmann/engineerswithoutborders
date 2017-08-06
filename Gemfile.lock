@@ -68,6 +68,8 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     chartkick (2.2.4)
+    childprocess (0.7.1)
+      ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
     churn (0.0.35)
       chronic (>= 0.2.3)
@@ -398,6 +400,7 @@ GEM
     ruby_dep (1.5.0)
     ruby_parser (3.10.1)
       sexp_processor (~> 4.9)
+    rubyzip (1.2.1)
     sass (3.5.1)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -412,6 +415,9 @@ GEM
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    selenium-webdriver (3.4.4)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
     sexp_processor (4.10.0)
     shellany (0.0.1)
     simple_form (3.5.0)
@@ -513,6 +519,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails
   sdoc
+  selenium-webdriver
   simple_form
   simplecov
   spring

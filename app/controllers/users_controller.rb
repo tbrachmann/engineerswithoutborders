@@ -265,17 +265,41 @@ class UsersController < ApplicationController
     @role = Role.all
     @mySkills = @user.skills
     @skills = Skill.all - @mySkills
+    @myConstructionExperiences = @user.construction_experiences
+    @constructionExperiences = ConstructionExperience.all -
+                               @myConstructionExperiences
+    @myDesignExperiences = @user.design_experiences
+    @designExperiences = DesignExperience.all - @myDesignExperiences
     if request.xhr?
-      @new_skill = params[:new_skill]
-      @new_skill = Skill.new(name: @new_skill)
-      if(@new_skill.save)
-        @mySkills = @user.skills
-        @skills = Skill.all - @mySkills
-        puts @new_skill.id
-        data = { name: @new_skill.name, id: @new_skill.id }
-        render :json => data
-      else
-        #do nothing return
+      if params.key?(:new_skill)
+        @new_skill = params[:new_skill]
+        @new_skill = Skill.new(name: @new_skill)
+        if(@new_skill.save)
+          data = { name: @new_skill.name, id: @new_skill.id }
+          render :json => data
+        else
+          render :status => 400
+        end
+      end
+      if params.key?(:new_const_exp)
+        @new_const_exp = params[:new_const_exp]
+        @new_const_exp = ConstructionExperience.new(name: @new_const_exp)
+        if(@new_const_exp.save)
+          data = { name: @new_const_exp.name, id: @new_const_exp.id }
+          render :json => data
+        else
+          render :status => 400
+        end
+      end
+      if params.key?(:new_des_exp)
+        @new_des_exp = params[:new_des_exp]
+        @new_des_exp = DesignExperience.new(name: @new_des_exp)
+        if(@new_des_exp.save)
+          data = { name: @new_des_exp.name, id: @new_des_exp.id }
+          render :json => data
+        else
+          render :status => 400
+        end
       end
     end
     authorize! :manage, @user
@@ -313,8 +337,20 @@ class UsersController < ApplicationController
     user.travel = user_params[:travel]
     user.time_commitment = user_params[:time_commitment]
     user.availability_comments = user_params[:availability_comments]
-    user.skills = Skill.find(params[:skills])
+    unless params[:skills].blank?
+      user.skills = Skill.find(params[:skills]).to_a
+    end
+    
     user.role = Role.get_role(user_params[:role_ids])
+    puts params[:const_exp]
+    puts ConstructionExperience.find(params[:const_exp])
+    unless params[:const_exp].blank?
+      user.construction_experiences = ConstructionExperience.find(params[:const_exp]).to_a
+    end
+    
+    unless params[:des_exp].blank?
+      user.design_experiences = DesignExperience.find(params[:des_exp]).to_a
+    end
     
     user.save
     

@@ -317,8 +317,8 @@ When /^(?:|I )follow "([^"]*)"$/ do |link|
 end
 
 Then /^the number of attribute fields should be (\d+)$/ do |arg1|
-  expect(page).to have_selector("p div.field", wait: 60)
-  expect(page.all(".field").count).to eq 2
+  #expect(page).to have_selector("p div.field", wait: 60)
+  expect(page.all(".field").count).to eq arg1.to_i
 end
 
 Then(/^I should see the toggles on the left side of the column$/) do
