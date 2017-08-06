@@ -138,12 +138,15 @@ p, div, strong, input {
     font-family: nanum-barun-gothic-regular;
 }
 .card-image {
-    margin: 0;
+    display: block;
+    margin: auto;
     border-radius: 3px;
     height: 60%;
     position: relative;
-    overflow: hidden;
     box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.card-image-col {
+  overflow:hidden;
 }
 .btn-color {
   background-color: #3D3C40;
