@@ -143,7 +143,7 @@
   </div>
   <br><br>&nbsp;
   <div class="col-md-12" style="outline:#99b2e5 solid;">
-    <h2 style="font-size:115%;">Volunteers<img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "vol_toggle") %></img></h2>
+    <h2 style="font-size:115%;">Volunteers <%= link_to 'Edit Volunteers', user_manages_edit_volunteers_path(current_user.id, @project.id), class: "btn sqs-block-btn btn-black btn-md" %><img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "vol_toggle") %></img></h2>
     <div id="vol_dropdown">
       <%if @project.volunteers.count != 0 %>
         <table id="volunteers">
@@ -174,11 +174,7 @@
         <strong> No volunteers have been added to this project! </strong>
       <% end %>
     </div>
-    <%= link_to 'Edit Volunteers',
-    user_manages_edit_volunteers_path(current_user.id, @project.id),
-    class: "btn sqs-block-btn btn-black btn-md" %>
-    <p style="page-break-before: always"></p>
-    <br>
-    <br>
+
+
   </div>
 </div>
