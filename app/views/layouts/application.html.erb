@@ -10,15 +10,8 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
-    <!-- Magnific Popup core CSS file -->
-    <link rel="stylesheet" href="magnific-popup/magnific-popup.css">
-    
     <!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    
-    <!-- Magnific Popup core JS file -->
-    <script src="magnific-popup/jquery.magnific-popup.js"></script>
-    
     
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= csrf_meta_tags %>
@@ -30,8 +23,16 @@
     <nav class="navbar navbar-default navbar-fixed-top nav-shadow" style="background-color: white">
       <div class="container-fluid">
       <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+        		<span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+    		</button>
         <a class="navbar-brand" href="https://ewb-sfp.org/"><%= image_tag("ewb-sfp-logo.png", height:"32") %></a>
+        
       </div>
+      <div class="collapse navbar-collapse" id="navigation-example">
       <ul class="nav navbar-nav navbar-right">
         <li class="nav-item">
           <%= link_to("Home", root_path) %></a>
@@ -40,12 +41,12 @@
           <li class="nav-item">
             <%= link_to("Profile", user_path(current_user), class:"nav-link") %></a>
           </li>
-	  <% if can? :read, :all %>
-	    <li class="nav-item">
-              <%= link_to("My Projects", user_manages_path(current_user), class:"nav-link") %></a>
-            </li>
-	  <% end %>
-	  <li class="nav-item">
+      	  <% if can? :read, :all %>
+      	    <li class="nav-item">
+                    <%= link_to("My Projects", user_manages_path(current_user), class:"nav-link") %></a>
+                  </li>
+      	  <% end %>
+      	  <li class="nav-item">
             <%= link_to("Project Listings", projects_path, class:"nav-link") %></a>
           </li>
           <% if can? :read, :all %>
@@ -62,6 +63,7 @@
           </li>
         <% end %> 
       </ul>
+      </div>
       </div>
   </nav>
 </div>

@@ -35,6 +35,7 @@ gem 'json'
 gem 'rake' # , '10.4.2'
 gem 'faker'
 gem 'factory_girl_rails'
+gem 'multi-select-rails'
 gem 'magnific-popup-rails', '~> 1.1.0'
 
 group :development, :test do
@@ -83,3 +84,4 @@ gem "chartkick"
 
 # help manage admin routes
 gem "cancancan"
+
