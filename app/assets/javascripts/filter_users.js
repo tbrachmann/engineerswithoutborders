@@ -9,7 +9,7 @@ var users_to_fields;
 
 var all_checked_boxes=[];
 
-$(document).ready(function(){
+document.addEventListener("turbolinks:load", function() {
   $.ajax({type: "GET",
 	    url: "/users",
 	    error: function(e) {
@@ -23,15 +23,24 @@ $(document).ready(function(){
 	    }
   });
   
-  $("#skills_toggle").click(function() {
+  function toggle(toggle_icon, field_to_toggle) {
+    if (field_to_toggle.is(":visible")) {
+      toggle_icon.attr("src", "/assets/plus_icon.png");
+    } else {
+      toggle_icon.attr("src", "/assets/minus-icon.svg");
+    }
+    field_to_toggle.toggle();
+  }  
+  
+  $("#skills_div").click(function() {
   	toggle($("#skills_toggle"), $("#skill_checkboxes"))
   	});
     
-  $("#cert_toggle").click(function() {
+  $("#cert_div").click(function() {
   	toggle($("#cert_toggle"), $("#cert_checkboxes"))
   	});
     
-  $("#field_toggle").click(function() {
+  $("#field_div").click(function() {
   	toggle($("#field_toggle"), $("#field_checkboxes"))
   	});
   	
