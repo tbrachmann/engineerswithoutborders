@@ -199,15 +199,18 @@
           <%= simple_form_for @user do |f| %>
             <%= f.association :role, label: "Please select role you have:", class:"ra-multiselect" %>
           <% end %>
-          <a class="popup-with-form btn btn-black" href="#test-form">Add a new Role</a>
-          <form id="test-form" class="white-popup-block mfp-hide">
+          <a class="popup-with-form btn btn-black" href="#new-role-form">Add a new Role</a>
+          <form id="new-role-form" class="white-popup-block mfp-hide">
             <fieldset style="border:0;">
               <ul>
         	<li>
-        	  <%= f.input :role, label: "Role"  %>
+        	  <%= f.input :role, label: "Add new Role"  %>
         	</li>
               </ul>
             </fieldset>
+            <div class="btn sqs-block-btn btn-black btn-md" id="new-role-submit">
+              Save
+            </div>
           </form>
         </div>
       </div>
