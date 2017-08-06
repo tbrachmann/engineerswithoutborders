@@ -486,8 +486,9 @@ label {
 .user_checkboxes {
   display:none;
   padding-left: 20px;
+  height: 250px;
+  overflow: scroll;
 }
-
 .right{
 	position:absolute;
 	display:inline-block;
