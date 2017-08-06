@@ -1,0 +1,5 @@
+describe("EditVolunteersForm", function() {
+  it("moves selected volunteer to selection", function() {
+
+  });
+)};

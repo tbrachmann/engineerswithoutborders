@@ -1,19 +1,17 @@
-<%= javascript_include_tag "users" %>
-
 <div class="row section">
   <div class="col-md-8 col-md-offset-2 section">
     <h1 class="text-center">Listing Users</h1>
     <br>
     <div class="row">
       <div class="col-md-12">
-	<%= search_form_for @q do |f| %>
-	  <% @search_on = [:first_name, :last_name] %>
-	  <%= f.condition_fields do |c| %>
-	    <%= render "condition_fields", f: c %>
-	  <% end %>
-	  <p><%= link_to_add_fields "Add Conditions", f, :condition %></p>
-	  <%= f.submit %>
-	<% end %>
+      	<%= search_form_for @q do |f| %>
+      	  <% @search_on = [:first_name, :last_name] %>
+      	  <%= f.condition_fields do |c| %>
+      	    <%= render "condition_fields", f: c %>
+      	  <% end %>
+      	  <p><%= link_to_add_fields "Add Conditions", f, :condition %></p>
+      	  <%= f.submit %>
+      	<% end %>
       </div>
     </div>
   </div>
@@ -24,16 +22,19 @@
     <br>
     <p class= "header">Please confirm to send an email to the following addresses:</p>
     <p class= "emails"><%= @email_list %></p>
-    <button type="button" class="btn btn-success btn-sm btn-block" id= "confirmation">Email</button>
+    <div id= "confirmation">
+      <button type="button" class="btn btn-success btn-sm btn-block" id= "confirmation">Email</button>
+    </div>
+  </div>
+  <div>
   </div>
 <% end %>
 
-<br/>
-
 <div class = "row">
   <div class = "col-md-4" >
-    <h3>Skills<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "skills_toggle") %></img></h3><span></span>
-      <div style="display:none" id="skill_checkboxes">
+    <div id="skills_div" class="user_toggle"><h3>Skills<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "skills_toggle" ) %></img></h3></div>
+      <br/>
+      <div class="user_checkboxes" id="skill_checkboxes">
         <% Skill.all.each do |skill| %>
           <input type = "checkbox" id = <%= skill.name.gsub(/[^a-zA-Z]/, '') + '_skill'%> onchange="change(id)"/>
           <span> <%= skill.name %></span>
@@ -42,8 +43,9 @@
       </div>
   </div>
   <div class = "col-md-4" >
-    <h3>Certifications<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "cert_toggle") %></img></h3><span></span>
-      <div style="display:none" id="cert_checkboxes">
+    <div id="cert_div" class="user_toggle"><h3>Certifications<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "cert_toggle") %></img></h3></div>
+      <br/>
+      <div class="user_checkboxes" id="cert_checkboxes">
         <% Certification.all.each do |cert| %>
           <input type = "checkbox" id = <%= cert.name.gsub(/[^a-zA-Z]/, '') + '_cert'%> onchange="change(id)"/>
           <span> <%= cert.name %></span>
@@ -52,8 +54,9 @@
       </div>
   </div>
   <div class = "col-md-4">
-    <h3>Field of Study<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "field_toggle") %></img></h3><span></span>
-      <div style="display:none" id="field_checkboxes">
+    <div id="field_div" class="user_toggle"><h3>Field of Study<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "field_toggle") %></img></h3></div>
+      <br/>
+      <div class="user_checkboxes" id="field_checkboxes">
       <% @field_choices.each do |field| %>
       <input type = "checkbox" id = <%= field.gsub(/[^a-zA-Z]/, '') + '_field'%> onchange="change(id)"/>
       <span> <%=field%> </span>
@@ -135,46 +138,5 @@
     window.location.href = "mailto:" + recipent + "?subject=Volunteer Request&body=After looking over your qualifications, I think that you would be a great fit for my project! Please accept my invitation to join.";
   });
 </script>
-
-<!-- Modal -->
-
-<!--<div id="myModal" class="modal fade" role="dialog">-->
-<!--  <div class="modal-dialog">-->
-
-     <!--Modal content-->
-<!--    <div class="modal-content">-->
-<!--      <div class="modal-header">-->
-<!--        <button type="button" class="close" data-dismiss="modal">&times;</button>-->
-<!--        <h4 class="modal-title" contenteditable="true">Engineers Without Borders Project Invitation</h4>-->
-    
-<!--    <hr>-->
-<!--    <%# @users.each do |user| %>-->
-<!--      <div class="row">-->
-<!--        <div class="col-md-8">-->
-<!--        <a href=<%#= user_path(user) %>><strong><%#= user.first_name %> <%#= user.last_name %></strong></a> <br>-->
-<!--        <strong>Age: </strong> <%#= user.age %>-->
-<!--        <strong>Education: </strong> <%#= user.education %> from <%#= user.school %>-->
-<!--        <strong> Field: </strong> <%#= user.expertise %><br>-->
-<!--        <strong>Availability: </strong><%#= user.availability %> <br>-->
-<!--        </div>-->
-<!--        <div class="col-md-3">-->
-<!--        <button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal">Contact <%#= user.first_name %></button>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--      <div class="modal-body" >-->
-<!--        <p class="form-control" contenteditable="true">After looking over your qualifications, I think that you would be a great fit for my project! Please accept my invitation to join.</p>-->
-<!--      </div>-->
-<!--      <div class="modal-footer">-->
-<!--      <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>-->
-<!--      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <%# end %>-->
-<!--  </div>-->
-<!--</div>-->
-<%#= paginate @users %>
-<!--  </div>-->
-<!--</div>-->
 
 <%= paginate @users %>

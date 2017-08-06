@@ -1,4 +1,7 @@
-jQuery ->
+$(document).on "turbolinks:load", ->
+
+        console.log("is it binding twice?")
+        
         $('#user_first_name').autocomplete
                 source: ['UC Berkeley', 'UC SD', 'UCLA', "abcs"]
 

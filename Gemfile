@@ -35,6 +35,7 @@ gem 'json'
 gem 'rake' # , '10.4.2'
 gem 'faker'
 gem 'factory_girl_rails'
+gem 'multi-select-rails'
 gem 'magnific-popup-rails', '~> 1.1.0'
 
 group :development, :test do
@@ -43,6 +44,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'test-unit'
   gem 'guard-rspec'
+  gem 'jasmine'
 end
 
 group :development do

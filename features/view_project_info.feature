@@ -21,9 +21,7 @@ Feature: Viewing Project Information
     And I should see "Well"
     And I should see "Road"
     And I should not see "VOLUNTEER_TABLE"
-    
-    
-    
+  
   Scenario: As a project manager, I should not be able to edit a project if I am not the assigned PM
     Given I am a project manager
     Given I am on the projects page
@@ -31,7 +29,7 @@ Feature: Viewing Project Information
     And I should see "Remba Island, Kenya"
     And I should not see "Edit Project"
 
-Scenario: As a project manager, I should not be able to add a picture to a project page
+  Scenario: As a project manager, I should not be able to add a picture to a project page
     Given I am a project manager
     Given I am on the welcome page
     When I follow "My Projects"
