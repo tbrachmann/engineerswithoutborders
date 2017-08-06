@@ -39,6 +39,22 @@ $(document).ready(function(){
   	toggle($("#logistics_toggle"), $("#log_dropdown"))
   	});
   	
+  $("#qualities_toggle").click(function() {
+  	toggle($("#qualities_toggle"), $("#quality_dropdown"))
+  	});
+  	
+  $("#availability_toggle").click(function() {
+  	toggle($("#qualities_toggle"), $("#availability_chart"))
+  	});
+  	
+  $("#pm_toggle").click(function() {
+  	toggle($("#pm_toggle"), $("#pm_dropdown"))
+  	});
+
+  $("#vol_toggle").click(function() {
+  	toggle($("#vol_toggle"), $("#vol_dropdown"))
+  	});
+
 });
 
 function change(id_class) {
