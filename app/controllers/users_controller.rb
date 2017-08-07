@@ -187,15 +187,18 @@ class UsersController < ApplicationController
         user.certifications.each do |cert|
           @certs[user[:id]].push cert[:name]
         end
-        user.skills.each do |skill|
-          @skills[user[:id]].push skill[:name]
+        if user.skills
+          user.skills.each do |skill|
+            @skills[user[:id]].push skill[:name]
+          end
         end
-        user.role.each do |roles|
+          
+        if user.role
           @role[user[:id]].push roles[:name]
         end
-        #if user.expertise
+        if user.expertise
           @fields[user[:id]].push user.expertise
-        #end
+        end
       end
       data = {:skills => @skills, :certs => @certs, :fields => @fields}
       render :json => data
