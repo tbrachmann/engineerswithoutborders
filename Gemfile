@@ -43,7 +43,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'test-unit'
   gem 'guard-rspec'
-  gem 'foreman'
   gem 'jasmine'
 end
 
@@ -84,4 +83,8 @@ gem "haml"
 
 gem "chartkick"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 642bc47dc8539498db47bdada38ce8424ed2363c
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
