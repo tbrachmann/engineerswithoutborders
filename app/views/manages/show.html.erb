@@ -140,11 +140,16 @@
         </table>
       <% end %>
     </div>
+<<<<<<< HEAD
+    
+    <div class="col-md-12">
+=======
   </div>
   <br><br>&nbsp;
   <div class="col-md-12" style="outline:#99b2e5 solid;">
     <h2 style="font-size:115%;">Volunteers <%= link_to 'Edit Volunteers', user_manages_edit_volunteers_path(current_user.id, @project.id), class: "btn sqs-block-btn btn-black btn-md" %><img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "vol_toggle") %></img></h2>
     <div id="vol_dropdown">
+>>>>>>> 02488f9afdd12e508372d3f6216fd8916b191033
       <%if @project.volunteers.count != 0 %>
         <table id="volunteers">
           <thead>

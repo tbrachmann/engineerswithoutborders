@@ -63,5 +63,25 @@ $(document).on("turbolinks:load", function() {
 	contentType: "application/json"
       })
     })
+    
+    $("#new-role-submit").click(function(e) {
+      e.preventDefault()
+      $.ajax({
+	url: window.location.pathname,
+	type: "GET",
+	error: function(e) {
+		console.log("failed!");
+		return null
+	    },
+	success: function(data) {
+	  console.log(data.name)
+	  $("#user_role_id").append("<option value="+data.id +">"+data.name+"</option>")
+	  $.magnificPopup.close()
+	},
+	data: { "new_role": $("#new_role").val() },
+	contentType: "application/json"
+      })
+    })
+    
   })
 })
