@@ -98,12 +98,13 @@ ActiveRecord::Schema.define(version: 20170807025612) do
 
   create_table "in_demands", force: :cascade do |t|
     t.integer "project_id"
-    t.integer "table_id"
     t.string  "table_name"
+    t.integer "table_id"
   end
 
   add_index "in_demands", ["project_id"], name: "index_in_demands_on_project_id"
   add_index "in_demands", ["table_id"], name: "index_in_demands_on_table_id"
+  add_index "in_demands", ["table_name"], name: "index_in_demands_on_table_name"
 
   create_table "manager_relationships", force: :cascade do |t|
     t.integer "user_id"
@@ -127,10 +128,7 @@ ActiveRecord::Schema.define(version: 20170807025612) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "hours_per_week"
-    t.integer  "users_id"
   end
-
-  add_index "projects", ["users_id"], name: "index_projects_on_users_id"
 
   create_table "projects_skills", id: false, force: :cascade do |t|
     t.integer "skill_id"
@@ -194,13 +192,13 @@ ActiveRecord::Schema.define(version: 20170807025612) do
     t.boolean  "manager",                default: false
     t.integer  "availability_id"
     t.integer  "role_id"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
