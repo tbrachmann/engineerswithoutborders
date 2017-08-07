@@ -2,6 +2,8 @@ class AdminAbility
   include CanCan::Ability
   def initialize(user)
 
+    user ||= User.new
+    
     puts "NAME:" + user.name
     
     if user && user.admin?

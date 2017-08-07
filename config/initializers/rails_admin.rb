@@ -24,8 +24,9 @@ RailsAdmin.config do |config|
 
   #config.excluded_models << "Event"
 
-  config.authorize_with :cancan #, AdminAbility
+  config.authorize_with :cancan
   config.parent_controller = 'ApplicationController'
+  config.current_user_method(&:current_user)
   
   config.actions do
     dashboard                     # mandatory
