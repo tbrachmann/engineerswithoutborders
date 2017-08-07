@@ -147,9 +147,12 @@ end
 =end
 
 class UsersController < ApplicationController
+<<<<<<< HEAD
+  # load_and_authorize_resource
+=======
 
   respond_to :html, :js
-  # load_and_authorize_resource
+>>>>>>> 4456c9918a22bd6437dd1cf584b20b05497cee21
   
   before_action only: [:show, :edit, :update, :age_sorting]
   

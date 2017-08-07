@@ -39,7 +39,7 @@ class ManagesController < ApplicationController
     @project = Project.find(params[:id])
     @eligible_volunteers = @project.eligible_volunteers
     if request.xhr?
-      @volunteers = JSON.parse(params[:volunteers])
+      @volunteers = JSON.parse(params[:multi_selected])
       @project.volunteers = @volunteers.map do |id|
         User.find(id.to_i)
       end
