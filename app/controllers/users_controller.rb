@@ -360,8 +360,7 @@ class UsersController < ApplicationController
     end
     
     user.role = Role.get_role(user_params[:role])
-    puts params[:const_exp]
-    puts ConstructionExperience.find(params[:const_exp])
+
     unless params[:const_exp].blank?
       user.construction_experiences = ConstructionExperience.find(params[:const_exp]).to_a
     end
