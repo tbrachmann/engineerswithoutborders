@@ -1,4 +1,4 @@
-function MultiSelect(selectableName, selectionName, $multiSelect, $submit = undefined) {
+function MultiSelect(selectableName, selectionName, $multiSelect, $submit) {
   this.selectableName = selectableName;
   this.selectionName = selectionName;
   this.$multiSelect = $multiSelect;
@@ -16,13 +16,13 @@ function MultiSelect(selectableName, selectionName, $multiSelect, $submit = unde
 	selectionName + "</div>",
       afterInit: function(){
 	//this.$multiSelect.show()
-	var that = this,
-	    $selectableSearch = that.$selectableUl.prev(),
-	    $selectionSearch = that.$selectionUl.prev(),
-	    selectableSearchString = '#' + that.$container.attr('id') +
-	    ' .ms-elem-selectable:not(.ms-selected)',
-	    selectionSearchString = '#' + that.$container.attr('id') +
-	    ' .ms-elem-selection.ms-selected';
+	var that = this
+	var $selectableSearch = that.$selectableUl.prev()
+	var $selectionSearch = that.$selectionUl.prev()
+	var selectableSearchString = '#' + that.$container.attr('id') +
+	    ' .ms-elem-selectable:not(.ms-selected)'
+	var selectionSearchString = '#' + that.$container.attr('id') +
+	    ' .ms-elem-selection.ms-selected'
 	
 	that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
 	  .on('keydown', function(e){
@@ -112,10 +112,10 @@ $(document).on("turbolinks:load", function() {
   EditSkills.init();
   var EditConstructionExperiences = new MultiSelect("Eligible Construction Experiences",
 						    "Your Construction Experiences",
-						    $("#const-exp-select"))
+						    $("#const-exp-select"), undefined)
   EditConstructionExperiences.init()
   var EditDesignExperiences = new MultiSelect("Eligible Design Experiences",
 					      "Your Design Experiences",
-					      $("#des-exp-select"))
+					      $("#des-exp-select"), undefined)
   EditDesignExperiences.init()
 })
