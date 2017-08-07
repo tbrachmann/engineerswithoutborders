@@ -362,7 +362,9 @@ class UsersController < ApplicationController
       user.design_experiences = DesignExperience.find(params[:des_exp]).to_a
     end
     
-    user.update_attribute(:avatar, params[:user][:avatar])
+    unless params[:user][:avatar].nil?
+      user.update_attribute(:avatar, params[:user][:avatar])
+    end
     
     user.save
     
