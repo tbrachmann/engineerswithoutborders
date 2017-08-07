@@ -170,34 +170,42 @@ class UsersController < ApplicationController
     end
   end
 
-  def index
-
-    if request.xhr?
-      #skill_name = params[:skill_name]
-      @skills = Hash.new
-      @certs = Hash.new
-      @fields = Hash.new
-      @role = Hash.new
-      users = User.all
-      users.each do |user|
-        @skills[user[:id]] = []
-        @certs[user[:id]] = []
-        @fields[user[:id]] = []
-        @role[user[:id]] = []
-        user.certifications.each do |cert|
-          @certs[user[:id]].push cert[:name]
-        end
+  
+  def populate_quality_fields
+   #skill_name = params[:skill_name]
+    @skills = Hash.new
+    @certs = Hash.new
+    @fields = Hash.new
+    @role = Hash.new
+    users = User.all
+    users.each do |user|
+      @skills[user[:id]] = []
+      @certs[user[:id]] = []
+      @fields[user[:id]] = []
+      @role[user[:id]] = []
+      user.certifications.each do |cert|
+        @certs[user[:id]].push cert[:name]
+      end
+      if user.skills
         user.skills.each do |skill|
           @skills[user[:id]].push skill[:name]
         end
-        user.role.each do |roles|
-          @role[user[:id]].push roles[:name]
-        end
-        #if user.expertise
-          @fields[user[:id]].push user.expertise
-        #end
       end
-      data = {:skills => @skills, :certs => @certs, :fields => @fields}
+        
+      if user.role
+        @role[user[:id]].push roles[:name]
+      end
+      if user.expertise
+        @fields[user[:id]].push user.expertise
+      end
+    end
+    return {:skills => @skills, :certs => @certs, :fields => @fields}
+  end
+
+
+  def index
+    if request.xhr?
+      data = populate_quality_fields req
       render :json => data
       return
     end
