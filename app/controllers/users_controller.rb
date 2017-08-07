@@ -352,6 +352,8 @@ class UsersController < ApplicationController
       user.design_experiences = DesignExperience.find(params[:des_exp]).to_a
     end
     
+    user.update_attribute(:avatar, params[:user][:avatar])
+    
     user.save
     
     # update complete flag
