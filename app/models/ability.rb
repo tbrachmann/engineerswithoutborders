@@ -45,9 +45,9 @@ class Ability
       end
     end
 
-    print "NAME:" + user.name
-    print "**********user.admin: " + user.admin.to_s + "\n"
-    print "**********user.manager: " + user.manager.to_s + "\n"
+    # print "NAME:" + user.name
+    # print "**********user.admin: " + user.admin.to_s + "\n"
+    # print "**********user.manager: " + user.manager.to_s + "\n"
     
 
     # # common abilities
