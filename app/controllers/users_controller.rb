@@ -149,15 +149,16 @@ end
 class UsersController < ApplicationController
 
   respond_to :html, :js
+  # load_and_authorize_resource
   
   before_action only: [:show, :edit, :update, :age_sorting]
   
   autocomplete :user, :school
   
   
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to main_app.root_url, :alert => exception.message
-  end
+  # rescue_from CanCan::AccessDenied do |exception|
+  #   redirect_to main_app.root_url, :alert => exception.message
+  # end
 
   def create
     @user = User.new(params[:user])

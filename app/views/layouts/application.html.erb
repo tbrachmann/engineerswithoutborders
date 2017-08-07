@@ -36,11 +36,16 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="nav-item">
           <%= link_to("Home", root_path) %></a>
-        </li>
+	</li>
         <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to("Profile", user_path(current_user), class:"nav-link") %></a>
           </li>
+	  <% if can? :access, :rails_admin %>
+      	    <li class="nav-item">
+              <%= link_to("Admin", rails_admin.dashboard_path(current_user), class:"nav-link") %></a>
+            </li>
+	  <% end %>
       	  <% if can? :read, :all %>
       	    <li class="nav-item">
                     <%= link_to("My Projects", user_manages_path(current_user), class:"nav-link") %></a>

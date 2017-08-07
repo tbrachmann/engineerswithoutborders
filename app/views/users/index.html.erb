@@ -130,13 +130,7 @@
     <% end %>
 
     </div>
-    <div class="col-md-5">
-      <% if user.avatar.exists? %>
-        <%= image_tag user.avatar.url(:thumb), style: "width:100px", class:"img-thumbnail pull-right" %>
-      <% else %>
-        <%= image_tag User.no_image, style: "width:100px", class:"img-thumbnail pull-right" %>
-      <% end %>
-
+    <div class="col-md-2">
     <!--<button type="button" class="btn btn-success btn-sm btn-block" data-toggle="modal" data-target="#myModal">Contact <%= user.first_name %></button>-->
     </div>
   </div>

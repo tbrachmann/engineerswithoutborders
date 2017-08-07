@@ -84,5 +84,4 @@ gem "haml"
 
 gem "chartkick"
 
-
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"

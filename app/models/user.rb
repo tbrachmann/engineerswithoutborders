@@ -109,6 +109,10 @@ class User < ActiveRecord::Base
     @@preset_time_slots
   end
   
+  def role?(role)
+    roles.include? role.to_s
+  end
+  
   def self.no_image
     return @@no_image
   end
