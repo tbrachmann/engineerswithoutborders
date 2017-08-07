@@ -210,20 +210,20 @@
           <%= simple_form_for @user do |f| %>
             <%= f.association :role, label: "Please select role you have:", class:"ra-multiselect" %>
           <% end %>
-          <a class="popup-with-form btn btn-black" href="#new-role-form">Add a new Role</a>
-          <form id="new-role-form" class="white-popup-block mfp-hide">
-            <fieldset style="border:0;">
-              <ul>
-        	<li>
-        	  <%= f.input :role, label: "Add new Role"  %>
-        	</li>
-              </ul>
-            </fieldset>
-            <div class="btn sqs-block-btn btn-black btn-md" id="new-role-submit">
-              Save
-            </div>
+          <a class="popup-with-form btn btn-black" href="#new-role-form" id="a-new-role">
+      	    Add a new role
+      	  </a>
+          <div class="white-popup-block mfp-hide" id="new-role-form">
+      	    <%= form_tag do %>
+      	      <%= label_tag(:new_role, "Add new Role") %>
+      	      <%= text_field_tag(:new_role, nil, class: "form-control string optional") %>
+      	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
+      			     id: "new-role-submit") %>
+  	        <% end %>
+          </div>
           </form>
         </div>
+        
 	<div class="col-md-12">
 	  Please select the construction experience you have:
           <select multiple="multiple" id="const-exp-select" name="const_exp[]">
