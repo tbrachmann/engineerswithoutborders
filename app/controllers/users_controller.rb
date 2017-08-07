@@ -206,7 +206,7 @@ class UsersController < ApplicationController
 
   def index
     if request.xhr?
-      data = populate_quality_fields req
+      data = populate_quality_fields
       render :json => data
       return
     end
