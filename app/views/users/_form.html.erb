@@ -63,266 +63,272 @@
         </div>
         <%= f.fields_for :availability do |a| %>
 
-          <div class="col-md-12">
-            <label>Please indicate your general availability on a weekly basis:</label>
-            <table style="width:100%">
-              <tr>
-		<th></th>
-		<th>Monday</th>
-		<th>Tuesday</th> 
-		<th>Wednesday</th>
-		<th>Thursday</th>
-		<th>Friday</th> 
-		<th>Saturday</th>
-		<th>Sunday</th>
-              </tr>
-              <tr>
-		<td>
-                  Morning (8:00am - 12:00pm)
-		</td>
-		<td>
-                  <%= a.check_box :monday_morning, {:checked => @current_availability["monday_morning"]}  %>    
-		</td> 
-		<td>
-                  <%= a.check_box :tuesday_morning, {:checked => @current_availability["tuesday_morning"]} %>    
-		</td> 
-		<td>
-                  <%= a.check_box :wednesday_morning, {:checked => @current_availability["wednesday_morning"]} %>    
-		</td>
-		<td>
-                  <%= a.check_box :thursday_morning, {:checked => @current_availability["thursday_morning"]} %>    
-		</td>
-		<td>
-                  <%= a.check_box :friday_morning, {:checked => @current_availability["friday_morning"]} %>    
-		</td>
-		<td>
-                  <%= a.check_box :saturday_morning, {:checked => @current_availability["saturday_morning"]} %>    
-		</td>
-		<td>
-                  <%= a.check_box :sunday_morning, {:checked => @current_availability["sunday_morning"]}%>    
-		</td> 
-              </tr>
-              <tr>
-		<td>
-                  Afternoon (12:00pm - 5:00pm)
-		</td>
-		<td>
-                  <%= a.check_box :monday_afternoon, {:checked => @current_availability["monday_afternoon"]} %>    
-		</td> 
-		<td>
-                  <%= a.check_box :tuesday_afternoon, {:checked => @current_availability["tuesday_afternoon"]} %>    
-		</td> 
-		<td>
-                  <%= a.check_box :wednesday_afternoon, {:checked => @current_availability["wednesday_afternoon"]} %>    
-		</td>
-		<td>
-                  <%= a.check_box :thursday_afternoon, {:checked => @current_availability["thursday_afternoon"]} %>    
-		</td>
-		<td>
-                  <%= a.check_box :friday_afternoon, {:checked => @current_availability["friday_afternoon"]} %>    
-		</td>
-		<td>
-                  <%= a.check_box :saturday_afternoon, {:checked => @current_availability["saturday_afternoon"]} %>    
-		</td>
-		<td>
-                  <%= a.check_box :sunday_afternoon, {:checked => @current_availability["sunday_afternoon"]}%> 
-		</td>
-              </tr>
-              <tr>
-		<td>
-                  Evening (5:00pm - 10:00pm)
-		</td>
-		<td>
-                  <%= a.check_box :monday_evening, {:checked => @current_availability["monday_evening"]} %>    
-		</td> 
-		<td>
-                  <%= a.check_box :tuesday_evening, {:checked => @current_availability["tuesday_evening"]} %>    
-		</td> 
-		<td>
-                  <%= a.check_box :wednesday_evening, {:checked => @current_availability["wednesday_evening"]} %>    
-		</td>
-		<td>
-                  <%= a.check_box :thursday_evening, {:checked => @current_availability["thursday_evening"]} %>    
-		</td>
-		<td>
-                  <%= a.check_box :friday_evening, {:checked => @current_availability["friday_evening"]} %>    
-		</td>
-		<td>
-                  <%= a.check_box :saturday_evening, {:checked => @current_availability["saturday_evening"]} %>    
-		</td>
-		<td>
-                  <%= a.check_box :sunday_evening, {:checked => @current_availability["sunday_evening"]} %> 
-		</td>
-              </tr>
-            </table>
-          </div>
-        <% end %>
-      </div>
+			    <div class="col-md-12">
+			      <label>Please indicate your general availability on a weekly basis:</label>
+			      <table style="width:100%">
+			        <tr>
+								<th></th>
+								<th>Monday</th>
+								<th>Tuesday</th> 
+								<th>Wednesday</th>
+								<th>Thursday</th>
+								<th>Friday</th> 
+								<th>Saturday</th>
+								<th>Sunday</th>
+			        </tr>
+			        <tr>
+								<td>
+						                  Morning (8:00am - 12:00pm)
+								</td>
+								<td>
+						                  <%= a.check_box :monday_morning, {:checked => @current_availability["monday_morning"]}  %>    
+								</td> 
+								<td>
+						                  <%= a.check_box :tuesday_morning, {:checked => @current_availability["tuesday_morning"]} %>    
+								</td> 
+								<td>
+						                  <%= a.check_box :wednesday_morning, {:checked => @current_availability["wednesday_morning"]} %>    
+								</td>
+								<td>
+						                  <%= a.check_box :thursday_morning, {:checked => @current_availability["thursday_morning"]} %>    
+								</td>
+								<td>
+						                  <%= a.check_box :friday_morning, {:checked => @current_availability["friday_morning"]} %>    
+								</td>
+								<td>
+						                  <%= a.check_box :saturday_morning, {:checked => @current_availability["saturday_morning"]} %>    
+								</td>
+								<td>
+						                  <%= a.check_box :sunday_morning, {:checked => @current_availability["sunday_morning"]}%>    
+								</td> 
+			        </tr>
+			        <tr>
+								<td>
+						                  Afternoon (12:00pm - 5:00pm)
+								</td>
+								<td>
+						                  <%= a.check_box :monday_afternoon, {:checked => @current_availability["monday_afternoon"]} %>    
+								</td> 
+								<td>
+						                  <%= a.check_box :tuesday_afternoon, {:checked => @current_availability["tuesday_afternoon"]} %>    
+								</td> 
+								<td>
+						                  <%= a.check_box :wednesday_afternoon, {:checked => @current_availability["wednesday_afternoon"]} %>    
+								</td>
+								<td>
+						                  <%= a.check_box :thursday_afternoon, {:checked => @current_availability["thursday_afternoon"]} %>    
+								</td>
+								<td>
+						                  <%= a.check_box :friday_afternoon, {:checked => @current_availability["friday_afternoon"]} %>    
+								</td>
+								<td>
+						                  <%= a.check_box :saturday_afternoon, {:checked => @current_availability["saturday_afternoon"]} %>    
+								</td>
+								<td>
+						                  <%= a.check_box :sunday_afternoon, {:checked => @current_availability["sunday_afternoon"]}%> 
+								</td>
+			        </tr>
+			        <tr>
+								<td>
+						                  Evening (5:00pm - 10:00pm)
+								</td>
+								<td>
+						                  <%= a.check_box :monday_evening, {:checked => @current_availability["monday_evening"]} %>    
+								</td> 
+								<td>
+						                  <%= a.check_box :tuesday_evening, {:checked => @current_availability["tuesday_evening"]} %>    
+								</td> 
+								<td>
+						                  <%= a.check_box :wednesday_evening, {:checked => @current_availability["wednesday_evening"]} %>    
+								</td>
+								<td>
+						                  <%= a.check_box :thursday_evening, {:checked => @current_availability["thursday_evening"]} %>    
+								</td>
+								<td>
+						                  <%= a.check_box :friday_evening, {:checked => @current_availability["friday_evening"]} %>    
+								</td>
+								<td>
+						                  <%= a.check_box :saturday_evening, {:checked => @current_availability["saturday_evening"]} %>    
+								</td>
+								<td>
+						                  <%= a.check_box :sunday_evening, {:checked => @current_availability["sunday_evening"]} %> 
+								</td>
+			        </tr>
+			      </table>
+			    </div>
+		  	<% end %>
+			</div>
       <!-- other details -->
-      <div class="row">
-        <div class="col-md-12">
-          &nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
-        <div class="col-md-12">
-	  Please select skills you have:
-          <select multiple="multiple" id="skills-select" name="skills[]">
-	    <% @mySkills.each do |skill| %>
-	      <option id="<%= skill.id %>" value="<%= skill.id %>" selected>
-		<%= skill.name %>
-	      </option>
-	    <% end %>
-	    <% @skills.each do |skill| %>
-	      <option id="<%= skill.id %>" value="<%= skill.id %>">
-		<%= skill.name %>
-	      </option>
-	    <% end %>
-	  </select>
-	  <style>
-	   .search-input {
-	       width: 100%;
-	   }
-	   .volunteer-emails-box#failure {
-	       background-color: rgba(255,0,0,0.7);	
-	       //background-color: red;
-	       border: 3px solid #ff0000;
-	   }
-	  </style>
-	  <a class="popup-with-form btn btn-black" href="#new-skill-form" id="a-new-skill">
-	    Add a new Skill
-	  </a>
-	  <div class="white-popup-block mfp-hide" id="new-skill-form">
-	    <div id="failure" hidden>
-	      <div class="volunteer-emails-box text-center" id="failure">
-		Skill already exists.
-	      </div>
-	      <br>
-	    </div>
-	    <%= form_tag do %>
-	      <%= label_tag(:new_skill, "Add new Skill") %>
-	      <%= text_field_tag(:new_skill, nil, class: "form-control string optional") %>
-	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
-			     id: "new-skill-submit") %>
-	    <% end %>
-          </div>
-	</div>
-	<br>
-        <div class="col-md-12">
-          <%= simple_form_for @user do |f| %>
-            <%= f.association :role, label: "Please select role you have:", class:"ra-multiselect" %>
-          <% end %>
-          <a class="popup-with-form btn btn-black" href="#new-role-form" id="a-new-role">
-      	    Add a new role
-      	  </a>
-          <div class="white-popup-block mfp-hide" id="new-role-form">
-      	    <%= form_tag do %>
-      	      <%= label_tag(:new_role, "Add new Role") %>
-      	      <%= text_field_tag(:new_role, nil, class: "form-control string optional") %>
-      	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
-      			     id: "new-role-submit") %>
-  	        <% end %>
-          </div>
-          </form>
-        </div>
-        
-	<div class="col-md-12">
-	  Please select the construction experience you have:
-          <select multiple="multiple" id="const-exp-select" name="const_exp[]">
-	    <% @myConstructionExperiences.each do |exp| %>
-	      <option id="<%= exp.id %>" value="<%= exp.id %>" selected>
-		<%= exp.name %>
-	      </option>
-	    <% end %>
-	    <% @constructionExperiences.each do |exp| %>
-	      <option id="<%= exp.id %>" value="<%= exp.id %>">
-		<%= exp.name %>
-	      </option>
-	    <% end %>
-	  </select>
-	  <style>
-	   .search-input {
-	       width: 100%;
-	   }
-	   .volunteer-emails-box#failure {
-	       background-color: rgba(255,0,0,0.7);	
-	       //background-color: red;
-	       border: 3px solid #ff0000;
-	   }
-	  </style>
-	  <a class="popup-with-form btn btn-black" href="#new-const-exp-form" id="a-new-const-exp">
-	    Add a new Construction Experience
-	  </a>
-	  <div class="white-popup-block mfp-hide" id="new-const-exp-form">
-	    <div id="failure" hidden>
-	      <div class="volunteer-emails-box text-center" id="failure">
-		Construction Experience already exists.
-	      </div>
-	      <br>
-	    </div>
-	    <%= form_tag edit_user_path(@user), id: "new-const-exp-form1" do %>
-	      <%= label_tag(:new_const_exp, "Add a new Construction Experience") %>
-	      <%= text_field_tag(:new_const_exp, nil, class: "form-control string optional") %>
-	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
-			     id: "new-const-exp-submit") %>
-	    <% end %>
-          </div>
-	</div>
-	<div class="col-md-12">
-	  Please select the design experience you have:
-          <select multiple="multiple" id="des-exp-select" name="des_exp[]">
-	    <% @myDesignExperiences.each do |exp| %>
-	      <option id="<%= exp.id %>" value="<%= exp.id %>" selected>
-		<%= exp.name %>
-	      </option>
-	    <% end %>
-	    <% @designExperiences.each do |exp| %>
-	      <option id="<%= exp.id %>" value="<%= exp.id %>">
-		<%= exp.name %>
-	      </option>
-	    <% end %>
-	  </select>
-	  <style>
-	   .search-input {
-	       width: 100%;
-	   }
-	   .volunteer-emails-box#failure {
-	       background-color: rgba(255,0,0,0.7);	
-	       //background-color: red;
-	       border: 3px solid #ff0000;
-	   }
-	  </style>
-	  <a class="popup-with-form btn btn-black" href="#new-des-exp-form" id="a-new-des-exp">
-	    Add a new Design Experience
-	  </a>
-	  <div class="white-popup-block mfp-hide" id="new-des-exp-form">
-	    <div id="failure" hidden>
-	      <div class="volunteer-emails-box text-center" id="failure">
-		Desruction Experience already exists.
-	      </div>
-	      <br>
-	    </div>
-	    <%= form_tag edit_user_path(@user), id: "new-des-exp-form1" do %>
-	      <%= label_tag(:new_des_exp, "Add a new Design Experience") %>
-	      <%= text_field_tag(:new_des_exp, nil, class: "form-control string optional") %>
-	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
-			     id: "new-des-exp-submit") %>
-	    <% end %>
-          </div>
-	</div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <br>
-          <%= f.input :description, as: :text, id: "About:", label: "Please tell us very briefly a little about yourself and why you want to volunteer for Engineers without Borders.", :input_html => {:style => 'width: 100%', :rows => 4, class: 'response-project'} %>
-        </div>
-      </div>
-      <%= f.button :submit, "Update Background", class: "btn sqs-block-btn btn-black btn-md"%>
-      </fieldset>
-      <fieldset>
-      <legend>Account Information</legend>
-      <%= f.input :email, disabled: true %>
-      <%= link_to "Change Email or Password", edit_user_registration_path, class: "btn sqs-block-btn btn-black btn-md" %>
-      </fieldset>
-    <% end %>
-    <p></p>
+			<div class="row">
+			  <div class="col-md-12">
+			    &nbsp;&nbsp;&nbsp;&nbsp;
+			  </div>
+			  <div class="col-md-12">
+					Please select skills you have:
+			    <select multiple="multiple" id="skills-select" name="skills[]">
+				    <% @mySkills.each do |skill| %>
+				      <option id="<%= skill.id %>" value="<%= skill.id %>" selected>
+								<%= skill.name %>
+				      </option>
+				    <% end %>
+				    <% @skills.each do |skill| %>
+				      <option id="<%= skill.id %>" value="<%= skill.id %>">
+								<%= skill.name %>
+				      </option>
+				    <% end %>
+				  </select>
+				  <style>
+				   .search-input {
+				       width: 100%;
+				   }
+				   .volunteer-emails-box#failure {
+				       background-color: rgba(255,0,0,0.7);	
+				       //background-color: red;
+				       border: 3px solid #ff0000;
+				   }
+				  </style>
+				  <a class="popup-with-form btn btn-black" href="#new-skill-form" id="a-new-skill">
+				    Add a new Skill
+				  </a>
+				  <div class="white-popup-block mfp-hide" id="new-skill-form">
+				    <div id="failure" hidden>
+				      <div class="volunteer-emails-box text-center" id="failure">
+								Skill already exists.
+				      </div>
+				      <br>
+				    </div>
+				    <%= form_tag do %>
+				      <%= label_tag(:new_skill, "Add new Skill") %>
+				      <%= text_field_tag(:new_skill, nil, class: "form-control string optional") %>
+				      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
+						     id: "new-skill-submit") %>
+				    <% end %>
+			    </div>
+				</div>
+				<br>
+			  <div class="col-md-12">
+			    <%= simple_form_for @user do |f| %>
+			      <%= f.association :role, label: "Please select role you have:", class:"ra-multiselect" %>
+			    <% end %>
+			    <a class="popup-with-form btn btn-black" href="#test-form">Add a new Role</a>
+			    <form id="test-form" class="white-popup-block mfp-hide">
+			      <fieldset style="border:0;">
+			        <ul>
+			  	<li>
+			  	  <%= f.input :role, label: "Role"  %>
+			  	</li>
+			        </ul>
+			      </fieldset>
+			    </form>
+			  </div>
+				<div class="col-md-12">
+				  Please select the construction experience you have:
+			    <select multiple="multiple" id="const-exp-select" name="const_exp[]">
+				    <% @myConstructionExperiences.each do |exp| %>
+				      <option id="<%= exp.id %>" value="<%= exp.id %>" selected>
+								<%= exp.name %>
+				      </option>
+				    <% end %>
+				    <% @constructionExperiences.each do |exp| %>
+				      <option id="<%= exp.id %>" value="<%= exp.id %>">
+								<%= exp.name %>
+				      </option>
+				    <% end %>
+				  </select>
+				  <style>
+				   .search-input {
+				       width: 100%;
+				   }
+				   .volunteer-emails-box#failure {
+				       background-color: rgba(255,0,0,0.7);	
+				       //background-color: red;
+				       border: 3px solid #ff0000;
+				   }
+				  </style>
+				  <a class="popup-with-form btn btn-black" href="#new-const-exp-form" id="a-new-const-exp">
+				    Add a new Construction Experience
+				  </a>
+				  <div class="white-popup-block mfp-hide" id="new-const-exp-form">
+				    <div id="failure" hidden>
+				      <div class="volunteer-emails-box text-center" id="failure">
+								Construction Experience already exists.
+				      </div>
+				      <br>
+				    </div>
+				    <%= form_tag edit_user_path(@user), id: "new-const-exp-form1" do %>
+				      <%= label_tag(:new_const_exp, "Add a new Construction Experience") %>
+				      <%= text_field_tag(:new_const_exp, nil, class: "form-control string optional") %>
+				      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
+						     id: "new-const-exp-submit") %>
+				    <% end %>
+			          </div>
+				</div>
+				<div class="col-md-12">
+				  Please select the design experience you have:
+			      <select multiple="multiple" id="des-exp-select" name="des_exp[]">
+			  			<% @myDesignExperiences.each do |exp| %>
+			    			<option id="<%= exp.id %>" value="<%= exp.id %>" selected>
+									<%= exp.name %>
+			    			</option>
+			  			<% end %>
+			  			<% @designExperiences.each do |exp| %>
+			    		<option id="<%= exp.id %>" value="<%= exp.id %>">
+								<%= exp.name %>
+			    		</option>
+			  			<% end %>
+						</select>
+				  <style>
+				   .search-input {
+				       width: 100%;
+				   }
+				   .volunteer-emails-box#failure {
+				       background-color: rgba(255,0,0,0.7);	
+				       //background-color: red;
+				       border: 3px solid #ff0000;
+				   }
+				  </style>
+				  <a class="popup-with-form btn btn-black" href="#new-des-exp-form" id="a-new-des-exp">
+				    Add a new Design Experience
+				  </a>
+				  <div class="white-popup-block mfp-hide" id="new-des-exp-form">
+				    <div id="failure" hidden>
+				      <div class="volunteer-emails-box text-center" id="failure">
+								Design Experience already exists.
+				      </div>
+				      <br>
+				    </div>
+				    <%= form_tag edit_user_path(@user), id: "new-des-exp-form1" do %>
+				      <%= label_tag(:new_des_exp, "Add a new Design Experience") %>
+				      <%= text_field_tag(:new_des_exp, nil, class: "form-control string optional") %>
+				      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
+						     id: "new-des-exp-submit") %>
+				    <% end %>
+			    </div>
+				</div>
+			</div>
+			<div class="row">
+			  <div class="col-md-12">
+			    <br>
+			    <%= f.input :description, as: :text, id: "About:", label: "Please tell us very briefly a little about yourself and why you want to volunteer for Engineers without Borders.", :input_html => {:style => 'width: 100%', :rows => 4, class: 'response-project'} %>
+			  </div>
+			</div>
+			<div class="row">
+			  <div class="col-md-12">
+			    <br>
+			    <%= f.input :avatar, as: :file, label: "Please upload a picture of yourself!
+			    " %>
+			    <br>
+			    <br>
+			  </div>
+			</div>
+			<%= f.button :submit, "Update Background", class: "btn sqs-block-btn btn-black btn-md"%>
+		</fieldset>
+		<fieldset>
+			<legend>Account Information</legend>
+			<%= f.input :email, disabled: true %>
+			<%= link_to "Change Email or Password", edit_user_registration_path, class: "btn sqs-block-btn btn-black btn-md" %>
+		</fieldset>
+	<% end %>
+<p></p>
 </div>
     
