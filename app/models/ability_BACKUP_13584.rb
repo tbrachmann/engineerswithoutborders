@@ -33,7 +33,10 @@ class Ability
 
     if user && user.admin      # need to figure out how to check if admin
       can :manage, :all
+<<<<<<< HEAD
+=======
       can :access, :rails_admin
+>>>>>>> f6e4be7cd4077c8a17083f81a0210461697e7b43
       can :dashboard
     else
 

@@ -29,11 +29,8 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-    user ||= User.new # guest user (not logged in)
-
     if user && user.admin      # need to figure out how to check if admin
       can :manage, :all
-      can :access, :rails_admin
       can :dashboard
     else
 
@@ -45,7 +42,8 @@ class Ability
       end
     end
 
-    print "NAME:" + user.name
+    user ||= User.new # guest user (not logged in)
+    
     print "**********user.admin: " + user.admin.to_s + "\n"
     print "**********user.manager: " + user.manager.to_s + "\n"
     
