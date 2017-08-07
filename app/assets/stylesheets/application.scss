@@ -26,7 +26,7 @@ html, body {
  */
  
  h1, h2, h3, h4, h5, h6 {
-    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', Helvetica, sans-serif;
     // letter-spacing: 1px;
     font-weight: 400;
     font-style: normal;
@@ -35,7 +35,7 @@ html, body {
     // font-weight: bold;
 }
 p, div, strong, input, span {
-    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', Helvetica, sans-serif;
     letter-spacing: 1px;
     font-size: 18px;
     color: rgba(26,26,26,.8);
@@ -44,7 +44,7 @@ p, div, strong, input, span {
 }
 
 .font-pn {
-  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Helvetica, sans-serif;
   letter-spacing: 1px;
 }
  #projects .calendar {
@@ -52,7 +52,7 @@ p, div, strong, input, span {
   width: 100%;
 
   td, th {
-    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', Helvetica, sans-serif;
     letter-spacing: 1px;
     font-size: 10px;
     padding: 6px;
@@ -312,7 +312,7 @@ p, div, strong, input, span {
 .sqs-block-btn {
   transition: .1s opacity linear;
   -webkit-backface-visibility: hidden;
-  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Helvetica, sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
@@ -478,9 +478,10 @@ label {
 }
 
 .user_toggle {
-  padding: 1px 20px 8px 20px;
-  background-color: #D3D3D3;
-  border-radius: 15px;
+  padding: 2px 20px 2px 20px;
+  background-color: #E5E5E5;
+  outline: none;
+  
 }
 
 .user_checkboxes {
@@ -524,7 +525,6 @@ table#volunteers th, table#volunteers td {
   text-align: left; 
 
 }
-
 
 table {
     border-collapse: collapse;

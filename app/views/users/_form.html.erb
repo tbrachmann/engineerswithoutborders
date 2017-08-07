@@ -68,13 +68,13 @@
             <table style="width:100%">
               <tr>
 		<th></th>
-		<th>Monday</th>
-		<th>Tuesday</th> 
-		<th>Wednesday</th>
-		<th>Thursday</th>
-		<th>Friday</th> 
-		<th>Saturday</th>
-		<th>Sunday</th>
+		<th>Mon</th>
+		<th>Tue</th> 
+		<th>Wed</th>
+		<th>Thu</th>
+		<th>Fri</th> 
+		<th>Sat</th>
+		<th>Sun</th>
               </tr>
               <tr>
 		<td>
@@ -163,67 +163,49 @@
         <div class="col-md-12">
           &nbsp;&nbsp;&nbsp;&nbsp;
         </div>
-        <div class="col-md-12">
-	  Please select skills you have:
-          <select multiple="multiple" id="skills-select" name="skills[]">
-	    <% @mySkills.each do |skill| %>
-	      <option id="<%= skill.id %>" value="<%= skill.id %>" selected>
-		<%= skill.name %>
-	      </option>
-	    <% end %>
-	    <% @skills.each do |skill| %>
-	      <option id="<%= skill.id %>" value="<%= skill.id %>">
-		<%= skill.name %>
-	      </option>
-	    <% end %>
-	  </select>
-	  <style>
-	   .search-input {
-	       width: 100%;
-	   }
-	   .volunteer-emails-box#failure {
-	       background-color: rgba(255,0,0,0.7);	
-	       //background-color: red;
-	       border: 3px solid #ff0000;
-	   }
-	  </style>
-	  <a class="popup-with-form btn btn-black" href="#new-skill-form" id="a-new-skill">
-	    Add a new Skill
-	  </a>
-	  <div class="white-popup-block mfp-hide" id="new-skill-form">
-	    <div id="failure" hidden>
-	      <div class="volunteer-emails-box text-center" id="failure">
-		Skill already exists.
-	      </div>
-	      <br>
-	    </div>
-	    <%= form_tag do %>
-	      <%= label_tag(:new_skill, "Add new Skill") %>
-	      <%= text_field_tag(:new_skill, nil, class: "form-control string optional") %>
-	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
-			     id: "new-skill-submit") %>
-	    <% end %>
-          </div>
+    <div class="col-md-12">
+    	  Please select skills you have:
+              <select multiple="multiple" id="skills-select" name="skills[]">
+    	    <% @mySkills.each do |skill| %>
+    	      <option id="<%= skill.id %>" value="<%= skill.id %>" selected>
+    		<%= skill.name %>
+    	      </option>
+    	    <% end %>
+    	    <% @skills.each do |skill| %>
+    	      <option id="<%= skill.id %>" value="<%= skill.id %>">
+    		<%= skill.name %>
+    	      </option>
+    	    <% end %>
+    	  </select>
+    	  <style>
+    	   .search-input {
+    	       width: 100%;
+    	   }
+    	   .volunteer-emails-box#failure {
+    	       background-color: rgba(255,0,0,0.7);	
+    	       //background-color: red;
+    	       border: 3px solid #ff0000;
+    	   }
+    	  </style>
+    	  <a class="popup-with-form btn btn-black" href="#new-skill-form" id="a-new-skill">
+    	    Add a new Skill
+    	  </a>
+    	  <div class="white-popup-block mfp-hide" id="new-skill-form">
+    	    <div id="failure" hidden>
+    	      <div class="volunteer-emails-box text-center" id="failure">
+    		Skill already exists.
+    	      </div>
+    	      <br>
+    	    </div>
+    	    <%= form_tag do %>
+    	      <%= label_tag(:new_skill, "Add new Skill") %>
+    	      <%= text_field_tag(:new_skill, nil, class: "form-control string optional") %>
+    	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
+    			     id: "new-skill-submit") %>
+    	    <% end %>
+      </div>
 	</div>
 	<br>
-        <div class="col-md-12">
-          <%= simple_form_for @user do |f| %>
-            <%= f.association :role, label: "Please select role you have:", class:"ra-multiselect" %>
-          <% end %>
-          <a class="popup-with-form btn btn-black" href="#new-role-form" id="a-new-role">
-      	    Add a new role
-      	  </a>
-          <div class="white-popup-block mfp-hide" id="new-role-form">
-      	    <%= form_tag do %>
-      	      <%= label_tag(:new_role, "Add new Role") %>
-      	      <%= text_field_tag(:new_role, nil, class: "form-control string optional") %>
-      	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
-      			     id: "new-role-submit") %>
-  	        <% end %>
-          </div>
-          </form>
-        </div>
-        
 	<div class="col-md-12">
 	  Please select the construction experience you have:
           <select multiple="multiple" id="const-exp-select" name="const_exp[]">
@@ -249,7 +231,7 @@
 	   }
 	  </style>
 	  <a class="popup-with-form btn btn-black" href="#new-const-exp-form" id="a-new-const-exp">
-	    Add a new Construction Experience
+	    ADD A NEW CONSTRUCTION EXPERIENCE
 	  </a>
 	  <div class="white-popup-block mfp-hide" id="new-const-exp-form">
 	    <div id="failure" hidden>
@@ -308,6 +290,25 @@
 	    <% end %>
           </div>
 	</div>
+        <div class="col-md-12">
+          <%= simple_form_for @user do |f| %>
+            <%= f.association :role, label: "Please select role you have:", class:"ra-multiselect" %>
+          <% end %>
+          <a class="popup-with-form btn btn-black" href="#new-role-form" id="a-new-role">
+      	    Add a new role
+      	  </a>
+          <div class="white-popup-block mfp-hide" id="new-role-form">
+      	    <%= form_tag do %>
+      	      <%= label_tag(:new_role, "Add new Role") %>
+      	      <%= text_field_tag(:new_role, nil, class: "form-control string optional") %>
+      	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
+      			     id: "new-role-submit") %>
+  	        <% end %>
+          </div>
+          </form>
+        </div>
+        
+	
       </div>
       <div class="row">
         <div class="col-md-12">
