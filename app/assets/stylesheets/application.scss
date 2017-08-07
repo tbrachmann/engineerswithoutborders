@@ -26,7 +26,7 @@ html, body {
  */
  
  h1, h2, h3, h4, h5, h6 {
-    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', Helvetica, sans-serif;
     // letter-spacing: 1px;
     font-weight: 400;
     font-style: normal;
@@ -35,7 +35,7 @@ html, body {
     // font-weight: bold;
 }
 p, div, strong, input, span {
-    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', Helvetica, sans-serif;
     letter-spacing: 1px;
     font-size: 18px;
     color: rgba(26,26,26,.8);
@@ -44,7 +44,7 @@ p, div, strong, input, span {
 }
 
 .font-pn {
-  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Helvetica, sans-serif;
   letter-spacing: 1px;
 }
  #projects .calendar {
@@ -52,7 +52,7 @@ p, div, strong, input, span {
   width: 100%;
 
   td, th {
-    font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Open Sans', Helvetica, sans-serif;
     letter-spacing: 1px;
     font-size: 10px;
     padding: 6px;
@@ -209,12 +209,13 @@ p, div, strong, input, span {
 .volunteer-emails-box{
   // background-color: #3D3C40;
   // color: #FFFFFF;
-  background-color: rgba(248, 247, 216, 0.7);
+  background-color: #f5f5f5;
   margin: auto;
   width: 80%;
-  border: 3px solid #5cb85c;
+  // border: 3px solid #5cb85c;
   // border-color: #3D3C40;
-  padding-left: 10px;
+  padding-left: 50px;
+  padding-right: 10px;
   position: relative;
   
   .header{
@@ -228,12 +229,11 @@ p, div, strong, input, span {
   }
     
   #confirmation{
-    position: absolute;
-    right: -12%;
-    top: -1.5%;
-    width: 150px;
-    height: 99px;
-    
+    position: relative;
+    // right: -12%;
+    // top: -1.5%;
+    // width: 150px;
+    // height: 90px;
     font-family: 'Open Sans', Helvetica, sans-serif;
     font-size: 16px;
     font-weight: bold;
@@ -312,7 +312,7 @@ p, div, strong, input, span {
 .sqs-block-btn {
   transition: .1s opacity linear;
   -webkit-backface-visibility: hidden;
-  font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', Helvetica, sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 600;
@@ -353,11 +353,11 @@ p, div, strong, input, span {
   padding: 12px 14px;
 }
 .btn-black {
-  background-color: #272727;
+  background-color: #3d3c3e;
   color: #fff;
 }
 .btn-black:hover {
-  background-color: #404040;
+  background-color: #272727;
   background-repeat:no-repeat;
   border: none;
   cursor:pointer;
@@ -478,9 +478,10 @@ label {
 }
 
 .user_toggle {
-  padding: 1px 20px 8px 20px;
-  background-color: #D3D3D3;
-  border-radius: 15px;
+  padding: 2px 20px 2px 20px;
+  background-color: #E5E5E5;
+  outline: none;
+  
 }
 
 .user_checkboxes {
@@ -525,13 +526,25 @@ table#volunteers th, table#volunteers td {
 
 }
 
+
 #profile_image{
   width: 300px;
   height: auto;
   margin: auto;
 }
+
 table {
     border-collapse: collapse;
     width: 100%;
     table-layout: fixed;
+}
+a {
+  color: #095aa6;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.temp {
+  padding-left: 50px;
 }

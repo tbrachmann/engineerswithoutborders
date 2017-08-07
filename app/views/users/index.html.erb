@@ -1,38 +1,53 @@
-<div class="row section">
-  <div class="col-md-8 col-md-offset-2 section">
+<div class="row section" style="padding-bottom: 20px">
+  <div class="col-md-8 col-md-offset-2 section" style="padding-bottom: 20px">
     <h1 class="text-center">Listing Users</h1>
     <br>
     <div class="row">
       <div class="col-md-12">
       	<%= search_form_for @q do |f| %>
       	  <% @search_on = [:first_name, :last_name] %>
-      	  <%= f.condition_fields do |c| %>
+      	  <%= f.condition_fields do |c|%>
       	    <%= render "condition_fields", f: c %>
       	  <% end %>
-      	  <p><%= link_to_add_fields "Add Conditions", f, :condition %></p>
-      	  <%= f.submit %>
+      	  <p>
+      	    
+      	  <div class="field">
+      	    <div class="col-sm-10">
+      	    <%= link_to_add_fields "Add Conditions", f, :condition %>
+      	    </div>
+      	    <div class="col-sm-1" style="padding-left: 35px">
+      	    <%= f.submit class:"btn btn-md sqs-block-btn btn-black" %>
+      	      
+      	    </div>
+      	  </div>
+      	  </p>
+      	  
       	<% end %>
       </div>
     </div>
   </div>
 </div>
-
-<%- if @email_list %>
-  <div class="volunteer-emails-box">
-    <br>
-    <p class= "header">Please confirm to send an email to the following addresses:</p>
-    <p class= "emails"><%= @email_list %></p>
-    <div id= "confirmation">
-      <button type="button" class="btn btn-success btn-sm btn-block" id= "confirmation">Email</button>
-    </div>
-  </div>
-  <div>
-  </div>
-<% end %>
+      <div class="row">
+        <div class="col-sm-9" style="padding-right: 0">
+        <%- if @email_list %>
+        <div class="volunteer-emails-box" style="margin-right: 0">
+          <br>
+          <p class= "header">Please confirm to send an email to the following addresses:</p>
+          <p class= "emails"><%= @email_list %></p><br>
+        </div><br>
+        </div>
+        <div class="col-sm-3" style="padding-left:2">
+        <div id= "confirmation">
+          <br><br><br>
+          <button type="button" class="btn btn-md sqs-block-btn btn-black" id= "confirmation">Email</button>
+        </div>
+      <% end %>
+      </div>
+        </div>
 
 <div class = "row">
   <div class = "col-md-4" >
-    <div id="skills_div" class="user_toggle"><h3>Skills<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "skills_toggle" ) %></img></h3></div>
+    <div id="skills_div" class="user_toggle"><h4>Skills<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "skills_toggle" ) %></img></h4></div>
       <br/>
       <div class="user_checkboxes" id="skill_checkboxes">
         <% Skill.all.each do |skill| %>
@@ -43,7 +58,7 @@
       </div>
   </div>
   <div class = "col-md-4" >
-    <div id="cert_div" class="user_toggle"><h3>Certifications<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "cert_toggle") %></img></h3></div>
+    <div id="cert_div" class="user_toggle"><h4>Certifications<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "cert_toggle") %></img></h4></div>
       <br/>
       <div class="user_checkboxes" id="cert_checkboxes">
         <% Certification.all.each do |cert| %>
@@ -54,7 +69,7 @@
       </div>
   </div>
   <div class = "col-md-4">
-    <div id="field_div" class="user_toggle"><h3>Field of Study<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "field_toggle") %></img></h3></div>
+    <div id="field_div" class="user_toggle"><h4>Field of Study<img href="#"><%= image_tag("plus_icon.png", size: "24x24", class: "pull-right", id: "field_toggle") %></img></h4></div>
       <br/>
       <div class="user_checkboxes" id="field_checkboxes">
       <% @field_choices.each do |field| %>
@@ -129,7 +144,7 @@
 <% end %>
   <!--<a href= "mailto:bill@gates.com?">-->
   <div id="search-submit">
-    <input type="submit" button type="button" class="btn btn-success btn-sm btn-block" id="submit-button" value="Contact Volunteers"></button>
+    <input type="submit" button type="button" class="btn btn-black btn-md btn-block" id="submit-button" value="Contact Volunteers"></button>
     <!--<a href= "mailto:bill@gates.com?subject=Volunteer Request&body=After looking over your qualifications, I think that you would be a great fit for my project! Please accept my invitation to join." id= "submission-link">Contact Volunteers</a>-->
   </div>
 </form>
