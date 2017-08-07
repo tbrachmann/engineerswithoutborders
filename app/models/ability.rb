@@ -31,6 +31,9 @@ class Ability
 
     user ||= User.new # guest user (not logged in)
     
+    print "**********user.admin: " + user.admin.to_s + "\n"
+    print "**********user.manager: " + user.manager.to_s + "\n"
+    
     if user.admin      # need to figure out how to check if admin
       can :manage, :all   
       can :dashboard      
@@ -40,6 +43,7 @@ class Ability
       if user.manager
         can :manage, Project
         can :read, :all
+        cannot :read, User
       end
     end
 
