@@ -98,12 +98,13 @@ ActiveRecord::Schema.define(version: 20170806232321) do
 
   create_table "in_demands", force: :cascade do |t|
     t.integer "project_id"
-    t.integer "table_id"
     t.string  "table_name"
+    t.integer "table_id"
   end
 
   add_index "in_demands", ["project_id"], name: "index_in_demands_on_project_id"
   add_index "in_demands", ["table_id"], name: "index_in_demands_on_table_id"
+  add_index "in_demands", ["table_name"], name: "index_in_demands_on_table_name"
 
   create_table "manager_relationships", force: :cascade do |t|
     t.integer "user_id"
@@ -127,10 +128,8 @@ ActiveRecord::Schema.define(version: 20170806232321) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "hours_per_week"
-    t.integer  "users_id"
+    t.integer  "manager_id"
   end
-
-  add_index "projects", ["users_id"], name: "index_projects_on_users_id"
 
   create_table "projects_skills", id: false, force: :cascade do |t|
     t.integer "skill_id"
