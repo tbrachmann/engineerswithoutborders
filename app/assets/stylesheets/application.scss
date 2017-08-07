@@ -1,4 +1,5 @@
 @import "magnific-popup";
+@import "multi-select";
 
 html, body { 
   height: 100%;
@@ -20,6 +21,7 @@ html, body {
  *= require_tree .
  *= require jquery-ui
  *= require bootstrap-datepicker
+ *= require multi-select
  *= require magnific-popup
  */
  
@@ -32,7 +34,7 @@ html, body {
 
     // font-weight: bold;
 }
-p, div, strong, input {
+p, div, strong, input, span {
     font-family: "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
     letter-spacing: 1px;
     font-size: 18px;
@@ -136,12 +138,19 @@ p, div, strong, input {
     font-family: nanum-barun-gothic-regular;
 }
 .card-image {
-    margin: 0;
+    display: block;
+    margin: auto;
     border-radius: 3px;
     height: 60%;
     position: relative;
-    overflow: hidden;
     box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+}
+.card-image-col {
+  overflow:hidden;
+}
+.btn {
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 .btn-color {
   background-color: #3D3C40;
@@ -206,6 +215,7 @@ p, div, strong, input {
   border: 3px solid #5cb85c;
   // border-color: #3D3C40;
   padding-left: 10px;
+  position: relative;
   
   .header{
     font-size: 20px;
@@ -216,15 +226,20 @@ p, div, strong, input {
     font-weight: normal;
     font-size: 14px;
   }
-  
+    
   #confirmation{
     position: absolute;
-    right: 10%;
-    top: 17.8%;
-    width: 80px;
-    height: 50px;
+    right: -12%;
+    top: -1.5%;
+    width: 150px;
+    height: 99px;
+    
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
   }
 }
+
 
 .search-checkbox {
   #search-submit {
@@ -241,12 +256,49 @@ p, div, strong, input {
   box-shadow: 0 1px #666;
   transform: translateY(1px);
 }
+.navbar {
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 10px 20px -12px rgba(0, 0, 0, 0.42), 0 3px 20px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+}
+.navbar .navbar-nav > li > a {
+  color: inherit;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 3px;
+}
 
+.navbar .navbar-brand {
+  position: relative;
+  height: 50px;
+  line-height: 30px;
+  color: inherit;
+  padding: 10px 15px;
+}
 .nav-item {
   font-family: 'Open Sans', Helvetica, sans-serif;
   text-transform: uppercase;
   font-size: 13px;
 }
+.navbar .navbar-toggle {
+  border: 0;
+}
+.navbar .navbar-toggle:hover, .navbar .navbar-toggle:focus {
+  background-color: transparent;
+}
+.navbar .navbar-toggle .icon-bar {
+  background-color: inherit;
+  border: 1px solid;
+}
+.navbar .navbar-default .navbar-toggle,
+.navbar .navbar-inverse .navbar-toggle {
+  border-color: transparent;
+}
+
 .filter {
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -382,4 +434,104 @@ label {
 .show-img {
   height: 24px;
   width: 24px;
+}
+
+
+
+.padding {
+  padding-top: 1px;
+  padding-right: 1px;
+  padding-bottom: 1px;
+  padding-left: 1px;
+}
+.at-bottom {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  // background-color: #efefef;
+  text-align: center;
+}
+
+.mobile-nav-toggle {
+    display: block;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 100;
+    width: 10%;
+    position: absolute;
+    z-index: 1002;
+    top: 50%;
+    right: 20px;
+    margin-top: -8px;
+    padding: 0;
+    vertical-align: middle;
+    line-height: 16px;
+    text-align: right;
+    cursor: pointer;
+    user-select: none;
+    color: #000;
+    width: 22px;
+    height: 22px;
+}
+
+.user_toggle {
+  padding: 1px 20px 8px 20px;
+  background-color: #D3D3D3;
+  border-radius: 15px;
+}
+
+.user_checkboxes {
+  display:none;
+  padding-left: 20px;
+  height: 250px;
+  overflow: scroll;
+}
+.right{
+	position:absolute;
+	display:inline-block;
+	top:70px;
+}
+
+.col-md-6{
+	position:absolute;
+	display:inline-block;
+}
+table#volunteers {
+	margin: 10px;
+	border-collapse: collapse;
+	width: 100%;
+	border-bottom: 2px solid black;
+}
+table#managers {
+  margin: 10px;
+	border-collapse: collapse;
+	width: 100%;
+}
+table#managers th, table#volunteers th {
+	border: 2px solid white;
+	font-weight: bold;
+	background-color: lightseagreen;
+}
+table#managers th, table#managers td {
+	padding: 4px;
+	text-align: left;
+}
+table#volunteers th, table#volunteers td {
+  padding: 4px;
+  text-align: left; 
+
+}
+
+#profile_image{
+  width: 300px;
+  height: auto;
+  margin: auto;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
 }

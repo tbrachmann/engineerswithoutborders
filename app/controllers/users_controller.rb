@@ -147,6 +147,8 @@ end
 =end
 
 class UsersController < ApplicationController
+
+  respond_to :html, :js
   
   before_action only: [:show, :edit, :update, :age_sorting]
   
@@ -175,16 +177,21 @@ class UsersController < ApplicationController
       @skills = Hash.new
       @certs = Hash.new
       @fields = Hash.new
+      @role = Hash.new
       users = User.all
       users.each do |user|
         @skills[user[:id]] = []
         @certs[user[:id]] = []
         @fields[user[:id]] = []
+        @role[user[:id]] = []
         user.certifications.each do |cert|
           @certs[user[:id]].push cert[:name]
         end
         user.skills.each do |skill|
           @skills[user[:id]].push skill[:name]
+        end
+        user.role.each do |roles|
+          @role[user[:id]].push roles[:name]
         end
         #if user.expertise
           @fields[user[:id]].push user.expertise
@@ -255,6 +262,56 @@ class UsersController < ApplicationController
     @field_choices = ["Civil Engineering","Environmental Engineering","Mechanical Engineering","Electrical Engineering","Materials Science","Chemical Engineering","Hydraulics / Hydrology","Computer Science","Education","International Development"]
     @certificate_choices = ["Agricultural and Biological Engineering","Architectural","Chemical","Civil: Construction","Civil: Geotechnical","Civil: Structural","Civil: Transportation","Civil: Water Resources and Environmental","Control Systems","Electrical and Computer: Computer Engineering","Electrical and Computer: Electrical and Electronics","Electrical and Computer: Power","Environmental","Fire Protection","Industrial and Systems","Mechanical: HVAC and Refrigeration","Mechanical: Machine Design and Materials","Mechanical: Thermal and Fluids Systems","Metallurgical and Materials","Mining and Mineral Processing","Naval Architecture and Marine","Nuclear","Petroleum","Software","Structural"]
     @current_availability = @user.availability ? @user.availability.as_json : {}
+    @role = Role.all
+    @mySkills = @user.skills
+    @skills = Skill.all - @mySkills
+    @myConstructionExperiences = @user.construction_experiences
+    @constructionExperiences = ConstructionExperience.all -
+                               @myConstructionExperiences
+    @myDesignExperiences = @user.design_experiences
+    @designExperiences = DesignExperience.all - @myDesignExperiences
+    if request.xhr?
+      if params.key?(:new_skill)
+        @new_skill = params[:new_skill]
+        @new_skill = Skill.new(name: @new_skill)
+        if(@new_skill.save)
+          data = { name: @new_skill.name, id: @new_skill.id }
+          render :json => data
+        else
+          render :status => 400
+        end
+      end
+      if params.key?(:new_const_exp)
+        @new_const_exp = params[:new_const_exp]
+        @new_const_exp = ConstructionExperience.new(name: @new_const_exp)
+        if(@new_const_exp.save)
+          data = { name: @new_const_exp.name, id: @new_const_exp.id }
+          render :json => data
+        else
+          render :status => 400
+        end
+      end
+      if params.key?(:new_des_exp)
+        @new_des_exp = params[:new_des_exp]
+        @new_des_exp = DesignExperience.new(name: @new_des_exp)
+        if(@new_des_exp.save)
+          data = { name: @new_des_exp.name, id: @new_des_exp.id }
+          render :json => data
+        else
+          render :status => 400
+        end
+      end
+      if params.key?(:new_role)
+        @new_role = params[:new_role]
+        @new_role = Role.new(name: @new_role)
+        if(@new_role.save)
+          data = { name: @new_role.name, id: @new_role.id }
+          render :json => data
+        else
+          render :status => 400
+        end
+      end
+    end
     authorize! :manage, @user
   end
 
@@ -290,7 +347,22 @@ class UsersController < ApplicationController
     user.travel = user_params[:travel]
     user.time_commitment = user_params[:time_commitment]
     user.availability_comments = user_params[:availability_comments]
-    user.skills = Skill.get_skills(user_params[:skill_ids])
+    unless params[:skills].blank?
+      user.skills = Skill.find(params[:skills]).to_a
+    end
+    
+    user.role = Role.get_role(user_params[:role])
+    puts params[:const_exp]
+    puts ConstructionExperience.find(params[:const_exp])
+    unless params[:const_exp].blank?
+      user.construction_experiences = ConstructionExperience.find(params[:const_exp]).to_a
+    end
+    
+    unless params[:des_exp].blank?
+      user.design_experiences = DesignExperience.find(params[:des_exp]).to_a
+    end
+    
+    user.update_attribute(:avatar, params[:user][:avatar])
     
     user.save
     

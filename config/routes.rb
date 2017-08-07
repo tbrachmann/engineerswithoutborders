@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     collection { post :search, to: 'users#index'}
   end
   
-  #get '/users/:id/manages', to: 'users#manages', as: "user_manages"
+  get '/users/:user_id/manages/:id/edit_volunteers',
+      to: 'manages#edit_volunteers', as: "user_manages_edit_volunteers"
+
   resources :users do
     resources :manages
   end

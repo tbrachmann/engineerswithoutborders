@@ -16,7 +16,6 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap-datepicker-rails'
-gem "paperclip"
 gem 'rails4-autocomplete'
 gem 'language_list'
 gem 'turbolinks'
@@ -35,6 +34,7 @@ gem 'json'
 gem 'rake' # , '10.4.2'
 gem 'faker'
 gem 'factory_girl_rails'
+gem 'multi-select-rails'
 gem 'magnific-popup-rails', '~> 1.1.0'
 
 group :development, :test do
@@ -44,6 +44,7 @@ group :development, :test do
   gem 'test-unit'
   gem 'guard-rspec'
   gem 'foreman'
+  gem 'jasmine'
 end
 
 group :development do
@@ -67,6 +68,7 @@ group :test do
   # required for Cucumber
   gem 'database_cleaner'
   gem 'autotest-rails'
+  gem 'selenium-webdriver'
   # gem 'factory_girl_rails' # if using FactoryGirl
   gem 'metric_fu' # collect code metrics
 end
@@ -81,3 +83,6 @@ end
 gem "haml"
 
 gem "chartkick"
+
+
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
