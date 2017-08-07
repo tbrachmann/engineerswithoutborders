@@ -1,6 +1,20 @@
 <div class="row section">
 	<div class="col-md-9 col-md-offset-2 section">
 		<h2 class="text-center">Profile Information</h2>
+		<br>
+		<div class="row">
+			<div class="col-md-12">
+				<div id="profile_image">
+					<% if @user.avatar.exists? %>
+						<%= image_tag @user.avatar.url, class: "img-responsive center-block" %>
+						<br>
+					<% else %>
+						<%= image_tag User.no_image, class: "img-responsive center-block" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+
 		<div class="row">
 			<div class="col-md-12">
 			  <strong>Name:</strong>

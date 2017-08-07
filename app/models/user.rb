@@ -4,6 +4,15 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :certifications
   belongs_to :role
+  
+  
+  @@no_image =  "https://tse3.mm.bing.net/th?id=OIP.1LRUIB2OXVePxD5hQm4fqwEsEs&pid=Api&w=180&h=181"
+
+  
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -104,4 +113,8 @@ class User < ActiveRecord::Base
     roles.include? role.to_s
   end
   
+  def self.no_image
+    return @@no_image
+  end
+
 end

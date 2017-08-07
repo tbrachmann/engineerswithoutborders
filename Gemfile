@@ -16,7 +16,6 @@ gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bootstrap-datepicker-rails'
-gem "paperclip"
 gem 'rails4-autocomplete'
 gem 'language_list'
 gem 'turbolinks'
@@ -84,6 +83,4 @@ gem "haml"
 
 gem "chartkick"
 
-# help manage admin routes
-gem "cancancan"
-
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
