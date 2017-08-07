@@ -7,7 +7,7 @@
 CS 169 Summer 2017.
 This project is based on the work of the previous groups from Spring 2016 and Fall 2016.
 
-[Heroku App](https://morning-earth-50247.herokuapp.com/)
+[Heroku App](https://ewb-sfp.herokuapp.com/)
 
 [Pivotal Tracker](https://www.pivotaltracker.com/n/projects/2071107)
 
