@@ -301,6 +301,16 @@ class UsersController < ApplicationController
           render :status => 400
         end
       end
+      if params.key?(:new_role)
+        @new_role = params[:new_role]
+        @new_role = Role.new(name: @new_role)
+        if(@new_role.save)
+          data = { name: @new_role.name, id: @new_role.id }
+          render :json => data
+        else
+          render :status => 400
+        end
+      end
     end
     authorize! :manage, @user
   end
@@ -341,7 +351,7 @@ class UsersController < ApplicationController
       user.skills = Skill.find(params[:skills]).to_a
     end
     
-    user.role = Role.get_role(user_params[:role_ids])
+    user.role = Role.get_role(user_params[:role])
     puts params[:const_exp]
     puts ConstructionExperience.find(params[:const_exp])
     unless params[:const_exp].blank?

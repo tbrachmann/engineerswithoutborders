@@ -36,3 +36,4 @@
 //= require chartkick
 //= require magnific-popup
 //= require jquery.quicksearch
+
