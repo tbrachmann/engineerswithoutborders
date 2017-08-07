@@ -30,8 +30,8 @@ class Ability
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
     if user && user.admin      # need to figure out how to check if admin
-      can :manage, :all   
-      can :dashboard      
+      can :manage, :all
+      can :dashboard
     else
 
       # manager abilities
