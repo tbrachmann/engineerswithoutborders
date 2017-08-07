@@ -307,8 +307,7 @@
           </div>
           </form>
         </div>
-        
-	
+
       </div>
       <div class="row">
         <div class="col-md-12">
@@ -316,6 +315,18 @@
           <%= f.input :description, as: :text, id: "About:", label: "Please tell us very briefly a little about yourself and why you want to volunteer for Engineers without Borders.", :input_html => {:style => 'width: 100%', :rows => 4, class: 'response-project'} %>
         </div>
       </div>
+      
+    <div class="row">
+			<div class="col-md-12">
+				<br>
+				<%= f.input :avatar, as: :file, label: "Please upload a picture of yourself!" %>
+		    <br>
+		    <br>
+		 </div>
+	  </div>
+      
+      
+      
       <%= f.button :submit, "Update Background", class: "btn sqs-block-btn btn-black btn-md"%>
       </fieldset>
       <fieldset>
