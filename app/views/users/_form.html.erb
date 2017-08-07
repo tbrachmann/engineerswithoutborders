@@ -17,16 +17,16 @@
       </div>
       <div class="row">
 	<!--Education and background-->
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= f.input :education, label: "Education:", collection: @education_choices %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= f.input :school, label:"Name of University/College:" %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= f.input :expertise, label:"Field of Study or Expertise:", collection: @field_choices %>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <%= f.input :certifications, label:"Certifications Related to Field:", collection: @certificate_choices %>
         </div>
       </div>
@@ -64,17 +64,17 @@
         <%= f.fields_for :availability do |a| %>
 
           <div class="col-md-12">
-            <label>Please indicate your general availability on a weekly basis:</label>
-            <table style="width:100%">
+            <label>Please indicate your general availability on a weekly basis:</label><br><br>
+            <table style="width:100%" class="text-center">
               <tr>
 		<th></th>
-		<th>Mon</th>
-		<th>Tue</th> 
-		<th>Wed</th>
-		<th>Thu</th>
-		<th>Fri</th> 
-		<th>Sat</th>
-		<th>Sun</th>
+		<th class="text-center">Mon</th>
+		<th class="text-center">Tue</th> 
+		<th class="text-center">Wed</th>
+		<th class="text-center">Thu</th>
+		<th class="text-center">Fri</th> 
+		<th class="text-center">Sat</th>
+		<th class="text-center">Sun</th>
               </tr>
               <tr>
 		<td>
@@ -187,9 +187,9 @@
     	       border: 3px solid #ff0000;
     	   }
     	  </style>
-    	  <a class="popup-with-form btn btn-black" href="#new-skill-form" id="a-new-skill">
-    	    Add a new Skill
-    	  </a>
+    	  <a class="popup-with-form btn btn-md sqs-block-btn btn-black" href="#new-skill-form" id="a-new-skill">
+    	    ADD A NEW SKILL
+    	  </a><br><br>
     	  <div class="white-popup-block mfp-hide" id="new-skill-form">
     	    <div id="failure" hidden>
     	      <div class="volunteer-emails-box text-center" id="failure">
@@ -205,7 +205,7 @@
     	    <% end %>
       </div>
 	</div>
-	<br>
+	
 	<div class="col-md-12">
 	  Please select the construction experience you have:
           <select multiple="multiple" id="const-exp-select" name="const_exp[]">
@@ -230,7 +230,7 @@
 	       border: 3px solid #ff0000;
 	   }
 	  </style>
-	  <a class="popup-with-form btn btn-black" href="#new-const-exp-form" id="a-new-const-exp">
+	  <a class="popup-with-form btn btn-md sqs-block-btn btn-black" href="#new-const-exp-form" id="a-new-const-exp">
 	    ADD A NEW CONSTRUCTION EXPERIENCE
 	  </a>
 	  <div class="white-popup-block mfp-hide" id="new-const-exp-form">
@@ -272,7 +272,7 @@
 	       border: 3px solid #ff0000;
 	   }
 	  </style>
-	  <a class="popup-with-form btn btn-black" href="#new-des-exp-form" id="a-new-des-exp">
+	  <a class="popup-with-form btn btn-md sqs-block-btn btn-black" href="#new-des-exp-form" id="a-new-des-exp">
 	    Add a new Design Experience
 	  </a>
 	  <div class="white-popup-block mfp-hide" id="new-des-exp-form">
@@ -294,7 +294,7 @@
           <%= simple_form_for @user do |f| %>
             <%= f.association :role, label: "Please select role you have:", class:"ra-multiselect" %>
           <% end %>
-          <a class="popup-with-form btn btn-black" href="#new-role-form" id="a-new-role">
+          <a class="popup-with-form btn btn-md sqs-block-btn btn-black" href="#new-role-form" id="a-new-role">
       	    Add a new role
       	  </a>
           <div class="white-popup-block mfp-hide" id="new-role-form">
