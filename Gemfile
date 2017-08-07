@@ -43,7 +43,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'test-unit'
   gem 'guard-rspec'
-  gem 'foreman'
   gem 'jasmine'
 end
 
