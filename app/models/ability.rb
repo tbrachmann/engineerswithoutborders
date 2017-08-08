@@ -32,9 +32,9 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     if user && user.admin      # need to figure out how to check if admin
-      can :manage, :all
       can :access, :rails_admin
       can :dashboard
+      can :manage, :all
     else
 
       # manager abilities
