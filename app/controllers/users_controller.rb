@@ -223,7 +223,6 @@ class UsersController < ApplicationController
     end
     
     unless params[:user][:avatar].nil?
-      column_exists?
       user.update_attribute(:avatar, params[:user][:avatar])
     end
     
