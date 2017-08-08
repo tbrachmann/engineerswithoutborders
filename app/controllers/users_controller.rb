@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       end
         
       if user.role
-        @role[user[:id]].push (user.role)[:name]
+        @role[user[:id]].push user.role[:name]
       end
       if user.expertise
         @fields[user[:id]].push user.expertise
