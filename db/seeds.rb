@@ -62,11 +62,32 @@ test_project = FactoryGirl.create(:project)
 adolfo.manager = true
 adolfo.manages << test_project
 
-@user = User.create(first_name: "Tobias", last_name: "Brachmann",
+toby = User.create(first_name: "Tobias", last_name: "Brachmann",
             email: "tobybrachmann@gmail.com", password: "asdfgh",
             manager: true, admin: true)
 
-test_project.managers << @user
+arman = User.create(first_name: "Arman", last_name: "Jaffer",
+                    email: "arman@arman.com", password: "asdfgh",
+                    manager: true, admin: true)
+
+claire = User.create(first_name: "Claire", last_name: "Scheele",
+                    email: "claire@claire.com", password: "asdfgh",
+                    manager: true, admin: true)
+
+jerry = User.create(first_name: "Jerry", last_name: "Wu",
+                    email: "jerry@jerry.com", password: "asdfgh",
+                    manager: true, admin: true)
+
+bill = User.create(first_name: "Bill", last_name: "Yeo",
+                    email: "bill@bill.com", password: "asdfgh",
+                    manager: true, admin: true)
+
+sasank = User.create(first_name: "Sasank", last_name: "Schaganty",
+                    email: "sasank@sasank.com", password: "asdfgh",
+                    manager: true, admin: true)
+
+test_project.managers << [toby, arman, claire, jerry, bill, sasank]
+
 
 certifications = ["Agricultural and Biological Engineering", "Architectural", "Chemical", 
 "Civil: Construction", "Civil: Geotechnical", "Civil: Structural", "Civil: Transportation", 
