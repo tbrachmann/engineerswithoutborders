@@ -11,6 +11,17 @@
     <br><br>
 </div>
 <div class="col-md-4">
+  
+  <div class="col-md-12" style="outline:#99b2e5 solid;outline-offset: -3px;">
+		<div id="project_image" >
+      <%= image_tag @project.avatar_image, class: "img-responsive center-block" %>
+		</div>
+  </div>
+
+  <div class="col-md-12" >
+    <br>
+  </div>
+  
   <div class="col-md-12"  style="background:#99b2e5;opacity: 0.95;">
     <h2 style="font-size:115%">Logistics<img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "logistics_toggle") %></img></h2>
     <div class="" id="log_dropdown">
@@ -33,78 +44,81 @@
       </p>
       <% end %>
     </div>
-  </div>&nbsp;
-    <div class="col-md-12"  style="background:#99b2e5;opacity: 0.95;">
-      
-      <h2 style="font-size:115%">We're looking for<img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "qualities_toggle") %></img></h2>
-      <div class="qualities" id="quality_dropdown">
-        <% if @in_demand && @in_demand.count != 0 %>
-          <p><strong>We really need:</strong>
-            <div class="col-lg-12">
-              <ul>
-              <% @in_demand.each do |quality|  %>
-                <li>
-                  <%= quality.name %>
-                </li>
-              <% end %>
-            </div>
-          </p>
-	  <%= link_to 'Edit In Demand', user_manages_edit_indemand_path(current_user.id, @project.id), class: "btn sqs-block-btn btn-black btn-md" %>
-        <% end %>
+  </div>
+  <div class="col-md-12" >
+    <br>
+  </div>
 
-        <% if @project.skills && @project.skills.length > 0 %>
-          <p><strong>Key Skills:</strong>
-            <div class="col-lg-12">
-              <ul>
-              <% @project.skills.each do |quality|  %>
-                <li>
-                  <%= quality.name %>
-                </li>
-              <% end %>
-            </div>
-          </p>
-        <%end%>
-
-        <% if @project.certifications && @project.certifications.length > 0 %>
-          <p><strong>Key Certifications:</strong></p>
+  <div class="col-md-12"  style="background:#99b2e5;opacity: 0.95;">
+    
+    <h2 style="font-size:115%">We're looking for<img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "qualities_toggle") %></img></h2>
+    <div class="qualities" id="quality_dropdown">
+      <% if @in_demand && @in_demand.count != 0 %>
+        <p><strong>We really need:</strong>
           <div class="col-lg-12">
             <ul>
-            <% @project.certifications.each do |quality|  %>
+            <% @in_demand.each do |quality|  %>
               <li>
                 <%= quality.name %>
               </li>
             <% end %>
           </div>
-        <%end%>
+        </p>
+      <% end %>
 
-        <% if @project.construction_experiences && @project.construction_experiences.length > 0 %>
-          <p><strong>Key Construction Experiences:</strong></p>
+      <% if @project.skills && @project.skills.length > 0 %>
+        <p><strong>Key Skills:</strong>
           <div class="col-lg-12">
             <ul>
-            <% @project.construction_experiences.each do |quality|  %>
+            <% @project.skills.each do |quality|  %>
               <li>
                 <%= quality.name %>
               </li>
             <% end %>
           </div>
-        <%end%>
-        <% if @project.design_experiences && @project.design_experiences.length > 0 %>
-          <p><strong>Key Design Experiences:</strong></p>
-          <div class="col-lg-12">
-            <ul>
-            <% @project.design_experiences.each do |quality|  %>
-              <li>
-                <%= quality.name %>
-              </li>
-            <% end %>
-          </div>
-        <%end%>
-      </div>
+        </p>
+      <%end%>
+
+      <% if @project.certifications && @project.certifications.length > 0 %>
+        <p><strong>Key Certifications:</strong></p>
+        <div class="col-lg-12">
+          <ul>
+          <% @project.certifications.each do |quality|  %>
+            <li>
+              <%= quality.name %>
+            </li>
+          <% end %>
+        </div>
+      <%end%>
+
+      <% if @project.construction_experiences && @project.construction_experiences.length > 0 %>
+        <p><strong>Key Construction Experiences:</strong></p>
+        <div class="col-lg-12">
+          <ul>
+          <% @project.construction_experiences.each do |quality|  %>
+            <li>
+              <%= quality.name %>
+            </li>
+          <% end %>
+        </div>
+      <%end%>
+      <% if @project.design_experiences && @project.design_experiences.length > 0 %>
+        <p><strong>Key Design Experiences:</strong></p>
+        <div class="col-lg-12">
+          <ul>
+          <% @project.design_experiences.each do |quality|  %>
+            <li>
+              <%= quality.name %>
+            </li>
+          <% end %>
+        </div>
+      <%end%>
     </div>
+  </div>
 </div>
 <div class="col-md-8">
   <% if @project_availability_hash && @project_availability_hash.length > 0%>
-    <div class="col-md-12" style="outline:#99b2e5 solid;">
+    <div class="col-md-12" style="outline:#99b2e5 solid;outline-offset: -3px;">
       <h2 style="font-size:115%;">Volunteer Availability<img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "availability_toggle") %></img></h2>
       <div id="availability_chart">
         <%= column_chart @project_availability_hash %>
@@ -112,7 +126,7 @@
     </div>
   <% end %>
   &nbsp;
-  <div class="col-md-12" style="outline:#99b2e5 solid;">
+  <div class="col-md-12" style="outline:#99b2e5 solid;outline-offset: -3px;">
     <h2 style="font-size:115%;">Project Manager(s) <%= link_to 'Edit Managers', user_manages_edit_managers_path(current_user.id, @project.id), class: "btn sqs-block-btn btn-black btn-md" %><img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "pm_toggle") %></img></h2>
     <div id="pm_dropdown">
       <%if @project.managers.count == 0 || @project.managers == "" %>
@@ -141,7 +155,7 @@
     </div>
   </div>
   <br><br>&nbsp;
-  <div class="col-md-12" style="outline:#99b2e5 solid;">
+  <div class="col-md-12" style="outline:#99b2e5 solid;outline-offset: -3px;">
     <h2 style="font-size:115%;">Volunteers <%= link_to 'Edit Volunteers', user_manages_edit_volunteers_path(current_user.id, @project.id), class: "btn sqs-block-btn btn-black btn-md" %><img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "vol_toggle") %></img></h2>
     <div id="vol_dropdown">
       <%if @project.volunteers.count != 0 %>
