@@ -53,27 +53,24 @@
     <h2 class="text-center">Project Listings</h2>
     <hr>
     </div>
-    <div class="col-md-3 col-md-offset-5">
+    <div class="col-md-9 col-md-offset-2">
       <div class="panel-group" id="accordion">
           <div class="panel panel-default">
              <div class="panel-heading">
                 <h4 class="panel-title">
                   <% if @in_demand && @in_demand.count != 0 %>
-                   <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                   <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="padding-left: 50px">
                      In-Demand Qualities
                    </a>
                 </h4>
              </div><!--/.panel-heading -->
-             <div id="collapseOne" class="panel-collapse collapse">
+             <div id="collapseOne" class="panel-collapse">
                 <div class="panel-body">
                    <div class="panel-body">
-                     <ul>
                       <% @in_demand.each do |quality|  %>
-                       <li>
-                        <h5> <a href = "<%= project_path(quality.project_id) %>" > <%= (quality.get_instance).name %> </a> </h5>
+                        <a href = "<%= project_path(quality.project_id) %>" > • <%= (quality.get_instance).name %> </a> 
                         <% end %>
-                       </li>
-                     </ul>
+                     </table>
                   <% end %>
                 </div><!--/.panel-body -->
              </div><!--/.panel-collapse -->
