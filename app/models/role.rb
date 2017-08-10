@@ -1,9 +1,9 @@
 class Role < ActiveRecord::Base
   has_many :users
   
-  def self.get_role(x)
-      if Role.exists? x
-          Role.find_id(x)
+  def self.get_role(id)
+      if Role.exists? id
+          return Role.find(id)
       else
           return nil
       end

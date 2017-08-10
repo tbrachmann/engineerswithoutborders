@@ -128,6 +128,12 @@ RSpec.describe User, :type => :model do
       @example_user2.save
       expect(@example_role.users.count).to eq 2
     end
+    it "Get role by name or return nil" do
+      role = Role.get_role(@example_role.id)
+      expect(role.name).to match "Programmer"
+      bad_role = Role.get_role(2)
+      expect(bad_role).to be_nil
+    end
   end
   describe "User skills" do
     before(:each) do
