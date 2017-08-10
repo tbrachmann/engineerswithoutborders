@@ -156,6 +156,10 @@ projects = []
   project = FactoryGirl.create(:project)
   projects << project
   project.add_in_demand_quality(skills[Faker::Number.between(0, skills.count-1)])
+  project.skills << skills[Faker::Number.between(0, skills.count-1)]
+  project.certifications << certifications[Faker::Number.between(0, certifications.count-1)]
+  project.construction_experiences << construction_experiences[Faker::Number.between(0, construction_experiences.count-1)]
+  project.design_experiences << design_experiences[Faker::Number.between(0, design_experiences.count-1)]
   manager_num = Faker::Number.between(0, test_managers.count-1)
   project.managers << test_managers[manager_num]
   volunteer_count = Faker::Number.between(2, users.count-1)
@@ -167,3 +171,5 @@ end
 test_project.in_demand << InDemand.add_in_demand_quality(test_project.id, Certification.create!(name: "Software Engineering"))
 test_project.in_demand << InDemand.add_in_demand_quality(test_project.id, Certification.create!(name: "Naval Engineering"))
 test_project.in_demand << InDemand.add_in_demand_quality(test_project.id, Certification.create!(name: "Nuclear Engineering"))
+
+arman.manages << Project.all
