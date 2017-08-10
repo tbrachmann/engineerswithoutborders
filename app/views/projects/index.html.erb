@@ -1,9 +1,9 @@
 <div class="row section">
-  <div class="col-md-8 col-md-offset-2 section">
+  <div class="col-md-11 section">
     <div class="row">
       
-    <div class="col-md-12 text-center">
-      <h2>Carousel Example</h2>  <br>
+    <div class="col-md-8 col-md-offset-1 text-center">
+      <h2>Current project</h2><hr>
       <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators text-center">
@@ -50,22 +50,41 @@
         </a>
       </div>
     </div>
+
+    <div class="col-md-3">
+      <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+             <div class="panel-heading">
+                <h4 class="panel-title">
+                  <% if @in_demand && @in_demand.count != 0 %>
+                   <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                     In-Demand Qualities
+                   </a>
+                </h4>
+             </div><!--/.panel-heading -->
+             <div id="collapseOne" class="panel-collapse collapse">
+                <div class="panel-body">
+                   <div class="panel-body">
+                     <ul>
+                      <% @in_demand.each do |quality|  %>
+                       <li>
+                        <h5> <a href = "<%= project_path(quality.project_id) %>" > <%= (quality.get_instance).name %> </a> </h5>
+                        <% end %>
+                       </li>
+                     </ul>
+                    
+                  <% end %>
+                </div><!--/.panel-body -->
+             </div><!--/.panel-collapse -->
+          </div><!-- /.panel -->
+        </div>
+    </div>
+    </div>
   </div>
-    
-    <% if @in_demand && @in_demand.count != 0 %>
-      <h2 class = "text-center"> In-Demand Qualities</h2>
-      <hr>
-      <ul>
-      <% @in_demand.each do |quality|  %>
-        <li>
-          <h4> <a href = "<%= project_path(quality.project_id) %>" > <%= (quality.get_instance).name %> </a> </h4>
-        </li>
-      <% end %>
-    <% end %>
-    
+  <br>
+    <div class="col-md-9 col-md-offset-2">
     <h2 class="text-center">Project Listings</h2>
     <hr>
-    
     <ul>
     <% @projects.each do |project| %>
     <li>
@@ -75,5 +94,6 @@
       </p>
      </li>
     <% end %>
+  </div>
   </div>
 </div>
