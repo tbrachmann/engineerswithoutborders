@@ -45,8 +45,6 @@
       <% end %>
     </div>
   </div>
-
-
   <div class="col-md-12" >
     <br>
   </div>
@@ -129,7 +127,7 @@
   <% end %>
   &nbsp;
   <div class="col-md-12" style="outline:#99b2e5 solid;outline-offset: -3px;">
-    <h2 style="font-size:115%;">Project Manager(s)<img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "pm_toggle") %></img></h2>
+    <h2 style="font-size:115%;">Project Manager(s) <%= link_to 'Edit Managers', user_manages_edit_managers_path(current_user.id, @project.id), class: "btn sqs-block-btn btn-black btn-md" %><img href="#"><%= image_tag( "/assets/minus-icon.svg", size: "24x24", class: "pull-right", id: "pm_toggle") %></img></h2>
     <div id="pm_dropdown">
       <%if @project.managers.count == 0 || @project.managers == "" %>
         <p><strong>Project Manager: ---- </strong></p>

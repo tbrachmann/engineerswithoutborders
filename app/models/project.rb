@@ -46,6 +46,17 @@ class Project < ActiveRecord::Base
     # should return array of in demand qualities of potentially different types (skill, construction experience, role)
     InDemand.qualities_by_project_id self.id
   end
+
+  def in_demand_qualities_grouped
+    groups = {}
+    InDemand.models.each do |klass|
+      groups[klass.name] = []
+    end
+    self.in_demand_qualities.each do |quality|
+      groups[quality.class.name] << quality
+    end
+    return groups
+  end
   
   def add_in_demand_quality quality
     InDemand.add_in_demand_quality self.id, quality
@@ -68,6 +79,20 @@ class Project < ActiveRecord::Base
   def eligible_volunteers
     users = User.where({"users.manager": false, "users.admin": false})
     users - self.volunteers
+  end
+
+  def eligible_managers
+    managers = User.where({"users.manager": true})
+    managers - self.managers
+  end
+
+  def eligible_indemand_grouped
+    indemand = InDemand.options_grouped
+    myIndemand = self.in_demand_qualities_grouped
+    indemand.keys.each do |klass|
+      indemand[klass] = indemand[klass] - myIndemand[klass]
+    end
+    return indemand
   end
   
   

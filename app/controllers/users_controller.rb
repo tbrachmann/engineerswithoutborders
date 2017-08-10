@@ -131,6 +131,8 @@ class UsersController < ApplicationController
                                @myConstructionExperiences
     @myDesignExperiences = @user.design_experiences
     @designExperiences = DesignExperience.all - @myDesignExperiences
+    @myCerts = @user.certifications
+    @certs = Certification.all - @myCerts
     if request.xhr?
       if params.key?(:new_skill)
         @new_skill = params[:new_skill]
@@ -212,7 +214,7 @@ class UsersController < ApplicationController
       user.skills = Skill.find(params[:skills]).to_a
     end
     
-    user.role = Role.get_role(user_params[:role])
+    user.role = Role.get_role(user_params[:role_id])
 
     unless params[:const_exp].blank?
       user.construction_experiences = ConstructionExperience.find(params[:const_exp]).to_a
@@ -220,6 +222,10 @@ class UsersController < ApplicationController
     
     unless params[:des_exp].blank?
       user.design_experiences = DesignExperience.find(params[:des_exp]).to_a
+    end
+
+    unless params[:cert].blank?
+      user.certifications = Certification.find(params[:cert]).to_a
     end
     
     unless params[:user][:avatar].nil?
