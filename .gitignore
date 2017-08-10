@@ -21,3 +21,4 @@
 /config/initializers/env.rb
 /Procfile
 /config/environments/development.rb
+/.env

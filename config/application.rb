@@ -39,7 +39,7 @@ config.action_mailer.default :charset => "utf-8"
 
 config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 config.action_mailer.raise_delivery_errors = true
-
+=begin
 config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.smtp_settings = {
@@ -51,7 +51,6 @@ config.action_mailer.delivery_method = :smtp
       user_name: ENV["GMAIL_USERNAME"],
       password: ENV["GMAIL_PASSWORD"]
   }
-  puts ENV["GMAIL_USERNAME"]
-  puts ENV["GMAIL_PASSWORD"]
+=end
   end
 end
