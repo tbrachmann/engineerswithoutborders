@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(version: 20170807025612) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "hours_per_week"
-    t.integer  "manager_id"
   end
 
   create_table "projects_skills", id: false, force: :cascade do |t|

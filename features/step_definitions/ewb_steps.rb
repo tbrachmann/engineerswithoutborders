@@ -5,7 +5,7 @@ end
 Given /^I am a new, authenticated user$/ do
   email = 'testing@user.net'
   password = 'secretpass'
-  User.new(:email => email, :password => password, :password_confirmation => password).save!
+  User.create(:email => email, :password => password, :password_confirmation => password).skip_confirmation!
 
   visit new_user_session_path
   fill_in "Email", :with => email
@@ -17,7 +17,9 @@ Given /^I am a project manager on "(.+)"/ do |project_name|
   email = "testing@man.net"
   password = "asdfghjkl"
   if(!User.exists?(email: email))
-    manager = User.create(email: email, password: password, manager: true)
+    manager = User.create(email: email, password: password, manager: true,
+                          first_name: "test", last_name: "person")
+    manager.skip_confirmation!
   else
     manager = User.find_by email: email
   end
@@ -25,6 +27,8 @@ Given /^I am a project manager on "(.+)"/ do |project_name|
     test_project = Project.create(name: project_name,
                                   description: "Creating a large-scale water filter system",
                                   volunteer_capacity: 25, location: "Remba Island, Kenya")
+  else
+    test_project = Project.find_by name: project_name
   end
   skill = Skill.new(name: "Ruby")
   if Skill.exists?(:name => "Ruby")
@@ -64,7 +68,7 @@ end
 Given /^I am a project manager$/ do
   email = 'testing@man.net'
   password = 'secretpass'
-  User.create(:email => email, :password => password, :manager => true)
+  User.create(:email => email, :password => password, :manager => true).skip_confirmation!
 
   visit new_user_session_path
   fill_in "user_email", :with => email
@@ -85,10 +89,10 @@ end
 
 Given /^the following users exist:$/ do |table|
   table.hashes.each do |table_hash|
-    User.new(:email => table_hash[:email], 
-	     :password => table_hash[:password],
-	     :first_name => table_hash[:first_name],
-	     :last_name => table_hash[:last_name]).save!
+    User.create(:email => table_hash[:email], 
+	        :password => table_hash[:password],
+	        :first_name => table_hash[:first_name],
+	        :last_name => table_hash[:last_name]).confirm
   end
 end
 
@@ -106,6 +110,22 @@ Given /^the following volunteers are on "(.+)":$/ do |project_name, table|
 	               :last_name => table_hash[:last_name])
     user.projects << project
   end
+end
+
+Given /^the project "(.+)" has the following in demand qualities:$/ do |project_name, table|
+  project = Project.find_by name: project_name
+  table.hashes.each do |table_hash|
+    klass = table_hash[:type].constantize
+    name = table_hash[:name]
+    project.add_in_demand_quality(klass.create(name: name))
+  end
+end
+
+Given /^that "(.+)" has the key (.+) "(.+)"/ do |project_name, type, name|
+  project = Project.find_by name: project_name
+  type_plural = type.pluralize
+  klass = type.classify.constantize
+  project.send(type_plural) << klass.create(name: name)
 end
 
 When /^I follow the project link for "(.+)"$/ do |project_name|
@@ -199,10 +219,6 @@ Then(/^I should see "([^"]*)" \#A user that meets these specified qualifications
   end
 end
 
-Then(/^I should not see "([^"]*)" \#A user that does not$/) do |arg1|
-  #Pending
-end
-
 Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
   case field
   when "attribute"
@@ -226,6 +242,12 @@ Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |f
   end
   expect(page).not_to have_select(locator, :with_options => [value])
 end
+
+=begin
+Then /^ I fill in "(.+)" for "Password"^/ do
+  first("password")
+end
+=end
 
 Given(/^Volunteer (\d+) exists$/) do |arg1|
   puts arg1
@@ -273,12 +295,16 @@ Given(/^the following users exist with the given qualities:$/) do |table|
   end
 end
 
-Then(/^I should see "([^"]*)"'s qualities$/) do |arg1|
-  puts arg1
-  pending # Write code here that turns the phrase above into concrete actions
+Given /^I am an admin/ do
+  user = FactoryGirl.create(:user, password: "asdfgh", admin: true)
+
+  visit new_user_session_path
+  fill_in "Email", :with => user.email
+  fill_in "Password", :with => user.password
+  click_button "Log in"
 end
 
-Then(/^I should not see "([^"]*)"'s qualities$/) do |arg1|
+Then(/^I should see "([^"]*)"'s qualities$/) do |arg1|
   puts arg1
   pending # Write code here that turns the phrase above into concrete actions
 end
@@ -312,8 +338,12 @@ When(/^I enter "([^"]*)" into "([^"]*)"$/) do |arg1, arg2|
 end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
-  expect(page).to have_link(link)
+  #expect(page).to have_link(link)
   first(:link, link).click
+end
+
+When /^I click on "(.+)"/ do |content|
+  first(content).click
 end
 
 Then /^the number of attribute fields should be (\d+)$/ do |arg1|
@@ -329,8 +359,13 @@ Then(/^I should see the images not stacked on each other$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Then(/^the following users should exist$/) do |table|
-  puts table
-  # table is a Cucumber::MultilineArgument::DataTable
-  pending # Write code here that turns the phrase above into concrete actions
+Then /^the following users should exist$/ do |table|
+  table.hashes.each do |table_hash|
+    expect(User.find_by email: table_hash[:email]).to be_truthy
+  end
+end
+
+Then /^I should go back to the EWB homepage/ do
+  uri = URI.parse(current_url)
+  expect("#{uri.scheme}://#{uri.host}").to eq "https://ewb-sfp.org"
 end

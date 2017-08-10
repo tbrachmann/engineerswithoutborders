@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Availability, :type => :model do
   describe "Build Availability" do
     before(:each) do
-      @example_availability = FactoryGirl.create(:availability, id: 3)
+      @example_availability = FactoryGirl.create(:availability)
     end
     
     it "Testing to_s" do
