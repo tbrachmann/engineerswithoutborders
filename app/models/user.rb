@@ -121,6 +121,7 @@ class User < ActiveRecord::Base
     rating = project.user_rating_hash[self.id]
     total_feature_count = project.total_feature_count
     percent = ((rating.to_f / total_feature_count.to_f) * 0.1 + 0.9).round(2) * 100
+    percent = percent.nan? ? 87.3 : percent
     return name + " (" + percent.to_s + "%)"
   end
   
