@@ -481,6 +481,7 @@ label {
   padding: 2px 20px 2px 20px;
   background-color: #E5E5E5;
   outline: none;
+  border-radius: 10px;
   
 }
 
@@ -606,4 +607,8 @@ a:hover {
 .panel-group .panel-body  ul:last-child,
 .panel-group .panel-body  ol:last-child {
   margin-bottom: 0;
+}
+
+.edit_user_dropdowns {
+  display: none;
 }

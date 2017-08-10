@@ -63,6 +63,60 @@ document.addEventListener("turbolinks:load", function() {
   $("#vol_toggle").click(function() {
   	toggle($("#vol_toggle"), $("#vol_dropdown"))
   	});
+  	
+  $('#basic_info_div').click(function() {
+  	toggle($('#basic_info_toggle'), $('#basic_info_dropdown'))
+  });
+  
+  $('#education_div').click(function() {
+  	toggle($('#education_toggle'), $('#education_dropdown'))
+  });
+  
+  $('#users_cert_div').click(function() {
+  	toggle($('#users_cert_toggle'), $('#users_cert_dropdown'))
+  });
+  
+  $('#outreach_div').click(function() {
+  	toggle($('#outreach_toggle'), $('#outreach_dropdown'));
+  	$('.outreach-cols').each(function() {
+  		var $this = $(this);
+  		$this.css('margin-top', $this.parent().height() - $this.height());
+  	});
+  });
+  
+  $('#language_div').click(function() {
+  	toggle($('#language_toggle'), $('#language_dropdown'));
+  	$('.lang-cols').each(function() {
+  		var $this = $(this);
+  		$this.css('margin-top', $this.parent().height() - $this.height());
+  	});
+  });
+  
+  $('#avail_div').click(function() {
+  	toggle($('#avail_toggle'), $('#avail_dropdown'))
+  });
+  
+  $('#users_skill_div').click(function() {
+  	toggle($('#users_skill_toggle'), $('#users_skill_dropdown'))
+  });
+  
+  $('#construction_div').click(function() {
+  	toggle($('#construction_toggle'), $('#construction_dropdown'))
+  });
+  
+  $('#design_div').click(function() {
+  	toggle($('#design_toggle'), $('#design_dropdown'))
+  });
+  
+  $('#role_div').click(function() {
+  	toggle($('#role_toggle'), $('#role_dropdown'))
+  });
+  
+  $('#about_div').click(function() {
+  	toggle($('#about_toggle'), $('#about_dropdown'))
+  });
+  
+
 
 });
 
@@ -123,16 +177,4 @@ function processBoxes(new_check, already_checked, id) {
     	already_checked.splice(already_checked.indexOf(id), 1);
     }
 	
-}
-
-function toggle(toggle_icon, field_to_toggle) {
-  console.log("in toggle");
-  if (field_to_toggle.is(":visible")) {
-  	console.log("in visible");
-    toggle_icon.attr("src", "/assets/plus_icon.png");
-  } else {
-  	console.log("in not visible")
-    toggle_icon.attr("src", "/assets/minus-icon.svg");
-  }
-  field_to_toggle.toggle();
 }
