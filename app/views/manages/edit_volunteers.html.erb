@@ -22,13 +22,41 @@
   
 </style>
 
+<header>
+    <% @tensor = "https://lh3.googleusercontent.com/N_Nk4NMg4L3_1o8bj1eZR53rigiJXXkt34APyPBqb_gU3WmpCCyG5ArT69qkC80wNtuSHyUImM6R5fVpm_jWjSORekbJJkA=s688" %>
+    
+</header>
 <div class="row section">
-  <div class="col-md-8 col-md-offset-2 section">
-
     <div>
-      <h2 class="text-center">Editing Volunteers on <%= @project.name%></h2>
+      <h2 class="text-center">Manage Volunteers for <%= @project.name%></h2>
     </div>
-
+  <div class="col-md-10 col-md-offset-1 ">
+    <br>
+    <p> Volunteer Recommendations<img src=<%= @tensor %> style="width: 65px">:</p>
+    <table id="volunteers" style="margin: 2px" >
+          <thead>
+            <tr>
+              <th class="table-color">Volunteer</th>
+              <th class="table-color">Email</th>
+    	      <th class="table-color">Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @project.top_five_recommendations.each do |vol| %>
+              <tr>
+                <td> <a href= "<%= user_path(vol.id) %>"> <%= vol.rating_name @project%> </a></td>
+                <td><%= vol.email %></td>
+                <td><%= vol.phone %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+    <div class="col-md-10 col-md-offset-1 ">
+      <br>
+    </div>
+  <div class="col-md-10 col-md-offset-1 ">
+    <p>Edit Roster:</p>
     <div id="success" hidden>
       <div class="volunteer-emails-box text-center">
 	Volunteers updated!
