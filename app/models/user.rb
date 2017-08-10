@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
     end
   end
   
-    
+  
   has_and_belongs_to_many :design_experiences
   has_and_belongs_to_many :construction_experiences
   
@@ -115,6 +115,23 @@ class User < ActiveRecord::Base
   
   def self.no_image
     return @@no_image
+  end
+  
+  def rating_name project
+    rating = project.user_rating_hash[self.id]
+    total_feature_count = project.total_feature_count
+    percent = ((rating.to_f / total_feature_count.to_f) * 0.1 + 0.9).round(2) * 100
+    return name + " (" + percent.to_s + "%)"
+  end
+  
+  
+  def compute_cross_product features
+    feature_cross_product = 0
+    features.each do |column, feature_id_list|
+      feature_cross_product += self.send(column).where(id: feature_id_list).length
+    end
+
+    feature_cross_product
   end
 
 end
