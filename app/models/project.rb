@@ -161,6 +161,21 @@ class Project < ActiveRecord::Base
 		end
   end
   
+  
+  
+  def self.display
+    to_return1 = []
+    to_return2 = []
+    Project.all.each do |p|
+      if p.avatar.exists?
+        to_return1 << p
+      else
+        to_return2 << p
+      end
+    end
+    to_return1 + to_return2
+  end
+  
   private :manager_relationships, :manager_relationships=
   private :volunteer_relationships, :volunteer_relationships=
 end
