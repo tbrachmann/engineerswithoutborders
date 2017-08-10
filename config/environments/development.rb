@@ -27,7 +27,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
 
   # Don't send mail at all in development
-  config.action_mailer.perform_deliveries = false
+  config.action_mailer.perform_deliveries = true
 
   # Change mail delivery to either :smtp, :sendmail, :file, :test
   config.action_mailer.delivery_method = :smtp
