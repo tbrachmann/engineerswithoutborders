@@ -77,13 +77,11 @@ document.addEventListener("turbolinks:load", function() {
   });
   
   $('#outreach_div').click(function() {
-  	toggle($('#outreach_toggle'), $('#outreach_dropdown'));
-  	pull_down('.outreach-cols');
+  	toggle_and_pull_down('#outreach_toggle', '#outreach_dropdown', '.outreach-cols');
   });
   
   $('#language_div').click(function() {
-  	toggle($('#language_toggle'), $('#language_dropdown'));
-  	pull_down('.lang-cols');
+  	toggle_and_pull_down('#language_toggle', '#language_dropdown', '.lang-cols');
   });
   
   $('#avail_div').click(function() {
@@ -117,6 +115,10 @@ document.addEventListener("turbolinks:load", function() {
   	});
   }
   
+  function toggle_and_pull_down(tog, dropdown, columns) {
+  	toggle($(tog), $(dropdown));
+  	pull_down(columns);
+  }
 
 
 });
