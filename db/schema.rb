@@ -128,7 +128,6 @@ ActiveRecord::Schema.define(version: 20170810003305) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "hours_per_week"
-    t.integer  "manager_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
