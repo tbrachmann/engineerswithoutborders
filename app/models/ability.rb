@@ -29,15 +29,31 @@ class Ability
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
 
-     user ||= User.new # guest user (not logged in)
+    user ||= User.new # guest user (not logged in)
+
+    if user && user.admin      # need to figure out how to check if admin
+      can :access, :rails_admin
+      can :dashboard
+      can :manage, :all
+    else
+
       # manager abilities
-      if user.manager
+      if user && user.manager
         can :manage, Project
         can :read, :all
+        cannot :read, User
       end
-      # common abilities
-      can :read, User, :id => user.id  
-      can :manage, User, :id => user.id
+    end
+
+    # print "NAME:" + user.name
+    # print "**********user.admin: " + user.admin.to_s + "\n"
+    # print "**********user.manager: " + user.manager.to_s + "\n"
+    
+
+    # # common abilities
+    can :read, User, :id => user.id
+    can :manage, User, :id => user.id
+    # cnan :access, :rails_admin
   end
 end
 

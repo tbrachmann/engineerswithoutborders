@@ -1,4 +1,5 @@
 Rails.application.configure do
+    config.web_console.whiny_requests = false
   # Settings specified here will take precedence over those in config/application.rb.
 
     
@@ -21,7 +22,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
 
   # Change mail delivery to either :smtp, :sendmail, :file, :test
   config.action_mailer.delivery_method = :smtp

@@ -1,5 +1,4 @@
 RailsAdmin.config do |config|
-
   ### Popular gems integration
 
   ## == Devise ==
@@ -24,6 +23,10 @@ RailsAdmin.config do |config|
   # config.show_gravatar true
 
   #config.excluded_models << "Event"
+
+  config.authorize_with :cancan
+  config.parent_controller = 'ApplicationController'
+  config.current_user_method(&:current_user)
   
   config.actions do
     dashboard                     # mandatory
@@ -35,9 +38,14 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
-
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
+    
+    #   ## With an audit adapter, you can add:
+    #   # history_index
+    #   # history_show
   end
 end
+
+# RailsAdmin.config do |config|
+#   config.authorize_with :cancan, Ability
+#   config.parent_controller = 'ApplicationController'
+# end

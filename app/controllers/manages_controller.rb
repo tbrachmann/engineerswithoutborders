@@ -1,4 +1,5 @@
 class ManagesController < ApplicationController
+  # load_and_authorize_resource
 
   def index
     if(!current_user.manager?)
@@ -27,6 +28,10 @@ class ManagesController < ApplicationController
   end
 
   def destroy
+  end
+  
+  def admin
+    unauthorized! if cannot? :access, :rails_admin
   end
 
   def edit_volunteers
