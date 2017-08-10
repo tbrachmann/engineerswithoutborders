@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 		@projects_by_date = @projects.group_by(&:start_date)
 		@date = Date.today
 		@in_demand = InDemand.all
+		@display_projects = Project.display
 	end
 
 	def show
