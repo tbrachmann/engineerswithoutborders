@@ -44,11 +44,9 @@ class ProjectsController < ApplicationController
 	
 	def update
 		@project = Project.find(params[:id])
-		
 		unless params[:project][:avatar].nil?
     		@project.update_attribute(:avatar, params[:project][:avatar])
     	end
-    	
 		if @project.update(project_params)
 			redirect_to @project, notice: "Successfully updated project."
 		else
