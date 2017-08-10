@@ -62,6 +62,7 @@ test_managers = [test_manager, test_manager_two, test_manager_three]
 adolfo = FactoryGirl.create(:user, first_name: "Adolfo", last_name: "Espino",
                             email: "adolfo.espino@gmail.com", password: "asdfgh",
                             manager: true)
+adolfo.skip_confirmation!
 
 test_project = FactoryGirl.create(:project)
 adolfo.manages << test_project
@@ -69,26 +70,32 @@ adolfo.manages << test_project
 toby = FactoryGirl.create(:user, first_name: "Tobias", last_name: "Brachmann",
                           email: "tobybrachmann@gmail.com", password: "asdfgh",
                           manager: true, admin: true)
+toby.skip_confirmation!
 
 arman = FactoryGirl.create(:user, first_name: "Arman", last_name: "Jaffer",
                            email: "arman@arman.com", password: "asdfgh",
                            manager: true, admin: true)
+arman.skip_confirmation!
 
 claire = FactoryGirl.create(:user, first_name: "Claire", last_name: "Scheele",
                             email: "claire@claire.com", password: "asdfgh",
                             manager: true, admin: true)
+claire.skip_confirmation!
 
 jerry = FactoryGirl.create(:user, first_name: "Jerry", last_name: "Wu",
                            email: "jerry@jerry.com", password: "asdfgh",
                            manager: true, admin: true)
+jerry.skip_confirmation!
 
 bill = FactoryGirl.create(:user, first_name: "Bill", last_name: "Yeo",
                           email: "bill@bill.com", password: "asdfgh",
                           manager: true, admin: true)
+bill.skip_confirmation!
 
 sasank = FactoryGirl.create(:user, first_name: "Sasank", last_name: "Schaganty",
                             email: "sasank@sasank.com", password: "asdfgh",
                             manager: true, admin: true)
+sasank.skip_confirmation!
 
 test_project.managers << [toby, arman, claire, jerry, bill, sasank]
 

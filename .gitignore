@@ -18,3 +18,7 @@
 /coverage/
 /spring-1000/
 *~
+/config/initializers/env.rb
+/Procfile
+/config/environments/development.rb
+/.env

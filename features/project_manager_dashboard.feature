@@ -27,12 +27,9 @@ Scenario: Edit project
   When I follow "Remba Island Project"
   Then I should see "Edit Project"
   When I follow "Edit Project"
-  Then I should see "Editing Project"
+  Then I should see "Edit Project"
 
 Scenario: Add volunteers to project
+  When I follow "Remba Island Project"
   When I follow "Edit Volunteers"
   Then I should see "Editing Volunteers"
-  When I click on "Adolfo Espino"
-  When I follow "Save"
-  Then I should see "Remba Island Project"
-  And I should see "Adolfo Espino"

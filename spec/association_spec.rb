@@ -97,28 +97,28 @@ RSpec.describe User, :type => :model do
   describe "User roles" do
     before(:each) do
       @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
-      @example_role = FactoryGirl.create(:role, name: "Programmer")
+      @example_role = FactoryGirl.create(:role, name: "Blacksmith")
     end
     it "Adding role column to user" do
       expect(@example_user.role).to be_nil
     end
     it "Get role name" do
       @example_user.role = @example_role
-      expect(@example_user.role.name).to match "Programmer"
+      expect(@example_user.role.name).to match "Blacksmith"
     end
     it "No duplicate roles" do
       expect{
-        @example_role2 = FactoryGirl.create(:role, name: "Programmer")
+        @example_role2 = FactoryGirl.create(:role, name: "Blacksmith")
       }.to raise_error(ActiveRecord::RecordNotUnique)
     end
     it "Build role off user" do
-      @example_user.create_role(name: "Cook")
-      expect(@example_user.role.name).to match "Cook"
+      @example_user.create_role(name: "Tailor")
+      expect(@example_user.role.name).to match "Tailor"
     end
     it "Role stays in table if user is deleted" do
-      @example_user.create_role(name: "Cook")
+      @example_user.create_role(name: "Tailor")
       @example_user.destroy
-      expect(Role.all.count).to eq 2
+      expect(Role.find_by name: "Tailor").to be_truthy
     end
     it "Multiple user have the same role" do
       @example_user2 = FactoryGirl.create(:user, password: "asdfghjkl")
@@ -130,16 +130,16 @@ RSpec.describe User, :type => :model do
     end
     it "Get role by name or return nil" do
       role = Role.get_role(@example_role.id)
-      expect(role.name).to match "Programmer"
-      bad_role = Role.get_role(2)
+      expect(role.name).to match "Blacksmith"
+      bad_role = Role.get_role(100)
       expect(bad_role).to be_nil
     end
   end
   describe "User skills" do
     before(:each) do
       @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
-      @example_skill = FactoryGirl.create(:skill, name: "Ruby")
-      @example_skill2 = FactoryGirl.create(:skill, name: "Rails")
+      @example_skill = FactoryGirl.create(:skill, name: "People")
+      @example_skill2 = FactoryGirl.create(:skill, name: "JavaScript")
     end
     it "Add multiple skills to user" do
       @example_user.skills << [@example_skill, @example_skill2]
@@ -148,36 +148,36 @@ RSpec.describe User, :type => :model do
     it "Get skill name" do
       @example_user.skills << [@example_skill, @example_skill2]
       names = @example_user.skills.pluck("name")
-      expect(names).to include "Ruby"
-      expect(names).to include "Rails"
+      expect(names).to include "People"
+      expect(names).to include "JavaScript"
     end
     it "No duplicate skills can be added" do
       expect{
         @example_skill3 = FactoryGirl.create(:skill,
-                                                     name: "Ruby")
+                                             name: "People")
       }.to raise_error(ActiveRecord::RecordNotUnique)
     end
     it "Build skill off user" do
-      @example_user.skills.create(name: "C++")
-      expect(@example_user.skills.first.name).to match "C++"
+      @example_user.skills.create(name: "CoffeeScript")
+      expect(@example_user.skills.first.name).to match "CoffeeScript"
     end
     it "Blank skill cannot be added" do
       expect{
         @example_skill3 = FactoryGirl.create(:skill,
-                                                     name: "")
+                                             name: "")
       }.to raise_error(ActiveRecord::RecordInvalid)
     end
     it "Skill stays in table if user is deleted" do
-      @example_user.skills.create(name: "C++")
+      @example_user.skills.create(name: "CoffeeScript")
       @example_user.destroy
-      expect(Skill.all.count).to eq 3
+      expect(Skill.find_by name: "CoffeeScript").to be_truthy
     end
   end
   describe "User certifications" do
     before(:each) do
       @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
-      @example_certification = FactoryGirl.create(:certification, name: "Microsoft Excel")
-      @example_certification2 = FactoryGirl.create(:certification, name: "Microsoft Word")
+      @example_certification = FactoryGirl.create(:certification, name: "Test Certification")
+      @example_certification2 = FactoryGirl.create(:certification, name: "Test Certification 2")
     end
     it "Add multiple certifications to user" do
       @example_user.certifications << [@example_certification, @example_certification2]
@@ -186,18 +186,18 @@ RSpec.describe User, :type => :model do
     it "Get certification name" do
       @example_user.certifications << [@example_certification, @example_certification2]
       cert_names = @example_user.certifications.pluck("name")
-      expect(cert_names).to include "Microsoft Excel"
-      expect(cert_names).to include "Microsoft Word"
+      expect(cert_names).to include "Test Certification"
+      expect(cert_names).to include "Test Certification 2"
     end
     it "No duplicate certifications can be added" do
       expect{
         @example_certification3 = FactoryGirl.create(:certification,
-                                                     name: "Microsoft Excel")
+                                                     name: "Test Certification")
       }.to raise_error(ActiveRecord::RecordNotUnique)
     end
     it "Build certification off user" do
-      @example_user.certifications.create(name: "Microsoft Powerpoint")
-      expect(@example_user.certifications.first.name).to match "Microsoft Powerpoint"
+      @example_user.certifications.create(name: "Test Certification 3")
+      expect(@example_user.certifications.first.name).to match "Test Certification 3"
     end
     it "Blank certification cannot be added" do
       expect{
@@ -206,9 +206,9 @@ RSpec.describe User, :type => :model do
       }.to raise_error(ActiveRecord::RecordInvalid)
     end
     it "Certification stays in table if user is deleted" do
-      @example_user.certifications.create(name: "Microsoft Powerpoint")
+      @example_user.certifications.create(name: "Test Certification 3")
       @example_user.destroy
-      expect(Certification.all.count).to eq 3
+      expect(Certification.find_by name: "Test Certification 3").to be_truthy
     end
   end
   # Revisit design here - necessary for these to be separate tables?
@@ -216,9 +216,9 @@ RSpec.describe User, :type => :model do
     before(:each) do
       @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
       @example_experience = FactoryGirl.create(:construction_experience,
-                                               name: "Well")
+                                               name: "Deep Well")
       @example_experience2 = FactoryGirl.create(:construction_experience,
-                                                name: "Road")
+                                                name: "Deep Road")
     end
     it "Add multiple construction experiences to user" do
       @example_user.construction_experiences << [@example_experience, @example_experience2]
@@ -227,13 +227,13 @@ RSpec.describe User, :type => :model do
     it "Get construction experience name" do
       @example_user.construction_experiences << [@example_experience, @example_experience2]
       names = @example_user.construction_experiences.pluck("name")
-      expect(names).to include "Well"
-      expect(names).to include "Road"
+      expect(names).to include "Deep Well"
+      expect(names).to include "Deep Road"
     end
     it "No duplicate construction experiences can be added" do
       expect{
         @example_experience3 = FactoryGirl.create(:construction_experience,
-                                                  name: "Well")
+                                                  name: "Deep Well")
       }.to raise_error(ActiveRecord::RecordNotUnique)
     end
     it "Build construction experience off user" do
@@ -249,16 +249,16 @@ RSpec.describe User, :type => :model do
     it "construction experience stays in table if user is deleted" do
       @example_user.construction_experiences.create(name: "Solar")
       @example_user.destroy
-      expect(ConstructionExperience.all.count).to eq 3
+      expect(ConstructionExperience.find_by name: "Solar").to be_truthy
     end
   end
   describe "User design experience" do
     before(:each) do
       @example_user = FactoryGirl.create(:user, password: "asdfghjkl")
       @example_experience = FactoryGirl.create(:design_experience,
-                                               name: "Well")
+                                               name: "Deep Well")
       @example_experience2 = FactoryGirl.create(:design_experience,
-                                                name: "Road")
+                                                name: "Deep Road")
     end
     it "Add multiple design experiences to user" do
       @example_user.design_experiences << [@example_experience, @example_experience2]
@@ -267,13 +267,13 @@ RSpec.describe User, :type => :model do
     it "Get design experience name" do
       @example_user.design_experiences << [@example_experience, @example_experience2]
       names = @example_user.design_experiences.pluck("name")
-      expect(names).to include "Well"
-      expect(names).to include "Road"
+      expect(names).to include "Deep Well"
+      expect(names).to include "Deep Road"
     end
     it "No duplicate design experiences can be added" do
       expect{
         @example_experience3 = FactoryGirl.create(:design_experience,
-                                                  name: "Well")
+                                                  name: "Deep Well")
       }.to raise_error(ActiveRecord::RecordNotUnique)
     end
     it "Build design experience off user" do
@@ -289,7 +289,7 @@ RSpec.describe User, :type => :model do
     it "Design experience stays in table if user is deleted" do
       @example_user.design_experiences.create(name: "Solar")
       @example_user.destroy
-      expect(DesignExperience.all.count).to eq 3
+      expect(DesignExperience.find_by name: "Solar").to be_truthy
     end
   end
 end
@@ -358,8 +358,8 @@ RSpec.describe Project, :type => :model do
   describe "Project skills" do
     before(:each) do
       @example_project = FactoryGirl.create(:project)
-      @example_skill = FactoryGirl.create(:skill, name: "Ruby")
-      @example_skill2 = FactoryGirl.create(:skill, name: "Rails")
+      @example_skill = FactoryGirl.create(:skill, name: "JavaScript")
+      @example_skill2 = FactoryGirl.create(:skill, name: "CoffeeScript")
     end
     it "Add multiple skills to project" do
       @example_project.skills << [@example_skill, @example_skill2]
@@ -368,29 +368,29 @@ RSpec.describe Project, :type => :model do
     it "Get skill name" do
       @example_project.skills << [@example_skill, @example_skill2]
       names = @example_project.skills.pluck("name")
-      expect(names).to include "Ruby"
-      expect(names).to include "Rails"
+      expect(names).to include "JavaScript"
+      expect(names).to include "CoffeeScript"
     end
     it "No duplicate skills can be added" do
       expect{
         @example_skill3 = FactoryGirl.create(:skill,
-                                                     name: "Ruby")
+                                             name: "JavaScript")
       }.to raise_error(ActiveRecord::RecordNotUnique)
     end
     it "Build skill off project" do
-      @example_project.skills.create(name: "C++")
-      expect(@example_project.skills.first.name).to match "C++"
+      @example_project.skills.create(name: "HTML")
+      expect(@example_project.skills.first.name).to match "HTML"
     end
     it "Blank skill cannot be added" do
       expect{
         @example_skill3 = FactoryGirl.create(:skill,
-                                                     name: "")
+                                             name: "")
       }.to raise_error(ActiveRecord::RecordInvalid)
     end
     it "Skill stays in table if project is deleted" do
-      @example_project.skills.create(name: "C++")
+      @example_project.skills.create(name: "HTML")
       @example_project.destroy
-      expect(Skill.all.count).to eq 3
+      expect(Skill.find_by name: "HTML").to be_truthy
     end
   end
   describe "Project certifications" do
@@ -428,7 +428,7 @@ RSpec.describe Project, :type => :model do
     it "Certification stays in table if project is deleted" do
       @example_project.certifications.create(name: "Microsoft Powerpoint")
       @example_project.destroy
-      expect(Certification.all.count).to eq 3
+      expect(Certification.find_by name: "Microsoft Powerpoint").to be_truthy
     end
   end
   # Revisit design here - necessary for these to be separate tables?
@@ -436,9 +436,9 @@ RSpec.describe Project, :type => :model do
     before(:each) do
       @example_project = FactoryGirl.create(:project)
       @example_experience = FactoryGirl.create(:construction_experience,
-                                               name: "Well")
+                                               name: "Deep Well")
       @example_experience2 = FactoryGirl.create(:construction_experience,
-                                                name: "Road")
+                                                name: "Deep Road")
     end
     it "Add multiple construction experiences to project" do
       @example_project.construction_experiences << [@example_experience, @example_experience2]
@@ -447,13 +447,13 @@ RSpec.describe Project, :type => :model do
     it "Get construction experience name" do
       @example_project.construction_experiences << [@example_experience, @example_experience2]
       names = @example_project.construction_experiences.pluck("name")
-      expect(names).to include "Well"
-      expect(names).to include "Road"
+      expect(names).to include "Deep Well"
+      expect(names).to include "Deep Road"
     end
     it "No duplicate construction experiences can be added" do
       expect{
         @example_experience3 = FactoryGirl.create(:construction_experience,
-                                                  name: "Well")
+                                                  name: "Deep Well")
       }.to raise_error(ActiveRecord::RecordNotUnique)
     end
     it "Build construction experience off project" do
@@ -469,16 +469,16 @@ RSpec.describe Project, :type => :model do
     it "construction experience stays in table if project is deleted" do
       @example_project.construction_experiences.create(name: "Solar")
       @example_project.destroy
-      expect(ConstructionExperience.all.count).to eq 3
+      expect(ConstructionExperience.find_by name: "Solar").to be_truthy
     end
   end
   describe "Project design experience" do
     before(:each) do
       @example_project = FactoryGirl.create(:project)
       @example_experience = FactoryGirl.create(:design_experience,
-                                               name: "Well")
+                                               name: "Deep Well")
       @example_experience2 = FactoryGirl.create(:design_experience,
-                                                name: "Road")
+                                                name: "Deep Road")
     end
     it "Add multiple design experiences to project" do
       @example_project.design_experiences << [@example_experience, @example_experience2]
@@ -487,13 +487,13 @@ RSpec.describe Project, :type => :model do
     it "Get design experience name" do
       @example_project.design_experiences << [@example_experience, @example_experience2]
       names = @example_project.design_experiences.pluck("name")
-      expect(names).to include "Well"
-      expect(names).to include "Road"
+      expect(names).to include "Deep Well"
+      expect(names).to include "Deep Road"
     end
     it "No duplicate design experiences can be added" do
       expect{
         @example_experience3 = FactoryGirl.create(:design_experience,
-                                                  name: "Well")
+                                                  name: "Deep Well")
       }.to raise_error(ActiveRecord::RecordNotUnique)
     end
     it "Build design experience off project" do
@@ -509,7 +509,7 @@ RSpec.describe Project, :type => :model do
     it "Design experience stays in table if project is deleted" do
       @example_project.design_experiences.create(name: "Solar")
       @example_project.destroy
-      expect(DesignExperience.all.count).to eq 3
+      expect(DesignExperience.find_by name: "Solar").to be_truthy
     end
   end
 end

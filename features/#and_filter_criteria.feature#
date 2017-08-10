@@ -6,10 +6,10 @@ Feature: Only view Volunteers who match all selection criteria in "Find Voluntee
   Background: 
     Given I am a project manager
     Given the following users exist with the given qualities:
-      | last_name    | first_name    | email                | password      | skills                                                                        | certifications                     | field_of_study                           |
-      | Conolly      | Jeniffer      | jcon@ucon.edu        | palmtree43    | people skills, empathetic, organization management, structural engineering    | emt                                | civil engineering                        |
-      | Garrett      | Brad          | bgarrett@plant.org   | Fungi169      | organization management, grassroots engagement, implementation,               | teacher                            | environmental engineering                |
-      | Gutierrez    | Maria Laura   | mlg@yahoo.com        | bigmac99      | trilingual, English, Spanish, Italian                                         | cpr, emt, sustainable development  | computer science, civil engineering      | 
+      | last_name | first_name  | email              | password   | skills                                                                     | certifications                    | field_of_study                      |
+      | Conolly   | Jeniffer    | jcon@ucon.edu      | palmtree43 | people skills, empathetic, organization management, structural engineering | emt                               | civil engineering                   |
+      | Garrett   | Brad        | bgarrett@plant.org | Fungi169   | organization management, grassroots engagement, implementation,            | teacher                           | environmental engineering           |
+      | Gutierrez | Maria Laura | mlg@yahoo.com      | bigmac99   | trilingual, English, Spanish, Italian                                      | cpr, emt, sustainable development | computer science, civil engineering   |
     Given I am on the "Find Volunteers" page
     
     Scenario: Nothing is checked

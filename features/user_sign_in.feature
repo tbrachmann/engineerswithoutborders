@@ -5,12 +5,14 @@ Feature: Updating Volunteer Information
   
   
   Scenario: Invalid password
+    Given the following users exist:
+      | first_name | last_name | email                 | password |
+      | Test       | Person    | testing1234@email.com | secret   |
     Given I am on the home page
-    When I press "GET INVOLVED"
-    Given my name is "joe"
-    Given I am a user with a password "apple" and I input "carrot"
-    And I press "Log In"
-    Then I should see "Incorrect Password"
+    When I follow "Login"
+    And I fill in "Password" with "asdfgh"
+    And I press "Log in"
+    Then I should see "Invalid Email or password."
     
   Scenario: Signing Up
     Given I am on the home page
@@ -19,5 +21,5 @@ Feature: Updating Volunteer Information
     
   Scenario: Logging In
     Given I am on the home page
-    And I follow "Log In"
+    And I follow "Login"
     Then I should see "Sign Up"
