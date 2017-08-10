@@ -1,4 +1,10 @@
 class Project < ActiveRecord::Base
+  
+  
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+  
+  
   has_many :manager_relationships
   has_many :managers, -> { distinct }, through: :manager_relationships, source: :user do
     def << (*managers)
@@ -62,6 +68,22 @@ class Project < ActiveRecord::Base
   def eligible_volunteers
     users = User.where({"users.manager": false, "users.admin": false})
     users - self.volunteers
+  end
+  
+  
+  
+  
+  def no_image
+    "http://www.ewb-ud.org/wp-content/uploads/2016/04/EWB-logo-full.png"
+  end
+  
+  def avatar_image
+    puts self.avatar
+		if self.avatar.exists?
+		  return self.avatar.url
+		else
+		  return no_image
+		end
   end
   
   private :manager_relationships, :manager_relationships=
