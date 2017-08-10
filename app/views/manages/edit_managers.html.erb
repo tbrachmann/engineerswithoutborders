@@ -26,31 +26,31 @@
   <div class="col-md-8 col-md-offset-2 section">
 
     <div>
-      <h2 class="text-center">Editing Volunteers on <%= @project.name%></h2>
+      <h2 class="text-center">Editing Managers on <%= @project.name%></h2>
     </div>
 
     <div id="success" hidden>
       <div class="volunteer-emails-box text-center">
-	Volunteers updated!
+	Managers updated!
       </div>
       <br>
     </div>
 
-    <center id="edit_volunteers">
-      <select multiple="multiple" id="volunteers-select" name="my-select[]">
-	<% @project.volunteers.each do |volunteer| %>
-	  <option id="<%= volunteer.id %>" value="<%= volunteer.name %>" selected>
-	    <%= volunteer.name %>
+    <center id="edit_managers">
+      <select multiple="multiple" id="managers-select" name="my-select[]">
+	<% @project.managers.each do |manager| %>
+	  <option id="<%= manager.id %>" value="<%= manager.name %>" selected>
+	    <%= manager.name %>
 	  </option>
 	<% end %>
-	<% @eligible_volunteers.each do |volunteer| %>
-	  <option id="<%= volunteer.id %>" value="<%= volunteer.name %>">
-	    <%= volunteer.name %>
+	<% @eligible_managers.each do |manager| %>
+	  <option id="<%= manager.id %>" value="<%= manager.name %>">
+	    <%= manager.name %>
 	  </option>
 	<% end %>
       </select>
       <br>
-      <a class="btn btn-md sqs-block-btn btn-black" id="volunteers-submit">Save</a>
+      <a class="btn btn-md sqs-block-btn btn-black" id="managers-submit">Save</a>
     </center>
   </div>
 </div>

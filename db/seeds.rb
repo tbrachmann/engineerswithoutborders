@@ -27,21 +27,24 @@ test_manager = User.create(first_name: Faker::Name::first_name,
     email: Faker::Internet.unique.email, password: "asdfghjkl", 
     encrypted_password: "asdf", sign_in_count: 1, 
     created_at: 10.years.ago, 
-    updated_at: 10.years.ago)
+    updated_at: 10.years.ago,
+    manager: true)
     
 test_manager_two = User.create(first_name: Faker::Name::first_name, 
     last_name: Faker::Name.last_name, 
     email: Faker::Internet.unique.email, password: "asdfghjkl", 
     encrypted_password: "asdf", sign_in_count: 1, 
     created_at: 10.years.ago, 
-    updated_at: 10.years.ago)
+    updated_at: 10.years.ago,
+    manager: true)
 
 test_manager_three = User.create(first_name: Faker::Name::first_name, 
     last_name: Faker::Name.last_name, 
     email: Faker::Internet.unique.email, password: "asdfghjkl", 
     encrypted_password: "asdf", sign_in_count: 1, 
     created_at: 10.years.ago, 
-    updated_at: 10.years.ago)
+    updated_at: 10.years.ago,
+    manager: true)
     
 test_project = Project.create(name: "Remba Island Project", 
     description: "Creating a large-scale water filter system", 
@@ -56,35 +59,36 @@ test_managers = [test_manager, test_manager_two, test_manager_three]
 
 # Will generate some fake data for Adolfo
 
-adolfo = User.create(first_name: "Adolfo", last_name: "Espino",
-                     email: "adolfo.espino@gmail.com", password: "asdfgh")
+adolfo = FactoryGirl.create(:user, first_name: "Adolfo", last_name: "Espino",
+                            email: "adolfo.espino@gmail.com", password: "asdfgh",
+                            manager: true)
+
 test_project = FactoryGirl.create(:project)
-adolfo.manager = true
 adolfo.manages << test_project
 
-toby = User.create(first_name: "Tobias", last_name: "Brachmann",
-            email: "tobybrachmann@gmail.com", password: "asdfgh",
-            manager: true, admin: true)
+toby = FactoryGirl.create(:user, first_name: "Tobias", last_name: "Brachmann",
+                          email: "tobybrachmann@gmail.com", password: "asdfgh",
+                          manager: true, admin: true)
 
-arman = User.create(first_name: "Arman", last_name: "Jaffer",
-                    email: "arman@arman.com", password: "asdfgh",
-                    manager: true, admin: true)
+arman = FactoryGirl.create(:user, first_name: "Arman", last_name: "Jaffer",
+                           email: "arman@arman.com", password: "asdfgh",
+                           manager: true, admin: true)
 
-claire = User.create(first_name: "Claire", last_name: "Scheele",
-                    email: "claire@claire.com", password: "asdfgh",
-                    manager: true, admin: true)
+claire = FactoryGirl.create(:user, first_name: "Claire", last_name: "Scheele",
+                            email: "claire@claire.com", password: "asdfgh",
+                            manager: true, admin: true)
 
-jerry = User.create(first_name: "Jerry", last_name: "Wu",
-                    email: "jerry@jerry.com", password: "asdfgh",
-                    manager: true, admin: true)
+jerry = FactoryGirl.create(:user, first_name: "Jerry", last_name: "Wu",
+                           email: "jerry@jerry.com", password: "asdfgh",
+                           manager: true, admin: true)
 
-bill = User.create(first_name: "Bill", last_name: "Yeo",
-                    email: "bill@bill.com", password: "asdfgh",
-                    manager: true, admin: true)
+bill = FactoryGirl.create(:user, first_name: "Bill", last_name: "Yeo",
+                          email: "bill@bill.com", password: "asdfgh",
+                          manager: true, admin: true)
 
-sasank = User.create(first_name: "Sasank", last_name: "Schaganty",
-                    email: "sasank@sasank.com", password: "asdfgh",
-                    manager: true, admin: true)
+sasank = FactoryGirl.create(:user, first_name: "Sasank", last_name: "Schaganty",
+                            email: "sasank@sasank.com", password: "asdfgh",
+                            manager: true, admin: true)
 
 test_project.managers << [toby, arman, claire, jerry, bill, sasank]
 

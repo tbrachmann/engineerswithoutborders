@@ -12,13 +12,19 @@ Rails.application.routes.draw do
   resources :users do
     collection { post :search, to: 'users#index'}
   end
-  
-  get '/users/:user_id/manages/:id/edit_volunteers',
-      to: 'manages#edit_volunteers', as: "user_manages_edit_volunteers"
 
   resources :users do
     resources :manages
   end
+  
+  get '/users/:user_id/manages/:id/edit_volunteers',
+      to: 'manages#edit_volunteers', as: "user_manages_edit_volunteers"
+
+  get '/users/:user_id/manages/:id/edit_managers',
+      to: 'manages#edit_managers', as: "user_manages_edit_managers"
+
+  get '/users/:user_id/manages/:id/edit_indemand',
+      to: 'manages#edit_indemand', as: "user_manages_edit_indemand"
   
   # WELCOME ROUTES
   get 'welcome/index' => 'welcome#index'
