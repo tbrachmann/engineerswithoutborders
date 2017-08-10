@@ -1,3 +1,29 @@
+<style>
+ .search-input {
+     width: 100%;
+ }
+ .volunteer-emails-box#failure {
+     background-color: rgba(255,0,0,0.7);	
+     border: 3px solid #ff0000;
+ }
+ .ms-container {
+     padding-top: 6px;
+     padding-bottom: 6px;
+     align: center;
+     width: 100%;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ .ms-selectable .ms-selection {
+
+ }
+
+ .ms-container .ms-list {
+     height: 300px;
+ }
+ 
+</style>
 <!--<div class="row section">-->
 <div class="col-md-10 col-md-offset-1 section">
   <%= simple_form_for @user do |f| %>
@@ -17,17 +43,29 @@
       </div>
       <div class="row">
 	<!--Education and background-->
-        <div class="col-md-3">
+        <div class="col-md-4">
           <%= f.input :education, label: "Education:", collection: @education_choices %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <%= f.input :school, label:"Name of University/College:" %>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <%= f.input :expertise, label:"Field of Study or Expertise:", collection: @field_choices %>
         </div>
-        <div class="col-md-3">
-          <%= f.input :certifications, label:"Certifications Related to Field:", collection: @certificate_choices %>
+	<div class="col-md-12">
+	  Please select certifications you have:
+          <select multiple="multiple" id="cert-select" name="cert[]">
+    	    <% @myCerts.each do |cert| %>
+    	      <option id="<%= cert.id %>" value="<%= cert.id %>" selected>
+    		<%= cert.name %>
+    	      </option>
+    	    <% end %>
+    	    <% @certs.each do |cert| %>
+    	      <option id="<%= cert.id %>" value="<%= cert.id %>">
+    		<%= cert.name %>
+    	      </option>
+    	    <% end %>
+    	  </select>
         </div>
       </div>
       <div class="row">
@@ -163,9 +201,10 @@
         <div class="col-md-12">
           &nbsp;&nbsp;&nbsp;&nbsp;
         </div>
-    <div class="col-md-12">
+	
+	<div class="col-md-12">
     	  Please select skills you have:
-              <select multiple="multiple" id="skills-select" name="skills[]">
+          <select multiple="multiple" id="skills-select" name="skills[]">
     	    <% @mySkills.each do |skill| %>
     	      <option id="<%= skill.id %>" value="<%= skill.id %>" selected>
     		<%= skill.name %>
@@ -177,16 +216,6 @@
     	      </option>
     	    <% end %>
     	  </select>
-    	  <style>
-    	   .search-input {
-    	       width: 100%;
-    	   }
-    	   .volunteer-emails-box#failure {
-    	       background-color: rgba(255,0,0,0.7);	
-    	       //background-color: red;
-    	       border: 3px solid #ff0000;
-    	   }
-    	  </style>
     	  <a class="popup-with-form btn btn-md sqs-block-btn btn-black" href="#new-skill-form" id="a-new-skill">
     	    ADD A NEW SKILL
     	  </a><br><br>
@@ -203,7 +232,7 @@
     	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
     			     id: "new-skill-submit") %>
     	    <% end %>
-      </div>
+	  </div>
 	</div>
 	
 	<div class="col-md-12">
@@ -220,18 +249,8 @@
 	      </option>
 	    <% end %>
 	  </select>
-	  <style>
-	   .search-input {
-	       width: 100%;
-	   }
-	   .volunteer-emails-box#failure {
-	       background-color: rgba(255,0,0,0.7);	
-	       //background-color: red;
-	       border: 3px solid #ff0000;
-	   }
-	  </style>
 	  <a class="popup-with-form btn btn-md sqs-block-btn btn-black" href="#new-const-exp-form" id="a-new-const-exp">
-	    ADD A NEW CONSTRUCTION EXPERIENCE
+	    Add a new Construction Experience
 	  </a>
 	  <div class="white-popup-block mfp-hide" id="new-const-exp-form">
 	    <div id="failure" hidden>
@@ -291,11 +310,9 @@
           </div>
 	</div>
         <div class="col-md-12">
-          <%= simple_form_for @user do |f| %>
-            <%= f.association :role, label: "Please select role you have:", class:"ra-multiselect" %>
-          <% end %>
+          <%= f.association :role, label: "Please select your professional role:", value: @user.role.blank? ? "" : @user.role.name %>
           <a class="popup-with-form btn btn-md sqs-block-btn btn-black" href="#new-role-form" id="a-new-role">
-      	    Add a new role
+      	    Add a new Role
       	  </a>
           <div class="white-popup-block mfp-hide" id="new-role-form">
       	    <%= form_tag do %>
@@ -303,7 +320,7 @@
       	      <%= text_field_tag(:new_role, nil, class: "form-control string optional") %>
       	      <%= submit_tag("Save", class: "btn sqs-block-btn btn-black btn-md",
       			     id: "new-role-submit") %>
-  	        <% end %>
+  	    <% end %>
           </div>
           </form>
         </div>
@@ -316,25 +333,25 @@
         </div>
       </div>
       
-    <div class="row">
-			<div class="col-md-12">
-				<br>
-				<%= f.input :avatar, as: :file, label: "Please upload a picture of yourself!" %>
-		    <br>
-		    <br>
-		 </div>
-	  </div>
+      <div class="row">
+	<div class="col-md-12">
+	  <br>
+	  <%= f.input :avatar, as: :file, label: "Please upload a picture of yourself!" %>
+	  <br>
+	  <br>
+	</div>
+      </div>
       
       
       
       <%= f.button :submit, "Update Background", class: "btn sqs-block-btn btn-black btn-md"%>
-      </fieldset>
-      <fieldset>
+    </fieldset>
+    <fieldset>
       <legend>Account Information</legend>
       <%= f.input :email, disabled: true %>
       <%= link_to "Change Email or Password", edit_user_registration_path, class: "btn sqs-block-btn btn-black btn-md" %>
-      </fieldset>
-    <% end %>
-    <p></p>
+    </fieldset>
+  <% end %>
+  <p></p>
 </div>
-    
+

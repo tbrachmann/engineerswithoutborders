@@ -12,13 +12,15 @@ RSpec.describe InDemand, :type => :model do
       @example_skill = FactoryGirl.create(:skill, name: "Ruby")
       @example_skill2 = FactoryGirl.create(:skill, name: "Rails")
       @example_role = FactoryGirl.create(:role, name: "Programmer")
+      @example_role = FactoryGirl.create(:certification, name: "Chemical")
       @example_indemand = FactoryGirl.create(:in_demand)
 
     end
     
     it "Testing Options" do
       option_count = Skill.all.length + Role.all.length +
-                     ConstructionExperience.all.length + DesignExperience.all.length
+                     ConstructionExperience.all.length + DesignExperience.all.length +
+                     Certification.all.length
       expect(@example_indemand.class.options.length).to eq option_count
     end
     
@@ -59,7 +61,6 @@ RSpec.describe InDemand, :type => :model do
       end
       expect(names).to contain_exactly("Well", "Road", "Ruby", "Rails")
     end
-
     it "Same quality for multiple projects" do
       @example_project.add_in_demand_quality @example_skill
       @example_project.add_in_demand_quality @example_skill2
@@ -75,6 +76,44 @@ RSpec.describe InDemand, :type => :model do
       expect(@example_project.in_demand_qualities.length).to eq 4
       expect(@example_project2.in_demand_qualities.length).to eq 4
       expect(InDemand.all.count).to eq 9
+    end
+
+    it "In demand qualities grouped" do
+      @example_project.add_in_demand_quality @example_skill
+      @example_project.add_in_demand_quality @example_skill2
+      @example_project.add_in_demand_quality @example_experience
+      @example_project.add_in_demand_quality @example_experience2
+
+      expect(@example_project.in_demand_qualities_grouped.keys)
+        .to include("Skill", "ConstructionExperience")
+      expect(@example_project.in_demand_qualities_grouped["Skill"].count)
+        .to eq 2
+      expect(@example_project.in_demand_qualities_grouped["ConstructionExperience"].count)
+        .to eq 2
+      expect(@example_project.in_demand_qualities_grouped["DesignExperience"].count)
+        .to eq 0
+    end
+
+    it "Get correct eligible qualities grouped" do
+      @example_project.add_in_demand_quality @example_skill
+      @example_project.add_in_demand_quality @example_skill2
+      @example_project.add_in_demand_quality @example_experience
+      @example_project.add_in_demand_quality @example_experience2
+      @example_skill3 = FactoryGirl.create(:skill, name: "JavaScript")
+      @example_experience3 = FactoryGirl.create(:construction_experience, name: "Shuttle")
+
+      expect(@example_project.eligible_indemand_grouped["Skill"].count).to eq 1
+      expect(@example_project.eligible_indemand_grouped["ConstructionExperience"].count)
+        .to eq 1
+    end
+
+    it "Get options grouped" do
+      expect(InDemand.options_grouped["Skill"].count).to eq 2
+      expect(InDemand.options_grouped["ConstructionExperience"].count)
+        .to eq 2
+      expect(InDemand.options_grouped["Role"].count).to eq 1
+      expect(InDemand.options_grouped["Certification"].count).to eq 1
+      expect(InDemand.options_grouped["DesignExperience"].count).to eq 0
     end
     
   end

@@ -1,7 +1,11 @@
 class InDemand < ActiveRecord::Base
   belongs_to :project
   
-  @@models = [Skill, ConstructionExperience, DesignExperience, Role]
+  @@models = [Skill, ConstructionExperience, DesignExperience, Role, Certification]
+
+  def self.models
+    @@models
+  end
   
   def self.add_in_demand_quality project_id, quality
     #First check if the quality exists
@@ -24,6 +28,16 @@ class InDemand < ActiveRecord::Base
     all_rows = []
     @@models.map{|x| x.all.map {|y| all_rows << y}}
     all_rows
+  end
+
+  def self.options_grouped
+    groups = {}
+    @@models.each do |klass|
+      groups[klass.name] = []
+      all_rows = klass.all
+      groups[klass.name] += all_rows if all_rows.any? 
+    end
+    return groups
   end
   
   def get_instance

@@ -1,0 +1,64 @@
+<style>
+ .ms-container {
+     text-align: left;
+     width: 100%;
+ }
+
+ .ms-container .ms-list {
+     height: 500px;
+ }
+
+  .search-input {
+      width: 100%;
+  }
+
+ .ms-optgroup-label span {
+     font-weight: bold;
+ }
+
+ .custom-header {
+     text-align: center;
+ }
+  
+</style>
+
+<div class="row section">
+  <div class="col-md-8 col-md-offset-2 section">
+
+    <div>
+      <h2 class="text-center">Editing In Demand on <%= @project.name%></h2>
+    </div>
+
+    <div id="success" hidden>
+      <div class="volunteer-emails-box text-center">
+	In Demand updated!
+      </div>
+      <br>
+    </div>
+
+    <center id="edit_indemand">
+      <select multiple="multiple" id="indemand-select" name="my-select[]">
+	<% @project.in_demand_qualities_grouped.each do |klass, value| %>
+	  <optgroup label="<%= klass.titleize %>">
+	    <% value.each do |indemand| %>
+	      <option id="<%= indemand.id %>" value="<%= klass+"."+ indemand.id.to_s %>" selected>
+		<%= indemand.name %>
+	      </option>
+	    <% end %>
+	  </optgroup>
+	<% end %>
+	<% @eligible_indemand.each do |klass, value| %>
+	  <optgroup label="<%= klass.titleize %>">
+	    <% value.each do |indemand| %>
+	      <option id="<%= indemand.id %>" value="<%= klass+"."+ indemand.id.to_s %>">
+		<%= indemand.name %>
+	      </option>
+	    <% end %>
+	  </optgroup>
+	<% end %>
+      </select>
+      <br>
+      <a class="btn btn-md sqs-block-btn btn-black" id="indemand-submit">Save</a>
+    </center>
+  </div>
+</div>
