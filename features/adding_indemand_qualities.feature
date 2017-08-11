@@ -4,18 +4,17 @@ Feature: Adding "In-Demand Skills" to individual project pages
     So I can find volunteers with qualities I really need
 
 Background:
-    Given I am a project manager
-    And I am on the "Project Listings" page
-    And I should see "Remba Island"
-    And I should see "Peru Project"
-    And I follow "Remba Island"
+    Given I am a project manager on "Remba Island Project"
+    Given the project "Remba Island Project" has the following in demand qualities:
+      | name                     | type                   |
+      | Water Filtration Systems | ConstructionExperience |
+      | Pump Design              | DesignExperience       |
+    And I am on the home page
+    And I follow "My Projects"
 
-Scenario: Add new "In Demand" qualities to a project
-    Given I follow "Remba Island"
-    And I should see "Water Filtration Systems"
+Scenario: Edit "In Demand" qualities on a project
+    When I follow "Remba Island"
+    Then I should see "Water Filtration Systems"
     And I should see "Pump Design"
-    And I click "Edit Project"
-    And I click "Add New Quality"
-    And I type in "Environmental Engineering"
-    And I click "Submit"
-    And I should see "Environmental Engineering"
+    When I follow "Edit In Demand"
+    Then I should see "Editing In Demand on Remba Island Project"

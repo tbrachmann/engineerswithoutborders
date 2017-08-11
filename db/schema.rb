@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170807025612) do
+ActiveRecord::Schema.define(version: 20170810003305) do
 
   create_table "availabilities", force: :cascade do |t|
     t.boolean "monday_morning",      default: false, null: false
@@ -115,8 +115,8 @@ ActiveRecord::Schema.define(version: 20170807025612) do
   add_index "manager_relationships", ["user_id"], name: "index_manager_relationships_on_user_id"
 
   create_table "projects", force: :cascade do |t|
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.date     "start_date"
     t.string   "name"
     t.string   "description"
@@ -128,7 +128,10 @@ ActiveRecord::Schema.define(version: 20170807025612) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "hours_per_week"
-    t.integer  "manager_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "projects_skills", id: false, force: :cascade do |t|

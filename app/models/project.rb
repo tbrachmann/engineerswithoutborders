@@ -1,4 +1,9 @@
 class Project < ActiveRecord::Base
+  @total_feature_count = 0.0000000001
+
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
   has_many :manager_relationships
   has_many :managers, -> { distinct }, through: :manager_relationships, source: :user do
     def << (*managers)
@@ -87,6 +92,88 @@ class Project < ActiveRecord::Base
       indemand[klass] = indemand[klass] - myIndemand[klass]
     end
     return indemand
+  end
+  
+  def get_project_features
+    @total_feature_count = 0
+    feature_names = [:skills, :certifications, :construction_experiences,
+    :design_experiences]
+    feature_hash = {}
+    feature_names.each do |feat|
+      column_features = self.send(feat)
+      if column_features && column_features.length > 0
+        @total_feature_count +=  column_features.length
+        feature_hash[feat] = column_features.map{|quality| quality.id}.to_a
+      end
+    end
+    feature_hash
+  end
+  
+  
+  def recommended_volunteers
+    features = get_project_features
+    @user_rating = {}
+    User.all.each do |u|
+      @user_rating[u.id] = u.compute_cross_product features
+    end
+    @dsc_rating_arry = @user_rating.to_a.sort_by(&:last).map{|x| x[0]}.reverse
+    
+  end
+  
+  def user_rating_hash
+    @user_rating
+  end
+  
+  def total_feature_count
+    return @total_feature_count
+  end
+  
+  def top_five_recommendations
+    sorted_id_array = recommended_volunteers
+    user_array = []
+    count = 0
+    exists_ids = self.volunteers.map{|x| x.id}.to_a
+    sorted_id_array.each do |id|
+      if self.volunteers.exclude? id
+        user_array << User.find(id)
+        if count > 3
+          return user_array
+        end
+        count += 1
+      end
+    end
+    user_array
+  end
+  
+  
+  
+  
+  def no_image
+    "http://www.ewb-ud.org/wp-content/uploads/2016/04/EWB-logo-full.png"
+  end
+  
+  def avatar_image
+    puts self.avatar
+		if self.avatar.exists?
+		  return self.avatar.url
+		else
+		  return no_image
+		end
+  end
+  
+  
+  
+  def self.display
+    to_return1 = []
+    to_return2 = []
+    Project.all.each do |p|
+      if p.avatar.exists?
+        to_return1 << p
+      else
+        to_return2 << p
+      end
+    end
+    to_return1 + to_return2
   end
   
   private :manager_relationships, :manager_relationships=

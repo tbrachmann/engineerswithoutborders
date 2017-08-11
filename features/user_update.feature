@@ -10,7 +10,6 @@ Scenario: Updating Profile Information
   And I follow "Edit Profile"
   And I select "Bachelor's Degree" from "Education:"
   And I select "Computer Science" from "Field of Study or Expertise:"
-  And I select "Chemical" from "Certifications"
   And I select "Spanish" from "First Language:"
   And I select "5 - Native or Bilingual Proficiency" from "First Language Fluency:"
   And I select "20" from "Age"
@@ -23,62 +22,17 @@ Scenario: Updating Profile Information
   Then I should see "20"
   Then I should see "College rules!"
   Then I should see "Berkeley"
-
-Scenario: Adding a new role
-  Given I am a new, authenticated user
-  Given I am on the home page
-  When I follow "Profile"
-  And I follow "Edit Profile"
-  And I select "Other" from "Role"
-  And I enter "Programmer" into "New Role"
-  And I press "Update Background"
-  Then I should see "Programmer"
-  
   
 Scenario: User sees own availability after edit profile
   Given I am a new, authenticated user
   Given I am on the home page
   When I follow "Profile"
   And I follow "Edit Profile"
-  And I check "Wednesday Morning"
-  And I check "Saturday Evening"
+  And I check "user_availability_wednesday_morning"
+  And I check "user_availability_saturday_evening"
   And I press "Update Background"
   Then I should see "Wednesday Morning"
   Then I should see "Saturday Evening"
-  
-Scenario: User sees own availability after edit profile
-  Given I am a new, authenticated user
-  Given I am on the home page
-  When I follow "Profile"
-  And I follow "Edit Profile"
-  Then I should see "Upload Image"
-  When I follow "Upload a photo"
-  And I attach a "thumbnail" image to "image_source_file"
-  And I press "Upload photo"
-  And I press "Update Background"
-  Then I should see "image"
-  
-
-Scenario: Adding a new Skill
-  Given I am a new, authenticated user
-  Given I am on the home page
-  When I follow "Profile"
-  And I follow "Edit Profile"
-  And I follow "Add new skill"
-  And I enter "Rails" into the field
-  When I press "Save"
-  Then I should see "Rails"
-  
-Scenario: Adding a new experience
-  Given I am a new, authenticated user
-  Given I am on the home page
-  When I follow "Profile"
-  And I follow "Edit Profile"
-  Then I should see "Add a new experience"
-  When I follow "Add a new experience"
-  And I fill in "Experience" with "Programming experience"
-  When I press "Save"
-  Then I should see "Programming experience"
   
   
 

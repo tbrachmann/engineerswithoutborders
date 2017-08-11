@@ -481,6 +481,7 @@ label {
   padding: 2px 20px 2px 20px;
   background-color: #E5E5E5;
   outline: none;
+  border-radius: 10px;
   
 }
 
@@ -505,6 +506,7 @@ table#volunteers {
 	border-collapse: collapse;
 	width: 100%;
 	border-bottom: 2px solid black;
+
 }
 table#managers {
   margin: 10px;
@@ -519,10 +521,12 @@ table#managers th, table#volunteers th {
 table#managers th, table#managers td {
 	padding: 4px;
 	text-align: left;
+  overflow: scroll;
 }
 table#volunteers th, table#volunteers td {
   padding: 4px;
   text-align: left; 
+  overflow: scroll;
 
 }
 
@@ -606,4 +610,8 @@ a:hover {
 .panel-group .panel-body  ul:last-child,
 .panel-group .panel-body  ol:last-child {
   margin-bottom: 0;
+}
+
+.edit_user_dropdowns {
+  display: none;
 }

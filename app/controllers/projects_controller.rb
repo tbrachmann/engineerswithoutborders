@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 		@projects_by_date = @projects.group_by(&:start_date)
 		@date = Date.today
 		@in_demand = InDemand.all
+		@display_projects = Project.display
 	end
 
 	def show
@@ -44,6 +45,9 @@ class ProjectsController < ApplicationController
 	
 	def update
 		@project = Project.find(params[:id])
+		unless params[:project][:avatar].nil?
+    		@project.update_attribute(:avatar, params[:project][:avatar])
+    	end
 		if @project.update(project_params)
 			redirect_to @project, notice: "Successfully updated project."
 		else
