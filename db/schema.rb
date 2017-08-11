@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20170810003305) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "hours_per_week"
+    t.integer  "manager_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -196,13 +197,14 @@ ActiveRecord::Schema.define(version: 20170810003305) do
     t.boolean  "manager",                default: false
     t.integer  "availability_id"
     t.integer  "role_id"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.string   "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.string   "avatar_url"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
