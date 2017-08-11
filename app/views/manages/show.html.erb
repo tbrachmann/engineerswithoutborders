@@ -7,15 +7,15 @@
 </div>
 <h2 class="text-center">PM Dashboard: (<%= @project.name %>) </h2>
 <div class="col-md-12">
-    <strong>Project Description: </strong><%= @project.description %>
-    <br><br>
+  <strong>Project Description: </strong><%= @project.description %>
+  <br><br>
 </div>
 <div class="col-md-4">
   
   <div class="col-md-12" style="outline:#99b2e5 solid;outline-offset: -3px;">
-		<div id="project_image" >
+    <div id="project_image" >
       <%= image_tag @project.avatar_image, class: "img-responsive center-block" %>
-		</div>
+    </div>
   </div>
 
   <div class="col-md-12" >
@@ -36,12 +36,12 @@
       <% if @project.volunteers.count == 0 || @project.volunteers == "" %>
         <p> <strong> Project Capacity: </strong> <%= @project.volunteer_capacity %> </p>
       <% else %>
-      <p> 
-      	<strong>Project</strong> <%= @project.name %> has 
-      	<strong><%= @project.volunteers.count %></strong> volunteers, needs 
-      	<strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> 
-      	more!
-      </p>
+	<p> 
+      	  <strong>Project</strong> <%= @project.name %> has 
+      	  <strong><%= @project.volunteers.count %></strong> volunteers, needs 
+      	  <strong><%= @project.volunteer_capacity - @project.volunteers.count %></strong> 
+      	  more!
+	</p>
       <% end %>
     </div>
   </div>
@@ -57,24 +57,26 @@
         <p><strong>We really need:</strong>
           <div class="col-lg-12">
             <ul>
-            <% @in_demand.each do |quality|  %>
-              <li>
-                <%= quality.name %>
-              </li>
-            <% end %>
+              <% @in_demand.each do |quality|  %>
+		<li>
+                  <%= quality.name %>
+		</li>
+              <% end %>
           </div>
         </p>
       <% end %>
+
+      <%= link_to 'Edit In Demand', user_manages_edit_indemand_path(current_user.id, @project.id), class: "btn sqs-block-btn btn-black btn-md" %>
 
       <% if @project.skills && @project.skills.length > 0 %>
         <p><strong>Key Skills:</strong>
           <div class="col-lg-12">
             <ul>
-            <% @project.skills.each do |quality|  %>
-              <li>
-                <%= quality.name %>
-              </li>
-            <% end %>
+              <% @project.skills.each do |quality|  %>
+		<li>
+                  <%= quality.name %>
+		</li>
+              <% end %>
           </div>
         </p>
       <%end%>
@@ -83,11 +85,11 @@
         <p><strong>Key Certifications:</strong></p>
         <div class="col-lg-12">
           <ul>
-          <% @project.certifications.each do |quality|  %>
-            <li>
-              <%= quality.name %>
-            </li>
-          <% end %>
+            <% @project.certifications.each do |quality|  %>
+              <li>
+		<%= quality.name %>
+              </li>
+            <% end %>
         </div>
       <%end%>
 
@@ -95,22 +97,22 @@
         <p><strong>Key Construction Experiences:</strong></p>
         <div class="col-lg-12">
           <ul>
-          <% @project.construction_experiences.each do |quality|  %>
-            <li>
-              <%= quality.name %>
-            </li>
-          <% end %>
+            <% @project.construction_experiences.each do |quality|  %>
+              <li>
+		<%= quality.name %>
+              </li>
+            <% end %>
         </div>
       <%end%>
       <% if @project.design_experiences && @project.design_experiences.length > 0 %>
         <p><strong>Key Design Experiences:</strong></p>
         <div class="col-lg-12">
           <ul>
-          <% @project.design_experiences.each do |quality|  %>
-            <li>
-              <%= quality.name %>
-            </li>
-          <% end %>
+            <% @project.design_experiences.each do |quality|  %>
+              <li>
+		<%= quality.name %>
+              </li>
+            <% end %>
         </div>
       <%end%>
     </div>
@@ -172,11 +174,11 @@
             <% @project.volunteers.each do |vol| %>
               <tr>
                 <td> <a href= "<%= user_path(vol.id) %>"> <%= vol.name %> </a></td>
-  	<%if !vol.role.blank? %>
-  	  <td><%= vol.role.name %></td>
-  	<% else %>
-  	  <td></td>
-  	<% end %>
+  		<%if !vol.role.blank? %>
+  		  <td><%= vol.role.name %></td>
+  		<% else %>
+  		  <td></td>
+  		<% end %>
                 <td><%= vol.email %></td>
                 <td><%= vol.phone %></td>
               </tr>
@@ -189,5 +191,5 @@
     </div>
   </div>
   <br><br>
-&nbsp;
+  &nbsp;
 </div>
